@@ -2,52 +2,53 @@ const sequelize = require(
     "../config/database"
 );
 
-const Role = require("./role");
-const Project = require("./project");
-const Jabatan = require("./jabatan");
-const Umk = require("./umk");
+
+const Role = require("./Role");
+const Project = require("./Project");
+const Jabatan = require("./Jabatan");
+const Umk = require("./Umk");
 const KoefTmk = require(
-    "./koefTmk"
+    "./KoefTmk"
 );
-const Gaji = require("./gaji");
+const Gaji = require("./Gaji");
 const HariLibur = require(
-    "./hariLibur"
+    "./HariLibur"
 );
-const Unit = require("./unit");
+const Unit = require("./Unit");
 const UnitRole = require(
-    "./unitRole"
+    "./UnitRole"
 );
-const Pegawai = require("./pegawai");
-const Petugas = require("./petugas");
-const User = require("./user");
-const Module = require("./module");
+const Pegawai = require("./Pegawai");
+const Petugas = require("./Petugas");
+const User = require("./User");
+const Module = require("./Module");
 const AccessModule = require(
-    "./accessModule"
+    "./AccessModule"
 );
 
 const Status = require(
-    "./status"
+    "./Status"
 );
-const Mutasi = require("./mutasi");
-const Lembur = require("./lembur");
+const Mutasi = require("./Mutasi");
+const Lembur = require("./Lembur");
 const LogLembur = require(
-    "./logLembur"
+    "./LogLembur"
 );
-const Cuti = require("./cuti");
+const Cuti = require("./Cuti");
 const LogCuti = require(
-    "./logCuti"
+    "./LogCuti"
 );
-const Ijin = require("./ijin");
+const Ijin = require("./Ijin");
 const LogIjin = require(
-    "./logIjin"
+    "./LogIjin"
 );
-const Sakit = require("./sakit");
+const Sakit = require("./Sakit");
 const LogSakit = require(
-    "./logSakit"
+    "./LogSakit"
 );
-const Sppd = require("./sppd");
+const Sppd = require("./Sppd");
 const LogSppd = require(
-    "./logSppd"
+    "./LogSppd"
 );
 
 
