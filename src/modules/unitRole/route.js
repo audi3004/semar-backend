@@ -86,25 +86,6 @@ router.get(
     controller.findByUser
 );
 
-/*
-|--------------------------------------------------------------------------
-| GET BY UNIT
-|--------------------------------------------------------------------------
-*/
-
-router.get(
-    "/user/:id",
-    validate(
-        schema.userParams,
-        "params"
-    ),
-    validate(
-        schema.activeQuery,
-        "query"
-    ),
-    controller.findByUser
-);
-
 router.get(
     "/unit/:id",
     validate(

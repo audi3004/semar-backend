@@ -106,6 +106,7 @@ const sppdRoute = require(
 const logSppdRoute = require(
     "../modules/logSppd/route"
 );
+const dashboardRoute = require("../modules/dashboard/route");
 
 
 
@@ -116,6 +117,8 @@ const router = express.Router();
 router.use("/auth", authRoute);
 
 router.use(authenticate);
+
+router.use("/dashboard", dashboardRoute);
 
 router.use("/roles", roleRoute);
 router.use("/projects", projectRoute);
