@@ -15,7 +15,7 @@ const roleRepository = require(
 );
 
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 
 const ALLOWED_APPROVAL_ROLES = [

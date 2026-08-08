@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 const { Status, Role, UnitRole, User } = require("../models");
-const AppError = require("./AppError");
+const AppError = require("./appError");
 
 const ROLE_ALIASES = {
     maker: "MAKER",

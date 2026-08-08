@@ -15,7 +15,7 @@ const umkRepository = require(
 );
 
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 
 class PetugasService {

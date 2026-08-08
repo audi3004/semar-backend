@@ -3,7 +3,7 @@ const koefTmkRepository = require(
 );
 
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 
 class KoefTmkService {

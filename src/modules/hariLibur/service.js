@@ -2,7 +2,7 @@ const repository = require(
     "./repository"
 );
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 
 class HariLiburService {

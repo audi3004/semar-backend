@@ -19,7 +19,7 @@ const {
 } = require("../../models");
 
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 const getWorkflowScope = require("../../utils/workflowScope");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");

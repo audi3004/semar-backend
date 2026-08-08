@@ -3,7 +3,7 @@ const roleRepository = require(
 );
 
 const AppError = require(
-    "../../utils/AppError"
+    "../../utils/appError"
 );
 
 class RoleService {

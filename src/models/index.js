@@ -12,7 +12,7 @@ const KoefTmk = require(
 );
 const Gaji = require("./Gaji");
 const HariLibur = require(
-    "./HariLibur"
+    "./hariLibur"
 );
 const Unit = require("./Unit");
 const UnitRole = require(
