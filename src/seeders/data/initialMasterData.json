@@ -1,0 +1,7666 @@
+{
+  "m_project": [
+    {
+      "id_project": 1,
+      "nama_project": "OPGI & LW"
+    },
+    {
+      "id_project": 2,
+      "nama_project": "OPGI"
+    },
+    {
+      "id_project": 3,
+      "nama_project": "LW"
+    }
+  ],
+  "m_jabatan": [
+    {
+      "id_jabatan": 1,
+      "id_project": 1,
+      "nama_jabatan": "ASSISTANT MANAGER TRANSMISI DAN GARDU INDUK (PLN ES)",
+      "mapping_dengan_role": 6
+    },
+    {
+      "id_jabatan": 2,
+      "id_project": 1,
+      "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 1 (PLN ES)",
+      "mapping_dengan_role": 5
+    },
+    {
+      "id_jabatan": 3,
+      "id_project": 1,
+      "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 2 (PLN ES)",
+      "mapping_dengan_role": 5
+    },
+    {
+      "id_jabatan": 4,
+      "id_project": 2,
+      "nama_jabatan": "MANAGER UNIT LAYANAN TRANSMISI DAN GARDU INDUK (PLN)",
+      "mapping_dengan_role": 4
+    },
+    {
+      "id_jabatan": 5,
+      "id_project": 2,
+      "nama_jabatan": "ASSISTANT MANAGER TRANSMISI DAN GARDU INDUK (PLN)",
+      "mapping_dengan_role": 3
+    },
+    {
+      "id_jabatan": 6,
+      "id_project": 2,
+      "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK (PLN)",
+      "mapping_dengan_role": 2
+    },
+    {
+      "id_jabatan": 7,
+      "id_project": 2,
+      "nama_jabatan": "PETUGAS OPGI",
+      "mapping_dengan_role": 1
+    }
+  ],
+  "m_role": [
+    {
+      "id_role": 1,
+      "kode_role": "MAKER",
+      "nama_role": "Maker",
+      "level_role": 10,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 2,
+      "kode_role": "CHECKER",
+      "nama_role": "Checker",
+      "level_role": 20,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 3,
+      "kode_role": "VERIFICATION",
+      "nama_role": "Verification",
+      "level_role": 30,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 4,
+      "kode_role": "APPROVAL_1",
+      "nama_role": "Approval 1",
+      "level_role": 40,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 5,
+      "kode_role": "APPROVAL_2",
+      "nama_role": "Approval 2",
+      "level_role": 50,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 6,
+      "kode_role": "APPROVAL_3",
+      "nama_role": "Approval 3",
+      "level_role": 60,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 7,
+      "kode_role": "ADMIN",
+      "nama_role": "Administrator",
+      "level_role": 90,
+      "is_super_admin": "N"
+    },
+    {
+      "id_role": 8,
+      "kode_role": "SUPER_ADMIN",
+      "nama_role": "Super Administrator",
+      "level_role": 100,
+      "is_super_admin": "Y"
+    }
+  ],
+  "m_unit": [
+    {
+      "id_unit": 1,
+      "id_induk_unit": null,
+      "nama_unit": "UP 2 JAWA TENGAH"
+    },
+    {
+      "id_unit": 2,
+      "id_induk_unit": 1,
+      "nama_unit": "UPT PURWOKERTO"
+    },
+    {
+      "id_unit": 3,
+      "id_induk_unit": 2,
+      "nama_unit": "ULTG PURWOKERTO"
+    },
+    {
+      "id_unit": 4,
+      "id_induk_unit": 2,
+      "nama_unit": "ULTG TEGAL"
+    },
+    {
+      "id_unit": 5,
+      "id_induk_unit": 2,
+      "nama_unit": "ULTG WONOSOBO"
+    },
+    {
+      "id_unit": 6,
+      "id_induk_unit": 3,
+      "nama_unit": "GI MAJENANG"
+    },
+    {
+      "id_unit": 7,
+      "id_induk_unit": 3,
+      "nama_unit": "GI PURBALINGGA"
+    },
+    {
+      "id_unit": 8,
+      "id_induk_unit": 3,
+      "nama_unit": "GI SEMEN NUSANTARA"
+    },
+    {
+      "id_unit": 9,
+      "id_induk_unit": 3,
+      "nama_unit": "GI SINAR TAMBANG ARTHA LESTARI"
+    },
+    {
+      "id_unit": 10,
+      "id_induk_unit": 4,
+      "nama_unit": "GI BALAPULANG"
+    },
+    {
+      "id_unit": 11,
+      "id_induk_unit": 4,
+      "nama_unit": "GI BUMIAYU"
+    },
+    {
+      "id_unit": 12,
+      "id_induk_unit": 4,
+      "nama_unit": "GI COMAL"
+    },
+    {
+      "id_unit": 13,
+      "id_induk_unit": 4,
+      "nama_unit": "GI PEMALANG"
+    },
+    {
+      "id_unit": 14,
+      "id_induk_unit": 4,
+      "nama_unit": "GI TARUB"
+    },
+    {
+      "id_unit": 15,
+      "id_induk_unit": 5,
+      "nama_unit": "GI DIENG"
+    },
+    {
+      "id_unit": 16,
+      "id_induk_unit": 5,
+      "nama_unit": "GI GOMBONG"
+    },
+    {
+      "id_unit": 17,
+      "id_induk_unit": 5,
+      "nama_unit": "GI KEBUMEN"
+    },
+    {
+      "id_unit": 18,
+      "id_induk_unit": 5,
+      "nama_unit": "GI TEMANGGUNG"
+    },
+    {
+      "id_unit": 19,
+      "id_induk_unit": 5,
+      "nama_unit": "GI WADASLINTANG"
+    },
+    {
+      "id_unit": 20,
+      "id_induk_unit": 1,
+      "nama_unit": "UPT SALATIGA"
+    },
+    {
+      "id_unit": 21,
+      "id_induk_unit": 20,
+      "nama_unit": "ULTG SALATIGA"
+    },
+    {
+      "id_unit": 22,
+      "id_induk_unit": 20,
+      "nama_unit": "ULTG SURAKARTA"
+    },
+    {
+      "id_unit": 23,
+      "id_induk_unit": 20,
+      "nama_unit": "ULTG YOGYAKARTA"
+    },
+    {
+      "id_unit": 24,
+      "id_induk_unit": 21,
+      "nama_unit": "GI AMPEL"
+    },
+    {
+      "id_unit": 25,
+      "id_induk_unit": 21,
+      "nama_unit": "GI BERINGIN"
+    },
+    {
+      "id_unit": 26,
+      "id_induk_unit": 21,
+      "nama_unit": "GI JELOK"
+    },
+    {
+      "id_unit": 27,
+      "id_induk_unit": 21,
+      "nama_unit": "GI MOJOSONGO"
+    },
+    {
+      "id_unit": 28,
+      "id_induk_unit": 21,
+      "nama_unit": "GI SECANG"
+    },
+    {
+      "id_unit": 29,
+      "id_induk_unit": 22,
+      "nama_unit": "GI GONDANGREJO"
+    },
+    {
+      "id_unit": 30,
+      "id_induk_unit": 22,
+      "nama_unit": "GI MANGKUNEGARAN"
+    },
+    {
+      "id_unit": 31,
+      "id_induk_unit": 22,
+      "nama_unit": "GI MASARAN"
+    },
+    {
+      "id_unit": 32,
+      "id_induk_unit": 22,
+      "nama_unit": "GI WONOGIRI"
+    },
+    {
+      "id_unit": 33,
+      "id_induk_unit": 23,
+      "nama_unit": "GI GEJAYAN"
+    },
+    {
+      "id_unit": 34,
+      "id_induk_unit": 23,
+      "nama_unit": "GI GODEAN"
+    },
+    {
+      "id_unit": 35,
+      "id_induk_unit": 23,
+      "nama_unit": "GI KALASAN"
+    },
+    {
+      "id_unit": 36,
+      "id_induk_unit": 23,
+      "nama_unit": "GI MEDARI"
+    },
+    {
+      "id_unit": 37,
+      "id_induk_unit": 23,
+      "nama_unit": "GI SEMANU"
+    },
+    {
+      "id_unit": 38,
+      "id_induk_unit": 23,
+      "nama_unit": "GI WIROBRAJAN"
+    },
+    {
+      "id_unit": 39,
+      "id_induk_unit": 1,
+      "nama_unit": "UPT SEMARANG"
+    },
+    {
+      "id_unit": 40,
+      "id_induk_unit": 39,
+      "nama_unit": "ULTG KUDUS"
+    },
+    {
+      "id_unit": 41,
+      "id_induk_unit": 39,
+      "nama_unit": "ULTG REMBANG"
+    },
+    {
+      "id_unit": 42,
+      "id_induk_unit": 39,
+      "nama_unit": "ULTG SEMARANG"
+    },
+    {
+      "id_unit": 43,
+      "id_induk_unit": 40,
+      "nama_unit": "GI JEKULO"
+    },
+    {
+      "id_unit": 44,
+      "id_induk_unit": 40,
+      "nama_unit": "GI KEDUNGOMBO"
+    },
+    {
+      "id_unit": 45,
+      "id_induk_unit": 40,
+      "nama_unit": "GI SEMEN GROBOGAN"
+    },
+    {
+      "id_unit": 46,
+      "id_induk_unit": 41,
+      "nama_unit": "GI BLORA"
+    },
+    {
+      "id_unit": 47,
+      "id_induk_unit": 41,
+      "nama_unit": "GI CEPU"
+    },
+    {
+      "id_unit": 48,
+      "id_induk_unit": 41,
+      "nama_unit": "GI SEMEN INDONESIA"
+    },
+    {
+      "id_unit": 49,
+      "id_induk_unit": 42,
+      "nama_unit": "GI BUMI SEMARANG BARU"
+    },
+    {
+      "id_unit": 50,
+      "id_induk_unit": 42,
+      "nama_unit": "GI KALISARI"
+    },
+    {
+      "id_unit": 51,
+      "id_induk_unit": 42,
+      "nama_unit": "GI MRANGGEN"
+    },
+    {
+      "id_unit": 52,
+      "id_induk_unit": 42,
+      "nama_unit": "GI PUDAKPAYUNG"
+    },
+    {
+      "id_unit": 53,
+      "id_induk_unit": 42,
+      "nama_unit": "GI RANDUGARUT"
+    },
+    {
+      "id_unit": 54,
+      "id_induk_unit": 42,
+      "nama_unit": "GI SRONDOL"
+    }
+  ],
+  "m_unit_role": [
+    {
+      "id_unit_role": 1,
+      "id_user": 2,
+      "id_unit": 1,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 2,
+      "id_user": 2,
+      "id_unit": 2,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 3,
+      "id_user": 2,
+      "id_unit": 3,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 4,
+      "id_user": 2,
+      "id_unit": 4,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 5,
+      "id_user": 2,
+      "id_unit": 5,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 6,
+      "id_user": 2,
+      "id_unit": 6,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 7,
+      "id_user": 2,
+      "id_unit": 7,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 8,
+      "id_user": 2,
+      "id_unit": 8,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 9,
+      "id_user": 2,
+      "id_unit": 9,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 10,
+      "id_user": 2,
+      "id_unit": 10,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 11,
+      "id_user": 2,
+      "id_unit": 11,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 12,
+      "id_user": 2,
+      "id_unit": 12,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 13,
+      "id_user": 2,
+      "id_unit": 13,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 14,
+      "id_user": 2,
+      "id_unit": 14,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 15,
+      "id_user": 2,
+      "id_unit": 15,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 16,
+      "id_user": 2,
+      "id_unit": 16,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 17,
+      "id_user": 2,
+      "id_unit": 17,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 18,
+      "id_user": 2,
+      "id_unit": 18,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 19,
+      "id_user": 2,
+      "id_unit": 19,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 20,
+      "id_user": 2,
+      "id_unit": 20,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 21,
+      "id_user": 2,
+      "id_unit": 21,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 22,
+      "id_user": 2,
+      "id_unit": 22,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 23,
+      "id_user": 2,
+      "id_unit": 23,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 24,
+      "id_user": 2,
+      "id_unit": 24,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 25,
+      "id_user": 2,
+      "id_unit": 25,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 26,
+      "id_user": 2,
+      "id_unit": 26,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 27,
+      "id_user": 2,
+      "id_unit": 27,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 28,
+      "id_user": 2,
+      "id_unit": 28,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 29,
+      "id_user": 2,
+      "id_unit": 29,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 30,
+      "id_user": 2,
+      "id_unit": 30,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 31,
+      "id_user": 2,
+      "id_unit": 31,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 32,
+      "id_user": 2,
+      "id_unit": 32,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 33,
+      "id_user": 2,
+      "id_unit": 33,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 34,
+      "id_user": 2,
+      "id_unit": 34,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 35,
+      "id_user": 2,
+      "id_unit": 35,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 36,
+      "id_user": 2,
+      "id_unit": 36,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 37,
+      "id_user": 2,
+      "id_unit": 37,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 38,
+      "id_user": 2,
+      "id_unit": 38,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 39,
+      "id_user": 2,
+      "id_unit": 39,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 40,
+      "id_user": 2,
+      "id_unit": 40,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 41,
+      "id_user": 2,
+      "id_unit": 41,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 42,
+      "id_user": 2,
+      "id_unit": 42,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 43,
+      "id_user": 2,
+      "id_unit": 43,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 44,
+      "id_user": 2,
+      "id_unit": 44,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 45,
+      "id_user": 2,
+      "id_unit": 45,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 46,
+      "id_user": 2,
+      "id_unit": 46,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 47,
+      "id_user": 2,
+      "id_unit": 47,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 48,
+      "id_user": 2,
+      "id_unit": 48,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 49,
+      "id_user": 2,
+      "id_unit": 49,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 50,
+      "id_user": 2,
+      "id_unit": 50,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 51,
+      "id_user": 2,
+      "id_unit": 51,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 52,
+      "id_user": 2,
+      "id_unit": 52,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 53,
+      "id_user": 2,
+      "id_unit": 53,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 54,
+      "id_user": 2,
+      "id_unit": 54,
+      "id_role": 6
+    },
+    {
+      "id_unit_role": 55,
+      "id_user": 3,
+      "id_unit": 1,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 56,
+      "id_user": 3,
+      "id_unit": 2,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 57,
+      "id_user": 3,
+      "id_unit": 3,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 58,
+      "id_user": 3,
+      "id_unit": 4,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 59,
+      "id_user": 3,
+      "id_unit": 5,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 60,
+      "id_user": 3,
+      "id_unit": 6,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 61,
+      "id_user": 3,
+      "id_unit": 7,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 62,
+      "id_user": 3,
+      "id_unit": 8,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 63,
+      "id_user": 3,
+      "id_unit": 9,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 64,
+      "id_user": 3,
+      "id_unit": 10,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 65,
+      "id_user": 3,
+      "id_unit": 11,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 66,
+      "id_user": 3,
+      "id_unit": 12,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 67,
+      "id_user": 3,
+      "id_unit": 13,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 68,
+      "id_user": 3,
+      "id_unit": 14,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 69,
+      "id_user": 3,
+      "id_unit": 15,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 70,
+      "id_user": 3,
+      "id_unit": 16,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 71,
+      "id_user": 3,
+      "id_unit": 17,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 72,
+      "id_user": 3,
+      "id_unit": 18,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 73,
+      "id_user": 3,
+      "id_unit": 19,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 74,
+      "id_user": 3,
+      "id_unit": 20,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 75,
+      "id_user": 3,
+      "id_unit": 21,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 76,
+      "id_user": 3,
+      "id_unit": 22,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 77,
+      "id_user": 3,
+      "id_unit": 23,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 78,
+      "id_user": 3,
+      "id_unit": 24,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 79,
+      "id_user": 3,
+      "id_unit": 25,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 80,
+      "id_user": 3,
+      "id_unit": 26,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 81,
+      "id_user": 3,
+      "id_unit": 27,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 82,
+      "id_user": 3,
+      "id_unit": 28,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 83,
+      "id_user": 3,
+      "id_unit": 29,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 84,
+      "id_user": 3,
+      "id_unit": 30,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 85,
+      "id_user": 3,
+      "id_unit": 31,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 86,
+      "id_user": 3,
+      "id_unit": 32,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 87,
+      "id_user": 3,
+      "id_unit": 33,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 88,
+      "id_user": 3,
+      "id_unit": 34,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 89,
+      "id_user": 3,
+      "id_unit": 35,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 90,
+      "id_user": 3,
+      "id_unit": 36,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 91,
+      "id_user": 3,
+      "id_unit": 37,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 92,
+      "id_user": 3,
+      "id_unit": 38,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 93,
+      "id_user": 3,
+      "id_unit": 39,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 94,
+      "id_user": 3,
+      "id_unit": 40,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 95,
+      "id_user": 3,
+      "id_unit": 41,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 96,
+      "id_user": 3,
+      "id_unit": 42,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 97,
+      "id_user": 3,
+      "id_unit": 43,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 98,
+      "id_user": 3,
+      "id_unit": 44,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 99,
+      "id_user": 3,
+      "id_unit": 45,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 100,
+      "id_user": 3,
+      "id_unit": 46,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 101,
+      "id_user": 3,
+      "id_unit": 47,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 102,
+      "id_user": 3,
+      "id_unit": 48,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 103,
+      "id_user": 3,
+      "id_unit": 49,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 104,
+      "id_user": 3,
+      "id_unit": 50,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 105,
+      "id_user": 3,
+      "id_unit": 51,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 106,
+      "id_user": 3,
+      "id_unit": 52,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 107,
+      "id_user": 3,
+      "id_unit": 53,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 108,
+      "id_user": 3,
+      "id_unit": 54,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 109,
+      "id_user": 4,
+      "id_unit": 1,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 110,
+      "id_user": 4,
+      "id_unit": 2,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 111,
+      "id_user": 4,
+      "id_unit": 3,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 112,
+      "id_user": 4,
+      "id_unit": 4,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 113,
+      "id_user": 4,
+      "id_unit": 5,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 114,
+      "id_user": 4,
+      "id_unit": 6,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 115,
+      "id_user": 4,
+      "id_unit": 7,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 116,
+      "id_user": 4,
+      "id_unit": 8,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 117,
+      "id_user": 4,
+      "id_unit": 9,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 118,
+      "id_user": 4,
+      "id_unit": 10,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 119,
+      "id_user": 4,
+      "id_unit": 11,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 120,
+      "id_user": 4,
+      "id_unit": 12,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 121,
+      "id_user": 4,
+      "id_unit": 13,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 122,
+      "id_user": 4,
+      "id_unit": 14,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 123,
+      "id_user": 4,
+      "id_unit": 15,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 124,
+      "id_user": 4,
+      "id_unit": 16,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 125,
+      "id_user": 4,
+      "id_unit": 17,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 126,
+      "id_user": 4,
+      "id_unit": 18,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 127,
+      "id_user": 4,
+      "id_unit": 19,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 128,
+      "id_user": 4,
+      "id_unit": 20,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 129,
+      "id_user": 4,
+      "id_unit": 21,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 130,
+      "id_user": 4,
+      "id_unit": 22,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 131,
+      "id_user": 4,
+      "id_unit": 23,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 132,
+      "id_user": 4,
+      "id_unit": 24,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 133,
+      "id_user": 4,
+      "id_unit": 25,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 134,
+      "id_user": 4,
+      "id_unit": 26,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 135,
+      "id_user": 4,
+      "id_unit": 27,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 136,
+      "id_user": 4,
+      "id_unit": 28,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 137,
+      "id_user": 4,
+      "id_unit": 29,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 138,
+      "id_user": 4,
+      "id_unit": 30,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 139,
+      "id_user": 4,
+      "id_unit": 31,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 140,
+      "id_user": 4,
+      "id_unit": 32,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 141,
+      "id_user": 4,
+      "id_unit": 33,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 142,
+      "id_user": 4,
+      "id_unit": 34,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 143,
+      "id_user": 4,
+      "id_unit": 35,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 144,
+      "id_user": 4,
+      "id_unit": 36,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 145,
+      "id_user": 4,
+      "id_unit": 37,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 146,
+      "id_user": 4,
+      "id_unit": 38,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 147,
+      "id_user": 4,
+      "id_unit": 39,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 148,
+      "id_user": 4,
+      "id_unit": 40,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 149,
+      "id_user": 4,
+      "id_unit": 41,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 150,
+      "id_user": 4,
+      "id_unit": 42,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 151,
+      "id_user": 4,
+      "id_unit": 43,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 152,
+      "id_user": 4,
+      "id_unit": 44,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 153,
+      "id_user": 4,
+      "id_unit": 45,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 154,
+      "id_user": 4,
+      "id_unit": 46,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 155,
+      "id_user": 4,
+      "id_unit": 47,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 156,
+      "id_user": 4,
+      "id_unit": 48,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 157,
+      "id_user": 4,
+      "id_unit": 49,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 158,
+      "id_user": 4,
+      "id_unit": 50,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 159,
+      "id_user": 4,
+      "id_unit": 51,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 160,
+      "id_user": 4,
+      "id_unit": 52,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 161,
+      "id_user": 4,
+      "id_unit": 53,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 162,
+      "id_user": 4,
+      "id_unit": 54,
+      "id_role": 5
+    },
+    {
+      "id_unit_role": 163,
+      "id_user": 5,
+      "id_unit": 3,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 164,
+      "id_user": 5,
+      "id_unit": 6,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 165,
+      "id_user": 5,
+      "id_unit": 7,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 166,
+      "id_user": 5,
+      "id_unit": 8,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 167,
+      "id_user": 5,
+      "id_unit": 9,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 168,
+      "id_user": 6,
+      "id_unit": 4,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 169,
+      "id_user": 6,
+      "id_unit": 10,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 170,
+      "id_user": 6,
+      "id_unit": 11,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 171,
+      "id_user": 6,
+      "id_unit": 12,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 172,
+      "id_user": 6,
+      "id_unit": 13,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 173,
+      "id_user": 6,
+      "id_unit": 14,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 174,
+      "id_user": 7,
+      "id_unit": 5,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 175,
+      "id_user": 7,
+      "id_unit": 15,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 176,
+      "id_user": 7,
+      "id_unit": 16,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 177,
+      "id_user": 7,
+      "id_unit": 17,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 178,
+      "id_user": 7,
+      "id_unit": 18,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 179,
+      "id_user": 7,
+      "id_unit": 19,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 180,
+      "id_user": 8,
+      "id_unit": 21,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 181,
+      "id_user": 8,
+      "id_unit": 24,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 182,
+      "id_user": 8,
+      "id_unit": 25,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 183,
+      "id_user": 8,
+      "id_unit": 26,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 184,
+      "id_user": 8,
+      "id_unit": 27,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 185,
+      "id_user": 8,
+      "id_unit": 28,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 186,
+      "id_user": 9,
+      "id_unit": 22,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 187,
+      "id_user": 9,
+      "id_unit": 29,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 188,
+      "id_user": 9,
+      "id_unit": 30,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 189,
+      "id_user": 9,
+      "id_unit": 31,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 190,
+      "id_user": 9,
+      "id_unit": 32,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 191,
+      "id_user": 10,
+      "id_unit": 23,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 192,
+      "id_user": 10,
+      "id_unit": 33,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 193,
+      "id_user": 10,
+      "id_unit": 34,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 194,
+      "id_user": 10,
+      "id_unit": 35,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 195,
+      "id_user": 10,
+      "id_unit": 36,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 196,
+      "id_user": 10,
+      "id_unit": 37,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 197,
+      "id_user": 10,
+      "id_unit": 38,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 198,
+      "id_user": 11,
+      "id_unit": 40,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 199,
+      "id_user": 11,
+      "id_unit": 43,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 200,
+      "id_user": 11,
+      "id_unit": 44,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 201,
+      "id_user": 11,
+      "id_unit": 45,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 202,
+      "id_user": 12,
+      "id_unit": 41,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 203,
+      "id_user": 12,
+      "id_unit": 46,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 204,
+      "id_user": 12,
+      "id_unit": 47,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 205,
+      "id_user": 12,
+      "id_unit": 48,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 206,
+      "id_user": 13,
+      "id_unit": 42,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 207,
+      "id_user": 13,
+      "id_unit": 49,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 208,
+      "id_user": 13,
+      "id_unit": 50,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 209,
+      "id_user": 13,
+      "id_unit": 51,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 210,
+      "id_user": 13,
+      "id_unit": 52,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 211,
+      "id_user": 13,
+      "id_unit": 53,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 212,
+      "id_user": 13,
+      "id_unit": 54,
+      "id_role": 4
+    },
+    {
+      "id_unit_role": 213,
+      "id_user": 14,
+      "id_unit": 6,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 214,
+      "id_user": 15,
+      "id_unit": 7,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 215,
+      "id_user": 16,
+      "id_unit": 8,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 216,
+      "id_user": 17,
+      "id_unit": 9,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 217,
+      "id_user": 18,
+      "id_unit": 10,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 218,
+      "id_user": 19,
+      "id_unit": 11,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 219,
+      "id_user": 20,
+      "id_unit": 12,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 220,
+      "id_user": 21,
+      "id_unit": 13,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 221,
+      "id_user": 22,
+      "id_unit": 14,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 222,
+      "id_user": 23,
+      "id_unit": 15,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 223,
+      "id_user": 24,
+      "id_unit": 16,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 224,
+      "id_user": 25,
+      "id_unit": 17,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 225,
+      "id_user": 26,
+      "id_unit": 18,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 226,
+      "id_user": 27,
+      "id_unit": 19,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 227,
+      "id_user": 28,
+      "id_unit": 24,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 228,
+      "id_user": 29,
+      "id_unit": 25,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 229,
+      "id_user": 30,
+      "id_unit": 26,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 230,
+      "id_user": 31,
+      "id_unit": 27,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 231,
+      "id_user": 32,
+      "id_unit": 28,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 232,
+      "id_user": 33,
+      "id_unit": 29,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 233,
+      "id_user": 34,
+      "id_unit": 30,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 234,
+      "id_user": 35,
+      "id_unit": 31,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 235,
+      "id_user": 36,
+      "id_unit": 32,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 236,
+      "id_user": 37,
+      "id_unit": 33,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 237,
+      "id_user": 38,
+      "id_unit": 34,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 238,
+      "id_user": 39,
+      "id_unit": 35,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 239,
+      "id_user": 40,
+      "id_unit": 36,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 240,
+      "id_user": 41,
+      "id_unit": 37,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 241,
+      "id_user": 42,
+      "id_unit": 38,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 242,
+      "id_user": 43,
+      "id_unit": 43,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 243,
+      "id_user": 44,
+      "id_unit": 44,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 244,
+      "id_user": 45,
+      "id_unit": 45,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 245,
+      "id_user": 46,
+      "id_unit": 46,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 246,
+      "id_user": 47,
+      "id_unit": 47,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 247,
+      "id_user": 48,
+      "id_unit": 48,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 248,
+      "id_user": 49,
+      "id_unit": 49,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 249,
+      "id_user": 50,
+      "id_unit": 50,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 250,
+      "id_user": 51,
+      "id_unit": 51,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 251,
+      "id_user": 52,
+      "id_unit": 52,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 252,
+      "id_user": 53,
+      "id_unit": 53,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 253,
+      "id_user": 54,
+      "id_unit": 54,
+      "id_role": 2
+    },
+    {
+      "id_unit_role": 254,
+      "id_user": 55,
+      "id_unit": 6,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 255,
+      "id_user": 56,
+      "id_unit": 6,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 256,
+      "id_user": 57,
+      "id_unit": 6,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 257,
+      "id_user": 58,
+      "id_unit": 6,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 258,
+      "id_user": 59,
+      "id_unit": 7,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 259,
+      "id_user": 60,
+      "id_unit": 7,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 260,
+      "id_user": 61,
+      "id_unit": 7,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 261,
+      "id_user": 62,
+      "id_unit": 7,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 262,
+      "id_user": 63,
+      "id_unit": 8,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 263,
+      "id_user": 64,
+      "id_unit": 8,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 264,
+      "id_user": 65,
+      "id_unit": 8,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 265,
+      "id_user": 66,
+      "id_unit": 8,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 266,
+      "id_user": 67,
+      "id_unit": 9,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 267,
+      "id_user": 68,
+      "id_unit": 9,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 268,
+      "id_user": 69,
+      "id_unit": 9,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 269,
+      "id_user": 70,
+      "id_unit": 9,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 270,
+      "id_user": 71,
+      "id_unit": 10,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 271,
+      "id_user": 72,
+      "id_unit": 10,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 272,
+      "id_user": 73,
+      "id_unit": 10,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 273,
+      "id_user": 74,
+      "id_unit": 10,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 274,
+      "id_user": 75,
+      "id_unit": 11,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 275,
+      "id_user": 76,
+      "id_unit": 11,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 276,
+      "id_user": 77,
+      "id_unit": 11,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 277,
+      "id_user": 78,
+      "id_unit": 11,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 278,
+      "id_user": 79,
+      "id_unit": 12,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 279,
+      "id_user": 80,
+      "id_unit": 12,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 280,
+      "id_user": 81,
+      "id_unit": 12,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 281,
+      "id_user": 82,
+      "id_unit": 13,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 282,
+      "id_user": 83,
+      "id_unit": 13,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 283,
+      "id_user": 84,
+      "id_unit": 13,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 284,
+      "id_user": 85,
+      "id_unit": 13,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 285,
+      "id_user": 86,
+      "id_unit": 14,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 286,
+      "id_user": 87,
+      "id_unit": 14,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 287,
+      "id_user": 88,
+      "id_unit": 14,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 288,
+      "id_user": 89,
+      "id_unit": 14,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 289,
+      "id_user": 90,
+      "id_unit": 15,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 290,
+      "id_user": 91,
+      "id_unit": 15,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 291,
+      "id_user": 92,
+      "id_unit": 15,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 292,
+      "id_user": 93,
+      "id_unit": 15,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 293,
+      "id_user": 94,
+      "id_unit": 16,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 294,
+      "id_user": 95,
+      "id_unit": 16,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 295,
+      "id_user": 96,
+      "id_unit": 16,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 296,
+      "id_user": 97,
+      "id_unit": 16,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 297,
+      "id_user": 98,
+      "id_unit": 17,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 298,
+      "id_user": 99,
+      "id_unit": 17,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 299,
+      "id_user": 100,
+      "id_unit": 17,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 300,
+      "id_user": 101,
+      "id_unit": 17,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 301,
+      "id_user": 102,
+      "id_unit": 18,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 302,
+      "id_user": 103,
+      "id_unit": 18,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 303,
+      "id_user": 104,
+      "id_unit": 18,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 304,
+      "id_user": 105,
+      "id_unit": 18,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 305,
+      "id_user": 106,
+      "id_unit": 19,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 306,
+      "id_user": 107,
+      "id_unit": 19,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 307,
+      "id_user": 108,
+      "id_unit": 19,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 308,
+      "id_user": 109,
+      "id_unit": 19,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 309,
+      "id_user": 110,
+      "id_unit": 24,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 310,
+      "id_user": 111,
+      "id_unit": 24,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 311,
+      "id_user": 112,
+      "id_unit": 24,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 312,
+      "id_user": 113,
+      "id_unit": 24,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 313,
+      "id_user": 114,
+      "id_unit": 25,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 314,
+      "id_user": 115,
+      "id_unit": 25,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 315,
+      "id_user": 116,
+      "id_unit": 25,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 316,
+      "id_user": 117,
+      "id_unit": 25,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 317,
+      "id_user": 118,
+      "id_unit": 26,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 318,
+      "id_user": 119,
+      "id_unit": 26,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 319,
+      "id_user": 120,
+      "id_unit": 26,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 320,
+      "id_user": 121,
+      "id_unit": 26,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 321,
+      "id_user": 122,
+      "id_unit": 27,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 322,
+      "id_user": 123,
+      "id_unit": 27,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 323,
+      "id_user": 124,
+      "id_unit": 27,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 324,
+      "id_user": 125,
+      "id_unit": 27,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 325,
+      "id_user": 126,
+      "id_unit": 28,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 326,
+      "id_user": 127,
+      "id_unit": 28,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 327,
+      "id_user": 128,
+      "id_unit": 28,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 328,
+      "id_user": 129,
+      "id_unit": 28,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 329,
+      "id_user": 130,
+      "id_unit": 29,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 330,
+      "id_user": 131,
+      "id_unit": 29,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 331,
+      "id_user": 132,
+      "id_unit": 29,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 332,
+      "id_user": 133,
+      "id_unit": 29,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 333,
+      "id_user": 134,
+      "id_unit": 30,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 334,
+      "id_user": 135,
+      "id_unit": 30,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 335,
+      "id_user": 136,
+      "id_unit": 30,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 336,
+      "id_user": 137,
+      "id_unit": 31,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 337,
+      "id_user": 138,
+      "id_unit": 31,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 338,
+      "id_user": 139,
+      "id_unit": 31,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 339,
+      "id_user": 140,
+      "id_unit": 32,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 340,
+      "id_user": 141,
+      "id_unit": 32,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 341,
+      "id_user": 142,
+      "id_unit": 32,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 342,
+      "id_user": 143,
+      "id_unit": 32,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 343,
+      "id_user": 144,
+      "id_unit": 33,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 344,
+      "id_user": 145,
+      "id_unit": 33,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 345,
+      "id_user": 146,
+      "id_unit": 33,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 346,
+      "id_user": 147,
+      "id_unit": 33,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 347,
+      "id_user": 148,
+      "id_unit": 34,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 348,
+      "id_user": 149,
+      "id_unit": 34,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 349,
+      "id_user": 150,
+      "id_unit": 34,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 350,
+      "id_user": 151,
+      "id_unit": 34,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 351,
+      "id_user": 152,
+      "id_unit": 35,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 352,
+      "id_user": 153,
+      "id_unit": 35,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 353,
+      "id_user": 154,
+      "id_unit": 35,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 354,
+      "id_user": 155,
+      "id_unit": 35,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 355,
+      "id_user": 156,
+      "id_unit": 36,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 356,
+      "id_user": 157,
+      "id_unit": 36,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 357,
+      "id_user": 158,
+      "id_unit": 36,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 358,
+      "id_user": 159,
+      "id_unit": 36,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 359,
+      "id_user": 160,
+      "id_unit": 37,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 360,
+      "id_user": 161,
+      "id_unit": 37,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 361,
+      "id_user": 162,
+      "id_unit": 37,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 362,
+      "id_user": 163,
+      "id_unit": 37,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 363,
+      "id_user": 164,
+      "id_unit": 38,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 364,
+      "id_user": 165,
+      "id_unit": 38,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 365,
+      "id_user": 166,
+      "id_unit": 38,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 366,
+      "id_user": 167,
+      "id_unit": 38,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 367,
+      "id_user": 168,
+      "id_unit": 43,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 368,
+      "id_user": 169,
+      "id_unit": 43,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 369,
+      "id_user": 170,
+      "id_unit": 43,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 370,
+      "id_user": 171,
+      "id_unit": 43,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 371,
+      "id_user": 172,
+      "id_unit": 44,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 372,
+      "id_user": 173,
+      "id_unit": 44,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 373,
+      "id_user": 174,
+      "id_unit": 44,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 374,
+      "id_user": 175,
+      "id_unit": 44,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 375,
+      "id_user": 176,
+      "id_unit": 45,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 376,
+      "id_user": 177,
+      "id_unit": 45,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 377,
+      "id_user": 178,
+      "id_unit": 45,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 378,
+      "id_user": 179,
+      "id_unit": 45,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 379,
+      "id_user": 180,
+      "id_unit": 46,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 380,
+      "id_user": 181,
+      "id_unit": 46,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 381,
+      "id_user": 182,
+      "id_unit": 46,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 382,
+      "id_user": 183,
+      "id_unit": 47,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 383,
+      "id_user": 184,
+      "id_unit": 47,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 384,
+      "id_user": 185,
+      "id_unit": 47,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 385,
+      "id_user": 186,
+      "id_unit": 48,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 386,
+      "id_user": 187,
+      "id_unit": 48,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 387,
+      "id_user": 188,
+      "id_unit": 48,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 388,
+      "id_user": 189,
+      "id_unit": 48,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 389,
+      "id_user": 190,
+      "id_unit": 49,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 390,
+      "id_user": 191,
+      "id_unit": 49,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 391,
+      "id_user": 192,
+      "id_unit": 49,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 392,
+      "id_user": 193,
+      "id_unit": 49,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 393,
+      "id_user": 194,
+      "id_unit": 50,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 394,
+      "id_user": 195,
+      "id_unit": 50,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 395,
+      "id_user": 196,
+      "id_unit": 50,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 396,
+      "id_user": 197,
+      "id_unit": 50,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 397,
+      "id_user": 198,
+      "id_unit": 51,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 398,
+      "id_user": 199,
+      "id_unit": 51,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 399,
+      "id_user": 200,
+      "id_unit": 51,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 400,
+      "id_user": 201,
+      "id_unit": 51,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 401,
+      "id_user": 202,
+      "id_unit": 52,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 402,
+      "id_user": 203,
+      "id_unit": 52,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 403,
+      "id_user": 204,
+      "id_unit": 52,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 404,
+      "id_user": 205,
+      "id_unit": 52,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 405,
+      "id_user": 206,
+      "id_unit": 53,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 406,
+      "id_user": 207,
+      "id_unit": 53,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 407,
+      "id_user": 208,
+      "id_unit": 53,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 408,
+      "id_user": 209,
+      "id_unit": 54,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 409,
+      "id_user": 210,
+      "id_unit": 54,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 410,
+      "id_user": 211,
+      "id_unit": 54,
+      "id_role": 1
+    },
+    {
+      "id_unit_role": 411,
+      "id_user": 212,
+      "id_unit": 54,
+      "id_role": 1
+    }
+  ],
+  "m_umk": [
+    {
+      "id_umk": 1,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Banyumas 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2338410
+    },
+    {
+      "id_umk": 2,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Blora 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2238431
+    },
+    {
+      "id_umk": 3,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Boyolali 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2396598
+    },
+    {
+      "id_umk": 4,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Brebes 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2239802
+    },
+    {
+      "id_umk": 5,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Cilacap 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2640248
+    },
+    {
+      "id_umk": 6,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Demak 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2940716
+    },
+    {
+      "id_umk": 7,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Grobogan 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2254090
+    },
+    {
+      "id_umk": 8,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Gunung Kidul 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2330264
+    },
+    {
+      "id_umk": 9,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Karanganyar 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2437110
+    },
+    {
+      "id_umk": 10,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Kebumen 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2259874
+    },
+    {
+      "id_umk": 11,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Kudus 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2680486
+    },
+    {
+      "id_umk": 12,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Magelang 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2467488
+    },
+    {
+      "id_umk": 13,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Pemalang 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2296140
+    },
+    {
+      "id_umk": 14,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Purbalingga 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2338283
+    },
+    {
+      "id_umk": 15,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Rembang 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2236169
+    },
+    {
+      "id_umk": 16,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Semarang 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2750136
+    },
+    {
+      "id_umk": 17,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Sleman 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2466515
+    },
+    {
+      "id_umk": 18,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Sragen 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2182200
+    },
+    {
+      "id_umk": 19,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Tegal 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2333586
+    },
+    {
+      "id_umk": 20,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Temanggung 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2246850
+    },
+    {
+      "id_umk": 21,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Wonogiri 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2180588
+    },
+    {
+      "id_umk": 22,
+      "jenis_wilayah": "KABUPATEN",
+      "nama_wilayah": "Kabupaten Wonosobo 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2299521
+    },
+    {
+      "id_umk": 23,
+      "jenis_wilayah": "KOTA",
+      "nama_wilayah": "Kota Salatiga 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2533583
+    },
+    {
+      "id_umk": 24,
+      "jenis_wilayah": "KOTA",
+      "nama_wilayah": "Kota Semarang 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 3454827
+    },
+    {
+      "id_umk": 25,
+      "jenis_wilayah": "KOTA",
+      "nama_wilayah": "Kota Surakarta 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2416560
+    },
+    {
+      "id_umk": 26,
+      "jenis_wilayah": "KOTA",
+      "nama_wilayah": "Kota Yogyakarta 2025",
+      "tahun_umk": 2025,
+      "nominal_umk": 2655042
+    }
+  ],
+  "m_koef_tmk": [
+    {
+      "id_koef_tmk": 1,
+      "masa_kerja": 0,
+      "keterangan": "TMK 1 (0-2 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.01
+    },
+    {
+      "id_koef_tmk": 2,
+      "masa_kerja": 3,
+      "keterangan": "TMK 2 (3-4 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.02
+    },
+    {
+      "id_koef_tmk": 3,
+      "masa_kerja": 5,
+      "keterangan": "TMK 3 (5-6 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.03
+    },
+    {
+      "id_koef_tmk": 4,
+      "masa_kerja": 7,
+      "keterangan": "TMK 4 (7-8 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.04
+    },
+    {
+      "id_koef_tmk": 5,
+      "masa_kerja": 9,
+      "keterangan": "TMK 5 (9- >10 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.05
+    }
+  ],
+  "m_pegawai": [
+    {
+      "id_pegawai": 1,
+      "id_jabatan": 1,
+      "id_unit": 1,
+      "nip": "8812632ZY",
+      "nama": "MAHMUD FAUZI ISWORO"
+    },
+    {
+      "id_pegawai": 2,
+      "id_jabatan": 2,
+      "id_unit": 1,
+      "nip": 12345678,
+      "nama": "TL GI 1 PLNES"
+    },
+    {
+      "id_pegawai": 3,
+      "id_jabatan": 3,
+      "id_unit": 1,
+      "nip": "9117037HP",
+      "nama": "ADHITIA PUSPO WIBOWO"
+    },
+    {
+      "id_pegawai": 4,
+      "id_jabatan": 4,
+      "id_unit": 3,
+      "nip": null,
+      "nama": "TOMY BRANDO"
+    },
+    {
+      "id_pegawai": 5,
+      "id_jabatan": 4,
+      "id_unit": 4,
+      "nip": null,
+      "nama": "AKHAS"
+    },
+    {
+      "id_pegawai": 6,
+      "id_jabatan": 4,
+      "id_unit": 5,
+      "nip": null,
+      "nama": "YUSEF IRAWAN WICAKSANA"
+    },
+    {
+      "id_pegawai": 7,
+      "id_jabatan": 4,
+      "id_unit": 21,
+      "nip": null,
+      "nama": "ANDI ARTHA KUSUMA"
+    },
+    {
+      "id_pegawai": 8,
+      "id_jabatan": 4,
+      "id_unit": 22,
+      "nip": null,
+      "nama": "FATKHAN KORIB"
+    },
+    {
+      "id_pegawai": 9,
+      "id_jabatan": 4,
+      "id_unit": 23,
+      "nip": null,
+      "nama": "YUSTINUS"
+    },
+    {
+      "id_pegawai": 10,
+      "id_jabatan": 4,
+      "id_unit": 40,
+      "nip": null,
+      "nama": "ARIEF SANDHY"
+    },
+    {
+      "id_pegawai": 11,
+      "id_jabatan": 4,
+      "id_unit": 41,
+      "nip": null,
+      "nama": "HARMONO"
+    },
+    {
+      "id_pegawai": 12,
+      "id_jabatan": 4,
+      "id_unit": 42,
+      "nip": null,
+      "nama": "SEPTHIAN ADI"
+    },
+    {
+      "id_pegawai": 13,
+      "id_jabatan": 5,
+      "id_unit": 6,
+      "nip": null,
+      "nama": "FIRMAN"
+    },
+    {
+      "id_pegawai": 14,
+      "id_jabatan": 5,
+      "id_unit": 7,
+      "nip": null,
+      "nama": "SUPARDI"
+    },
+    {
+      "id_pegawai": 15,
+      "id_jabatan": 5,
+      "id_unit": 8,
+      "nip": null,
+      "nama": "FEBRI"
+    },
+    {
+      "id_pegawai": 16,
+      "id_jabatan": 5,
+      "id_unit": 9,
+      "nip": null,
+      "nama": "DEDI FIRMAN"
+    },
+    {
+      "id_pegawai": 17,
+      "id_jabatan": 5,
+      "id_unit": 10,
+      "nip": null,
+      "nama": "KAMALUDIN LATIF"
+    },
+    {
+      "id_pegawai": 18,
+      "id_jabatan": 5,
+      "id_unit": 11,
+      "nip": null,
+      "nama": "FARID HAKIM FAIZ"
+    },
+    {
+      "id_pegawai": 19,
+      "id_jabatan": 5,
+      "id_unit": 12,
+      "nip": null,
+      "nama": "M. REZA GHANI"
+    },
+    {
+      "id_pegawai": 20,
+      "id_jabatan": 5,
+      "id_unit": 13,
+      "nip": null,
+      "nama": "DWI KRESNA"
+    },
+    {
+      "id_pegawai": 21,
+      "id_jabatan": 5,
+      "id_unit": 14,
+      "nip": null,
+      "nama": "M. SIGIT COKROYUDHO"
+    },
+    {
+      "id_pegawai": 22,
+      "id_jabatan": 5,
+      "id_unit": 15,
+      "nip": null,
+      "nama": "ZAKI"
+    },
+    {
+      "id_pegawai": 23,
+      "id_jabatan": 5,
+      "id_unit": 16,
+      "nip": null,
+      "nama": "FAJRUL"
+    },
+    {
+      "id_pegawai": 24,
+      "id_jabatan": 5,
+      "id_unit": 17,
+      "nip": null,
+      "nama": "ROUF"
+    },
+    {
+      "id_pegawai": 25,
+      "id_jabatan": 5,
+      "id_unit": 18,
+      "nip": null,
+      "nama": "LILIK"
+    },
+    {
+      "id_pegawai": 26,
+      "id_jabatan": 5,
+      "id_unit": 19,
+      "nip": null,
+      "nama": "ANDIN"
+    },
+    {
+      "id_pegawai": 27,
+      "id_jabatan": 5,
+      "id_unit": 24,
+      "nip": null,
+      "nama": "KAFABY"
+    },
+    {
+      "id_pegawai": 28,
+      "id_jabatan": 5,
+      "id_unit": 25,
+      "nip": null,
+      "nama": "TURAH PUJI HARTONO"
+    },
+    {
+      "id_pegawai": 29,
+      "id_jabatan": 5,
+      "id_unit": 26,
+      "nip": null,
+      "nama": "TURAH PUJI HARTONO"
+    },
+    {
+      "id_pegawai": 30,
+      "id_jabatan": 5,
+      "id_unit": 27,
+      "nip": null,
+      "nama": "KAFABY"
+    },
+    {
+      "id_pegawai": 31,
+      "id_jabatan": 5,
+      "id_unit": 28,
+      "nip": null,
+      "nama": "FAHIM"
+    },
+    {
+      "id_pegawai": 32,
+      "id_jabatan": 5,
+      "id_unit": 29,
+      "nip": null,
+      "nama": "DWI R.L..P"
+    },
+    {
+      "id_pegawai": 33,
+      "id_jabatan": 5,
+      "id_unit": 30,
+      "nip": null,
+      "nama": "ARI WIJAYA"
+    },
+    {
+      "id_pegawai": 34,
+      "id_jabatan": 5,
+      "id_unit": 31,
+      "nip": null,
+      "nama": "ADITYA DENI"
+    },
+    {
+      "id_pegawai": 35,
+      "id_jabatan": 5,
+      "id_unit": 32,
+      "nip": null,
+      "nama": "ARI AJI"
+    },
+    {
+      "id_pegawai": 36,
+      "id_jabatan": 5,
+      "id_unit": 33,
+      "nip": null,
+      "nama": "AMIN SUGENG"
+    },
+    {
+      "id_pegawai": 37,
+      "id_jabatan": 5,
+      "id_unit": 34,
+      "nip": null,
+      "nama": "DANI GUNAWAN"
+    },
+    {
+      "id_pegawai": 38,
+      "id_jabatan": 5,
+      "id_unit": 35,
+      "nip": null,
+      "nama": "ARGA BINTORO"
+    },
+    {
+      "id_pegawai": 39,
+      "id_jabatan": 5,
+      "id_unit": 36,
+      "nip": null,
+      "nama": "DANI GUNAWAN"
+    },
+    {
+      "id_pegawai": 40,
+      "id_jabatan": 5,
+      "id_unit": 37,
+      "nip": null,
+      "nama": "FANDY AHMAD"
+    },
+    {
+      "id_pegawai": 41,
+      "id_jabatan": 5,
+      "id_unit": 38,
+      "nip": null,
+      "nama": "RAHMAT KURNIAWAN"
+    },
+    {
+      "id_pegawai": 42,
+      "id_jabatan": 5,
+      "id_unit": 43,
+      "nip": null,
+      "nama": "DELTEND DONATOS"
+    },
+    {
+      "id_pegawai": 43,
+      "id_jabatan": 5,
+      "id_unit": 44,
+      "nip": null,
+      "nama": "DIDIN"
+    },
+    {
+      "id_pegawai": 44,
+      "id_jabatan": 5,
+      "id_unit": 45,
+      "nip": null,
+      "nama": "DAVID JUJUR"
+    },
+    {
+      "id_pegawai": 45,
+      "id_jabatan": 5,
+      "id_unit": 46,
+      "nip": null,
+      "nama": "A.F AZIZ"
+    },
+    {
+      "id_pegawai": 46,
+      "id_jabatan": 5,
+      "id_unit": 47,
+      "nip": null,
+      "nama": "RAGIL ADHIWIBOWO"
+    },
+    {
+      "id_pegawai": 47,
+      "id_jabatan": 5,
+      "id_unit": 48,
+      "nip": null,
+      "nama": "A.F AZIZ"
+    },
+    {
+      "id_pegawai": 48,
+      "id_jabatan": 5,
+      "id_unit": 49,
+      "nip": null,
+      "nama": "ANJAR"
+    },
+    {
+      "id_pegawai": 49,
+      "id_jabatan": 5,
+      "id_unit": 50,
+      "nip": null,
+      "nama": "HABIB"
+    },
+    {
+      "id_pegawai": 50,
+      "id_jabatan": 5,
+      "id_unit": 51,
+      "nip": null,
+      "nama": "RUDI"
+    },
+    {
+      "id_pegawai": 51,
+      "id_jabatan": 5,
+      "id_unit": 52,
+      "nip": null,
+      "nama": "FAIZ"
+    },
+    {
+      "id_pegawai": 52,
+      "id_jabatan": 5,
+      "id_unit": 53,
+      "nip": null,
+      "nama": "GIGIH"
+    },
+    {
+      "id_pegawai": 53,
+      "id_jabatan": 5,
+      "id_unit": 54,
+      "nip": null,
+      "nama": "FAIZ"
+    }
+  ],
+  "m_petugas": [
+    {
+      "id_petugas": 1,
+      "id_unit": 6,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020118TJBT",
+      "nama": "FIRMAN MAULANA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-07-05"
+    },
+    {
+      "id_petugas": 2,
+      "id_unit": 6,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120109TJBT",
+      "nama": "PANDU UTOMO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-07-26"
+    },
+    {
+      "id_petugas": 3,
+      "id_unit": 6,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9420121TJBT",
+      "nama": "BAYU PRIYAMBODO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1994-12-23"
+    },
+    {
+      "id_petugas": 4,
+      "id_unit": 6,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9520110TJBT",
+      "nama": "KRIS AJI SETIAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1995-05-05"
+    },
+    {
+      "id_petugas": 5,
+      "id_unit": 7,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020107TJBT",
+      "nama": "DHADHI FILIA SYAHWAL",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-12-29"
+    },
+    {
+      "id_petugas": 6,
+      "id_unit": 7,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020108TJBT",
+      "nama": "ALDEAN OBIYASI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-07-23"
+    },
+    {
+      "id_petugas": 7,
+      "id_unit": 7,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9520105TJBT",
+      "nama": "IRSAD FATONI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1995-06-28"
+    },
+    {
+      "id_petugas": 8,
+      "id_unit": 7,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9520106TJBT",
+      "nama": "AJI PRASETYO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1995-04-30"
+    },
+    {
+      "id_petugas": 9,
+      "id_unit": 8,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020084TJBT",
+      "nama": "ROSIHANDIKA SISPRADANA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-06-13"
+    },
+    {
+      "id_petugas": 10,
+      "id_unit": 8,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120125TJBT",
+      "nama": "FUAD HASAN",
+      "tgl_masuk": "2020-02-03",
+      "tgl_lahir": "2001-03-18"
+    },
+    {
+      "id_petugas": 11,
+      "id_unit": 8,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9320124TJBT",
+      "nama": "ULIL MUKSININ",
+      "tgl_masuk": "2020-02-03",
+      "tgl_lahir": "1993-02-14"
+    },
+    {
+      "id_petugas": 12,
+      "id_unit": 8,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820083TJBT",
+      "nama": "ARFAN NUR RAHMAT DANI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-01-15"
+    },
+    {
+      "id_petugas": 13,
+      "id_unit": 9,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120085TJBT",
+      "nama": "ARIF YUSUF AFANDI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-11-03"
+    },
+    {
+      "id_petugas": 14,
+      "id_unit": 9,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720087TJBT",
+      "nama": "YUNUS LUKMANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-10-23"
+    },
+    {
+      "id_petugas": 15,
+      "id_unit": 9,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920086TJBT",
+      "nama": "AUFA SAHAR RAMADHAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-12-10"
+    },
+    {
+      "id_petugas": 16,
+      "id_unit": 9,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920088TJBT",
+      "nama": "BEKTI FAOZI FIRANSYAH",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-06-08"
+    },
+    {
+      "id_petugas": 17,
+      "id_unit": 10,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9420091TJBT",
+      "nama": "BAYU ARIANDI SULISTIAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1994-12-09"
+    },
+    {
+      "id_petugas": 18,
+      "id_unit": 10,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620089TJBT",
+      "nama": "MAS MAJID AL FATH",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-07-25"
+    },
+    {
+      "id_petugas": 19,
+      "id_unit": 10,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620092TJBT",
+      "nama": "ALFIN HENRI HUTAMA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-11-22"
+    },
+    {
+      "id_petugas": 20,
+      "id_unit": 10,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9922002TJBT",
+      "nama": "FADILAH RIZKI PRATAMA",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "1999-03-21"
+    },
+    {
+      "id_petugas": 21,
+      "id_unit": 11,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226007TJBT",
+      "nama": "WAHYU SEPTI AJI",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-09-09"
+    },
+    {
+      "id_petugas": 22,
+      "id_unit": 11,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526001TJBT",
+      "nama": "AZIZ MUNANDAR",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-10-17"
+    },
+    {
+      "id_petugas": 23,
+      "id_unit": 11,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0726003TJBT",
+      "nama": "DAVID MARTIN TRI NURCAHYO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2007-03-06"
+    },
+    {
+      "id_petugas": 24,
+      "id_unit": 11,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920094TJBT",
+      "nama": "NIKEN OKA ANDRIANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-10-24"
+    },
+    {
+      "id_petugas": 25,
+      "id_unit": 12,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0326002TJBT",
+      "nama": "MUHAMMAD DEDEN ALIYUDIN PERMANA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2003-11-12"
+    },
+    {
+      "id_petugas": 26,
+      "id_unit": 12,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0326005TJBT",
+      "nama": "FAJAR ARYO SANTOSO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2003-12-26"
+    },
+    {
+      "id_petugas": 27,
+      "id_unit": 12,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526002TJBT",
+      "nama": "MOHAMMAD ALVIN FAIZ",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-01-18"
+    },
+    {
+      "id_petugas": 28,
+      "id_unit": 13,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226008TJBT",
+      "nama": "MOHAMMAD FALDI",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-12-29"
+    },
+    {
+      "id_petugas": 29,
+      "id_unit": 13,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0326004TJBT",
+      "nama": "RIZAL RAIS WIBOWO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2003-05-20"
+    },
+    {
+      "id_petugas": 30,
+      "id_unit": 13,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626005TJBT",
+      "nama": "RAFLY RIYANANDA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-05-16"
+    },
+    {
+      "id_petugas": 31,
+      "id_unit": 13,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626008TJBT",
+      "nama": "FIRMANSYAH AGUSTIAN",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-08-28"
+    },
+    {
+      "id_petugas": 32,
+      "id_unit": 14,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626003TJBT",
+      "nama": "RESTU YOGA PRATAMA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-03-31"
+    },
+    {
+      "id_petugas": 33,
+      "id_unit": 14,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720095TJBT",
+      "nama": "TITO MEGA AYUBI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-02-16"
+    },
+    {
+      "id_petugas": 34,
+      "id_unit": 14,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820096TJBT",
+      "nama": "ADE SUTORO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-03-20"
+    },
+    {
+      "id_petugas": 35,
+      "id_unit": 14,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920093TJBT",
+      "nama": "MUCHAMMAD ADAM FAKHROZI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-02-20"
+    },
+    {
+      "id_petugas": 36,
+      "id_unit": 15,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020082TJBT",
+      "nama": "AQILLA FEBI SUSANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-02-11"
+    },
+    {
+      "id_petugas": 37,
+      "id_unit": 15,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020112TJBT",
+      "nama": "ARIF WIBOWO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-03-07"
+    },
+    {
+      "id_petugas": 38,
+      "id_unit": 15,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9519066TJBT",
+      "nama": "ROKHANDI ZUSUF",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1995-09-30"
+    },
+    {
+      "id_petugas": 39,
+      "id_unit": 15,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919065TJBT",
+      "nama": "RIO NUR ANJAZ PUTRA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-07-18"
+    },
+    {
+      "id_petugas": 40,
+      "id_unit": 16,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020100TJBT",
+      "nama": "ADE SAPUTRA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-10-26"
+    },
+    {
+      "id_petugas": 41,
+      "id_unit": 16,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720099TJBT",
+      "nama": "DHIKA FAJAR HIDAYAT",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-12-12"
+    },
+    {
+      "id_petugas": 42,
+      "id_unit": 16,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820097TJBT",
+      "nama": "AFRIZAL DWI ROZAKI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-10-04"
+    },
+    {
+      "id_petugas": 43,
+      "id_unit": 16,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920098TJBT",
+      "nama": "UMAR ABDUL AZIZ",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-07-06"
+    },
+    {
+      "id_petugas": 44,
+      "id_unit": 17,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020103TJBT",
+      "nama": "VIKI NUROHMAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-11-05"
+    },
+    {
+      "id_petugas": 45,
+      "id_unit": 17,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9420102TJBT",
+      "nama": "SIDNI MUBAROK",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1994-02-08"
+    },
+    {
+      "id_petugas": 46,
+      "id_unit": 17,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620104TJBT",
+      "nama": "MOH SYAEFUDIN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-08-25"
+    },
+    {
+      "id_petugas": 47,
+      "id_unit": 17,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720101TJBT",
+      "nama": "MOHAMAD KHOLIKUN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-10-22"
+    },
+    {
+      "id_petugas": 48,
+      "id_unit": 18,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019063TJBT",
+      "nama": "PULUNG JATI PRASETYO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-02-25"
+    },
+    {
+      "id_petugas": 49,
+      "id_unit": 18,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019064TJBT",
+      "nama": "YUDHA AGUNG PAMUNGKAS",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-02-06"
+    },
+    {
+      "id_petugas": 50,
+      "id_unit": 18,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9519067TJBT",
+      "nama": "AHMAD WAKHID",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1995-03-11"
+    },
+    {
+      "id_petugas": 51,
+      "id_unit": 18,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620081TJBT",
+      "nama": "EDI JOKO SUSENO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-01-01"
+    },
+    {
+      "id_petugas": 52,
+      "id_unit": 19,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020111TJBT",
+      "nama": "DICKY ARYANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-09-26"
+    },
+    {
+      "id_petugas": 53,
+      "id_unit": 19,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626009TJBT",
+      "nama": "ZOSI ADHI PITOYO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-11-17"
+    },
+    {
+      "id_petugas": 54,
+      "id_unit": 19,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0726002TJBT",
+      "nama": "ABDUL AZZIZ",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2007-05-12"
+    },
+    {
+      "id_petugas": 55,
+      "id_unit": 19,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9519068TJBT",
+      "nama": "TRI TEGUH SETYAWAN",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1995-07-22"
+    },
+    {
+      "id_petugas": 56,
+      "id_unit": 24,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0222006TJBT",
+      "nama": "PRASKA YOGI SETIAWAN",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "2002-03-26"
+    },
+    {
+      "id_petugas": 57,
+      "id_unit": 24,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0426003TJBT",
+      "nama": "RENDY YUMNA NUGRAHA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2004-01-28"
+    },
+    {
+      "id_petugas": 58,
+      "id_unit": 24,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0826001TJBT",
+      "nama": "DIAN PUTRA PAMUNGKAS",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2008-06-13"
+    },
+    {
+      "id_petugas": 59,
+      "id_unit": 24,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9719033TJBT",
+      "nama": "MUHAMAD IZZA ARFANI",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1997-11-21"
+    },
+    {
+      "id_petugas": 60,
+      "id_unit": 25,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020039TJBT",
+      "nama": "MUHAMMAD EDI NUR AHKWAD",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-03-26"
+    },
+    {
+      "id_petugas": 61,
+      "id_unit": 25,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020040TJBT",
+      "nama": "REZA KURNIA PUTRA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-01-18"
+    },
+    {
+      "id_petugas": 62,
+      "id_unit": 25,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120041TJBT",
+      "nama": "ALDRIN RIFKI MUHAMMAD FAHRI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-07-02"
+    },
+    {
+      "id_petugas": 63,
+      "id_unit": 25,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820123TJBT",
+      "nama": "AKHYAS HERI MAULANA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-06-30"
+    },
+    {
+      "id_petugas": 64,
+      "id_unit": 26,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120050TJBT",
+      "nama": "NUGROHO GILANG SAPUTRO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-04-27"
+    },
+    {
+      "id_petugas": 65,
+      "id_unit": 26,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226005TJBT",
+      "nama": "MUHAMMAD NUGROHO TRI PAMUNGKAS",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-03-14"
+    },
+    {
+      "id_petugas": 66,
+      "id_unit": 26,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819042TJBT",
+      "nama": "ADHI PRASETIA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-02-16"
+    },
+    {
+      "id_petugas": 67,
+      "id_unit": 26,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819044TJBT",
+      "nama": "FRIDA PERDANA KUSUMA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-02-23"
+    },
+    {
+      "id_petugas": 68,
+      "id_unit": 27,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0126002TJBT",
+      "nama": "MUHAMMAD YAHYA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2001-09-10"
+    },
+    {
+      "id_petugas": 69,
+      "id_unit": 27,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920042TJBT",
+      "nama": "KURNIAWAN AKBAR SUTIYOSO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-02-24"
+    },
+    {
+      "id_petugas": 70,
+      "id_unit": 27,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920043TJBT",
+      "nama": "MUHAMMAD AULI AFIFUDIN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-11-12"
+    },
+    {
+      "id_petugas": 71,
+      "id_unit": 27,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920044TJBT",
+      "nama": "FANI AGIT NUGROHO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-05-30"
+    },
+    {
+      "id_petugas": 72,
+      "id_unit": 28,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020048TJBT",
+      "nama": "IMAN SETIYANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-02-16"
+    },
+    {
+      "id_petugas": 73,
+      "id_unit": 28,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620046TJBT",
+      "nama": "ARVAN ARDIAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-10-19"
+    },
+    {
+      "id_petugas": 74,
+      "id_unit": 28,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720047TJBT",
+      "nama": "SATRIA YOGA SAPUTRA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-06-06"
+    },
+    {
+      "id_petugas": 75,
+      "id_unit": 28,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920049TJBT",
+      "nama": "FATKHUL MARWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-07-23"
+    },
+    {
+      "id_petugas": 76,
+      "id_unit": 29,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020045TJBT",
+      "nama": "TAUFIK NUR HAKIM",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-06-01"
+    },
+    {
+      "id_petugas": 77,
+      "id_unit": 29,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120113TJBT",
+      "nama": "TRI MULYONO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-06-05"
+    },
+    {
+      "id_petugas": 78,
+      "id_unit": 29,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0726001TJBT",
+      "nama": "VENO OKTOBRIAN SUTANTO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2007-10-22"
+    },
+    {
+      "id_petugas": 79,
+      "id_unit": 29,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920115TJBT",
+      "nama": "RAHADRIAN SATRIO AJIE",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-01-01"
+    },
+    {
+      "id_petugas": 80,
+      "id_unit": 30,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526006TJBT",
+      "nama": "AHMAD AGUNG KURNIADI",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-09-22"
+    },
+    {
+      "id_petugas": 81,
+      "id_unit": 30,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9719038TJBT",
+      "nama": "ABDULLAH",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1997-03-03"
+    },
+    {
+      "id_petugas": 82,
+      "id_unit": 30,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820120TJBT",
+      "nama": "AZIZ NOVA KURNIAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-11-01"
+    },
+    {
+      "id_petugas": 83,
+      "id_unit": 31,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0119039TJBT",
+      "nama": "KURNIYANTO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2001-08-28"
+    },
+    {
+      "id_petugas": 84,
+      "id_unit": 31,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626001TJBT",
+      "nama": "AMIR MURSALIN",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-09-11"
+    },
+    {
+      "id_petugas": 85,
+      "id_unit": 31,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819035TJBT",
+      "nama": "MUSLIM ALI MUSTOFA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-07-21"
+    },
+    {
+      "id_petugas": 86,
+      "id_unit": 32,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019041TJBT",
+      "nama": "LATIF SETIAWAN",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-04-20"
+    },
+    {
+      "id_petugas": 87,
+      "id_unit": 32,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226004TJBT",
+      "nama": "TAUFIK NUROHMAN",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-06-28"
+    },
+    {
+      "id_petugas": 88,
+      "id_unit": 32,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526005TJBT",
+      "nama": "MOCHAMMAD RIZKY ANUGERAH SADEWA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-03-01"
+    },
+    {
+      "id_petugas": 89,
+      "id_unit": 32,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820077TJBT",
+      "nama": "BRIAN SEBASTIAN LUCKY MARENRA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-09-27"
+    },
+    {
+      "id_petugas": 90,
+      "id_unit": 33,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019061TJBT",
+      "nama": "AJI VERY NUGROHO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-02-13"
+    },
+    {
+      "id_petugas": 91,
+      "id_unit": 33,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9419058TJBT",
+      "nama": "GIFFARI OKTO BAREZY PRAHASTIAR",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1994-10-17"
+    },
+    {
+      "id_petugas": 92,
+      "id_unit": 33,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819053TJBT",
+      "nama": "DIKA PERMANA PUTRA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-12-12"
+    },
+    {
+      "id_petugas": 93,
+      "id_unit": 33,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9922001TJBT",
+      "nama": "BAYU KURNIAWAN",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "1999-07-22"
+    },
+    {
+      "id_petugas": 94,
+      "id_unit": 34,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019055TJBT",
+      "nama": "FANI FADHIL",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-07-08"
+    },
+    {
+      "id_petugas": 95,
+      "id_unit": 34,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019060TJBT",
+      "nama": "EDWARD DIMAS RENATA ADITAMA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-01-30"
+    },
+    {
+      "id_petugas": 96,
+      "id_unit": 34,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019062TJBT",
+      "nama": "MUHAMMAD RUDINI",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-05-27"
+    },
+    {
+      "id_petugas": 97,
+      "id_unit": 34,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9319050TJBT",
+      "nama": "RIDHO SETYAWAN",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1993-05-01"
+    },
+    {
+      "id_petugas": 98,
+      "id_unit": 35,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620114TJBT",
+      "nama": "HERI SANTOSO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-12-24"
+    },
+    {
+      "id_petugas": 99,
+      "id_unit": 35,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819048TJBT",
+      "nama": "DIAS ERWAN ANDRIANSYAH",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-08-07"
+    },
+    {
+      "id_petugas": 100,
+      "id_unit": 35,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819056TJBT",
+      "nama": "MUNTOHA GUS RIZAL",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-08-11"
+    },
+    {
+      "id_petugas": 101,
+      "id_unit": 35,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919036TJBT",
+      "nama": "IMAM AMIN MUKHAROM",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-05-03"
+    },
+    {
+      "id_petugas": 102,
+      "id_unit": 36,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120122TJBT",
+      "nama": "ARNAS BAGOES SAPUTRO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-01-19"
+    },
+    {
+      "id_petugas": 103,
+      "id_unit": 36,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0322008TJBT",
+      "nama": "NAUFAL ABDULLAH ANWARUDDIN",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "2003-11-24"
+    },
+    {
+      "id_petugas": 104,
+      "id_unit": 36,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720117TJBT",
+      "nama": "TAUFIK NUROHMAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-03-04"
+    },
+    {
+      "id_petugas": 105,
+      "id_unit": 36,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820119TJBT",
+      "nama": "YULI FEBRIANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-07-17"
+    },
+    {
+      "id_petugas": 106,
+      "id_unit": 37,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0119049TJBT",
+      "nama": "BIMA NUR ADITYA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2001-01-12"
+    },
+    {
+      "id_petugas": 107,
+      "id_unit": 37,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226006TJBT",
+      "nama": "MUHAMMAD TEGAR HERAWAN",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-06-01"
+    },
+    {
+      "id_petugas": 108,
+      "id_unit": 37,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920116TJBT",
+      "nama": "MUHAMMAD CATUR RIFAI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-05-23"
+    },
+    {
+      "id_petugas": 109,
+      "id_unit": 37,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9922003TJBT",
+      "nama": "ARI ORTEGA",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "1999-10-22"
+    },
+    {
+      "id_petugas": 110,
+      "id_unit": 38,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019059TJBT",
+      "nama": "KRISNA DWI PAWENANG",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-06-24"
+    },
+    {
+      "id_petugas": 111,
+      "id_unit": 38,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9619051TJBT",
+      "nama": "MUKHLIS NUR SUSILO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1996-02-27"
+    },
+    {
+      "id_petugas": 112,
+      "id_unit": 38,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9619052TJBT",
+      "nama": "RIZKI LANGGENG WICAKSONO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1996-04-04"
+    },
+    {
+      "id_petugas": 113,
+      "id_unit": 38,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9822004TJBT",
+      "nama": "IBNUN KRISNA AJI",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "1998-05-14"
+    },
+    {
+      "id_petugas": 114,
+      "id_unit": 43,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120068TJBT",
+      "nama": "ACHMAD RIFA'I",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-02-26"
+    },
+    {
+      "id_petugas": 115,
+      "id_unit": 43,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0426002TJBT",
+      "nama": "DANNA ARYA ISTIANTORO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2004-07-23"
+    },
+    {
+      "id_petugas": 116,
+      "id_unit": 43,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626006TJBT",
+      "nama": "MUHAMMAD EVAN MAHARDIKA PUTRA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-10-30"
+    },
+    {
+      "id_petugas": 117,
+      "id_unit": 43,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720065TJBT",
+      "nama": "MAHARDIKA MUHAMAD RIDWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-08-17"
+    },
+    {
+      "id_petugas": 118,
+      "id_unit": 44,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020069TJBT",
+      "nama": "AGUS HANIF",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-08-18"
+    },
+    {
+      "id_petugas": 119,
+      "id_unit": 44,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120072TJBT",
+      "nama": "TEGAR ARYANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-12-19"
+    },
+    {
+      "id_petugas": 120,
+      "id_unit": 44,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626004TJBT",
+      "nama": "ADAM MUFLIF QOBUS",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-09-11"
+    },
+    {
+      "id_petugas": 121,
+      "id_unit": 44,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620071TJBT",
+      "nama": "HENDRI BAGUS AJI SAPUTRA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-11-28"
+    },
+    {
+      "id_petugas": 122,
+      "id_unit": 45,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120070TJBT",
+      "nama": "FAJAR RIZKI SETIAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-08-20"
+    },
+    {
+      "id_petugas": 123,
+      "id_unit": 45,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0226003TJBT",
+      "nama": "MUHAMMAD HASAN MUSTAMID",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2002-02-22"
+    },
+    {
+      "id_petugas": 124,
+      "id_unit": 45,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0726004TJBT",
+      "nama": "GILANG TRY PRASETYO",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2007-04-09"
+    },
+    {
+      "id_petugas": 125,
+      "id_unit": 45,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720067TJBT",
+      "nama": "WAHYU HIDAYATULLOH",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-02-07"
+    },
+    {
+      "id_petugas": 126,
+      "id_unit": 46,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526003TJBT",
+      "nama": "ALVIN RAMADHANI",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-10-16"
+    },
+    {
+      "id_petugas": 127,
+      "id_unit": 46,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620073TJBT",
+      "nama": "MUHAMMAD AZUM",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-05-12"
+    },
+    {
+      "id_petugas": 128,
+      "id_unit": 46,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620076TJBT",
+      "nama": "NANDI HERLAMBANG",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-06-05"
+    },
+    {
+      "id_petugas": 129,
+      "id_unit": 47,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0425520SBY",
+      "nama": "FAISAL DESLA SAID GANDHI",
+      "tgl_masuk": "2025-11-01",
+      "tgl_lahir": "2004-12-20"
+    },
+    {
+      "id_petugas": 130,
+      "id_unit": 47,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626002TJBT",
+      "nama": "RAFI CANDRA BASKARA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-11-02"
+    },
+    {
+      "id_petugas": 131,
+      "id_unit": 47,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820075TJBT",
+      "nama": "EKO PRASTIYO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-09-14"
+    },
+    {
+      "id_petugas": 132,
+      "id_unit": 48,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0426001TJBT",
+      "nama": "DIMAS SAPUTRA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2004-06-26"
+    },
+    {
+      "id_petugas": 133,
+      "id_unit": 48,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0626007TJBT",
+      "nama": "DANDY BINTANG RAMADHAN",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2006-10-05"
+    },
+    {
+      "id_petugas": 134,
+      "id_unit": 48,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620079TJBT",
+      "nama": "WAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-07-04"
+    },
+    {
+      "id_petugas": 135,
+      "id_unit": 48,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9720080TJBT",
+      "nama": "SODIKUL ANWAR",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1997-06-06"
+    },
+    {
+      "id_petugas": 136,
+      "id_unit": 49,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0019045TJBT",
+      "nama": "INDRA DWI PRASETYO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2000-05-18"
+    },
+    {
+      "id_petugas": 137,
+      "id_unit": 49,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0119032TJBT",
+      "nama": "RIO HERDANA SETYOKO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2001-08-18"
+    },
+    {
+      "id_petugas": 138,
+      "id_unit": 49,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0119046TJBT",
+      "nama": "ADITYA WAHYU WARDANA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "2001-10-02"
+    },
+    {
+      "id_petugas": 139,
+      "id_unit": 49,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819031TJBT",
+      "nama": "BAGUS PRIBADI",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-07-03"
+    },
+    {
+      "id_petugas": 140,
+      "id_unit": 50,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0526004TJBT",
+      "nama": "MUH.ALIM RESKY QUINTA",
+      "tgl_masuk": "2026-01-01",
+      "tgl_lahir": "2005-01-07"
+    },
+    {
+      "id_petugas": 141,
+      "id_unit": 50,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919026TJBT",
+      "nama": "IRHAS MASIR",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-05-14"
+    },
+    {
+      "id_petugas": 142,
+      "id_unit": 50,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919027TJBT",
+      "nama": "KHOLIQ ALFIAN NURULHAQ",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-07-06"
+    },
+    {
+      "id_petugas": 143,
+      "id_unit": 50,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919028TJBT",
+      "nama": "PUTRA SADEWA",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-01-24"
+    },
+    {
+      "id_petugas": 144,
+      "id_unit": 51,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120052TJBT",
+      "nama": "M. SHOCHIBUL MUSTAQIM",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-08-08"
+    },
+    {
+      "id_petugas": 145,
+      "id_unit": 51,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0120054TJBT",
+      "nama": "YUAN BENI KUNCORO AJI",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2001-08-12"
+    },
+    {
+      "id_petugas": 146,
+      "id_unit": 51,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9320051TJBT",
+      "nama": "AGUS CATUR WIBOWO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1993-07-28"
+    },
+    {
+      "id_petugas": 147,
+      "id_unit": 51,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620053TJBT",
+      "nama": "AGIL ARDIYANTO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-08-29"
+    },
+    {
+      "id_petugas": 148,
+      "id_unit": 52,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9822005TJBT",
+      "nama": "DWI KURNIAWAN",
+      "tgl_masuk": "2022-07-01",
+      "tgl_lahir": "1998-11-29"
+    },
+    {
+      "id_petugas": 149,
+      "id_unit": 52,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920056TJBT",
+      "nama": "WAHYU RINTO REGOWO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-06-03"
+    },
+    {
+      "id_petugas": 150,
+      "id_unit": 52,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920057TJBT",
+      "nama": "SONY AGIL PAMUNGKAS",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-04-14"
+    },
+    {
+      "id_petugas": 151,
+      "id_unit": 52,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9926001TJBT",
+      "nama": "ANDY BAGUS MUHAMAD AJI",
+      "tgl_masuk": "2026-02-01",
+      "tgl_lahir": "1999-03-23"
+    },
+    {
+      "id_petugas": 152,
+      "id_unit": 53,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9819029TJBT",
+      "nama": "FAHMI ARDIANSYAH",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1998-02-21"
+    },
+    {
+      "id_petugas": 153,
+      "id_unit": 53,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9919030TJBT",
+      "nama": "BEKTI PRASETYO",
+      "tgl_masuk": "2019-10-07",
+      "tgl_lahir": "1999-06-21"
+    },
+    {
+      "id_petugas": 154,
+      "id_unit": 53,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9920064TJBT",
+      "nama": "ALDIS FADILA",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1999-08-04"
+    },
+    {
+      "id_petugas": 155,
+      "id_unit": 54,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "0020061TJBT",
+      "nama": "ADY DARMAWAN",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "2000-04-11"
+    },
+    {
+      "id_petugas": 156,
+      "id_unit": 54,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9620059TJBT",
+      "nama": "SUHARTONO",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1996-11-28"
+    },
+    {
+      "id_petugas": 157,
+      "id_unit": 54,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9726004TJBT",
+      "nama": "SINGGIH NURCAHYANTO",
+      "tgl_masuk": "2026-02-01",
+      "tgl_lahir": "1997-03-01"
+    },
+    {
+      "id_petugas": 158,
+      "id_unit": 54,
+      "id_jabatan": 7,
+      "id_gaji": null,
+      "nip": "9820062TJBT",
+      "nama": "BIMA CHOIRUL UMAM",
+      "tgl_masuk": "2020-01-22",
+      "tgl_lahir": "1998-02-07"
+    }
+  ],
+  "m_user": [
+    {
+      "id_user": 2,
+      "id_pegawai": 1,
+      "id_petugas": null,
+      "id_role": 6,
+      "username": "8812632ZY",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 3,
+      "id_pegawai": 2,
+      "id_petugas": null,
+      "id_role": 5,
+      "username": "12345678",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 4,
+      "id_pegawai": 3,
+      "id_petugas": null,
+      "id_role": 5,
+      "username": "9117037HP",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 5,
+      "id_pegawai": 4,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "TB",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 6,
+      "id_pegawai": 5,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "AKH",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 7,
+      "id_pegawai": 6,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "YIW",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 8,
+      "id_pegawai": 7,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "AAK",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 9,
+      "id_pegawai": 8,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "FK",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 10,
+      "id_pegawai": 9,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "YUS",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 11,
+      "id_pegawai": 10,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "AS",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 12,
+      "id_pegawai": 11,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "HAR",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 13,
+      "id_pegawai": 12,
+      "id_petugas": null,
+      "id_role": 4,
+      "username": "SA",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 14,
+      "id_pegawai": 13,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FIR",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 15,
+      "id_pegawai": 14,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "SUP",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 16,
+      "id_pegawai": 15,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FEB",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 17,
+      "id_pegawai": 16,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DF",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 18,
+      "id_pegawai": 17,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "KL",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 19,
+      "id_pegawai": 18,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FHF",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 20,
+      "id_pegawai": 19,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "MRG",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 21,
+      "id_pegawai": 20,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DK",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 22,
+      "id_pegawai": 21,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "MSC",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 23,
+      "id_pegawai": 22,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "ZAK",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 24,
+      "id_pegawai": 23,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FAJ",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 25,
+      "id_pegawai": 24,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "ROU",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 26,
+      "id_pegawai": 25,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "LIL",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 27,
+      "id_pegawai": 26,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AND",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 28,
+      "id_pegawai": 27,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "KAF",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 29,
+      "id_pegawai": 28,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "TPH",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 30,
+      "id_pegawai": 29,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "TPH2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 31,
+      "id_pegawai": 30,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "KAF2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 32,
+      "id_pegawai": 31,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FAH",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 33,
+      "id_pegawai": 32,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DRLP",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 34,
+      "id_pegawai": 33,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AW",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 35,
+      "id_pegawai": 34,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AD",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 36,
+      "id_pegawai": 35,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AA",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 37,
+      "id_pegawai": 36,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AS2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 38,
+      "id_pegawai": 37,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DG",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 39,
+      "id_pegawai": 38,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AB",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 40,
+      "id_pegawai": 39,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DG2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 41,
+      "id_pegawai": 40,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FA",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 42,
+      "id_pegawai": 41,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "RK",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 43,
+      "id_pegawai": 42,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DD",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 44,
+      "id_pegawai": 43,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DID",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 45,
+      "id_pegawai": 44,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "DJ",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 46,
+      "id_pegawai": 45,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AFA",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 47,
+      "id_pegawai": 46,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "RA",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 48,
+      "id_pegawai": 47,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "AFA2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 49,
+      "id_pegawai": 48,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "ANJ",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 50,
+      "id_pegawai": 49,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "HAB",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 51,
+      "id_pegawai": 50,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "RUD",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 52,
+      "id_pegawai": 51,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FAI",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 53,
+      "id_pegawai": 52,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "GIG",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 54,
+      "id_pegawai": 53,
+      "id_petugas": null,
+      "id_role": 2,
+      "username": "FAI2",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 55,
+      "id_pegawai": null,
+      "id_petugas": 1,
+      "id_role": 1,
+      "username": "0020118TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 56,
+      "id_pegawai": null,
+      "id_petugas": 2,
+      "id_role": 1,
+      "username": "0120109TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 57,
+      "id_pegawai": null,
+      "id_petugas": 3,
+      "id_role": 1,
+      "username": "9420121TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 58,
+      "id_pegawai": null,
+      "id_petugas": 4,
+      "id_role": 1,
+      "username": "9520110TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 59,
+      "id_pegawai": null,
+      "id_petugas": 5,
+      "id_role": 1,
+      "username": "0020107TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 60,
+      "id_pegawai": null,
+      "id_petugas": 6,
+      "id_role": 1,
+      "username": "0020108TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 61,
+      "id_pegawai": null,
+      "id_petugas": 7,
+      "id_role": 1,
+      "username": "9520105TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 62,
+      "id_pegawai": null,
+      "id_petugas": 8,
+      "id_role": 1,
+      "username": "9520106TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 63,
+      "id_pegawai": null,
+      "id_petugas": 9,
+      "id_role": 1,
+      "username": "0020084TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 64,
+      "id_pegawai": null,
+      "id_petugas": 10,
+      "id_role": 1,
+      "username": "0120125TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 65,
+      "id_pegawai": null,
+      "id_petugas": 11,
+      "id_role": 1,
+      "username": "9320124TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 66,
+      "id_pegawai": null,
+      "id_petugas": 12,
+      "id_role": 1,
+      "username": "9820083TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 67,
+      "id_pegawai": null,
+      "id_petugas": 13,
+      "id_role": 1,
+      "username": "0120085TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 68,
+      "id_pegawai": null,
+      "id_petugas": 14,
+      "id_role": 1,
+      "username": "9720087TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 69,
+      "id_pegawai": null,
+      "id_petugas": 15,
+      "id_role": 1,
+      "username": "9920086TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 70,
+      "id_pegawai": null,
+      "id_petugas": 16,
+      "id_role": 1,
+      "username": "9920088TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 71,
+      "id_pegawai": null,
+      "id_petugas": 17,
+      "id_role": 1,
+      "username": "9420091TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 72,
+      "id_pegawai": null,
+      "id_petugas": 18,
+      "id_role": 1,
+      "username": "9620089TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 73,
+      "id_pegawai": null,
+      "id_petugas": 19,
+      "id_role": 1,
+      "username": "9620092TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 74,
+      "id_pegawai": null,
+      "id_petugas": 20,
+      "id_role": 1,
+      "username": "9922002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 75,
+      "id_pegawai": null,
+      "id_petugas": 21,
+      "id_role": 1,
+      "username": "0226007TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 76,
+      "id_pegawai": null,
+      "id_petugas": 22,
+      "id_role": 1,
+      "username": "0526001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 77,
+      "id_pegawai": null,
+      "id_petugas": 23,
+      "id_role": 1,
+      "username": "0726003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 78,
+      "id_pegawai": null,
+      "id_petugas": 24,
+      "id_role": 1,
+      "username": "9920094TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 79,
+      "id_pegawai": null,
+      "id_petugas": 25,
+      "id_role": 1,
+      "username": "0326002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 80,
+      "id_pegawai": null,
+      "id_petugas": 26,
+      "id_role": 1,
+      "username": "0326005TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 81,
+      "id_pegawai": null,
+      "id_petugas": 27,
+      "id_role": 1,
+      "username": "0526002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 82,
+      "id_pegawai": null,
+      "id_petugas": 28,
+      "id_role": 1,
+      "username": "0226008TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 83,
+      "id_pegawai": null,
+      "id_petugas": 29,
+      "id_role": 1,
+      "username": "0326004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 84,
+      "id_pegawai": null,
+      "id_petugas": 30,
+      "id_role": 1,
+      "username": "0626005TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 85,
+      "id_pegawai": null,
+      "id_petugas": 31,
+      "id_role": 1,
+      "username": "0626008TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 86,
+      "id_pegawai": null,
+      "id_petugas": 32,
+      "id_role": 1,
+      "username": "0626003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 87,
+      "id_pegawai": null,
+      "id_petugas": 33,
+      "id_role": 1,
+      "username": "9720095TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 88,
+      "id_pegawai": null,
+      "id_petugas": 34,
+      "id_role": 1,
+      "username": "9820096TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 89,
+      "id_pegawai": null,
+      "id_petugas": 35,
+      "id_role": 1,
+      "username": "9920093TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 90,
+      "id_pegawai": null,
+      "id_petugas": 36,
+      "id_role": 1,
+      "username": "0020082TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 91,
+      "id_pegawai": null,
+      "id_petugas": 37,
+      "id_role": 1,
+      "username": "0020112TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 92,
+      "id_pegawai": null,
+      "id_petugas": 38,
+      "id_role": 1,
+      "username": "9519066TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 93,
+      "id_pegawai": null,
+      "id_petugas": 39,
+      "id_role": 1,
+      "username": "9919065TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 94,
+      "id_pegawai": null,
+      "id_petugas": 40,
+      "id_role": 1,
+      "username": "0020100TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 95,
+      "id_pegawai": null,
+      "id_petugas": 41,
+      "id_role": 1,
+      "username": "9720099TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 96,
+      "id_pegawai": null,
+      "id_petugas": 42,
+      "id_role": 1,
+      "username": "9820097TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 97,
+      "id_pegawai": null,
+      "id_petugas": 43,
+      "id_role": 1,
+      "username": "9920098TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 98,
+      "id_pegawai": null,
+      "id_petugas": 44,
+      "id_role": 1,
+      "username": "0020103TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 99,
+      "id_pegawai": null,
+      "id_petugas": 45,
+      "id_role": 1,
+      "username": "9420102TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 100,
+      "id_pegawai": null,
+      "id_petugas": 46,
+      "id_role": 1,
+      "username": "9620104TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 101,
+      "id_pegawai": null,
+      "id_petugas": 47,
+      "id_role": 1,
+      "username": "9720101TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 102,
+      "id_pegawai": null,
+      "id_petugas": 48,
+      "id_role": 1,
+      "username": "0019063TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 103,
+      "id_pegawai": null,
+      "id_petugas": 49,
+      "id_role": 1,
+      "username": "0019064TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 104,
+      "id_pegawai": null,
+      "id_petugas": 50,
+      "id_role": 1,
+      "username": "9519067TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 105,
+      "id_pegawai": null,
+      "id_petugas": 51,
+      "id_role": 1,
+      "username": "9620081TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 106,
+      "id_pegawai": null,
+      "id_petugas": 52,
+      "id_role": 1,
+      "username": "0020111TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 107,
+      "id_pegawai": null,
+      "id_petugas": 53,
+      "id_role": 1,
+      "username": "0626009TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 108,
+      "id_pegawai": null,
+      "id_petugas": 54,
+      "id_role": 1,
+      "username": "0726002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 109,
+      "id_pegawai": null,
+      "id_petugas": 55,
+      "id_role": 1,
+      "username": "9519068TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 110,
+      "id_pegawai": null,
+      "id_petugas": 56,
+      "id_role": 1,
+      "username": "0222006TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 111,
+      "id_pegawai": null,
+      "id_petugas": 57,
+      "id_role": 1,
+      "username": "0426003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 112,
+      "id_pegawai": null,
+      "id_petugas": 58,
+      "id_role": 1,
+      "username": "0826001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 113,
+      "id_pegawai": null,
+      "id_petugas": 59,
+      "id_role": 1,
+      "username": "9719033TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 114,
+      "id_pegawai": null,
+      "id_petugas": 60,
+      "id_role": 1,
+      "username": "0020039TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 115,
+      "id_pegawai": null,
+      "id_petugas": 61,
+      "id_role": 1,
+      "username": "0020040TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 116,
+      "id_pegawai": null,
+      "id_petugas": 62,
+      "id_role": 1,
+      "username": "0120041TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 117,
+      "id_pegawai": null,
+      "id_petugas": 63,
+      "id_role": 1,
+      "username": "9820123TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 118,
+      "id_pegawai": null,
+      "id_petugas": 64,
+      "id_role": 1,
+      "username": "0120050TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 119,
+      "id_pegawai": null,
+      "id_petugas": 65,
+      "id_role": 1,
+      "username": "0226005TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 120,
+      "id_pegawai": null,
+      "id_petugas": 66,
+      "id_role": 1,
+      "username": "9819042TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 121,
+      "id_pegawai": null,
+      "id_petugas": 67,
+      "id_role": 1,
+      "username": "9819044TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 122,
+      "id_pegawai": null,
+      "id_petugas": 68,
+      "id_role": 1,
+      "username": "0126002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 123,
+      "id_pegawai": null,
+      "id_petugas": 69,
+      "id_role": 1,
+      "username": "9920042TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 124,
+      "id_pegawai": null,
+      "id_petugas": 70,
+      "id_role": 1,
+      "username": "9920043TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 125,
+      "id_pegawai": null,
+      "id_petugas": 71,
+      "id_role": 1,
+      "username": "9920044TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 126,
+      "id_pegawai": null,
+      "id_petugas": 72,
+      "id_role": 1,
+      "username": "0020048TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 127,
+      "id_pegawai": null,
+      "id_petugas": 73,
+      "id_role": 1,
+      "username": "9620046TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 128,
+      "id_pegawai": null,
+      "id_petugas": 74,
+      "id_role": 1,
+      "username": "9720047TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 129,
+      "id_pegawai": null,
+      "id_petugas": 75,
+      "id_role": 1,
+      "username": "9920049TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 130,
+      "id_pegawai": null,
+      "id_petugas": 76,
+      "id_role": 1,
+      "username": "0020045TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 131,
+      "id_pegawai": null,
+      "id_petugas": 77,
+      "id_role": 1,
+      "username": "0120113TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 132,
+      "id_pegawai": null,
+      "id_petugas": 78,
+      "id_role": 1,
+      "username": "0726001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 133,
+      "id_pegawai": null,
+      "id_petugas": 79,
+      "id_role": 1,
+      "username": "9920115TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 134,
+      "id_pegawai": null,
+      "id_petugas": 80,
+      "id_role": 1,
+      "username": "0526006TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 135,
+      "id_pegawai": null,
+      "id_petugas": 81,
+      "id_role": 1,
+      "username": "9719038TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 136,
+      "id_pegawai": null,
+      "id_petugas": 82,
+      "id_role": 1,
+      "username": "9820120TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 137,
+      "id_pegawai": null,
+      "id_petugas": 83,
+      "id_role": 1,
+      "username": "0119039TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 138,
+      "id_pegawai": null,
+      "id_petugas": 84,
+      "id_role": 1,
+      "username": "0626001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 139,
+      "id_pegawai": null,
+      "id_petugas": 85,
+      "id_role": 1,
+      "username": "9819035TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 140,
+      "id_pegawai": null,
+      "id_petugas": 86,
+      "id_role": 1,
+      "username": "0019041TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 141,
+      "id_pegawai": null,
+      "id_petugas": 87,
+      "id_role": 1,
+      "username": "0226004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 142,
+      "id_pegawai": null,
+      "id_petugas": 88,
+      "id_role": 1,
+      "username": "0526005TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 143,
+      "id_pegawai": null,
+      "id_petugas": 89,
+      "id_role": 1,
+      "username": "9820077TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 144,
+      "id_pegawai": null,
+      "id_petugas": 90,
+      "id_role": 1,
+      "username": "0019061TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 145,
+      "id_pegawai": null,
+      "id_petugas": 91,
+      "id_role": 1,
+      "username": "9419058TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 146,
+      "id_pegawai": null,
+      "id_petugas": 92,
+      "id_role": 1,
+      "username": "9819053TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 147,
+      "id_pegawai": null,
+      "id_petugas": 93,
+      "id_role": 1,
+      "username": "9922001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 148,
+      "id_pegawai": null,
+      "id_petugas": 94,
+      "id_role": 1,
+      "username": "0019055TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 149,
+      "id_pegawai": null,
+      "id_petugas": 95,
+      "id_role": 1,
+      "username": "0019060TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 150,
+      "id_pegawai": null,
+      "id_petugas": 96,
+      "id_role": 1,
+      "username": "0019062TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 151,
+      "id_pegawai": null,
+      "id_petugas": 97,
+      "id_role": 1,
+      "username": "9319050TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 152,
+      "id_pegawai": null,
+      "id_petugas": 98,
+      "id_role": 1,
+      "username": "9620114TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 153,
+      "id_pegawai": null,
+      "id_petugas": 99,
+      "id_role": 1,
+      "username": "9819048TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 154,
+      "id_pegawai": null,
+      "id_petugas": 100,
+      "id_role": 1,
+      "username": "9819056TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 155,
+      "id_pegawai": null,
+      "id_petugas": 101,
+      "id_role": 1,
+      "username": "9919036TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 156,
+      "id_pegawai": null,
+      "id_petugas": 102,
+      "id_role": 1,
+      "username": "0120122TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 157,
+      "id_pegawai": null,
+      "id_petugas": 103,
+      "id_role": 1,
+      "username": "0322008TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 158,
+      "id_pegawai": null,
+      "id_petugas": 104,
+      "id_role": 1,
+      "username": "9720117TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 159,
+      "id_pegawai": null,
+      "id_petugas": 105,
+      "id_role": 1,
+      "username": "9820119TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 160,
+      "id_pegawai": null,
+      "id_petugas": 106,
+      "id_role": 1,
+      "username": "0119049TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 161,
+      "id_pegawai": null,
+      "id_petugas": 107,
+      "id_role": 1,
+      "username": "0226006TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 162,
+      "id_pegawai": null,
+      "id_petugas": 108,
+      "id_role": 1,
+      "username": "9920116TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 163,
+      "id_pegawai": null,
+      "id_petugas": 109,
+      "id_role": 1,
+      "username": "9922003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 164,
+      "id_pegawai": null,
+      "id_petugas": 110,
+      "id_role": 1,
+      "username": "0019059TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 165,
+      "id_pegawai": null,
+      "id_petugas": 111,
+      "id_role": 1,
+      "username": "9619051TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 166,
+      "id_pegawai": null,
+      "id_petugas": 112,
+      "id_role": 1,
+      "username": "9619052TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 167,
+      "id_pegawai": null,
+      "id_petugas": 113,
+      "id_role": 1,
+      "username": "9822004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 168,
+      "id_pegawai": null,
+      "id_petugas": 114,
+      "id_role": 1,
+      "username": "0120068TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 169,
+      "id_pegawai": null,
+      "id_petugas": 115,
+      "id_role": 1,
+      "username": "0426002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 170,
+      "id_pegawai": null,
+      "id_petugas": 116,
+      "id_role": 1,
+      "username": "0626006TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 171,
+      "id_pegawai": null,
+      "id_petugas": 117,
+      "id_role": 1,
+      "username": "9720065TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 172,
+      "id_pegawai": null,
+      "id_petugas": 118,
+      "id_role": 1,
+      "username": "0020069TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 173,
+      "id_pegawai": null,
+      "id_petugas": 119,
+      "id_role": 1,
+      "username": "0120072TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 174,
+      "id_pegawai": null,
+      "id_petugas": 120,
+      "id_role": 1,
+      "username": "0626004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 175,
+      "id_pegawai": null,
+      "id_petugas": 121,
+      "id_role": 1,
+      "username": "9620071TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 176,
+      "id_pegawai": null,
+      "id_petugas": 122,
+      "id_role": 1,
+      "username": "0120070TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 177,
+      "id_pegawai": null,
+      "id_petugas": 123,
+      "id_role": 1,
+      "username": "0226003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 178,
+      "id_pegawai": null,
+      "id_petugas": 124,
+      "id_role": 1,
+      "username": "0726004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 179,
+      "id_pegawai": null,
+      "id_petugas": 125,
+      "id_role": 1,
+      "username": "9720067TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 180,
+      "id_pegawai": null,
+      "id_petugas": 126,
+      "id_role": 1,
+      "username": "0526003TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 181,
+      "id_pegawai": null,
+      "id_petugas": 127,
+      "id_role": 1,
+      "username": "9620073TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 182,
+      "id_pegawai": null,
+      "id_petugas": 128,
+      "id_role": 1,
+      "username": "9620076TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 183,
+      "id_pegawai": null,
+      "id_petugas": 129,
+      "id_role": 1,
+      "username": "0425520SBY",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 184,
+      "id_pegawai": null,
+      "id_petugas": 130,
+      "id_role": 1,
+      "username": "0626002TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 185,
+      "id_pegawai": null,
+      "id_petugas": 131,
+      "id_role": 1,
+      "username": "9820075TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 186,
+      "id_pegawai": null,
+      "id_petugas": 132,
+      "id_role": 1,
+      "username": "0426001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 187,
+      "id_pegawai": null,
+      "id_petugas": 133,
+      "id_role": 1,
+      "username": "0626007TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 188,
+      "id_pegawai": null,
+      "id_petugas": 134,
+      "id_role": 1,
+      "username": "9620079TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 189,
+      "id_pegawai": null,
+      "id_petugas": 135,
+      "id_role": 1,
+      "username": "9720080TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 190,
+      "id_pegawai": null,
+      "id_petugas": 136,
+      "id_role": 1,
+      "username": "0019045TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 191,
+      "id_pegawai": null,
+      "id_petugas": 137,
+      "id_role": 1,
+      "username": "0119032TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 192,
+      "id_pegawai": null,
+      "id_petugas": 138,
+      "id_role": 1,
+      "username": "0119046TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 193,
+      "id_pegawai": null,
+      "id_petugas": 139,
+      "id_role": 1,
+      "username": "9819031TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 194,
+      "id_pegawai": null,
+      "id_petugas": 140,
+      "id_role": 1,
+      "username": "0526004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 195,
+      "id_pegawai": null,
+      "id_petugas": 141,
+      "id_role": 1,
+      "username": "9919026TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 196,
+      "id_pegawai": null,
+      "id_petugas": 142,
+      "id_role": 1,
+      "username": "9919027TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 197,
+      "id_pegawai": null,
+      "id_petugas": 143,
+      "id_role": 1,
+      "username": "9919028TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 198,
+      "id_pegawai": null,
+      "id_petugas": 144,
+      "id_role": 1,
+      "username": "0120052TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 199,
+      "id_pegawai": null,
+      "id_petugas": 145,
+      "id_role": 1,
+      "username": "0120054TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 200,
+      "id_pegawai": null,
+      "id_petugas": 146,
+      "id_role": 1,
+      "username": "9320051TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 201,
+      "id_pegawai": null,
+      "id_petugas": 147,
+      "id_role": 1,
+      "username": "9620053TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 202,
+      "id_pegawai": null,
+      "id_petugas": 148,
+      "id_role": 1,
+      "username": "9822005TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 203,
+      "id_pegawai": null,
+      "id_petugas": 149,
+      "id_role": 1,
+      "username": "9920056TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 204,
+      "id_pegawai": null,
+      "id_petugas": 150,
+      "id_role": 1,
+      "username": "9920057TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 205,
+      "id_pegawai": null,
+      "id_petugas": 151,
+      "id_role": 1,
+      "username": "9926001TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 206,
+      "id_pegawai": null,
+      "id_petugas": 152,
+      "id_role": 1,
+      "username": "9819029TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 207,
+      "id_pegawai": null,
+      "id_petugas": 153,
+      "id_role": 1,
+      "username": "9919030TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 208,
+      "id_pegawai": null,
+      "id_petugas": 154,
+      "id_role": 1,
+      "username": "9920064TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 209,
+      "id_pegawai": null,
+      "id_petugas": 155,
+      "id_role": 1,
+      "username": "0020061TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 210,
+      "id_pegawai": null,
+      "id_petugas": 156,
+      "id_role": 1,
+      "username": "9620059TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 211,
+      "id_pegawai": null,
+      "id_petugas": 157,
+      "id_role": 1,
+      "username": "9726004TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 212,
+      "id_pegawai": null,
+      "id_petugas": 158,
+      "id_role": 1,
+      "username": "9820062TJBT",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    }
+  ],
+  "m_module": [
+    {
+      "id_module": 1,
+      "kode_module": "dashboard",
+      "nama_module": "Dashboard",
+      "deskripsi": "Ringkasan analitik, grafik, status pengajuan, serta filter periode dan unit kerja.",
+      "penjelasan_mapping_role": "untuk semua role"
+    },
+    {
+      "id_module": 2,
+      "kode_module": "lembur",
+      "nama_module": "Lembur",
+      "deskripsi": "Membuat, menyimpan draf, mengirim, merevisi, dan memantau pengajuan lembur.",
+      "penjelasan_mapping_role": "untuk role maker"
+    },
+    {
+      "id_module": 3,
+      "kode_module": "cuti",
+      "nama_module": "Cuti",
+      "deskripsi": "Membuat, menyimpan draf, mengirim, merevisi, dan memantau pengajuan cuti.",
+      "penjelasan_mapping_role": "untuk role maker"
+    },
+    {
+      "id_module": 4,
+      "kode_module": "ijin",
+      "nama_module": "Ijin",
+      "deskripsi": "Membuat, menyimpan draf, mengirim, merevisi, dan memantau pengajuan izin.",
+      "penjelasan_mapping_role": "untuk role maker"
+    },
+    {
+      "id_module": 5,
+      "kode_module": "sakit",
+      "nama_module": "Sakit",
+      "deskripsi": "Membuat, menyimpan draf, mengirim, merevisi, dan memantau pengajuan sakit.",
+      "penjelasan_mapping_role": "untuk role maker"
+    },
+    {
+      "id_module": 6,
+      "kode_module": "sppd",
+      "nama_module": "SPPD",
+      "deskripsi": "Membuat, menyimpan draf, mengirim, merevisi, dan memantau pengajuan perjalanan dinas/SPPD beserta biaya.",
+      "penjelasan_mapping_role": "untuk role maker"
+    },
+    {
+      "id_module": 7,
+      "kode_module": "workflow",
+      "nama_module": "Workflow",
+      "deskripsi": "Daftar dan pemrosesan pengajuan pada seluruh tahap workflow persetujuan.",
+      "penjelasan_mapping_role": "untuk role checker, verification, approval 1, approval 2, approval 3"
+    },
+    {
+      "id_module": 8,
+      "kode_module": "list_dokumen",
+      "nama_module": "List Dokumen",
+      "deskripsi": "Mencari, memfilter, melihat, dan mengunduh dokumen pengajuan yang telah disetujui.",
+      "penjelasan_mapping_role": "untuk semua role"
+    },
+    {
+      "id_module": 9,
+      "kode_module": "report_dokumen",
+      "nama_module": "Report Dokumen",
+      "deskripsi": "Menyusun laporan permohonan selesai dan mengekspornya ke Excel atau PDF dengan penandatangan.",
+      "penjelasan_mapping_role": "untuk semua role"
+    },
+    {
+      "id_module": 10,
+      "kode_module": "unit_kerja",
+      "nama_module": "Unit Kerja",
+      "deskripsi": "Mengelola master hierarki unit kerja UIT, UPT, ULTG, dan Gardu Induk.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 11,
+      "kode_module": "project",
+      "nama_module": "Project",
+      "deskripsi": "Mengelola master project yang digunakan dalam proses operasional.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 12,
+      "kode_module": "jabatan",
+      "nama_module": "Jabatan",
+      "deskripsi": "Mengelola master jabatan pegawai.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 13,
+      "kode_module": "pegawai",
+      "nama_module": "Pegawai",
+      "deskripsi": "Mengelola data induk pegawai serta keterkaitannya dengan unit dan jabatan.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 14,
+      "kode_module": "umk",
+      "nama_module": "UMK",
+      "deskripsi": "Mengelola nilai UMK/upah dasar berdasarkan wilayah dan tahun.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 15,
+      "kode_module": "koef_tmk",
+      "nama_module": "Faktor Upah (KOEF TMK)",
+      "deskripsi": "Mengelola faktor atau koefisien perhitungan upah.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 16,
+      "kode_module": "hari_libur",
+      "nama_module": "Hari Libur",
+      "deskripsi": "Mengelola kalender hari libur untuk kebutuhan perhitungan dan validasi pengajuan.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 17,
+      "kode_module": "mutasi_pegawai",
+      "nama_module": "Mutasi Pegawai",
+      "deskripsi": "Mencatat dan menelusuri riwayat perpindahan unit/jabatan pegawai.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 18,
+      "kode_module": "users",
+      "nama_module": "Users",
+      "deskripsi": "Mengelola akun pengguna, identitas, role, jabatan, dan penempatan unit.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 19,
+      "kode_module": "roles",
+      "nama_module": "Roles",
+      "deskripsi": "Menampilkan informasi role pengguna dan tingkatan kewenangannya.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 20,
+      "kode_module": "responsibilites",
+      "nama_module": "Responsibilities",
+      "deskripsi": "Mengatur matriks akses modul berdasarkan role.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 21,
+      "kode_module": "pengaturan",
+      "nama_module": "Pengaturan",
+      "deskripsi": "Mengelola konfigurasi aplikasi dan parameter sistem.",
+      "penjelasan_mapping_role": "untuk super admin dan admin"
+    }
+  ],
+  "m_access_module": [
+    {
+      "id_access": 1,
+      "id_role": 1,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 2,
+      "id_role": 2,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 3,
+      "id_role": 3,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 4,
+      "id_role": 4,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 5,
+      "id_role": 5,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 6,
+      "id_role": 6,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 7,
+      "id_role": 7,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 8,
+      "id_role": 8,
+      "id_module": 1,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 9,
+      "id_role": 1,
+      "id_module": 2,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 10,
+      "id_role": 1,
+      "id_module": 3,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 11,
+      "id_role": 1,
+      "id_module": 4,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 12,
+      "id_role": 1,
+      "id_module": 5,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 13,
+      "id_role": 1,
+      "id_module": 6,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 14,
+      "id_role": 2,
+      "id_module": 7,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 15,
+      "id_role": 3,
+      "id_module": 7,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 16,
+      "id_role": 4,
+      "id_module": 7,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 17,
+      "id_role": 5,
+      "id_module": 7,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 18,
+      "id_role": 6,
+      "id_module": 7,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 19,
+      "id_role": 1,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 20,
+      "id_role": 2,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 21,
+      "id_role": 3,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 22,
+      "id_role": 4,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 23,
+      "id_role": 5,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 24,
+      "id_role": 6,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 25,
+      "id_role": 7,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 26,
+      "id_role": 8,
+      "id_module": 8,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 27,
+      "id_role": 1,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 28,
+      "id_role": 2,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 29,
+      "id_role": 3,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 30,
+      "id_role": 4,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 31,
+      "id_role": 5,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 32,
+      "id_role": 6,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 33,
+      "id_role": 7,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 34,
+      "id_role": 8,
+      "id_module": 9,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 35,
+      "id_role": 7,
+      "id_module": 10,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 36,
+      "id_role": 8,
+      "id_module": 10,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 37,
+      "id_role": 7,
+      "id_module": 11,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 38,
+      "id_role": 8,
+      "id_module": 11,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 39,
+      "id_role": 7,
+      "id_module": 12,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 40,
+      "id_role": 8,
+      "id_module": 12,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 41,
+      "id_role": 7,
+      "id_module": 13,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 42,
+      "id_role": 8,
+      "id_module": 13,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 43,
+      "id_role": 7,
+      "id_module": 14,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 44,
+      "id_role": 8,
+      "id_module": 14,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 45,
+      "id_role": 7,
+      "id_module": 15,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 46,
+      "id_role": 8,
+      "id_module": 15,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 47,
+      "id_role": 7,
+      "id_module": 16,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 48,
+      "id_role": 8,
+      "id_module": 16,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 49,
+      "id_role": 7,
+      "id_module": 17,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 50,
+      "id_role": 8,
+      "id_module": 17,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 51,
+      "id_role": 7,
+      "id_module": 18,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 52,
+      "id_role": 8,
+      "id_module": 18,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 53,
+      "id_role": 7,
+      "id_module": 19,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 54,
+      "id_role": 8,
+      "id_module": 19,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 55,
+      "id_role": 7,
+      "id_module": 20,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 56,
+      "id_role": 8,
+      "id_module": 20,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 57,
+      "id_role": 7,
+      "id_module": 21,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    },
+    {
+      "id_access": 58,
+      "id_role": 8,
+      "id_module": 21,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "Y"
+    }
+  ]
+}

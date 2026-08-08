@@ -1,0 +1,39 @@
+{
+   "name": "workforce-management-backend",
+   "version": "1.0.0",
+   "description": "",
+   "main": "src/server.js",
+   "scripts": {
+      "dev": "nodemon src/app.js",
+      "start": "node src/app.js",
+      "db:migrate": "sequelize-cli db:migrate",
+      "db:migrate:status": "sequelize-cli db:migrate:status",
+      "db:clear": "node scripts/clear-database.js",
+      "seed:super-admin": "node src/seeders/userSeeder.js",
+      "seed:modules-superadmin": "node src/seeders/moduleAccessSeeder.js",
+      "seed:initialize": "node src/seeders/systemInitializer.js",
+      "seed:reset-mapped": "node src/seeders/resetMappedData.js"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "type": "commonjs",
+   "dependencies": {
+      "bcrypt": "^6.0.0",
+      "compression": "^1.8.1",
+      "cors": "^2.8.6",
+      "dotenv": "^17.4.2",
+      "express": "^5.2.1",
+      "helmet": "^8.3.0",
+      "joi": "^18.2.3",
+      "jsonwebtoken": "^9.0.3",
+      "mariadb": "2.5.6",
+      "morgan": "^1.11.0",
+      "multer": "^2.2.0",
+      "sequelize": "^6.37.8"
+   },
+   "devDependencies": {
+      "nodemon": "^3.1.14",
+      "sequelize-cli": "^6.6.5"
+   }
+}
