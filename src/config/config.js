@@ -13,8 +13,10 @@ const databaseConfig = {
     dialect:
         process.env.DB_DIALECT ||
         "mariadb",
+
     timezone: "+07:00",
     logging: false,
+
 };
 
 module.exports = {
