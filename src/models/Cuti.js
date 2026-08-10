@@ -88,11 +88,6 @@ const Cuti = sequelize.define(
             allowNull: true,
         },
 
-        pengganti: {
-            type: DataTypes.STRING(150),
-            allowNull: true,
-        },
-
         maker_signature: { type: DataTypes.STRING(500), allowNull: true },
         checker_signature: { type: DataTypes.STRING(500), allowNull: true },
         verification_signature: { type: DataTypes.STRING(500), allowNull: true },

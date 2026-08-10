@@ -30,7 +30,7 @@ const Gaji = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "koef_tmk",
+                model: "m_koef_tmk",
                 key: "id_koef_tmk",
             },
             onUpdate: "CASCADE",

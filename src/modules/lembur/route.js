@@ -45,6 +45,12 @@ router.get(
 );
 
 router.get(
+    "/petugas-berhalangan",
+    validate(schema.replacementQuery, "query"),
+    controller.findReplacementCandidates
+);
+
+router.get(
     "/petugas/:id",
     validate(
         schema.petugasParams,

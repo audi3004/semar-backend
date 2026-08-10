@@ -791,11 +791,6 @@ class CutiService {
                             data.nomor_telepon_darurat
                         ),
 
-                    pengganti:
-                        this.normalizeNullableText(
-                            data.pengganti
-                        ),
-
                     maker_signature: data.maker_signature ?? null,
                     checker_signature: data.checker_signature ?? null,
                     verification_signature: data.verification_signature ?? null,
@@ -983,15 +978,6 @@ class CutiService {
                         data.nomor_telepon_darurat !== undefined
                             ? this.normalizeNullableText(data.nomor_telepon_darurat)
                             : currentCuti.nomor_telepon_darurat,
-
-                    pengganti:
-                        data.pengganti !==
-                            undefined
-                            ? this.normalizeNullableText(
-                                data.pengganti
-                            )
-                            : currentCuti
-                                .pengganti,
 
                     maker_signature: data.maker_signature ?? currentCuti.maker_signature,
                     checker_signature: data.checker_signature ?? currentCuti.checker_signature,

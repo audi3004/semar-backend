@@ -54,6 +54,12 @@ const UnitRole = sequelize.define(
             onDelete: "RESTRICT",
         },
 
+        scope_type: {
+            type: DataTypes.ENUM("SELF", "SELF_AND_DESCENDANTS"),
+            allowNull: false,
+            defaultValue: "SELF",
+        },
+
         is_active: {
             type: DataTypes.ENUM(
                 "Y",

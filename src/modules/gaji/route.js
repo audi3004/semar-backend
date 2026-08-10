@@ -18,6 +18,15 @@ const validate = require(
 );
 
 router.get(
+    "/upah-petugas",
+    validate(
+        schema.salaryQuery,
+        "query"
+    ),
+    controller.calculateEmployeeSalaries
+);
+
+router.get(
     "/",
     validate(
         schema.query,

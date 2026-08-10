@@ -8,6 +8,7 @@ const {
     Unit,
     Role,
 } = require("../../models");
+const { getSelfAndAncestorIds } = require("../../utils/unitHierarchy");
 
 class UnitRoleRepository {
     getInclude() {
@@ -313,11 +314,18 @@ class UnitRoleRepository {
         id_unit,
         id_role
     ) {
+        const ancestorIds = await getSelfAndAncestorIds(id_unit);
         return await UnitRole.findAll({
             where: {
-                id_unit,
                 id_role,
                 is_active: "Y",
+                [Op.or]: [
+                    { id_unit },
+                    {
+                        id_unit: { [Op.in]: ancestorIds.filter((id) => Number(id) !== Number(id_unit)) },
+                        scope_type: "SELF_AND_DESCENDANTS",
+                    },
+                ],
             },
 
             include: [
@@ -360,12 +368,19 @@ class UnitRoleRepository {
         id_unit,
         id_role
     ) {
+        const ancestorIds = await getSelfAndAncestorIds(id_unit);
         return await UnitRole.findOne({
             where: {
                 id_user,
-                id_unit,
                 id_role,
                 is_active: "Y",
+                [Op.or]: [
+                    { id_unit },
+                    {
+                        id_unit: { [Op.in]: ancestorIds.filter((id) => Number(id) !== Number(id_unit)) },
+                        scope_type: "SELF_AND_DESCENDANTS",
+                    },
+                ],
             },
         });
     }

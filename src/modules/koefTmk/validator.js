@@ -39,23 +39,17 @@ const percentage = (
         });
 
 const create = Joi.object({
-    masa_kerja: Joi.string()
-        .trim()
-        .min(1)
-        .max(100)
+    masa_kerja: Joi.number()
+        .integer()
+        .min(0)
         .required()
         .messages({
-            "string.base":
-                "Masa kerja harus berupa teks",
-
-            "string.empty":
-                "Masa kerja wajib diisi",
-
-            "string.min":
-                "Masa kerja wajib diisi",
-
-            "string.max":
-                "Masa kerja maksimal 100 karakter",
+            "number.base":
+                "Masa kerja harus berupa angka",
+            "number.integer":
+                "Masa kerja harus berupa tahun penuh",
+            "number.min":
+                "Masa kerja minimal 0 tahun",
 
             "any.required":
                 "Masa kerja wajib diisi",
@@ -93,20 +87,17 @@ const create = Joi.object({
 });
 
 const update = Joi.object({
-    masa_kerja: Joi.string()
-        .trim()
-        .min(1)
-        .max(100)
+    masa_kerja: Joi.number()
+        .integer()
+        .min(0)
         .optional()
         .messages({
-            "string.base":
-                "Masa kerja harus berupa teks",
-
-            "string.empty":
-                "Masa kerja tidak boleh kosong",
-
-            "string.max":
-                "Masa kerja maksimal 100 karakter",
+            "number.base":
+                "Masa kerja harus berupa angka",
+            "number.integer":
+                "Masa kerja harus berupa tahun penuh",
+            "number.min":
+                "Masa kerja minimal 0 tahun",
         }),
 
     koef: percentage(
@@ -146,9 +137,9 @@ const update = Joi.object({
     });
 
 const query = Joi.object({
-    masa_kerja: Joi.string()
-        .trim()
-        .max(100)
+    masa_kerja: Joi.number()
+        .integer()
+        .min(0)
         .optional(),
 
     koef: percentage(

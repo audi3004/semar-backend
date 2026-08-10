@@ -14,9 +14,93 @@ const {
     LogLembur,
     User,
     Pegawai,
+    Cuti,
+    Ijin,
+    Sakit,
+    HariLibur,
 } = require("../../models");
 
 class LemburRepository {
+    async findHolidayByDate(tanggal) {
+        return await HariLibur.findOne({
+            where: { tanggal, is_active: "Y" },
+        });
+    }
+
+    async findReplacementCandidates(tanggal) {
+        const makeStatusInclude = () => ({
+            model: Status,
+            as: "status",
+            attributes: ["id_status", "kode_status", "nama_status"],
+            required: true,
+            where: {
+                kode_status: {
+                    [Op.notIn]: ["DRAFT", "REVISION", "REJECTED"],
+                },
+            },
+        });
+        const makePetugasInclude = () => ({
+            model: Petugas,
+            as: "petugas",
+            attributes: ["id_petugas", "id_unit", "nip", "nama"],
+            required: true,
+            include: [{
+                model: Unit,
+                as: "unit",
+                attributes: ["id_unit", "nama_unit"],
+                required: false,
+            }],
+        });
+
+        const [cuti, ijin, sakit] = await Promise.all([
+            Cuti.findAll({
+                where: {
+                    tgl_mulai: { [Op.lte]: tanggal },
+                    tgl_selesai: { [Op.gte]: tanggal },
+                },
+                include: [makeStatusInclude(), makePetugasInclude()],
+            }),
+            Ijin.findAll({
+                where: {
+                    tanggal: { [Op.lte]: tanggal },
+                    tgl_selesai: { [Op.gte]: tanggal },
+                },
+                include: [makeStatusInclude(), makePetugasInclude()],
+            }),
+            Sakit.findAll({
+                where: {
+                    tanggal: { [Op.lte]: tanggal },
+                    tgl_selesai: { [Op.gte]: tanggal },
+                },
+                include: [makeStatusInclude(), makePetugasInclude()],
+            }),
+        ]);
+
+        const candidates = new Map();
+        const collect = (rows, type, startField) => rows.forEach((row) => {
+            const plain = row.get({ plain: true });
+            const key = String(plain.id_petugas);
+            const current = candidates.get(key) || {
+                ...plain.petugas,
+                alasan_ketidakhadiran: [],
+            };
+            current.alasan_ketidakhadiran.push({
+                jenis: type,
+                tanggal_mulai: plain[startField],
+                tanggal_selesai: plain.tgl_selesai,
+                status: plain.status?.nama_status,
+            });
+            candidates.set(key, current);
+        });
+
+        collect(cuti, "CUTI", "tgl_mulai");
+        collect(ijin, "IJIN", "tanggal");
+        collect(sakit, "SAKIT", "tanggal");
+        return [...candidates.values()].sort((a, b) =>
+            String(a.nama).localeCompare(String(b.nama), "id")
+        );
+    }
+
     getStatusInclude() {
         return {
             model: Status,

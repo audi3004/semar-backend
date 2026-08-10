@@ -78,6 +78,13 @@ const Lembur = sequelize.define(
             defaultValue: 0,
         },
 
+        biaya_lembur: {
+            type: DataTypes.DECIMAL(15, 2),
+            allowNull: false,
+            defaultValue: 0,
+            comment: "Biaya lembur berdasarkan jam efektif dan tarif upah saat transaksi",
+        },
+
         kategori_lembur: {
             type: DataTypes.STRING(1000),
             allowNull: false,

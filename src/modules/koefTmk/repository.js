@@ -8,11 +8,12 @@ class KoefTmkRepository {
     async findAll(filters = {}) {
         const where = {};
 
-        if (filters.masa_kerja) {
-            where.masa_kerja = {
-                [Op.like]:
-                    `%${filters.masa_kerja}%`,
-            };
+        if (
+            filters.masa_kerja !== undefined &&
+            filters.masa_kerja !== null &&
+            filters.masa_kerja !== ""
+        ) {
+            where.masa_kerja = filters.masa_kerja;
         }
 
         if (
@@ -48,7 +49,7 @@ class KoefTmkRepository {
 
             order: [
                 [
-                    "id_koef_tmk",
+                    "masa_kerja",
                     "ASC",
                 ],
             ],

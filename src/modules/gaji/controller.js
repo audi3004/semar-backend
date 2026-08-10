@@ -7,6 +7,26 @@ const response = require(
 );
 
 class GajiController {
+    async calculateEmployeeSalaries(req, res) {
+        try {
+            const data = await gajiService.calculateEmployeeSalaries(
+                req.query.as_of_date
+            );
+
+            return response.success(
+                res,
+                data,
+                "Data upah petugas berhasil dihitung"
+            );
+        } catch (err) {
+            return response.error(
+                res,
+                err.message,
+                err.statusCode || 500
+            );
+        }
+    }
+
     async findAll(req, res) {
         try {
             const data =

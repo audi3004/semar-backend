@@ -15,6 +15,109 @@ const AppError = require(
 );
 
 class GajiService {
+    completedYears(startDate, asOfDate) {
+        const [startYear, startMonth, startDay] = String(startDate)
+            .slice(0, 10)
+            .split("-")
+            .map(Number);
+        const [endYear, endMonth, endDay] = String(asOfDate)
+            .slice(0, 10)
+            .split("-")
+            .map(Number);
+
+        let years = endYear - startYear;
+        if (
+            endMonth < startMonth ||
+            (endMonth === startMonth && endDay < startDay)
+        ) {
+            years -= 1;
+        }
+
+        return Math.max(0, years);
+    }
+
+    async calculateEmployeeSalaries(asOfDate) {
+        const calculationDate = asOfDate ||
+            new Date().toISOString().slice(0, 10);
+        const { petugas, coefficients } =
+            await gajiRepository.findSalaryInputs();
+
+        return petugas.map((record) => {
+            const employee = record.get({ plain: true });
+            const masaKerja = this.completedYears(
+                employee.tgl_masuk,
+                calculationDate
+            );
+            const coefficient = [...coefficients]
+                .reverse()
+                .find((item) => Number(item.masa_kerja) <= masaKerja);
+
+            if (!employee.umk || !coefficient) {
+                return {
+                    ...employee,
+                    tanggal_perhitungan: calculationDate,
+                    masa_kerja_tahun: masaKerja,
+                    status_perhitungan: !employee.umk
+                        ? "UMK petugas belum ditentukan"
+                        : "Koefisien masa kerja tidak ditemukan",
+                };
+            }
+
+            const nominalUmk = Number(employee.umk.nominal_umk);
+            const koef = Number(coefficient.koef);
+            const tmk = Number(coefficient.tmk);
+            const nilaiKoef = nominalUmk * koef;
+            const nilaiTmk = nominalUmk * tmk;
+            const totalGaji = nominalUmk + nilaiKoef + nilaiTmk;
+
+            return {
+                ...employee,
+                tanggal_perhitungan: calculationDate,
+                masa_kerja_tahun: masaKerja,
+                id_koef_tmk: coefficient.id_koef_tmk,
+                tier_masa_kerja: Number(coefficient.masa_kerja),
+                keterangan_koef_tmk: coefficient.keterangan,
+                koef,
+                tmk,
+                nilai_koef: Number(nilaiKoef.toFixed(2)),
+                nilai_tmk: Number(nilaiTmk.toFixed(2)),
+                total_gaji: Number(totalGaji.toFixed(2)),
+                tarif_lembur_per_jam: Number((totalGaji / 173).toFixed(6)),
+                status_perhitungan: "OK",
+            };
+        });
+    }
+
+    async calculateEmployeeSalary(idPetugas, asOfDate, transaction = null) {
+        const calculationDate = asOfDate || new Date().toISOString().slice(0, 10);
+        const { petugas, coefficients } =
+            await gajiRepository.findSalaryInputByEmployee(idPetugas, transaction);
+
+        if (!petugas) throw new AppError("Petugas tidak ditemukan", 404);
+        if (!petugas.umk) throw new AppError("UMK petugas belum ditentukan", 422);
+
+        const masaKerja = this.completedYears(petugas.tgl_masuk, calculationDate);
+        const coefficient = coefficients.find(
+            (item) => Number(item.masa_kerja) <= masaKerja
+        );
+        if (!coefficient) {
+            throw new AppError(`Koefisien untuk masa kerja ${masaKerja} tahun tidak ditemukan`, 422);
+        }
+
+        const nominalUmk = Number(petugas.umk.nominal_umk);
+        const totalGaji = nominalUmk *
+            (1 + Number(coefficient.koef) + Number(coefficient.tmk));
+
+        return {
+            id_petugas: petugas.id_petugas,
+            masa_kerja_tahun: masaKerja,
+            id_umk: petugas.umk.id_umk,
+            id_koef_tmk: coefficient.id_koef_tmk,
+            total_gaji: Number(totalGaji.toFixed(2)),
+            tarif_lembur_per_jam: Number((totalGaji / 173).toFixed(6)),
+        };
+    }
+
     normalizeStatus(value) {
         if (
             value === undefined ||

@@ -185,12 +185,6 @@ const create = Joi.object({
             30
         ).optional(),
 
-    pengganti:
-        nullableTextSchema(
-            "Petugas pengganti",
-            150
-        ).optional(),
-
     ...signatureSchemas,
 })
     .custom(
@@ -319,12 +313,6 @@ const update = Joi.object({
         nullableTextSchema(
             "Nomor telepon darurat",
             30
-        ).optional(),
-
-    pengganti:
-        nullableTextSchema(
-            "Petugas pengganti",
-            150
         ).optional(),
 
     ...signatureSchemas,

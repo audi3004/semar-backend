@@ -7,6 +7,23 @@ const response = require(
 );
 
 class LemburController {
+    async findReplacementCandidates(req, res) {
+        try {
+            const data = await lemburService.findReplacementCandidates(
+                req.query.tanggal
+            );
+            return response.success(
+                res,
+                data,
+                data.length
+                    ? "Kandidat petugas yang sedang berhalangan berhasil diambil"
+                    : "Tidak ada petugas dengan pengajuan cuti, ijin, atau sakit pada tanggal tersebut"
+            );
+        } catch (error) {
+            return response.error(res, error.message, error.statusCode || 500);
+        }
+    }
+
     async findAll(
         req,
         res

@@ -12,6 +12,7 @@ const {
     Jabatan,
     Umk,
     KoefTmk,
+    HariLibur,
     Unit,
     Pegawai,
     Petugas,
@@ -49,6 +50,11 @@ const ADMIN_PASSWORD =
     "Admin123!!";
 const DEFAULT_PEGAWAI_JOIN_DATE =
     "2026-08-01";
+
+// Koreksi mapping legacy: jabatan 5 (Assistant Manager) pada data pegawai
+// seharusnya menggunakan jabatan 6 (Team Leader).
+const mapSeedJabatanId = (idJabatan) =>
+    Number(idJabatan) === 5 ? 6 : idJabatan;
 
 const statuses = [
     {
@@ -435,6 +441,20 @@ async function seedSystem(
                 );
             }
 
+            for (const row of data.m_hari_libur) {
+                await upsertOne(
+                    HariLibur,
+                    { tanggal: row.tanggal },
+                    {
+                        nama_hari_libur: row.nama_hari_libur,
+                        keterangan: row.keterangan,
+                        is_active: "Y",
+                        updated_at: now,
+                    },
+                    transaction
+                );
+            }
+
             for (const row of data.m_pegawai) {
                 const nip = row.nip
                     ? String(row.nip)
@@ -444,7 +464,7 @@ async function seedSystem(
                 const jabatan =
                     requireMapped(
                         jabatanMap,
-                        row.id_jabatan,
+                        mapSeedJabatanId(row.id_jabatan),
                         "Jabatan pegawai"
                     );
                 const unit = requireMapped(
@@ -479,12 +499,17 @@ async function seedSystem(
                     row.id_unit,
                     "Unit petugas"
                 );
+                const umk = requireMapped(
+                    umkMap,
+                    row.id_umk,
+                    "UMK petugas"
+                );
                 const jabatan =
                     row.id_jabatan === null
                         ? null
                         : requireMapped(
                             jabatanMap,
-                            row.id_jabatan,
+                            mapSeedJabatanId(row.id_jabatan),
                             "Jabatan petugas"
                         );
 
@@ -503,7 +528,8 @@ async function seedSystem(
                                 jabatan
                                     ?.id_jabatan ??
                                 null,
-                            id_umk: null,
+                            id_umk:
+                                umk.id_umk,
                             nama: row.nama,
                             tgl_masuk:
                                 row.tgl_masuk,
@@ -880,6 +906,8 @@ async function seedSystem(
                 umk: data.m_umk.length,
                 koef_tmk:
                     data.m_koef_tmk.length,
+                hari_libur:
+                    data.m_hari_libur.length,
                 pegawai:
                     data.m_pegawai.length,
                 petugas:

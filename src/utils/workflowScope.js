@@ -1,4 +1,5 @@
 const { UnitRole } = require("../models");
+const { getSelfAndDescendantIds } = require("./unitHierarchy");
 
 const APPROVAL_ROLES = new Set([
     "CHECKER",
@@ -35,19 +36,21 @@ async function getWorkflowScope(user) {
                 id_role: user.id_role,
                 is_active: "Y",
             },
-            attributes: ["id_unit"],
+            attributes: ["id_unit", "scope_type"],
             raw: true,
         });
 
+    const unitIds = new Set();
+    for (const assignment of assignments) {
+        const resolved = assignment.scope_type === "SELF_AND_DESCENDANTS"
+            ? await getSelfAndDescendantIds(assignment.id_unit)
+            : [Number(assignment.id_unit)];
+        resolved.forEach((id) => unitIds.add(id));
+    }
+
     return {
         idRole: user.id_role,
-        unitIds: [
-            ...new Set(
-                assignments.map(
-                    (item) => item.id_unit
-                )
-            ),
-        ],
+        unitIds: [...unitIds],
     };
 }
 

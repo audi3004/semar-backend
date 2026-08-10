@@ -3076,6 +3076,33 @@
       "tmk": 0.05
     }
   ],
+  "m_hari_libur": [
+    { "tanggal": "2026-01-01", "nama_hari_libur": "Tahun Baru 2026 Masehi", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-01-16", "nama_hari_libur": "Isra Mikraj Nabi Muhammad SAW", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-02-16", "nama_hari_libur": "Cuti Bersama Tahun Baru Imlek 2577 Kongzili", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-02-17", "nama_hari_libur": "Tahun Baru Imlek 2577 Kongzili", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-03-18", "nama_hari_libur": "Cuti Bersama Hari Suci Nyepi", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-03-19", "nama_hari_libur": "Hari Suci Nyepi Tahun Baru Saka 1948", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-03-20", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-03-21", "nama_hari_libur": "Hari Raya Idulfitri 1447 H", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-03-22", "nama_hari_libur": "Hari Raya Idulfitri 1447 H", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-03-23", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-03-24", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-04-03", "nama_hari_libur": "Wafat Yesus Kristus", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-04-05", "nama_hari_libur": "Kebangkitan Yesus Kristus (Paskah)", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-05-01", "nama_hari_libur": "Hari Buruh Internasional", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-05-14", "nama_hari_libur": "Kenaikan Yesus Kristus", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-05-15", "nama_hari_libur": "Cuti Bersama Kenaikan Yesus Kristus", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-05-27", "nama_hari_libur": "Hari Raya Iduladha 1447 H", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-05-28", "nama_hari_libur": "Cuti Bersama Hari Raya Iduladha 1447 H", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-05-31", "nama_hari_libur": "Hari Raya Waisak 2570 BE", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-06-01", "nama_hari_libur": "Hari Lahir Pancasila", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-06-16", "nama_hari_libur": "1 Muharam Tahun Baru Islam 1448 H", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-08-17", "nama_hari_libur": "Proklamasi Kemerdekaan Republik Indonesia", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-08-25", "nama_hari_libur": "Maulid Nabi Muhammad SAW", "keterangan": "LIBUR_NASIONAL" },
+    { "tanggal": "2026-12-24", "nama_hari_libur": "Cuti Bersama Kelahiran Yesus Kristus", "keterangan": "CUTI_BERSAMA" },
+    { "tanggal": "2026-12-25", "nama_hari_libur": "Kelahiran Yesus Kristus", "keterangan": "LIBUR_NASIONAL" }
+  ],
   "m_pegawai": [
     {
       "id_pegawai": 1,
@@ -3458,7 +3485,8 @@
       "nip": "0020118TJBT",
       "nama": "FIRMAN MAULANA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-07-05"
+      "tgl_lahir": "2000-07-05",
+      "id_umk": 5
     },
     {
       "id_petugas": 2,
@@ -3468,7 +3496,8 @@
       "nip": "0120109TJBT",
       "nama": "PANDU UTOMO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-07-26"
+      "tgl_lahir": "2001-07-26",
+      "id_umk": 5
     },
     {
       "id_petugas": 3,
@@ -3478,7 +3507,8 @@
       "nip": "9420121TJBT",
       "nama": "BAYU PRIYAMBODO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1994-12-23"
+      "tgl_lahir": "1994-12-23",
+      "id_umk": 5
     },
     {
       "id_petugas": 4,
@@ -3488,7 +3518,8 @@
       "nip": "9520110TJBT",
       "nama": "KRIS AJI SETIAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1995-05-05"
+      "tgl_lahir": "1995-05-05",
+      "id_umk": 5
     },
     {
       "id_petugas": 5,
@@ -3498,7 +3529,8 @@
       "nip": "0020107TJBT",
       "nama": "DHADHI FILIA SYAHWAL",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-12-29"
+      "tgl_lahir": "2000-12-29",
+      "id_umk": 14
     },
     {
       "id_petugas": 6,
@@ -3508,7 +3540,8 @@
       "nip": "0020108TJBT",
       "nama": "ALDEAN OBIYASI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-07-23"
+      "tgl_lahir": "2000-07-23",
+      "id_umk": 14
     },
     {
       "id_petugas": 7,
@@ -3518,7 +3551,8 @@
       "nip": "9520105TJBT",
       "nama": "IRSAD FATONI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1995-06-28"
+      "tgl_lahir": "1995-06-28",
+      "id_umk": 14
     },
     {
       "id_petugas": 8,
@@ -3528,7 +3562,8 @@
       "nip": "9520106TJBT",
       "nama": "AJI PRASETYO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1995-04-30"
+      "tgl_lahir": "1995-04-30",
+      "id_umk": 14
     },
     {
       "id_petugas": 9,
@@ -3538,7 +3573,8 @@
       "nip": "0020084TJBT",
       "nama": "ROSIHANDIKA SISPRADANA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-06-13"
+      "tgl_lahir": "2000-06-13",
+      "id_umk": 5
     },
     {
       "id_petugas": 10,
@@ -3548,7 +3584,8 @@
       "nip": "0120125TJBT",
       "nama": "FUAD HASAN",
       "tgl_masuk": "2020-02-03",
-      "tgl_lahir": "2001-03-18"
+      "tgl_lahir": "2001-03-18",
+      "id_umk": 5
     },
     {
       "id_petugas": 11,
@@ -3558,7 +3595,8 @@
       "nip": "9320124TJBT",
       "nama": "ULIL MUKSININ",
       "tgl_masuk": "2020-02-03",
-      "tgl_lahir": "1993-02-14"
+      "tgl_lahir": "1993-02-14",
+      "id_umk": 5
     },
     {
       "id_petugas": 12,
@@ -3568,7 +3606,8 @@
       "nip": "9820083TJBT",
       "nama": "ARFAN NUR RAHMAT DANI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-01-15"
+      "tgl_lahir": "1998-01-15",
+      "id_umk": 5
     },
     {
       "id_petugas": 13,
@@ -3578,7 +3617,8 @@
       "nip": "0120085TJBT",
       "nama": "ARIF YUSUF AFANDI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-11-03"
+      "tgl_lahir": "2001-11-03",
+      "id_umk": 1
     },
     {
       "id_petugas": 14,
@@ -3588,7 +3628,8 @@
       "nip": "9720087TJBT",
       "nama": "YUNUS LUKMANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-10-23"
+      "tgl_lahir": "1997-10-23",
+      "id_umk": 1
     },
     {
       "id_petugas": 15,
@@ -3598,7 +3639,8 @@
       "nip": "9920086TJBT",
       "nama": "AUFA SAHAR RAMADHAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-12-10"
+      "tgl_lahir": "1999-12-10",
+      "id_umk": 1
     },
     {
       "id_petugas": 16,
@@ -3608,7 +3650,8 @@
       "nip": "9920088TJBT",
       "nama": "BEKTI FAOZI FIRANSYAH",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-06-08"
+      "tgl_lahir": "1999-06-08",
+      "id_umk": 1
     },
     {
       "id_petugas": 17,
@@ -3618,7 +3661,8 @@
       "nip": "9420091TJBT",
       "nama": "BAYU ARIANDI SULISTIAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1994-12-09"
+      "tgl_lahir": "1994-12-09",
+      "id_umk": 19
     },
     {
       "id_petugas": 18,
@@ -3628,7 +3672,8 @@
       "nip": "9620089TJBT",
       "nama": "MAS MAJID AL FATH",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-07-25"
+      "tgl_lahir": "1996-07-25",
+      "id_umk": 19
     },
     {
       "id_petugas": 19,
@@ -3638,7 +3683,8 @@
       "nip": "9620092TJBT",
       "nama": "ALFIN HENRI HUTAMA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-11-22"
+      "tgl_lahir": "1996-11-22",
+      "id_umk": 19
     },
     {
       "id_petugas": 20,
@@ -3648,7 +3694,8 @@
       "nip": "9922002TJBT",
       "nama": "FADILAH RIZKI PRATAMA",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "1999-03-21"
+      "tgl_lahir": "1999-03-21",
+      "id_umk": 19
     },
     {
       "id_petugas": 21,
@@ -3658,7 +3705,8 @@
       "nip": "0226007TJBT",
       "nama": "WAHYU SEPTI AJI",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-09-09"
+      "tgl_lahir": "2002-09-09",
+      "id_umk": 4
     },
     {
       "id_petugas": 22,
@@ -3668,7 +3716,8 @@
       "nip": "0526001TJBT",
       "nama": "AZIZ MUNANDAR",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-10-17"
+      "tgl_lahir": "2005-10-17",
+      "id_umk": 4
     },
     {
       "id_petugas": 23,
@@ -3678,7 +3727,8 @@
       "nip": "0726003TJBT",
       "nama": "DAVID MARTIN TRI NURCAHYO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2007-03-06"
+      "tgl_lahir": "2007-03-06",
+      "id_umk": 4
     },
     {
       "id_petugas": 24,
@@ -3688,7 +3738,8 @@
       "nip": "9920094TJBT",
       "nama": "NIKEN OKA ANDRIANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-10-24"
+      "tgl_lahir": "1999-10-24",
+      "id_umk": 4
     },
     {
       "id_petugas": 25,
@@ -3698,7 +3749,8 @@
       "nip": "0326002TJBT",
       "nama": "MUHAMMAD DEDEN ALIYUDIN PERMANA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2003-11-12"
+      "tgl_lahir": "2003-11-12",
+      "id_umk": 13
     },
     {
       "id_petugas": 26,
@@ -3708,7 +3760,8 @@
       "nip": "0326005TJBT",
       "nama": "FAJAR ARYO SANTOSO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2003-12-26"
+      "tgl_lahir": "2003-12-26",
+      "id_umk": 13
     },
     {
       "id_petugas": 27,
@@ -3718,7 +3771,8 @@
       "nip": "0526002TJBT",
       "nama": "MOHAMMAD ALVIN FAIZ",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-01-18"
+      "tgl_lahir": "2005-01-18",
+      "id_umk": 13
     },
     {
       "id_petugas": 28,
@@ -3728,7 +3782,8 @@
       "nip": "0226008TJBT",
       "nama": "MOHAMMAD FALDI",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-12-29"
+      "tgl_lahir": "2002-12-29",
+      "id_umk": 13
     },
     {
       "id_petugas": 29,
@@ -3738,7 +3793,8 @@
       "nip": "0326004TJBT",
       "nama": "RIZAL RAIS WIBOWO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2003-05-20"
+      "tgl_lahir": "2003-05-20",
+      "id_umk": 13
     },
     {
       "id_petugas": 30,
@@ -3748,7 +3804,8 @@
       "nip": "0626005TJBT",
       "nama": "RAFLY RIYANANDA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-05-16"
+      "tgl_lahir": "2006-05-16",
+      "id_umk": 13
     },
     {
       "id_petugas": 31,
@@ -3758,7 +3815,8 @@
       "nip": "0626008TJBT",
       "nama": "FIRMANSYAH AGUSTIAN",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-08-28"
+      "tgl_lahir": "2006-08-28",
+      "id_umk": 13
     },
     {
       "id_petugas": 32,
@@ -3768,7 +3826,8 @@
       "nip": "0626003TJBT",
       "nama": "RESTU YOGA PRATAMA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-03-31"
+      "tgl_lahir": "2006-03-31",
+      "id_umk": 19
     },
     {
       "id_petugas": 33,
@@ -3778,7 +3837,8 @@
       "nip": "9720095TJBT",
       "nama": "TITO MEGA AYUBI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-02-16"
+      "tgl_lahir": "1997-02-16",
+      "id_umk": 19
     },
     {
       "id_petugas": 34,
@@ -3788,7 +3848,8 @@
       "nip": "9820096TJBT",
       "nama": "ADE SUTORO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-03-20"
+      "tgl_lahir": "1998-03-20",
+      "id_umk": 19
     },
     {
       "id_petugas": 35,
@@ -3798,7 +3859,8 @@
       "nip": "9920093TJBT",
       "nama": "MUCHAMMAD ADAM FAKHROZI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-02-20"
+      "tgl_lahir": "1999-02-20",
+      "id_umk": 19
     },
     {
       "id_petugas": 36,
@@ -3808,7 +3870,8 @@
       "nip": "0020082TJBT",
       "nama": "AQILLA FEBI SUSANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-02-11"
+      "tgl_lahir": "2000-02-11",
+      "id_umk": 22
     },
     {
       "id_petugas": 37,
@@ -3818,7 +3881,8 @@
       "nip": "0020112TJBT",
       "nama": "ARIF WIBOWO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-03-07"
+      "tgl_lahir": "2000-03-07",
+      "id_umk": 22
     },
     {
       "id_petugas": 38,
@@ -3828,7 +3892,8 @@
       "nip": "9519066TJBT",
       "nama": "ROKHANDI ZUSUF",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1995-09-30"
+      "tgl_lahir": "1995-09-30",
+      "id_umk": 22
     },
     {
       "id_petugas": 39,
@@ -3838,7 +3903,8 @@
       "nip": "9919065TJBT",
       "nama": "RIO NUR ANJAZ PUTRA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-07-18"
+      "tgl_lahir": "1999-07-18",
+      "id_umk": 22
     },
     {
       "id_petugas": 40,
@@ -3848,7 +3914,8 @@
       "nip": "0020100TJBT",
       "nama": "ADE SAPUTRA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-10-26"
+      "tgl_lahir": "2000-10-26",
+      "id_umk": 10
     },
     {
       "id_petugas": 41,
@@ -3858,7 +3925,8 @@
       "nip": "9720099TJBT",
       "nama": "DHIKA FAJAR HIDAYAT",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-12-12"
+      "tgl_lahir": "1997-12-12",
+      "id_umk": 10
     },
     {
       "id_petugas": 42,
@@ -3868,7 +3936,8 @@
       "nip": "9820097TJBT",
       "nama": "AFRIZAL DWI ROZAKI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-10-04"
+      "tgl_lahir": "1998-10-04",
+      "id_umk": 10
     },
     {
       "id_petugas": 43,
@@ -3878,7 +3947,8 @@
       "nip": "9920098TJBT",
       "nama": "UMAR ABDUL AZIZ",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-07-06"
+      "tgl_lahir": "1999-07-06",
+      "id_umk": 10
     },
     {
       "id_petugas": 44,
@@ -3888,7 +3958,8 @@
       "nip": "0020103TJBT",
       "nama": "VIKI NUROHMAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-11-05"
+      "tgl_lahir": "2000-11-05",
+      "id_umk": 10
     },
     {
       "id_petugas": 45,
@@ -3898,7 +3969,8 @@
       "nip": "9420102TJBT",
       "nama": "SIDNI MUBAROK",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1994-02-08"
+      "tgl_lahir": "1994-02-08",
+      "id_umk": 10
     },
     {
       "id_petugas": 46,
@@ -3908,7 +3980,8 @@
       "nip": "9620104TJBT",
       "nama": "MOH SYAEFUDIN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-08-25"
+      "tgl_lahir": "1996-08-25",
+      "id_umk": 10
     },
     {
       "id_petugas": 47,
@@ -3918,7 +3991,8 @@
       "nip": "9720101TJBT",
       "nama": "MOHAMAD KHOLIKUN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-10-22"
+      "tgl_lahir": "1997-10-22",
+      "id_umk": 10
     },
     {
       "id_petugas": 48,
@@ -3928,7 +4002,8 @@
       "nip": "0019063TJBT",
       "nama": "PULUNG JATI PRASETYO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-02-25"
+      "tgl_lahir": "2000-02-25",
+      "id_umk": 20
     },
     {
       "id_petugas": 49,
@@ -3938,7 +4013,8 @@
       "nip": "0019064TJBT",
       "nama": "YUDHA AGUNG PAMUNGKAS",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-02-06"
+      "tgl_lahir": "2000-02-06",
+      "id_umk": 20
     },
     {
       "id_petugas": 50,
@@ -3948,7 +4024,8 @@
       "nip": "9519067TJBT",
       "nama": "AHMAD WAKHID",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1995-03-11"
+      "tgl_lahir": "1995-03-11",
+      "id_umk": 20
     },
     {
       "id_petugas": 51,
@@ -3958,7 +4035,8 @@
       "nip": "9620081TJBT",
       "nama": "EDI JOKO SUSENO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-01-01"
+      "tgl_lahir": "1996-01-01",
+      "id_umk": 20
     },
     {
       "id_petugas": 52,
@@ -3968,7 +4046,8 @@
       "nip": "0020111TJBT",
       "nama": "DICKY ARYANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-09-26"
+      "tgl_lahir": "2000-09-26",
+      "id_umk": 10
     },
     {
       "id_petugas": 53,
@@ -3978,7 +4057,8 @@
       "nip": "0626009TJBT",
       "nama": "ZOSI ADHI PITOYO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-11-17"
+      "tgl_lahir": "2006-11-17",
+      "id_umk": 10
     },
     {
       "id_petugas": 54,
@@ -3988,7 +4068,8 @@
       "nip": "0726002TJBT",
       "nama": "ABDUL AZZIZ",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2007-05-12"
+      "tgl_lahir": "2007-05-12",
+      "id_umk": 10
     },
     {
       "id_petugas": 55,
@@ -3998,7 +4079,8 @@
       "nip": "9519068TJBT",
       "nama": "TRI TEGUH SETYAWAN",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1995-07-22"
+      "tgl_lahir": "1995-07-22",
+      "id_umk": 10
     },
     {
       "id_petugas": 56,
@@ -4008,7 +4090,8 @@
       "nip": "0222006TJBT",
       "nama": "PRASKA YOGI SETIAWAN",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "2002-03-26"
+      "tgl_lahir": "2002-03-26",
+      "id_umk": 3
     },
     {
       "id_petugas": 57,
@@ -4018,7 +4101,8 @@
       "nip": "0426003TJBT",
       "nama": "RENDY YUMNA NUGRAHA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2004-01-28"
+      "tgl_lahir": "2004-01-28",
+      "id_umk": 3
     },
     {
       "id_petugas": 58,
@@ -4028,7 +4112,8 @@
       "nip": "0826001TJBT",
       "nama": "DIAN PUTRA PAMUNGKAS",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2008-06-13"
+      "tgl_lahir": "2008-06-13",
+      "id_umk": 3
     },
     {
       "id_petugas": 59,
@@ -4038,7 +4123,8 @@
       "nip": "9719033TJBT",
       "nama": "MUHAMAD IZZA ARFANI",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1997-11-21"
+      "tgl_lahir": "1997-11-21",
+      "id_umk": 3
     },
     {
       "id_petugas": 60,
@@ -4048,7 +4134,8 @@
       "nip": "0020039TJBT",
       "nama": "MUHAMMAD EDI NUR AHKWAD",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-03-26"
+      "tgl_lahir": "2000-03-26",
+      "id_umk": 23
     },
     {
       "id_petugas": 61,
@@ -4058,7 +4145,8 @@
       "nip": "0020040TJBT",
       "nama": "REZA KURNIA PUTRA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-01-18"
+      "tgl_lahir": "2000-01-18",
+      "id_umk": 23
     },
     {
       "id_petugas": 62,
@@ -4068,7 +4156,8 @@
       "nip": "0120041TJBT",
       "nama": "ALDRIN RIFKI MUHAMMAD FAHRI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-07-02"
+      "tgl_lahir": "2001-07-02",
+      "id_umk": 23
     },
     {
       "id_petugas": 63,
@@ -4078,7 +4167,8 @@
       "nip": "9820123TJBT",
       "nama": "AKHYAS HERI MAULANA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-06-30"
+      "tgl_lahir": "1998-06-30",
+      "id_umk": 23
     },
     {
       "id_petugas": 64,
@@ -4088,7 +4178,8 @@
       "nip": "0120050TJBT",
       "nama": "NUGROHO GILANG SAPUTRO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-04-27"
+      "tgl_lahir": "2001-04-27",
+      "id_umk": 16
     },
     {
       "id_petugas": 65,
@@ -4098,7 +4189,8 @@
       "nip": "0226005TJBT",
       "nama": "MUHAMMAD NUGROHO TRI PAMUNGKAS",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-03-14"
+      "tgl_lahir": "2002-03-14",
+      "id_umk": 16
     },
     {
       "id_petugas": 66,
@@ -4108,7 +4200,8 @@
       "nip": "9819042TJBT",
       "nama": "ADHI PRASETIA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-02-16"
+      "tgl_lahir": "1998-02-16",
+      "id_umk": 16
     },
     {
       "id_petugas": 67,
@@ -4118,7 +4211,8 @@
       "nip": "9819044TJBT",
       "nama": "FRIDA PERDANA KUSUMA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-02-23"
+      "tgl_lahir": "1998-02-23",
+      "id_umk": 16
     },
     {
       "id_petugas": 68,
@@ -4128,7 +4222,8 @@
       "nip": "0126002TJBT",
       "nama": "MUHAMMAD YAHYA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2001-09-10"
+      "tgl_lahir": "2001-09-10",
+      "id_umk": 3
     },
     {
       "id_petugas": 69,
@@ -4138,7 +4233,8 @@
       "nip": "9920042TJBT",
       "nama": "KURNIAWAN AKBAR SUTIYOSO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-02-24"
+      "tgl_lahir": "1999-02-24",
+      "id_umk": 3
     },
     {
       "id_petugas": 70,
@@ -4148,7 +4244,8 @@
       "nip": "9920043TJBT",
       "nama": "MUHAMMAD AULI AFIFUDIN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-11-12"
+      "tgl_lahir": "1999-11-12",
+      "id_umk": 3
     },
     {
       "id_petugas": 71,
@@ -4158,7 +4255,8 @@
       "nip": "9920044TJBT",
       "nama": "FANI AGIT NUGROHO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-05-30"
+      "tgl_lahir": "1999-05-30",
+      "id_umk": 3
     },
     {
       "id_petugas": 72,
@@ -4168,7 +4266,8 @@
       "nip": "0020048TJBT",
       "nama": "IMAN SETIYANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-02-16"
+      "tgl_lahir": "2000-02-16",
+      "id_umk": 12
     },
     {
       "id_petugas": 73,
@@ -4178,7 +4277,8 @@
       "nip": "9620046TJBT",
       "nama": "ARVAN ARDIAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-10-19"
+      "tgl_lahir": "1997-10-19",
+      "id_umk": 12
     },
     {
       "id_petugas": 74,
@@ -4188,7 +4288,8 @@
       "nip": "9720047TJBT",
       "nama": "SATRIA YOGA SAPUTRA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-06-06"
+      "tgl_lahir": "1997-06-06",
+      "id_umk": 12
     },
     {
       "id_petugas": 75,
@@ -4198,7 +4299,8 @@
       "nip": "9920049TJBT",
       "nama": "FATKHUL MARWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-07-23"
+      "tgl_lahir": "1999-07-23",
+      "id_umk": 12
     },
     {
       "id_petugas": 76,
@@ -4208,7 +4310,8 @@
       "nip": "0020045TJBT",
       "nama": "TAUFIK NUR HAKIM",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-06-01"
+      "tgl_lahir": "2000-06-01",
+      "id_umk": 9
     },
     {
       "id_petugas": 77,
@@ -4218,7 +4321,8 @@
       "nip": "0120113TJBT",
       "nama": "TRI MULYONO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-06-05"
+      "tgl_lahir": "2001-06-05",
+      "id_umk": 9
     },
     {
       "id_petugas": 78,
@@ -4228,7 +4332,8 @@
       "nip": "0726001TJBT",
       "nama": "VENO OKTOBRIAN SUTANTO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2007-10-22"
+      "tgl_lahir": "2007-10-22",
+      "id_umk": 9
     },
     {
       "id_petugas": 79,
@@ -4238,7 +4343,8 @@
       "nip": "9920115TJBT",
       "nama": "RAHADRIAN SATRIO AJIE",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-01-01"
+      "tgl_lahir": "1999-01-01",
+      "id_umk": 9
     },
     {
       "id_petugas": 80,
@@ -4248,7 +4354,8 @@
       "nip": "0526006TJBT",
       "nama": "AHMAD AGUNG KURNIADI",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-09-22"
+      "tgl_lahir": "2005-09-22",
+      "id_umk": 25
     },
     {
       "id_petugas": 81,
@@ -4258,7 +4365,8 @@
       "nip": "9719038TJBT",
       "nama": "ABDULLAH",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1997-03-03"
+      "tgl_lahir": "1997-03-03",
+      "id_umk": 25
     },
     {
       "id_petugas": 82,
@@ -4268,7 +4376,8 @@
       "nip": "9820120TJBT",
       "nama": "AZIZ NOVA KURNIAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-11-01"
+      "tgl_lahir": "1998-11-01",
+      "id_umk": 25
     },
     {
       "id_petugas": 83,
@@ -4278,7 +4387,8 @@
       "nip": "0119039TJBT",
       "nama": "KURNIYANTO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2001-08-28"
+      "tgl_lahir": "2001-08-28",
+      "id_umk": 18
     },
     {
       "id_petugas": 84,
@@ -4288,7 +4398,8 @@
       "nip": "0626001TJBT",
       "nama": "AMIR MURSALIN",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-09-11"
+      "tgl_lahir": "2006-09-11",
+      "id_umk": 18
     },
     {
       "id_petugas": 85,
@@ -4298,7 +4409,8 @@
       "nip": "9819035TJBT",
       "nama": "MUSLIM ALI MUSTOFA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-07-21"
+      "tgl_lahir": "1998-07-21",
+      "id_umk": 18
     },
     {
       "id_petugas": 86,
@@ -4308,7 +4420,8 @@
       "nip": "0019041TJBT",
       "nama": "LATIF SETIAWAN",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-04-20"
+      "tgl_lahir": "2000-04-20",
+      "id_umk": 21
     },
     {
       "id_petugas": 87,
@@ -4318,7 +4431,8 @@
       "nip": "0226004TJBT",
       "nama": "TAUFIK NUROHMAN",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-06-28"
+      "tgl_lahir": "2002-06-28",
+      "id_umk": 21
     },
     {
       "id_petugas": 88,
@@ -4328,7 +4442,8 @@
       "nip": "0526005TJBT",
       "nama": "MOCHAMMAD RIZKY ANUGERAH SADEWA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-03-01"
+      "tgl_lahir": "2005-03-01",
+      "id_umk": 21
     },
     {
       "id_petugas": 89,
@@ -4338,7 +4453,8 @@
       "nip": "9820077TJBT",
       "nama": "BRIAN SEBASTIAN LUCKY MARENRA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-09-27"
+      "tgl_lahir": "1998-09-27",
+      "id_umk": 21
     },
     {
       "id_petugas": 90,
@@ -4348,7 +4464,8 @@
       "nip": "0019061TJBT",
       "nama": "AJI VERY NUGROHO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-02-13"
+      "tgl_lahir": "2000-02-13",
+      "id_umk": 26
     },
     {
       "id_petugas": 91,
@@ -4358,7 +4475,8 @@
       "nip": "9419058TJBT",
       "nama": "GIFFARI OKTO BAREZY PRAHASTIAR",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1994-10-17"
+      "tgl_lahir": "1994-10-17",
+      "id_umk": 26
     },
     {
       "id_petugas": 92,
@@ -4368,7 +4486,8 @@
       "nip": "9819053TJBT",
       "nama": "DIKA PERMANA PUTRA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-12-12"
+      "tgl_lahir": "1998-12-12",
+      "id_umk": 26
     },
     {
       "id_petugas": 93,
@@ -4378,7 +4497,8 @@
       "nip": "9922001TJBT",
       "nama": "BAYU KURNIAWAN",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "1999-07-22"
+      "tgl_lahir": "1999-07-22",
+      "id_umk": 26
     },
     {
       "id_petugas": 94,
@@ -4388,7 +4508,8 @@
       "nip": "0019055TJBT",
       "nama": "FANI FADHIL",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-07-08"
+      "tgl_lahir": "2000-07-08",
+      "id_umk": 17
     },
     {
       "id_petugas": 95,
@@ -4398,7 +4519,8 @@
       "nip": "0019060TJBT",
       "nama": "EDWARD DIMAS RENATA ADITAMA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-01-30"
+      "tgl_lahir": "2000-01-30",
+      "id_umk": 17
     },
     {
       "id_petugas": 96,
@@ -4408,7 +4530,8 @@
       "nip": "0019062TJBT",
       "nama": "MUHAMMAD RUDINI",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-05-27"
+      "tgl_lahir": "2000-05-27",
+      "id_umk": 17
     },
     {
       "id_petugas": 97,
@@ -4418,7 +4541,8 @@
       "nip": "9319050TJBT",
       "nama": "RIDHO SETYAWAN",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1993-05-01"
+      "tgl_lahir": "1993-05-01",
+      "id_umk": 17
     },
     {
       "id_petugas": 98,
@@ -4428,7 +4552,8 @@
       "nip": "9620114TJBT",
       "nama": "HERI SANTOSO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-12-24"
+      "tgl_lahir": "1996-12-24",
+      "id_umk": 17
     },
     {
       "id_petugas": 99,
@@ -4438,7 +4563,8 @@
       "nip": "9819048TJBT",
       "nama": "DIAS ERWAN ANDRIANSYAH",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-08-07"
+      "tgl_lahir": "1998-08-07",
+      "id_umk": 17
     },
     {
       "id_petugas": 100,
@@ -4448,7 +4574,8 @@
       "nip": "9819056TJBT",
       "nama": "MUNTOHA GUS RIZAL",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-08-11"
+      "tgl_lahir": "1998-08-11",
+      "id_umk": 17
     },
     {
       "id_petugas": 101,
@@ -4458,7 +4585,8 @@
       "nip": "9919036TJBT",
       "nama": "IMAM AMIN MUKHAROM",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-05-03"
+      "tgl_lahir": "1999-05-03",
+      "id_umk": 17
     },
     {
       "id_petugas": 102,
@@ -4468,7 +4596,8 @@
       "nip": "0120122TJBT",
       "nama": "ARNAS BAGOES SAPUTRO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-01-19"
+      "tgl_lahir": "2001-01-19",
+      "id_umk": 17
     },
     {
       "id_petugas": 103,
@@ -4478,7 +4607,8 @@
       "nip": "0322008TJBT",
       "nama": "NAUFAL ABDULLAH ANWARUDDIN",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "2003-11-24"
+      "tgl_lahir": "2003-11-24",
+      "id_umk": 17
     },
     {
       "id_petugas": 104,
@@ -4488,7 +4618,8 @@
       "nip": "9720117TJBT",
       "nama": "TAUFIK NUROHMAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-03-04"
+      "tgl_lahir": "1997-03-04",
+      "id_umk": 17
     },
     {
       "id_petugas": 105,
@@ -4498,7 +4629,8 @@
       "nip": "9820119TJBT",
       "nama": "YULI FEBRIANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-07-17"
+      "tgl_lahir": "1998-07-17",
+      "id_umk": 17
     },
     {
       "id_petugas": 106,
@@ -4508,7 +4640,8 @@
       "nip": "0119049TJBT",
       "nama": "BIMA NUR ADITYA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2001-01-12"
+      "tgl_lahir": "2001-01-12",
+      "id_umk": 8
     },
     {
       "id_petugas": 107,
@@ -4518,7 +4651,8 @@
       "nip": "0226006TJBT",
       "nama": "MUHAMMAD TEGAR HERAWAN",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-06-01"
+      "tgl_lahir": "2002-06-01",
+      "id_umk": 8
     },
     {
       "id_petugas": 108,
@@ -4528,7 +4662,8 @@
       "nip": "9920116TJBT",
       "nama": "MUHAMMAD CATUR RIFAI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-05-23"
+      "tgl_lahir": "1999-05-23",
+      "id_umk": 8
     },
     {
       "id_petugas": 109,
@@ -4538,7 +4673,8 @@
       "nip": "9922003TJBT",
       "nama": "ARI ORTEGA",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "1999-10-22"
+      "tgl_lahir": "1999-10-22",
+      "id_umk": 8
     },
     {
       "id_petugas": 110,
@@ -4548,7 +4684,8 @@
       "nip": "0019059TJBT",
       "nama": "KRISNA DWI PAWENANG",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-06-24"
+      "tgl_lahir": "2000-06-24",
+      "id_umk": 26
     },
     {
       "id_petugas": 111,
@@ -4558,7 +4695,8 @@
       "nip": "9619051TJBT",
       "nama": "MUKHLIS NUR SUSILO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1996-02-27"
+      "tgl_lahir": "1996-02-27",
+      "id_umk": 26
     },
     {
       "id_petugas": 112,
@@ -4568,7 +4706,8 @@
       "nip": "9619052TJBT",
       "nama": "RIZKI LANGGENG WICAKSONO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1996-04-04"
+      "tgl_lahir": "1996-04-04",
+      "id_umk": 26
     },
     {
       "id_petugas": 113,
@@ -4578,7 +4717,8 @@
       "nip": "9822004TJBT",
       "nama": "IBNUN KRISNA AJI",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "1998-05-14"
+      "tgl_lahir": "1998-05-14",
+      "id_umk": 26
     },
     {
       "id_petugas": 114,
@@ -4588,7 +4728,8 @@
       "nip": "0120068TJBT",
       "nama": "ACHMAD RIFA'I",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-02-26"
+      "tgl_lahir": "2001-02-26",
+      "id_umk": 11
     },
     {
       "id_petugas": 115,
@@ -4598,7 +4739,8 @@
       "nip": "0426002TJBT",
       "nama": "DANNA ARYA ISTIANTORO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2004-07-23"
+      "tgl_lahir": "2004-07-23",
+      "id_umk": 11
     },
     {
       "id_petugas": 116,
@@ -4608,7 +4750,8 @@
       "nip": "0626006TJBT",
       "nama": "MUHAMMAD EVAN MAHARDIKA PUTRA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-10-30"
+      "tgl_lahir": "2006-10-30",
+      "id_umk": 11
     },
     {
       "id_petugas": 117,
@@ -4618,7 +4761,8 @@
       "nip": "9720065TJBT",
       "nama": "MAHARDIKA MUHAMAD RIDWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-08-17"
+      "tgl_lahir": "1997-08-17",
+      "id_umk": 11
     },
     {
       "id_petugas": 118,
@@ -4628,7 +4772,8 @@
       "nip": "0020069TJBT",
       "nama": "AGUS HANIF",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-08-18"
+      "tgl_lahir": "2000-08-18",
+      "id_umk": 7
     },
     {
       "id_petugas": 119,
@@ -4638,7 +4783,8 @@
       "nip": "0120072TJBT",
       "nama": "TEGAR ARYANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-12-19"
+      "tgl_lahir": "2001-12-19",
+      "id_umk": 7
     },
     {
       "id_petugas": 120,
@@ -4648,7 +4794,8 @@
       "nip": "0626004TJBT",
       "nama": "ADAM MUFLIF QOBUS",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-09-11"
+      "tgl_lahir": "2006-09-11",
+      "id_umk": 7
     },
     {
       "id_petugas": 121,
@@ -4658,7 +4805,8 @@
       "nip": "9620071TJBT",
       "nama": "HENDRI BAGUS AJI SAPUTRA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-11-28"
+      "tgl_lahir": "1996-11-28",
+      "id_umk": 7
     },
     {
       "id_petugas": 122,
@@ -4668,7 +4816,8 @@
       "nip": "0120070TJBT",
       "nama": "FAJAR RIZKI SETIAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-08-20"
+      "tgl_lahir": "2001-08-20",
+      "id_umk": 7
     },
     {
       "id_petugas": 123,
@@ -4678,7 +4827,8 @@
       "nip": "0226003TJBT",
       "nama": "MUHAMMAD HASAN MUSTAMID",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2002-02-22"
+      "tgl_lahir": "2002-02-22",
+      "id_umk": 7
     },
     {
       "id_petugas": 124,
@@ -4688,7 +4838,8 @@
       "nip": "0726004TJBT",
       "nama": "GILANG TRY PRASETYO",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2007-04-09"
+      "tgl_lahir": "2007-04-09",
+      "id_umk": 7
     },
     {
       "id_petugas": 125,
@@ -4698,7 +4849,8 @@
       "nip": "9720067TJBT",
       "nama": "WAHYU HIDAYATULLOH",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-02-07"
+      "tgl_lahir": "1997-02-07",
+      "id_umk": 7
     },
     {
       "id_petugas": 126,
@@ -4708,7 +4860,8 @@
       "nip": "0526003TJBT",
       "nama": "ALVIN RAMADHANI",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-10-16"
+      "tgl_lahir": "2005-10-16",
+      "id_umk": 2
     },
     {
       "id_petugas": 127,
@@ -4718,7 +4871,8 @@
       "nip": "9620073TJBT",
       "nama": "MUHAMMAD AZUM",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-05-12"
+      "tgl_lahir": "1996-05-12",
+      "id_umk": 2
     },
     {
       "id_petugas": 128,
@@ -4728,7 +4882,8 @@
       "nip": "9620076TJBT",
       "nama": "NANDI HERLAMBANG",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-06-05"
+      "tgl_lahir": "1996-06-05",
+      "id_umk": 2
     },
     {
       "id_petugas": 129,
@@ -4738,7 +4893,8 @@
       "nip": "0425520SBY",
       "nama": "FAISAL DESLA SAID GANDHI",
       "tgl_masuk": "2025-11-01",
-      "tgl_lahir": "2004-12-20"
+      "tgl_lahir": "2004-12-20",
+      "id_umk": 2
     },
     {
       "id_petugas": 130,
@@ -4748,7 +4904,8 @@
       "nip": "0626002TJBT",
       "nama": "RAFI CANDRA BASKARA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-11-02"
+      "tgl_lahir": "2006-11-02",
+      "id_umk": 2
     },
     {
       "id_petugas": 131,
@@ -4758,7 +4915,8 @@
       "nip": "9820075TJBT",
       "nama": "EKO PRASTIYO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-09-14"
+      "tgl_lahir": "1998-09-14",
+      "id_umk": 2
     },
     {
       "id_petugas": 132,
@@ -4768,7 +4926,8 @@
       "nip": "0426001TJBT",
       "nama": "DIMAS SAPUTRA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2004-06-26"
+      "tgl_lahir": "2004-06-26",
+      "id_umk": 15
     },
     {
       "id_petugas": 133,
@@ -4778,7 +4937,8 @@
       "nip": "0626007TJBT",
       "nama": "DANDY BINTANG RAMADHAN",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2006-10-05"
+      "tgl_lahir": "2006-10-05",
+      "id_umk": 15
     },
     {
       "id_petugas": 134,
@@ -4788,7 +4948,8 @@
       "nip": "9620079TJBT",
       "nama": "WAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-07-04"
+      "tgl_lahir": "1996-07-04",
+      "id_umk": 15
     },
     {
       "id_petugas": 135,
@@ -4798,7 +4959,8 @@
       "nip": "9720080TJBT",
       "nama": "SODIKUL ANWAR",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1997-06-06"
+      "tgl_lahir": "1997-06-06",
+      "id_umk": 15
     },
     {
       "id_petugas": 136,
@@ -4808,7 +4970,8 @@
       "nip": "0019045TJBT",
       "nama": "INDRA DWI PRASETYO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2000-05-18"
+      "tgl_lahir": "2000-05-18",
+      "id_umk": 24
     },
     {
       "id_petugas": 137,
@@ -4818,7 +4981,8 @@
       "nip": "0119032TJBT",
       "nama": "RIO HERDANA SETYOKO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2001-08-18"
+      "tgl_lahir": "2001-08-18",
+      "id_umk": 24
     },
     {
       "id_petugas": 138,
@@ -4828,7 +4992,8 @@
       "nip": "0119046TJBT",
       "nama": "ADITYA WAHYU WARDANA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "2001-10-02"
+      "tgl_lahir": "2001-10-02",
+      "id_umk": 24
     },
     {
       "id_petugas": 139,
@@ -4838,7 +5003,8 @@
       "nip": "9819031TJBT",
       "nama": "BAGUS PRIBADI",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-07-03"
+      "tgl_lahir": "1998-07-03",
+      "id_umk": 24
     },
     {
       "id_petugas": 140,
@@ -4848,7 +5014,8 @@
       "nip": "0526004TJBT",
       "nama": "MUH.ALIM RESKY QUINTA",
       "tgl_masuk": "2026-01-01",
-      "tgl_lahir": "2005-01-07"
+      "tgl_lahir": "2005-01-07",
+      "id_umk": 24
     },
     {
       "id_petugas": 141,
@@ -4858,7 +5025,8 @@
       "nip": "9919026TJBT",
       "nama": "IRHAS MASIR",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-05-14"
+      "tgl_lahir": "1999-05-14",
+      "id_umk": 24
     },
     {
       "id_petugas": 142,
@@ -4868,7 +5036,8 @@
       "nip": "9919027TJBT",
       "nama": "KHOLIQ ALFIAN NURULHAQ",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-07-06"
+      "tgl_lahir": "1999-07-06",
+      "id_umk": 24
     },
     {
       "id_petugas": 143,
@@ -4878,7 +5047,8 @@
       "nip": "9919028TJBT",
       "nama": "PUTRA SADEWA",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-01-24"
+      "tgl_lahir": "1999-01-24",
+      "id_umk": 24
     },
     {
       "id_petugas": 144,
@@ -4888,7 +5058,8 @@
       "nip": "0120052TJBT",
       "nama": "M. SHOCHIBUL MUSTAQIM",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-08-08"
+      "tgl_lahir": "2001-08-08",
+      "id_umk": 6
     },
     {
       "id_petugas": 145,
@@ -4898,7 +5069,8 @@
       "nip": "0120054TJBT",
       "nama": "YUAN BENI KUNCORO AJI",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2001-08-12"
+      "tgl_lahir": "2001-08-12",
+      "id_umk": 6
     },
     {
       "id_petugas": 146,
@@ -4908,7 +5080,8 @@
       "nip": "9320051TJBT",
       "nama": "AGUS CATUR WIBOWO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1993-07-28"
+      "tgl_lahir": "1993-07-28",
+      "id_umk": 6
     },
     {
       "id_petugas": 147,
@@ -4918,7 +5091,8 @@
       "nip": "9620053TJBT",
       "nama": "AGIL ARDIYANTO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-08-29"
+      "tgl_lahir": "1996-08-29",
+      "id_umk": 6
     },
     {
       "id_petugas": 148,
@@ -4928,7 +5102,8 @@
       "nip": "9822005TJBT",
       "nama": "DWI KURNIAWAN",
       "tgl_masuk": "2022-07-01",
-      "tgl_lahir": "1998-11-29"
+      "tgl_lahir": "1998-11-29",
+      "id_umk": 24
     },
     {
       "id_petugas": 149,
@@ -4938,7 +5113,8 @@
       "nip": "9920056TJBT",
       "nama": "WAHYU RINTO REGOWO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-06-03"
+      "tgl_lahir": "1999-06-03",
+      "id_umk": 24
     },
     {
       "id_petugas": 150,
@@ -4948,7 +5124,8 @@
       "nip": "9920057TJBT",
       "nama": "SONY AGIL PAMUNGKAS",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-04-14"
+      "tgl_lahir": "1999-04-14",
+      "id_umk": 24
     },
     {
       "id_petugas": 151,
@@ -4958,7 +5135,8 @@
       "nip": "9926001TJBT",
       "nama": "ANDY BAGUS MUHAMAD AJI",
       "tgl_masuk": "2026-02-01",
-      "tgl_lahir": "1999-03-23"
+      "tgl_lahir": "1999-03-23",
+      "id_umk": 24
     },
     {
       "id_petugas": 152,
@@ -4968,7 +5146,8 @@
       "nip": "9819029TJBT",
       "nama": "FAHMI ARDIANSYAH",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1998-02-21"
+      "tgl_lahir": "1998-02-21",
+      "id_umk": 24
     },
     {
       "id_petugas": 153,
@@ -4978,7 +5157,8 @@
       "nip": "9919030TJBT",
       "nama": "BEKTI PRASETYO",
       "tgl_masuk": "2019-10-07",
-      "tgl_lahir": "1999-06-21"
+      "tgl_lahir": "1999-06-21",
+      "id_umk": 24
     },
     {
       "id_petugas": 154,
@@ -4988,7 +5168,8 @@
       "nip": "9920064TJBT",
       "nama": "ALDIS FADILA",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1999-08-04"
+      "tgl_lahir": "1999-08-04",
+      "id_umk": 24
     },
     {
       "id_petugas": 155,
@@ -4998,7 +5179,8 @@
       "nip": "0020061TJBT",
       "nama": "ADY DARMAWAN",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "2000-04-11"
+      "tgl_lahir": "2000-04-11",
+      "id_umk": 24
     },
     {
       "id_petugas": 156,
@@ -5008,7 +5190,8 @@
       "nip": "9620059TJBT",
       "nama": "SUHARTONO",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1996-11-28"
+      "tgl_lahir": "1996-11-28",
+      "id_umk": 24
     },
     {
       "id_petugas": 157,
@@ -5018,7 +5201,8 @@
       "nip": "9726004TJBT",
       "nama": "SINGGIH NURCAHYANTO",
       "tgl_masuk": "2026-02-01",
-      "tgl_lahir": "1997-03-01"
+      "tgl_lahir": "1997-03-01",
+      "id_umk": 24
     },
     {
       "id_petugas": 158,
@@ -5028,7 +5212,8 @@
       "nip": "9820062TJBT",
       "nama": "BIMA CHOIRUL UMAM",
       "tgl_masuk": "2020-01-22",
-      "tgl_lahir": "1998-02-07"
+      "tgl_lahir": "1998-02-07",
+      "id_umk": 24
     }
   ],
   "m_user": [

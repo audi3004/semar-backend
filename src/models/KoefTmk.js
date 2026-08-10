@@ -14,8 +14,12 @@ const KoefTmk = sequelize.define(
         },
 
         masa_kerja: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                min: 0,
+            },
+            comment: "Batas minimum masa kerja dalam tahun penuh",
         },
 
         koef: {

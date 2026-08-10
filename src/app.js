@@ -34,15 +34,16 @@ app.use(
     })
 );
 
-app.use(
-    "/uploads",
-    express.static(
-        path.join(
-            process.cwd(),
-            "uploads"
-        )
-    )
-);
+const uploadsDirectory = path.join(process.cwd(), "uploads");
+const uploadsStatic = () => express.static(uploadsDirectory, {
+    setHeaders: (res) => {
+        // Development dapat berbeda origin; production biasanya melalui /api proxy.
+        res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+    },
+});
+app.use("/uploads", uploadsStatic());
+// Alias ini dibutuhkan ketika production reverse proxy hanya meneruskan /api/*.
+app.use("/api/uploads", uploadsStatic());
 // Routes
 app.use("/api", require("./routes"));
 

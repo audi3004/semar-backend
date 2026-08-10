@@ -6,9 +6,66 @@ const {
     Gaji,
     Umk,
     KoefTmk,
+    Petugas,
+    Unit,
 } = require("../../models");
 
 class GajiRepository {
+    async findSalaryInputs() {
+        const [petugas, coefficients] = await Promise.all([
+            Petugas.findAll({
+                include: [
+                    {
+                        model: Umk,
+                        as: "umk",
+                        attributes: [
+                            "id_umk",
+                            "jenis_wilayah",
+                            "nama_wilayah",
+                            "tahun_umk",
+                            "nominal_umk",
+                        ],
+                        required: false,
+                    },
+                    {
+                        model: Unit,
+                        as: "unit",
+                        attributes: ["id_unit", "nama_unit"],
+                        required: false,
+                    },
+                ],
+                order: [["nama", "ASC"]],
+            }),
+            KoefTmk.findAll({
+                where: { is_active: "Y" },
+                order: [["masa_kerja", "ASC"]],
+            }),
+        ]);
+
+        return { petugas, coefficients };
+    }
+
+    async findSalaryInputByEmployee(id_petugas, transaction = null) {
+        const [petugas, coefficients] = await Promise.all([
+            Petugas.findByPk(id_petugas, {
+                include: [{
+                    model: Umk,
+                    as: "umk",
+                    attributes: ["id_umk", "nominal_umk"],
+                    required: false,
+                }],
+                transaction,
+            }),
+            KoefTmk.findAll({
+                where: { is_active: "Y" },
+                order: [["masa_kerja", "DESC"]],
+                transaction,
+            }),
+        ]);
+
+        return { petugas, coefficients };
+    }
+
     getInclude() {
         const include = [
             {

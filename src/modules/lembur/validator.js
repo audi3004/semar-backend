@@ -471,6 +471,10 @@ const workflow = Joi.object({
     catatan_koreksi: nullableTextSchema("Catatan koreksi", 5000).optional(),
 }).unknown(false);
 
+const replacementQuery = Joi.object({
+    tanggal: Joi.date().iso().raw().required(),
+});
+
 module.exports = {
     params,
     petugasParams,
@@ -478,4 +482,5 @@ module.exports = {
     update,
     query,
     workflow,
+    replacementQuery,
 };

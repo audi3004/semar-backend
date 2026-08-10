@@ -31,9 +31,7 @@ class KoefTmkService {
             return value;
         }
 
-        return value
-            .trim()
-            .replace(/\s+/g, " ");
+        return Number(value);
     }
 
     normalizeStatus(value) {

@@ -30,6 +30,12 @@ const activeSchema =
                 "Status aktif hanya boleh Y atau N",
         });
 
+const scopeSchema = Joi.string()
+    .trim()
+    .uppercase()
+    .valid("SELF", "SELF_AND_DESCENDANTS")
+    .messages({ "any.only": "Cakupan unit tidak valid" });
+
 const params = Joi.object({
     id: idSchema(
         "ID unit role"
@@ -69,6 +75,8 @@ const create = Joi.object({
                 "ID role wajib diisi",
         }),
 
+    scope_type: scopeSchema.default("SELF"),
+
     is_active:
         activeSchema
             .default("Y"),
@@ -105,6 +113,8 @@ const bulkCreate = Joi.object({
                             "ID role wajib diisi",
                     }),
 
+                scope_type: scopeSchema.default("SELF"),
+
                 is_active:
                     activeSchema
                         .default("Y"),
@@ -140,6 +150,8 @@ const update = Joi.object({
     id_role: idSchema(
         "ID role"
     ).optional(),
+
+    scope_type: scopeSchema.optional(),
 
     is_active:
         activeSchema.optional(),

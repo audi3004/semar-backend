@@ -20,6 +20,16 @@ const params = Joi.object({
         }),
 });
 
+const salaryQuery = Joi.object({
+    as_of_date: Joi.date()
+        .iso()
+        .raw()
+        .optional()
+        .messages({
+            "date.format": "Tanggal perhitungan harus berformat YYYY-MM-DD",
+        }),
+});
+
 const create = Joi.object({
     id_umk: Joi.number()
         .integer()
@@ -131,6 +141,7 @@ const query = Joi.object({
 
 module.exports = {
     params,
+    salaryQuery,
     create,
     update,
     query,

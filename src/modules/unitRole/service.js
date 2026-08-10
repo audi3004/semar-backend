@@ -338,6 +338,9 @@ class UnitRoleService {
                     id_role:
                         data.id_role,
 
+                    scope_type:
+                        this.normalizeCode(data.scope_type || "SELF"),
+
                     is_active:
                         this.normalizeCode(
                             data.is_active ||
@@ -439,6 +442,9 @@ class UnitRoleService {
                         id_role:
                             assignment
                                 .id_role,
+
+                        scope_type:
+                            this.normalizeCode(assignment.scope_type || "SELF"),
 
                         is_active:
                             this.normalizeCode(
@@ -544,6 +550,11 @@ class UnitRoleService {
 
                     id_role:
                         idRole,
+
+                    scope_type:
+                        data.scope_type !== undefined
+                            ? this.normalizeCode(data.scope_type)
+                            : current.scope_type,
 
                     is_active:
                         data.is_active !==

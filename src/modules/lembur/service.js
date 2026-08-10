@@ -14,6 +14,10 @@ const logLemburService = require(
     "../logLembur/service"
 );
 
+const gajiService = require(
+    "../gaji/service"
+);
+
 const {
     sequelize,
 } = require("../../models");
@@ -25,6 +29,53 @@ const getWorkflowScope = require("../../utils/workflowScope");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
 
 class LemburService {
+    async findReplacementCandidates(tanggal) {
+        return await lemburRepository.findReplacementCandidates(
+            this.normalizeDate(tanggal)
+        );
+    }
+
+    async validateReplacementCandidate(idPetugas, tanggal) {
+        const candidates = await this.findReplacementCandidates(tanggal);
+        if (!candidates.some((item) => Number(item.id_petugas) === Number(idPetugas))) {
+            throw new AppError(
+                "Petugas yang digantikan tidak memiliki pengajuan cuti, ijin, atau sakit aktif pada tanggal lembur",
+                422
+            );
+        }
+    }
+
+    async validateHoliday(tanggal) {
+        const holiday = await lemburRepository.findHolidayByDate(tanggal);
+        if (!holiday) {
+            throw new AppError(
+                `Tanggal ${tanggal} tidak terdaftar sebagai hari libur aktif pada Master Hari Libur`,
+                422
+            );
+        }
+        return holiday;
+    }
+
+    isHolidayOvertime(jenisPekerjaan) {
+        return this.normalizeText(jenisPekerjaan) === "Siaga / Libur Nasional";
+    }
+
+    isLeaveReplacement(jenisPekerjaan) {
+        return this.normalizeText(jenisPekerjaan) === "Pengganti Piket (Operator sedang cuti)";
+    }
+
+    calculateOvertimeCost(hourlyRate, hours) {
+        return Number((Number(hourlyRate) * Number(hours)).toFixed(2));
+    }
+
+    getStoredHourlyRate(lembur) {
+        const effectiveHours = Number(
+            lembur.jumlah_jam_koreksi ?? lembur.total_jam
+        );
+        if (effectiveHours <= 0) return 0;
+        return Number(lembur.biaya_lembur || 0) / effectiveHours;
+    }
+
     getSignatureField(user) {
         const code = String(user?.kode_role || user?.role?.kode_role || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
         const mapping = {
@@ -588,10 +639,41 @@ class LemburService {
             data.id_petugas
         );
 
+        const totalJam = this.calculateTotalHours(
+            jamMulai,
+            jamSelesai
+        );
+        const salary = await gajiService.calculateEmployeeSalary(
+            data.id_petugas,
+            tglLembur
+        );
+        const biayaLembur = this.calculateOvertimeCost(
+            salary.tarif_lembur_per_jam,
+            data.jumlah_jam_koreksi ?? totalJam
+        );
+
+        if (this.isLeaveReplacement(data.jenis_pekerjaan) && !data.id_petugas_cuti) {
+            throw new AppError(
+                "Petugas yang digantikan wajib dipilih untuk lembur pengganti piket",
+                422
+            );
+        }
+
         if (data.id_petugas_cuti) {
             await this.checkPetugas(
                 data.id_petugas_cuti
             );
+            await this.validateReplacementCandidate(
+                data.id_petugas_cuti,
+                tglLembur
+            );
+        }
+
+        const isHariLibur = this.isHolidayOvertime(data.jenis_pekerjaan)
+            ? "Y"
+            : (data.is_hari_libur === "Y" ? "Y" : "N");
+        if (isHariLibur === "Y") {
+            await this.validateHoliday(tglLembur);
         }
 
         await this.ensureNoOverlap(
@@ -645,10 +727,10 @@ class LemburService {
                         jamSelesai,
 
                     total_jam:
-                        this.calculateTotalHours(
-                            jamMulai,
-                            jamSelesai
-                        ),
+                        totalJam,
+
+                    biaya_lembur:
+                        biayaLembur,
 
                     kategori_lembur:
                         this.normalizeText(
@@ -657,7 +739,7 @@ class LemburService {
 
                     jenis_pekerjaan: this.normalizeNullableText(data.jenis_pekerjaan),
                     area_group: this.normalizeNullableText(data.area_group),
-                    is_hari_libur: data.is_hari_libur === "Y" ? "Y" : "N",
+                    is_hari_libur: isHariLibur,
 
                     detail_pekerjaan_lembur:
                         this.normalizeNullableText(
@@ -750,6 +832,10 @@ class LemburService {
                 : currentLembur
                     .id_petugas_cuti;
 
+        const jenisPekerjaan = data.jenis_pekerjaan !== undefined
+            ? this.normalizeNullableText(data.jenis_pekerjaan)
+            : currentLembur.jenis_pekerjaan;
+
         const tglLembur =
             this.normalizeDate(
                 data.tgl_lembur ??
@@ -795,12 +881,57 @@ class LemburService {
             );
         }
 
+        if (this.isLeaveReplacement(jenisPekerjaan) && idPetugasCuti === null) {
+            throw new AppError(
+                "Petugas yang digantikan wajib dipilih untuk lembur pengganti piket",
+                422
+            );
+        }
+
+        if (idPetugasCuti !== null) {
+            await this.validateReplacementCandidate(
+                idPetugasCuti,
+                tglLembur
+            );
+        }
+
+        const isHariLibur = this.isHolidayOvertime(jenisPekerjaan)
+            ? "Y"
+            : (data.is_hari_libur !== undefined
+                ? data.is_hari_libur
+                : currentLembur.is_hari_libur);
+        if (isHariLibur === "Y") {
+            await this.validateHoliday(tglLembur);
+        }
+
         await this.ensureNoOverlap(
             idPetugas,
             tglLembur,
             jamMulai,
             jamSelesai,
             id_lembur
+        );
+
+        const totalJam = this.calculateTotalHours(
+            jamMulai,
+            jamSelesai
+        );
+        const jumlahJamKoreksi = data.jumlah_jam_koreksi !== undefined
+            ? data.jumlah_jam_koreksi
+            : currentLembur.jumlah_jam_koreksi;
+        let hourlyRate = data.jumlah_jam_koreksi !== undefined
+            ? this.getStoredHourlyRate(currentLembur)
+            : 0;
+        if (hourlyRate <= 0) {
+            const salary = await gajiService.calculateEmployeeSalary(
+                idPetugas,
+                tglLembur
+            );
+            hourlyRate = salary.tarif_lembur_per_jam;
+        }
+        const biayaLembur = this.calculateOvertimeCost(
+            hourlyRate,
+            jumlahJamKoreksi ?? totalJam
         );
 
         await sequelize.transaction(
@@ -829,10 +960,10 @@ class LemburService {
                         jamSelesai,
 
                     total_jam:
-                        this.calculateTotalHours(
-                            jamMulai,
-                            jamSelesai
-                        ),
+                        totalJam,
+
+                    biaya_lembur:
+                        biayaLembur,
 
                     kategori_lembur:
                         data.kategori_lembur !==
@@ -843,15 +974,11 @@ class LemburService {
                             : currentLembur
                                 .kategori_lembur,
 
-                    jenis_pekerjaan: data.jenis_pekerjaan !== undefined
-                        ? this.normalizeNullableText(data.jenis_pekerjaan)
-                        : currentLembur.jenis_pekerjaan,
+                    jenis_pekerjaan: jenisPekerjaan,
                     area_group: data.area_group !== undefined
                         ? this.normalizeNullableText(data.area_group)
                         : currentLembur.area_group,
-                    is_hari_libur: data.is_hari_libur !== undefined
-                        ? data.is_hari_libur
-                        : currentLembur.is_hari_libur,
+                    is_hari_libur: isHariLibur,
 
                     detail_pekerjaan_lembur:
                         data.detail_pekerjaan_lembur !==
@@ -883,7 +1010,7 @@ class LemburService {
                     approval_1_signature: data.approval_1_signature ?? currentLembur.approval_1_signature,
                     approval_2_signature: data.approval_2_signature ?? currentLembur.approval_2_signature,
                     approval_3_signature: data.approval_3_signature ?? currentLembur.approval_3_signature,
-                    jumlah_jam_koreksi: data.jumlah_jam_koreksi !== undefined ? data.jumlah_jam_koreksi : currentLembur.jumlah_jam_koreksi,
+                    jumlah_jam_koreksi: jumlahJamKoreksi,
                     catatan_koreksi: data.catatan_koreksi !== undefined ? this.normalizeNullableText(data.catatan_koreksi) : currentLembur.catatan_koreksi,
                     nomor_dokumen: data.nomor_dokumen !== undefined ? this.normalizeNullableText(data.nomor_dokumen) : currentLembur.nomor_dokumen,
 
@@ -980,7 +1107,21 @@ class LemburService {
         const signatureField = this.getSignatureField(user);
         const workflowUpdate = {};
         if (signatureField && workflowData[signatureField]) workflowUpdate[signatureField] = workflowData[signatureField];
-        if (workflowData.jumlah_jam_koreksi !== undefined) workflowUpdate.jumlah_jam_koreksi = workflowData.jumlah_jam_koreksi;
+        if (workflowData.jumlah_jam_koreksi !== undefined) {
+            let hourlyRate = this.getStoredHourlyRate(lembur);
+            if (hourlyRate <= 0) {
+                const salary = await gajiService.calculateEmployeeSalary(
+                    lembur.id_petugas,
+                    lembur.tgl_lembur
+                );
+                hourlyRate = salary.tarif_lembur_per_jam;
+            }
+            workflowUpdate.jumlah_jam_koreksi = workflowData.jumlah_jam_koreksi;
+            workflowUpdate.biaya_lembur = this.calculateOvertimeCost(
+                hourlyRate,
+                workflowData.jumlah_jam_koreksi
+            );
+        }
         if (workflowData.catatan_koreksi !== undefined) workflowUpdate.catatan_koreksi = this.normalizeNullableText(workflowData.catatan_koreksi);
         if (Object.keys(workflowUpdate).length) {
             await lemburRepository.update(id_lembur, workflowUpdate, user?.id_user ?? null);
