@@ -38,7 +38,7 @@ module.exports = multer({
         }
         callback(null, true);
     },
-    limits: { fileSize: 5 * 1024 * 1024, files: 6 },
+    limits: { fileSize: 1 * 1024 * 1024, files: 6 },
 }).fields(Object.keys(signatureFolders).map((name) => ({ name, maxCount: 1 })));
 
 module.exports.getRelativeDirectory = getRelativeDirectory;

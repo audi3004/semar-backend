@@ -25,6 +25,7 @@ const userInclude = [
             "nama",
             "id_jabatan",
             "id_unit",
+            "tgl_lahir",
         ],
         required: false,
         include: [
@@ -57,6 +58,7 @@ const userInclude = [
             "nama",
             "id_jabatan",
             "id_unit",
+            "tgl_lahir",
         ],
         required: false,
         include: [

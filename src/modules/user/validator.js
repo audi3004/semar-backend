@@ -184,7 +184,7 @@ const update = Joi.object({
 const changePassword = Joi.object({
     old_password: Joi.string()
         .min(8)
-        .optional()
+        .required()
         .messages({
             "string.min":
                 "Password lama minimal 8 karakter",
@@ -221,8 +221,28 @@ const changePassword = Joi.object({
         }),
 });
 
+const resetPassword = Joi.object({
+    new_password: Joi.string()
+        .min(8)
+        .max(100)
+        .required()
+        .messages({
+            "string.min": "Password reset minimal 8 karakter",
+            "string.max": "Password reset maksimal 100 karakter",
+            "any.required": "Password reset wajib diisi",
+        }),
+    confirm_password: Joi.string()
+        .valid(Joi.ref("new_password"))
+        .required()
+        .messages({
+            "any.only": "Konfirmasi password tidak sama",
+            "any.required": "Konfirmasi password wajib diisi",
+        }),
+});
+
 module.exports = {
     create,
     update,
     changePassword,
+    resetPassword,
 };

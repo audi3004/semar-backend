@@ -44,7 +44,7 @@ module.exports = multer({
         }
         callback(null, true);
     },
-    limits: { fileSize: 5 * 1024 * 1024, files: 7 },
+    limits: { fileSize: 1 * 1024 * 1024, files: 7 },
 }).fields([
     { name: "foto", maxCount: 1 },
     ...Object.keys(signatureFolders).map((name) => ({ name, maxCount: 1 })),

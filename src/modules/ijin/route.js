@@ -18,6 +18,7 @@ const validate = require(
 );
 const actionSchema = require("../../utils/workflowActionSchemas");
 const uploadIjin = require("../../middlewares/uploadIjin");
+const compressUploads = require("../../middlewares/compressUploads");
 const handleUploadError = require("../../middlewares/handleUploadError");
 const mapIjinFiles = require("../../middlewares/mapIjinFiles");
 
@@ -56,6 +57,7 @@ router.get(
 router.post(
     "/",
     handleUploadError(uploadIjin),
+    compressUploads,
     mapIjinFiles,
     validate(
         schema.create
@@ -70,6 +72,7 @@ router.put(
         "params"
     ),
     handleUploadError(uploadIjin),
+    compressUploads,
     mapIjinFiles,
     validate(
         schema.update
@@ -84,6 +87,7 @@ router.patch(
         "params"
     ),
     handleUploadError(uploadIjin),
+    compressUploads,
     mapIjinFiles,
     validate(schema.workflow),
     controller.next

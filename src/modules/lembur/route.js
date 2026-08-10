@@ -28,6 +28,7 @@ const handleUploadError = require(
 const mapLemburFiles = require(
     "../../middlewares/mapLemburFiles"
 );
+const compressUploads = require("../../middlewares/compressUploads");
 const actionSchema = require("../../utils/workflowActionSchemas");
 
 router.get(
@@ -71,6 +72,7 @@ router.get(
 router.post(
     "/",
     handleUploadError(uploadLembur),
+    compressUploads,
     mapLemburFiles(true),
     validate(
         schema.create
@@ -85,6 +87,7 @@ router.put(
         "params"
     ),
     handleUploadError(uploadLembur),
+    compressUploads,
     mapLemburFiles(false),
     validate(
         schema.update
@@ -99,6 +102,7 @@ router.patch(
         "params"
     ),
     handleUploadError(uploadLembur),
+    compressUploads,
     mapLemburFiles(false),
     validate(schema.workflow),
     controller.next

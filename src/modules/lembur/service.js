@@ -26,6 +26,7 @@ const AppError = require(
     "../../utils/appError"
 );
 const getWorkflowScope = require("../../utils/workflowScope");
+const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
 
 class LemburService {
@@ -93,9 +94,8 @@ class LemburService {
         return mapping[code] || null;
     }
 
-    generateDocumentNumber(tglLembur, idPetugas) {
-        const date = String(tglLembur || new Date().toISOString().slice(0, 10)).replace(/-/g, "");
-        return `LMB/${date}/${idPetugas}/${Date.now().toString(36).toUpperCase()}`;
+    async generateDocumentNumber(tglLembur, idPetugas) {
+        return generateDocumentNumber("LMB", tglLembur, idPetugas);
     }
     getSnapshot(lembur) {
         if (!lembur) {
@@ -697,6 +697,7 @@ class LemburService {
             );
         }
 
+        const nomorDokumen = await this.generateDocumentNumber(tglLembur, data.id_petugas);
         const idLembur =
             await sequelize.transaction(
                 async (
@@ -763,7 +764,7 @@ class LemburService {
                     approval_3_signature: data.approval_3_signature ?? null,
                     jumlah_jam_koreksi: data.jumlah_jam_koreksi ?? null,
                     catatan_koreksi: this.normalizeNullableText(data.catatan_koreksi),
-                    nomor_dokumen: this.normalizeNullableText(data.nomor_dokumen) || this.generateDocumentNumber(tglLembur, data.id_petugas),
+                    nomor_dokumen: nomorDokumen,
 
                     keterangan:
                         this.normalizeNullableText(
@@ -1012,7 +1013,7 @@ class LemburService {
                     approval_3_signature: data.approval_3_signature ?? currentLembur.approval_3_signature,
                     jumlah_jam_koreksi: jumlahJamKoreksi,
                     catatan_koreksi: data.catatan_koreksi !== undefined ? this.normalizeNullableText(data.catatan_koreksi) : currentLembur.catatan_koreksi,
-                    nomor_dokumen: data.nomor_dokumen !== undefined ? this.normalizeNullableText(data.nomor_dokumen) : currentLembur.nomor_dokumen,
+                    nomor_dokumen: currentLembur.nomor_dokumen,
 
                     keterangan:
                         data.keterangan !==

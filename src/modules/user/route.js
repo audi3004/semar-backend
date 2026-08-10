@@ -47,6 +47,12 @@ router.patch(
 );
 
 router.patch(
+    "/:id/reset-password",
+    validate(schema.resetPassword),
+    controller.resetPassword
+);
+
+router.patch(
     "/:id/activate",
     controller.activate
 );

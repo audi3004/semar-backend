@@ -22,6 +22,7 @@ const AppError = require(
     "../../utils/appError"
 );
 const getWorkflowScope = require("../../utils/workflowScope");
+const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
 
 class SppdService {
@@ -444,44 +445,8 @@ class SppdService {
         }
     }
 
-    async generateSppdNumber() {
-        const year =
-            new Date().getFullYear();
-
-        const lastSppd =
-            await sppdRepository
-                .findLastNumberByYear(
-                    year
-                );
-
-        let nextNumber = 1;
-
-        if (
-            lastSppd?.no_sppd
-        ) {
-            const match =
-                lastSppd.no_sppd.match(
-                    /^SPPD\/(\d+)\/\d{4}$/
-                );
-
-            if (match) {
-                nextNumber =
-                    Number(
-                        match[1]
-                    ) + 1;
-            }
-        }
-
-        return (
-            `SPPD/` +
-            `${String(
-                nextNumber
-            ).padStart(
-                5,
-                "0"
-            )}/` +
-            `${year}`
-        );
+    async generateSppdNumber(tglBerangkat, idPetugas) {
+        return generateDocumentNumber("SPPD", tglBerangkat, idPetugas);
     }
 
     async findAll(
@@ -615,16 +580,8 @@ class SppdService {
             );
         }
 
-        let noSppd =
-            this.normalizeText(
-                data.no_sppd
-            );
-
-        if (!noSppd) {
-            noSppd =
-                await this
-                    .generateSppdNumber();
-        }
+        const noSppd = this.normalizeText(data.no_sppd);
+        const nomorDokumen = await this.generateSppdNumber(tglBerangkat, data.id_petugas);
 
         await this
             .ensureNumberAvailable(
@@ -650,8 +607,7 @@ class SppdService {
                     no_sppd:
                         noSppd,
 
-                    nomor_dokumen:
-                        this.normalizeText(data.nomor_dokumen) || null,
+                    nomor_dokumen: nomorDokumen,
 
                     kota_asal:
                         this.normalizeText(data.kota_asal),
@@ -809,12 +765,7 @@ class SppdService {
                 id_sppd
             );
 
-        const noSppd =
-            this.normalizeText(
-                data.no_sppd ??
-                currentSppd
-                    .no_sppd
-            );
+        const noSppd = this.normalizeText(data.no_sppd ?? currentSppd.no_sppd);
 
         await this
             .ensureNumberAvailable(
@@ -838,10 +789,7 @@ class SppdService {
                     no_sppd:
                         noSppd,
 
-                    nomor_dokumen:
-                        data.nomor_dokumen !== undefined
-                            ? this.normalizeText(data.nomor_dokumen) || null
-                            : currentSppd.nomor_dokumen,
+                    nomor_dokumen: currentSppd.nomor_dokumen,
 
                     kota_asal:
                         this.normalizeText(

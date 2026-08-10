@@ -52,7 +52,7 @@ const fileFilter = (req, file, callback) => {
 module.exports = multer({
     storage,
     fileFilter,
-    limits: { fileSize: 5 * 1024 * 1024, files: 9 },
+    limits: { fileSize: 1 * 1024 * 1024, files: 9 },
 }).fields([
     { name: "foto_kegiatan_1", maxCount: 1 },
     { name: "foto_kegiatan_2", maxCount: 1 },

@@ -22,6 +22,7 @@ const AppError = require(
     "../../utils/appError"
 );
 const getWorkflowScope = require("../../utils/workflowScope");
+const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
 
 class SakitService {
@@ -41,9 +42,8 @@ class SakitService {
         }[code] || null;
     }
 
-    generateDocumentNumber(tanggal, idPetugas) {
-        const date = String(tanggal).replace(/-/g, "");
-        return `SAKIT/${date}/${idPetugas}/${Date.now().toString(36).toUpperCase()}`;
+    async generateDocumentNumber(tanggal, idPetugas) {
+        return generateDocumentNumber("SAKIT", tanggal, idPetugas);
     }
 
     getSnapshot(sakit) {
@@ -546,7 +546,7 @@ class SakitService {
             );
         }
 
-        const nomorDokumen = this.normalizeText(data.nomor_dokumen) || this.generateDocumentNumber(tanggal, data.id_petugas);
+        const nomorDokumen = await this.generateDocumentNumber(tanggal, data.id_petugas);
 
         const idSakit =
             await sequelize.transaction(
@@ -700,10 +700,7 @@ class SakitService {
                     id_petugas:
                         idPetugas,
 
-                    nomor_dokumen:
-                        data.nomor_dokumen !== undefined
-                            ? this.normalizeText(data.nomor_dokumen)
-                            : currentSakit.nomor_dokumen,
+                    nomor_dokumen: currentSakit.nomor_dokumen,
 
                     agenda:
                         data.agenda !==

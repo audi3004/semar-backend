@@ -51,6 +51,11 @@ const ADMIN_PASSWORD =
 const DEFAULT_PEGAWAI_JOIN_DATE =
     "2026-08-01";
 
+const birthDatePassword = (dateValue) => {
+    const [year, month, day] = String(dateValue || "").slice(0, 10).split("-");
+    return year && month && day ? `${day}${month}${year}` : null;
+};
+
 // Koreksi mapping legacy: jabatan 5 (Assistant Manager) pada data pegawai
 // seharusnya menggunakan jabatan 6 (Team Leader).
 const mapSeedJabatanId = (idJabatan) =>
@@ -280,6 +285,9 @@ async function seedSystem(
                         ]
                     )
                 );
+            const petugasDataMap = new Map(
+                data.m_petugas.map((row) => [row.id_petugas, row])
+            );
             const usernameBaseCounts =
                 new Map();
 
@@ -573,6 +581,12 @@ async function seedSystem(
                         ),
                         duplicateUsernameBases
                     );
+                const initialPassword = row.id_petugas !== null
+                    ? birthDatePassword(petugasDataMap.get(row.id_petugas)?.tgl_lahir)
+                    : null;
+                const password = initialPassword
+                    ? await bcrypt.hash(initialPassword, 12)
+                    : row.password;
 
                 userMap[row.id_user] =
                     await upsertOne(
@@ -600,8 +614,7 @@ async function seedSystem(
                             id_role:
                                 role.id_role,
                             username,
-                            password:
-                                row.password,
+                            password,
                             email:
                                 row.email ?? null,
                             is_active: "Y",

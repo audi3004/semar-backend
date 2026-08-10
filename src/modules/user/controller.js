@@ -135,7 +135,7 @@ class UserController {
             await userService.changePassword(
                 req.params.id,
                 req.body,
-                req.user?.id_user || null
+                req.user
             );
 
             return response.success(
@@ -149,6 +149,15 @@ class UserController {
                 err.message,
                 err.statusCode || 500
             );
+        }
+    }
+
+    async resetPassword(req, res) {
+        try {
+            await userService.resetPassword(req.params.id, req.body, req.user);
+            return response.success(res, null, "Password user berhasil direset");
+        } catch (err) {
+            return response.error(res, err.message, err.statusCode || 500);
         }
     }
 

@@ -20,6 +20,7 @@ const actionSchema = require("../../utils/workflowActionSchemas");
 const uploadSakit = require("../../middlewares/uploadSakit");
 const handleUploadError = require("../../middlewares/handleUploadError");
 const mapSakitFiles = require("../../middlewares/mapSakitFiles");
+const compressUploads = require("../../middlewares/compressUploads");
 
 router.get(
     "/",
@@ -56,6 +57,7 @@ router.get(
 router.post(
     "/",
     handleUploadError(uploadSakit),
+    compressUploads,
     mapSakitFiles,
     validate(
         schema.create
@@ -70,6 +72,7 @@ router.put(
         "params"
     ),
     handleUploadError(uploadSakit),
+    compressUploads,
     mapSakitFiles,
     validate(
         schema.update
@@ -84,6 +87,7 @@ router.patch(
         "params"
     ),
     handleUploadError(uploadSakit),
+    compressUploads,
     mapSakitFiles,
     validate(schema.workflow),
     controller.next

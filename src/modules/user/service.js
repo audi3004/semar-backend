@@ -355,8 +355,11 @@ class UserService {
     async changePassword(
         id_user,
         data,
-        updated_by
+        requester
     ) {
+        if (Number(id_user) !== Number(requester?.id_user)) {
+            throw new AppError("User hanya dapat mengubah password akunnya sendiri", 403);
+        }
         const currentUser =
             await userRepository
                 .findByIdWithPassword(id_user);
@@ -368,19 +371,9 @@ class UserService {
             );
         }
 
-        if (data.old_password) {
-            const passwordValid =
-                await bcrypt.compare(
-                    data.old_password,
-                    currentUser.password
-                );
-
-            if (!passwordValid) {
-                throw new AppError(
-                    "Password lama tidak sesuai",
-                    400
-                );
-            }
+        const passwordValid = await bcrypt.compare(data.old_password, currentUser.password);
+        if (!passwordValid) {
+            throw new AppError("Password lama tidak sesuai", 400);
         }
 
         const samePassword =
@@ -404,9 +397,21 @@ class UserService {
         await userRepository.updatePassword(
             id_user,
             hashedPassword,
-            updated_by
+            requester.id_user
         );
 
+        return true;
+    }
+
+    async resetPassword(id_user, data, requester) {
+        const roleCode = String(requester?.kode_role || "").toUpperCase();
+        const isAdministrator = requester?.is_super_admin === "Y" || ["ADMIN", "SUPER_ADMIN"].includes(roleCode);
+        if (!isAdministrator) {
+            throw new AppError("Hanya Administrator atau Super Admin yang dapat mereset password user", 403);
+        }
+        await this.checkUser(id_user);
+        const hashedPassword = await this.hashPassword(data.new_password);
+        await userRepository.updatePassword(id_user, hashedPassword, requester.id_user);
         return true;
     }
 

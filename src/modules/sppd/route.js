@@ -18,6 +18,7 @@ const validate = require(
 );
 const actionSchema = require("../../utils/workflowActionSchemas");
 const uploadSppd = require("../../middlewares/uploadSppd");
+const compressUploads = require("../../middlewares/compressUploads");
 const handleUploadError = require("../../middlewares/handleUploadError");
 const mapSppdFiles = require("../../middlewares/mapSppdFiles");
 
@@ -56,6 +57,7 @@ router.get(
 router.post(
     "/",
     handleUploadError(uploadSppd),
+    compressUploads,
     mapSppdFiles,
     validate(
         schema.create
@@ -70,6 +72,7 @@ router.put(
         "params"
     ),
     handleUploadError(uploadSppd),
+    compressUploads,
     mapSppdFiles,
     validate(
         schema.update
@@ -84,6 +87,7 @@ router.patch(
         "params"
     ),
     handleUploadError(uploadSppd),
+    compressUploads,
     mapSppdFiles,
     validate(schema.workflow),
     controller.next

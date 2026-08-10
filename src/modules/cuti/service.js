@@ -22,6 +22,7 @@ const AppError = require(
     "../../utils/appError"
 );
 const getWorkflowScope = require("../../utils/workflowScope");
+const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
 
 class CutiService {
@@ -516,48 +517,8 @@ class CutiService {
         return status;
     }
 
-    async generateCutiNumber(
-        tgl_pengajuan
-    ) {
-        const year =
-            new Date(
-                `${tgl_pengajuan}T00:00:00`
-            ).getFullYear();
-
-        const lastCuti =
-            await cutiRepository
-                .findLastNumberByYear(
-                    year
-                );
-
-        let nextNumber = 1;
-
-        if (
-            lastCuti?.no_cuti
-        ) {
-            const match =
-                lastCuti.no_cuti.match(
-                    /^CUTI\/(\d+)\/\d{4}$/
-                );
-
-            if (match) {
-                nextNumber =
-                    Number(
-                        match[1]
-                    ) + 1;
-            }
-        }
-
-        return (
-            `CUTI/` +
-            `${String(
-                nextNumber
-            ).padStart(
-                5,
-                "0"
-            )}/` +
-            `${year}`
-        );
+    async generateCutiNumber(tglPengajuan, idPetugas) {
+        return generateDocumentNumber("CUTI", tglPengajuan, idPetugas);
     }
 
     async findAll(
@@ -718,18 +679,7 @@ class CutiService {
             );
         }
 
-        let noCuti =
-            this.normalizeText(
-                data.no_cuti
-            );
-
-        if (!noCuti) {
-            noCuti =
-                await this
-                    .generateCutiNumber(
-                        tglPengajuan
-                    );
-        }
+        const noCuti = await this.generateCutiNumber(tglPengajuan, data.id_petugas);
 
         await this
             .ensureNumberAvailable(
@@ -902,13 +852,7 @@ class CutiService {
             id_cuti
         );
 
-        const noCuti =
-            data.no_cuti !==
-                undefined
-                ? this.normalizeText(
-                    data.no_cuti
-                )
-                : currentCuti.no_cuti;
+        const noCuti = currentCuti.no_cuti;
 
         await this
             .ensureNumberAvailable(

@@ -107,6 +107,7 @@ const logSppdRoute = require(
     "../modules/logSppd/route"
 );
 const dashboardRoute = require("../modules/dashboard/route");
+const reportRoute = require("../modules/report/route");
 
 
 
@@ -119,6 +120,7 @@ router.use("/auth", authRoute);
 router.use(authenticate);
 
 router.use("/dashboard", dashboardRoute);
+router.use("/reports", reportRoute);
 
 router.use("/roles", roleRoute);
 router.use("/projects", projectRoute);
