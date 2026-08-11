@@ -19,6 +19,9 @@ router.get(
     controller.findAll
 );
 
+router.post("/rollover/preview", validate(validator.rollover), controller.rolloverPreview);
+router.post("/rollover/execute", validate(validator.rollover), controller.executeRollover);
+
 
 router.get(
     "/:id",

@@ -8,11 +8,13 @@ const {
     KoefTmk,
     Petugas,
     Unit,
+    PetugasUmkHistory,
+    ParameterUpahTahunan,
 } = require("../../models");
 
 class GajiRepository {
     async findSalaryInputs() {
-        const [petugas, coefficients] = await Promise.all([
+        const [petugas, coefficients, parameters] = await Promise.all([
             Petugas.findAll({
                 include: [
                     {
@@ -33,6 +35,12 @@ class GajiRepository {
                         attributes: ["id_unit", "nama_unit"],
                         required: false,
                     },
+                    {
+                        model: PetugasUmkHistory,
+                        as: "riwayatUmk",
+                        required: false,
+                        include: [{ model: Umk, as: "umk", required: true }],
+                    },
                 ],
                 order: [["nama", "ASC"]],
             }),
@@ -40,19 +48,21 @@ class GajiRepository {
                 where: { is_active: "Y" },
                 order: [["masa_kerja", "ASC"]],
             }),
+            ParameterUpahTahunan.findAll({
+                where: { status: "PUBLISHED" },
+                order: [["tahun", "DESC"]],
+            }),
         ]);
 
-        return { petugas, coefficients };
+        return { petugas, coefficients, parameters };
     }
 
     async findSalaryInputByEmployee(id_petugas, transaction = null) {
-        const [petugas, coefficients] = await Promise.all([
+        const [petugas, coefficients, parameters] = await Promise.all([
             Petugas.findByPk(id_petugas, {
-                include: [{
-                    model: Umk,
-                    as: "umk",
-                    attributes: ["id_umk", "nominal_umk"],
-                    required: false,
+                include: [{ model: Umk, as: "umk", required: false }, {
+                    model: PetugasUmkHistory, as: "riwayatUmk", required: false,
+                    include: [{ model: Umk, as: "umk", required: true }],
                 }],
                 transaction,
             }),
@@ -61,9 +71,10 @@ class GajiRepository {
                 order: [["masa_kerja", "DESC"]],
                 transaction,
             }),
+            ParameterUpahTahunan.findAll({ where: { status: "PUBLISHED" }, transaction }),
         ]);
 
-        return { petugas, coefficients };
+        return { petugas, coefficients, parameters };
     }
 
     getInclude() {

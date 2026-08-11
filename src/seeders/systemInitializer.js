@@ -27,6 +27,17 @@ const data = require(
     "./data/initialMasterData.json"
 );
 
+// Approval 2 PLN ES menggunakan scope hierarchy agar assignment UPT otomatis
+// mencakup seluruh ULTG dan GI di bawahnya tanpa menyimpan puluhan baris duplikat.
+const unitRoleSeedRows = [
+    ...data.m_unit_role.filter((row) => ![3, 4].includes(Number(row.id_user))),
+    { id_user: 3, id_unit: 1, id_role: 5, scope_type: "SELF" },
+    { id_user: 3, id_unit: 2, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
+    { id_user: 4, id_unit: 1, id_role: 5, scope_type: "SELF" },
+    { id_user: 4, id_unit: 20, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
+    { id_user: 4, id_unit: 39, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
+];
+
 const SUPER_ADMIN_USERNAME =
     process.env
         .SUPER_ADMIN_USERNAME ||
@@ -813,7 +824,7 @@ async function seedSystem(
                 }
             }
 
-            for (const row of data.m_unit_role) {
+            for (const row of unitRoleSeedRows) {
                 const user = requireMapped(
                     userMap,
                     row.id_user,
@@ -839,7 +850,7 @@ async function seedSystem(
                         id_role:
                             role.id_role,
                     },
-                    { is_active: "Y" },
+                    { is_active: "Y", scope_type: row.scope_type || "SELF" },
                     transaction
                 );
             }
@@ -932,7 +943,7 @@ async function seedSystem(
                 access_modules:
                     accessKeys.size,
                 unit_roles:
-                    data.m_unit_role.length,
+                    unitRoleSeedRows.length,
                 statuses:
                     statuses.length,
                 admin: admin.username,

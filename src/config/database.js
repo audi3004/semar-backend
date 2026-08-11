@@ -1,4 +1,3 @@
-const { allow } = require("joi");
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 

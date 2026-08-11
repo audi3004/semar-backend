@@ -15,6 +15,14 @@ const Umk = sequelize.define(
             autoIncrement: true,
         },
 
+        id_umk_sebelumnya: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: { model: "m_umk", key: "id_umk" },
+            onUpdate: "CASCADE",
+            onDelete: "RESTRICT",
+        },
+
         jenis_wilayah: {
             type: DataTypes.STRING(20),
             allowNull: false,

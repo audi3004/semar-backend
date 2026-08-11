@@ -1,8 +1,6 @@
 const { Op } = require("sequelize");
 
-const {
-    Umk,
-} = require("../../models");
+const { Umk } = require("../../models");
 
 class UmkRepository {
     async findAll(filters = {}) {
@@ -32,6 +30,7 @@ class UmkRepository {
 
         return await Umk.findAll({
             where,
+            include: [{ model: Umk, as: "umkSebelumnya", required: false }],
             order: [
                 [
                     "tahun_umk",
@@ -50,9 +49,9 @@ class UmkRepository {
     }
 
     async findById(id_umk) {
-        return await Umk.findByPk(
-            id_umk
-        );
+        return await Umk.findByPk(id_umk, {
+            include: [{ model: Umk, as: "umkSebelumnya", required: false }],
+        });
     }
 
     async findDuplicate(

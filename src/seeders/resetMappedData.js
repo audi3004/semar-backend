@@ -28,6 +28,8 @@ const {
     LogSakit,
     Sppd,
     LogSppd,
+    PetugasUmkHistory,
+    UmkRolloverBatch,
 } = require("../models");
 
 const initializeSystem = require(
@@ -78,6 +80,8 @@ async function clearData(
     transaction
 ) {
     const orderedModels = [
+        PetugasUmkHistory,
+        UmkRolloverBatch,
         LogLembur,
         LogCuti,
         LogIjin,
@@ -121,12 +125,24 @@ async function clearData(
         }
     );
 
+    await Umk.update(
+        { id_umk_sebelumnya: null },
+        { where: {}, transaction }
+    );
+
     for (const Model of orderedModels) {
         await Model.destroy({
             where: {},
             transaction,
         });
     }
+
+    // Sequence dokumen bukan model master, tetapi harus ikut dikosongkan agar
+    // nomor transaksi kembali 001 setelah seluruh transaksi di-reset.
+    await sequelize.query(
+        "DELETE FROM sys_document_sequence",
+        { transaction }
+    );
 
     for (const Model of [
         Unit,
@@ -143,6 +159,8 @@ async function clearData(
 }
 
 const resetModels = [
+    PetugasUmkHistory,
+    UmkRolloverBatch,
     LogLembur,
     LogCuti,
     LogIjin,
@@ -193,6 +211,10 @@ async function resetAutoIncrement() {
             `ALTER TABLE ${quotedTable} AUTO_INCREMENT = 1`
         );
     }
+
+    await sequelize.query(
+        "ALTER TABLE sys_document_sequence AUTO_INCREMENT = 1"
+    );
 }
 
 async function resetMappedData() {

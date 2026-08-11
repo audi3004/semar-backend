@@ -67,6 +67,8 @@ const create = Joi.object({
         .positive()
         .required(),
 
+    id_umk_sebelumnya: Joi.number().integer().positive().allow(null).optional(),
+
     is_active: Joi.string()
         .uppercase()
         .valid("Y", "N")
@@ -92,15 +94,25 @@ const update = Joi.object({
         .positive()
         .optional(),
 
+    id_umk_sebelumnya: Joi.number().integer().positive().allow(null).optional(),
+
     is_active: Joi.string()
         .uppercase()
         .valid("Y", "N")
         .optional(),
 }).min(1);
 
+const rollover = Joi.object({
+    tahun_sumber: Joi.number().integer().min(2000).max(2100).required(),
+    tahun_tujuan: Joi.number().integer().min(2000).max(2100).required(),
+}).custom((value, helpers) => value.tahun_sumber === value.tahun_tujuan
+    ? helpers.message({ custom: "Tahun sumber dan tujuan harus berbeda" })
+    : value);
+
 module.exports = {
     params,
     query,
     create,
     update,
+    rollover,
 };

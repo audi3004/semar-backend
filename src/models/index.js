@@ -7,6 +7,9 @@ const Role = require("./Role");
 const Project = require("./Project");
 const Jabatan = require("./Jabatan");
 const Umk = require("./Umk");
+const ParameterUpahTahunan = require("./ParameterUpahTahunan");
+const PetugasUmkHistory = require("./PetugasUmkHistory");
+const UmkRolloverBatch = require("./UmkRolloverBatch");
 const KoefTmk = require(
     "./KoefTmk"
 );
@@ -143,6 +146,36 @@ Umk.hasMany(Petugas, {
 });
 
 Petugas.belongsTo(Umk, {
+    foreignKey: "id_umk",
+    as: "umk",
+});
+
+Umk.belongsTo(Umk, {
+    foreignKey: "id_umk_sebelumnya",
+    as: "umkSebelumnya",
+});
+
+Umk.hasMany(Umk, {
+    foreignKey: "id_umk_sebelumnya",
+    as: "umkPengganti",
+});
+
+Petugas.hasMany(PetugasUmkHistory, {
+    foreignKey: "id_petugas",
+    as: "riwayatUmk",
+});
+
+PetugasUmkHistory.belongsTo(Petugas, {
+    foreignKey: "id_petugas",
+    as: "petugas",
+});
+
+Umk.hasMany(PetugasUmkHistory, {
+    foreignKey: "id_umk",
+    as: "riwayatPetugas",
+});
+
+PetugasUmkHistory.belongsTo(Umk, {
     foreignKey: "id_umk",
     as: "umk",
 });
@@ -1028,6 +1061,9 @@ module.exports = {
     Project,
     Jabatan,
     Umk,
+    ParameterUpahTahunan,
+    PetugasUmkHistory,
+    UmkRolloverBatch,
     KoefTmk,
     Gaji,
     HariLibur,

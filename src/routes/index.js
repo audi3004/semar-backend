@@ -19,6 +19,7 @@ const jabatanRoute = require(
 const umkRoute = require(
     "../modules/umk/route"
 );
+const parameterUpahTahunanRoute = require("../modules/parameterUpahTahunan/route");
 const hariLiburRoute = require(
     "../modules/hariLibur/route"
 );
@@ -126,6 +127,7 @@ router.use("/roles", roleRoute);
 router.use("/projects", projectRoute);
 router.use("/jabatan", jabatanRoute);
 router.use("/umk", umkRoute);
+router.use("/parameter-upah-tahunan", parameterUpahTahunanRoute);
 router.use(
     "/hari-libur",
     hariLiburRoute

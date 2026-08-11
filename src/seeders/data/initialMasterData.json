@@ -3115,8 +3115,8 @@
       "id_pegawai": 2,
       "id_jabatan": 2,
       "id_unit": 1,
-      "nip": 12345678,
-      "nama": "TL GI 1 PLNES"
+      "nip": "9720063TJBT",
+      "nama": "M. NUGROHO SETIAWAN"
     },
     {
       "id_pegawai": 3,
@@ -5231,7 +5231,7 @@
       "id_pegawai": 2,
       "id_petugas": null,
       "id_role": 5,
-      "username": "12345678",
+      "username": "9720063TJBT",
       "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
       "email": null
     },

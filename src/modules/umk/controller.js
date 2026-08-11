@@ -183,6 +183,16 @@ class UmkController {
             );
         }
     }
+
+    async rolloverPreview(req, res) {
+        try { return response.success(res, await umkService.rolloverPreview(req.body), "Preview generate UMK berhasil dibuat"); }
+        catch (error) { return response.error(res, error.message, error.statusCode || 500); }
+    }
+
+    async executeRollover(req, res) {
+        try { return response.updated(res, await umkService.executeRollover(req.body, req.user?.id_user), "Generate UMK berhasil dijalankan"); }
+        catch (error) { return response.error(res, error.message, error.statusCode || 500); }
+    }
 }
 
 module.exports = new UmkController();

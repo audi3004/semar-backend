@@ -15,6 +15,21 @@ const AppError = require(
 );
 
 class GajiService {
+    resolveUmkForDate(employee, calculationDate) {
+        const history = (employee.riwayatUmk || []).find((item) =>
+            String(item.berlaku_mulai) <= calculationDate
+            && (!item.berlaku_sampai || String(item.berlaku_sampai) >= calculationDate)
+        );
+        return history?.umk || employee.umk;
+    }
+
+    resolveAnnualParameter(parameters, calculationDate) {
+        const year = Number(String(calculationDate).slice(0, 4));
+        return [...(parameters || [])]
+            .sort((a, b) => Number(b.tahun) - Number(a.tahun))
+            .find((item) => Number(item.tahun) <= year);
+    }
+
     completedYears(startDate, asOfDate) {
         const [startYear, startMonth, startDay] = String(startDate)
             .slice(0, 10)
@@ -39,7 +54,7 @@ class GajiService {
     async calculateEmployeeSalaries(asOfDate) {
         const calculationDate = asOfDate ||
             new Date().toISOString().slice(0, 10);
-        const { petugas, coefficients } =
+        const { petugas, coefficients, parameters } =
             await gajiRepository.findSalaryInputs();
 
         return petugas.map((record) => {
@@ -51,27 +66,34 @@ class GajiService {
             const coefficient = [...coefficients]
                 .reverse()
                 .find((item) => Number(item.masa_kerja) <= masaKerja);
+            const effectiveUmk = this.resolveUmkForDate(employee, calculationDate);
+            const annualParameter = this.resolveAnnualParameter(parameters, calculationDate);
 
-            if (!employee.umk || !coefficient) {
+            if (!effectiveUmk || !coefficient || !annualParameter) {
                 return {
                     ...employee,
+                    umk: effectiveUmk || employee.umk,
                     tanggal_perhitungan: calculationDate,
                     masa_kerja_tahun: masaKerja,
-                    status_perhitungan: !employee.umk
+                    status_perhitungan: !effectiveUmk
                         ? "UMK petugas belum ditentukan"
-                        : "Koefisien masa kerja tidak ditemukan",
+                        : !coefficient
+                            ? "Koefisien masa kerja tidak ditemukan"
+                            : "Parameter upah tahunan belum tersedia",
                 };
             }
 
-            const nominalUmk = Number(employee.umk.nominal_umk);
+            const nominalUmk = Number(effectiveUmk.nominal_umk);
+            const nilaiRataRata = Number(annualParameter.nilai_rata_rata);
             const koef = Number(coefficient.koef);
             const tmk = Number(coefficient.tmk);
             const nilaiKoef = nominalUmk * koef;
-            const nilaiTmk = nominalUmk * tmk;
+            const nilaiTmk = nilaiRataRata * tmk;
             const totalGaji = nominalUmk + nilaiKoef + nilaiTmk;
 
             return {
                 ...employee,
+                umk: effectiveUmk,
                 tanggal_perhitungan: calculationDate,
                 masa_kerja_tahun: masaKerja,
                 id_koef_tmk: coefficient.id_koef_tmk,
@@ -79,6 +101,8 @@ class GajiService {
                 keterangan_koef_tmk: coefficient.keterangan,
                 koef,
                 tmk,
+                tahun_parameter_upah: Number(annualParameter.tahun),
+                nilai_rata_rata: nilaiRataRata,
                 nilai_koef: Number(nilaiKoef.toFixed(2)),
                 nilai_tmk: Number(nilaiTmk.toFixed(2)),
                 total_gaji: Number(totalGaji.toFixed(2)),
@@ -90,11 +114,14 @@ class GajiService {
 
     async calculateEmployeeSalary(idPetugas, asOfDate, transaction = null) {
         const calculationDate = asOfDate || new Date().toISOString().slice(0, 10);
-        const { petugas, coefficients } =
+        const { petugas, coefficients, parameters } =
             await gajiRepository.findSalaryInputByEmployee(idPetugas, transaction);
 
         if (!petugas) throw new AppError("Petugas tidak ditemukan", 404);
-        if (!petugas.umk) throw new AppError("UMK petugas belum ditentukan", 422);
+        const effectiveUmk = this.resolveUmkForDate(petugas, calculationDate);
+        const annualParameter = this.resolveAnnualParameter(parameters, calculationDate);
+        if (!effectiveUmk) throw new AppError("UMK petugas belum ditentukan", 422);
+        if (!annualParameter) throw new AppError("Parameter upah tahunan belum tersedia", 422);
 
         const masaKerja = this.completedYears(petugas.tgl_masuk, calculationDate);
         const coefficient = coefficients.find(
@@ -104,15 +131,19 @@ class GajiService {
             throw new AppError(`Koefisien untuk masa kerja ${masaKerja} tahun tidak ditemukan`, 422);
         }
 
-        const nominalUmk = Number(petugas.umk.nominal_umk);
-        const totalGaji = nominalUmk *
-            (1 + Number(coefficient.koef) + Number(coefficient.tmk));
+        const nominalUmk = Number(effectiveUmk.nominal_umk);
+        const nilaiRataRata = Number(annualParameter.nilai_rata_rata);
+        const totalGaji = nominalUmk
+            + (nominalUmk * Number(coefficient.koef))
+            + (nilaiRataRata * Number(coefficient.tmk));
 
         return {
             id_petugas: petugas.id_petugas,
             masa_kerja_tahun: masaKerja,
-            id_umk: petugas.umk.id_umk,
+            id_umk: effectiveUmk.id_umk,
             id_koef_tmk: coefficient.id_koef_tmk,
+            tahun_parameter_upah: Number(annualParameter.tahun),
+            nilai_rata_rata: nilaiRataRata,
             total_gaji: Number(totalGaji.toFixed(2)),
             tarif_lembur_per_jam: Number((totalGaji / 173).toFixed(6)),
         };
