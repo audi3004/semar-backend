@@ -16,7 +16,13 @@ module.exports = {
                 updated_at: { type: Sequelize.DATE, allowNull: true },
                 updated_by: { type: Sequelize.INTEGER, allowNull: true },
             });
+        }
+        let assignmentIndexes = await queryInterface.showIndex("m_pegawai_project");
+        if (!assignmentIndexes.some((index) => index.name === "uk_pegawai_project")) {
             await queryInterface.addIndex("m_pegawai_project", ["id_pegawai", "id_project"], { unique: true, name: "uk_pegawai_project" });
+        }
+        assignmentIndexes = await queryInterface.showIndex("m_pegawai_project");
+        if (!assignmentIndexes.some((index) => index.name === "idx_pegawai_project_project_active")) {
             await queryInterface.addIndex("m_pegawai_project", ["id_project", "is_active"], { name: "idx_pegawai_project_project_active" });
         }
 
@@ -38,7 +44,11 @@ module.exports = {
                     onUpdate: "CASCADE",
                     onDelete: "RESTRICT",
                 });
-                await queryInterface.addIndex(table, ["id_project", "id_status"], { name: `idx_${table.slice(2)}_project_status` });
+            }
+            const indexName = `idx_${table.slice(2)}_project_status`;
+            const indexes = await queryInterface.showIndex(table);
+            if (!indexes.some((index) => index.name === indexName)) {
+                await queryInterface.addIndex(table, ["id_project", "id_status"], { name: indexName });
             }
             await queryInterface.sequelize.query(`
                 UPDATE ${table} t
