@@ -45,6 +45,12 @@ router.put(
     controller.update
 );
 
+router.put(
+    "/:id/projects",
+    validate(schema.syncProjects),
+    controller.syncProjects
+);
+
 router.patch(
     "/:id/activate",
     controller.activate

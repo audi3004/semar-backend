@@ -5,6 +5,7 @@ const jabatanRepository = require(
 const unitRepository = require(
     "../unit/repository"
 );
+const projectRepository = require("../project/repository");
 const AppError = require(
     "../../utils/appError"
 );
@@ -191,6 +192,18 @@ class PegawaiService {
         return await pegawaiRepository.delete(
             id_pegawai
         );
+    }
+
+    async syncProjects(id_pegawai, projectIds, updated_by) {
+        await this.checkPegawai(id_pegawai);
+        const uniqueIds = [...new Set(projectIds.map(Number))];
+        for (const id of uniqueIds) {
+            const project = await projectRepository.findById(id);
+            if (!project || project.is_active !== "Y") {
+                throw new AppError(`Project ${id} tidak ditemukan atau tidak aktif`, 400);
+            }
+        }
+        return pegawaiRepository.syncProjects(id_pegawai, uniqueIds, updated_by);
     }
 }
 

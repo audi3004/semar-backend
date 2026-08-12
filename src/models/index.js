@@ -22,6 +22,7 @@ const UnitRole = require(
     "./UnitRole"
 );
 const Pegawai = require("./Pegawai");
+const PegawaiProject = require("./PegawaiProject");
 const Petugas = require("./Petugas");
 const User = require("./User");
 const Module = require("./Module");
@@ -224,6 +225,13 @@ Pegawai.belongsTo(Jabatan, {
     foreignKey: "id_jabatan",
     as: "jabatan",
 });
+
+Pegawai.belongsToMany(Project, { through: PegawaiProject, foreignKey: "id_pegawai", otherKey: "id_project", as: "projects" });
+Project.belongsToMany(Pegawai, { through: PegawaiProject, foreignKey: "id_project", otherKey: "id_pegawai", as: "pegawais" });
+Pegawai.hasMany(PegawaiProject, { foreignKey: "id_pegawai", as: "projectAssignments" });
+PegawaiProject.belongsTo(Pegawai, { foreignKey: "id_pegawai", as: "pegawai" });
+Project.hasMany(PegawaiProject, { foreignKey: "id_project", as: "pegawaiAssignments" });
+PegawaiProject.belongsTo(Project, { foreignKey: "id_project", as: "project" });
 
 /*
 |--------------------------------------------------------------------------
@@ -1070,6 +1078,7 @@ module.exports = {
     Unit,
     UnitRole,
     Pegawai,
+    PegawaiProject,
     Petugas,
     User,
     Module,

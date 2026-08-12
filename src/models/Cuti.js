@@ -82,6 +82,7 @@ const Cuti = sequelize.define(
             type: DataTypes.STRING(500),
             allowNull: true,
         },
+        id_project: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_project", key: "id_project" }, onUpdate: "CASCADE", onDelete: "RESTRICT" },
 
         nomor_telepon_darurat: {
             type: DataTypes.STRING(30),

@@ -1008,7 +1008,8 @@ class CutiService {
 
         const { status: nextStatus, bypassed } = await resolveNextStatusWithBypass(
             cuti.status,
-            cuti.petugas.id_unit
+            cuti.petugas.id_unit,
+            cuti.id_project
         );
 
         const signatureField = this.getSignatureField(user);

@@ -40,6 +40,7 @@ const Ijin = sequelize.define(
             onUpdate: "CASCADE",
             onDelete: "RESTRICT",
         },
+        id_project: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_project", key: "id_project" }, onUpdate: "CASCADE", onDelete: "RESTRICT" },
 
         nomor_dokumen: {
             type: DataTypes.STRING(150),

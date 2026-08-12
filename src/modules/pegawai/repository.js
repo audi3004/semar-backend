@@ -3,7 +3,16 @@ const {
     Jabatan,
     Project,
     Unit,
+    PegawaiProject,
+    sequelize,
 } = require("../../models");
+
+const projectInclude = {
+    model: Project,
+    as: "projects",
+    attributes: ["id_project", "nama_project", "is_active"],
+    through: { attributes: ["is_active"] },
+};
 
 class PegawaiRepository {
     async findAll() {
@@ -12,6 +21,7 @@ class PegawaiRepository {
                 is_active: "Y",
             },
             include: [
+                projectInclude,
                 {
                     model: Jabatan,
                     as: "jabatan",
@@ -50,6 +60,7 @@ class PegawaiRepository {
     async findAllWithInactive() {
         return await Pegawai.findAll({
             include: [
+                projectInclude,
                 {
                     model: Jabatan,
                     as: "jabatan",
@@ -88,6 +99,7 @@ class PegawaiRepository {
     async findById(id_pegawai) {
         return await Pegawai.findByPk(id_pegawai, {
             include: [
+                projectInclude,
                 {
                     model: Jabatan,
                     as: "jabatan",
@@ -279,6 +291,22 @@ class PegawaiRepository {
                 id_pegawai,
             },
         });
+    }
+
+    async syncProjects(id_pegawai, projectIds, updated_by) {
+        await sequelize.transaction(async (transaction) => {
+            await PegawaiProject.destroy({ where: { id_pegawai }, transaction });
+            if (projectIds.length) {
+                await PegawaiProject.bulkCreate(projectIds.map((id_project) => ({
+                    id_pegawai,
+                    id_project,
+                    is_active: "Y",
+                    created_by: updated_by,
+                    updated_by,
+                })), { transaction });
+            }
+        });
+        return this.findById(id_pegawai);
     }
 
 

@@ -1,4 +1,4 @@
-const { UnitRole } = require("../models");
+const { UnitRole, PegawaiProject } = require("../models");
 const { getSelfAndDescendantIds } = require("./unitHierarchy");
 
 const APPROVAL_ROLES = new Set([
@@ -48,9 +48,18 @@ async function getWorkflowScope(user) {
         resolved.forEach((id) => unitIds.add(id));
     }
 
+    const projectAssignments = user?.id_pegawai
+        ? await PegawaiProject.findAll({
+            where: { id_pegawai: user.id_pegawai, is_active: "Y" },
+            attributes: ["id_project"],
+            raw: true,
+        })
+        : [];
+
     return {
         idRole: user.id_role,
         unitIds: [...unitIds],
+        projectIds: projectAssignments.map((item) => Number(item.id_project)),
     };
 }
 

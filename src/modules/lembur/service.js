@@ -1102,7 +1102,8 @@ class LemburService {
 
         const { status: nextStatus, bypassed } = await resolveNextStatusWithBypass(
             lembur.status,
-            lembur.petugas.id_unit
+            lembur.petugas.id_unit,
+            lembur.id_project
         );
 
         const signatureField = this.getSignatureField(user);

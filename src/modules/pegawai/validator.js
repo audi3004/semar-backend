@@ -170,4 +170,7 @@ const update = Joi.object({
 module.exports = {
     create,
     update,
+    syncProjects: Joi.object({
+        project_ids: Joi.array().items(Joi.number().integer().positive()).unique().required(),
+    }),
 };

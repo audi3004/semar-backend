@@ -27,6 +27,7 @@ const Lembur = sequelize.define(
             onUpdate: "CASCADE",
             onDelete: "RESTRICT",
         },
+        id_project: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_project", key: "id_project" }, onUpdate: "CASCADE", onDelete: "RESTRICT" },
 
         id_petugas_cuti: {
             type: DataTypes.INTEGER,

@@ -15,6 +15,7 @@ const {
     User,
     Pegawai,
 } = require("../../models");
+const resolveTransactionProject = require("../../utils/transactionProject");
 
 class SppdRepository {
     getStatusInclude() {
@@ -134,6 +135,12 @@ class SppdRepository {
                     model: Unit,
                     as: "unit",
                     required: false,
+                    include: [{
+                        model: Unit,
+                        as: "indukUnit",
+                        required: false,
+                        include: [{ model: Unit, as: "indukUnit", required: false }],
+                    }],
                 },
 
                 {
@@ -170,8 +177,8 @@ class SppdRepository {
                 attributes: ["id_log_sppd", "id_status_sebelum", "id_status_sesudah", "aksi", "keterangan", "created_at", "created_by"],
                 include: [{ model: User, as: "createdBy", required: false, attributes: ["id_user", "id_role", "id_pegawai", "id_petugas", "username"], include: [
                     { model: Role, as: "role", required: false, attributes: ["kode_role", "nama_role"] },
-                    { model: Pegawai, as: "pegawai", required: false, attributes: ["nama"] },
-                    { model: Petugas, as: "petugas", required: false, attributes: ["nama"] },
+                    { model: Pegawai, as: "pegawai", required: false, attributes: ["nama", "nip"] },
+                    { model: Petugas, as: "petugas", required: false, attributes: ["nama", "nip"] },
                 ] }],
             },
         ];
@@ -311,6 +318,7 @@ class SppdRepository {
             this.getStatusInclude();
         const petugasInclude =
             this.getPetugasInclude();
+        const logInclude = this.getInclude().find((include) => include.as === "logs");
 
         statusInclude.where = {
             is_final: "N",
@@ -329,9 +337,11 @@ class SppdRepository {
         }
 
         return await Sppd.findAll({
+            where: scope ? { id_project: { [Op.in]: scope.projectIds || [] } } : undefined,
             include: [
                 petugasInclude,
                 statusInclude,
+                logInclude,
             ],
 
             order: [
@@ -466,6 +476,7 @@ class SppdRepository {
         created_by = null,
         transaction = null
     ) {
+        data.id_project = await resolveTransactionProject(data, transaction);
         const result =
             await Sppd.create(
                 {

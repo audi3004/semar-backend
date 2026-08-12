@@ -824,7 +824,8 @@ class SakitService {
 
         const { status: nextStatus, bypassed } = await resolveNextStatusWithBypass(
             sakit.status,
-            sakit.petugas.id_unit
+            sakit.petugas.id_unit,
+            sakit.id_project
         );
 
         const signatureField = this.getSignatureField(user);

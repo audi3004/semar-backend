@@ -46,6 +46,7 @@ const Sppd = sequelize.define(
             allowNull: false,
             unique: true,
         },
+        id_project: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_project", key: "id_project" }, onUpdate: "CASCADE", onDelete: "RESTRICT" },
 
         nomor_dokumen: {
             type: DataTypes.STRING(150),

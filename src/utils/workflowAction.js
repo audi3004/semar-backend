@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Status, Role, UnitRole, User } = require("../models");
+const { Status, Role, UnitRole, User, PegawaiProject } = require("../models");
 const AppError = require("./appError");
 
 const ROLE_ALIASES = {
@@ -37,6 +37,14 @@ async function assertWorkflowAssignment(transaction, user) {
     if (!assignment) {
         throw new AppError("Anda tidak memiliki assignment role aktif pada unit transaksi ini", 403);
     }
+    const projectAssignment = user?.id_pegawai && transaction?.id_project
+        ? await PegawaiProject.findOne({
+            where: { id_pegawai: user.id_pegawai, id_project: transaction.id_project, is_active: "Y" },
+        })
+        : null;
+    if (!projectAssignment) {
+        throw new AppError("Anda tidak memiliki assignment aktif pada project transaksi ini", 403);
+    }
 }
 
 async function resolveRevisionStatus(currentStatus, targetRole) {
@@ -61,8 +69,8 @@ async function resolveRevisionStatus(currentStatus, targetRole) {
     return destination;
 }
 
-async function hasActiveAssignee(idUnit, idRole) {
-    return (await UnitRole.count({
+async function hasActiveAssignee(idUnit, idRole, idProject = null) {
+    const assignments = await UnitRole.findAll({
         where: {
             id_unit: idUnit,
             id_role: idRole,
@@ -72,15 +80,19 @@ async function hasActiveAssignee(idUnit, idRole) {
             model: User,
             as: "user",
             required: true,
-            attributes: [],
+            attributes: ["id_pegawai"],
             where: { is_active: "Y" },
         }],
-        distinct: true,
-        col: "id_unit_role",
+    });
+    if (!idProject) return assignments.length > 0;
+    const employeeIds = assignments.map((item) => item.user?.id_pegawai).filter(Boolean);
+    if (!employeeIds.length) return false;
+    return (await PegawaiProject.count({
+        where: { id_pegawai: { [Op.in]: employeeIds }, id_project: idProject, is_active: "Y" },
     })) > 0;
 }
 
-async function resolveNextStatusWithBypass(currentStatus, idUnit) {
+async function resolveNextStatusWithBypass(currentStatus, idUnit, idProject = null) {
     if (!idUnit) throw new AppError("Unit transaksi tidak ditemukan", 400);
 
     const bypassed = [];
@@ -106,7 +118,7 @@ async function resolveNextStatusWithBypass(currentStatus, idUnit) {
             return { status: candidate, bypassed };
         }
 
-        if (await hasActiveAssignee(idUnit, candidate.id_role)) {
+        if (await hasActiveAssignee(idUnit, candidate.id_role, idProject)) {
             return { status: candidate, bypassed };
         }
 

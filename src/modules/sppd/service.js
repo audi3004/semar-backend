@@ -981,7 +981,8 @@ class SppdService {
 
         const { status: nextStatus, bypassed } = await resolveNextStatusWithBypass(
             sppd.status,
-            sppd.petugas.id_unit
+            sppd.petugas.id_unit,
+            sppd.id_project
         );
 
         await this.updateStatusWithLog(

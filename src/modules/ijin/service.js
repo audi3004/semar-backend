@@ -822,7 +822,8 @@ class IjinService {
 
         const { status: nextStatus, bypassed } = await resolveNextStatusWithBypass(
             ijin.status,
-            ijin.petugas.id_unit
+            ijin.petugas.id_unit,
+            ijin.id_project
         );
 
         const signatureField = this.getSignatureField(user);

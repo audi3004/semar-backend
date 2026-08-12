@@ -212,6 +212,19 @@ class PegawaiController {
             );
         }
     }
+
+    async syncProjects(req, res) {
+        try {
+            const pegawai = await pegawaiService.syncProjects(
+                req.params.id,
+                req.body.project_ids,
+                req.user?.id_user || null
+            );
+            return response.updated(res, pegawai, "Assignment project pegawai berhasil diperbarui");
+        } catch (err) {
+            return response.error(res, err.message, err.statusCode || 500);
+        }
+    }
 }
 
 module.exports = new PegawaiController();
