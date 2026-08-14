@@ -24,6 +24,7 @@ const AppError = require(
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
+const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class SppdService {
     getSignatureField(user) {
@@ -450,8 +451,10 @@ class SppdService {
     }
 
     async findAll(
-        filters = {}
+        filters = {},
+        user = null
     ) {
+        filters = scopeTransactionFilters(filters, user);
         return await sppdRepository
             .findAll({
                 ...filters,
@@ -510,11 +513,12 @@ class SppdService {
     }
 
     async findById(
-        id_sppd
+        id_sppd,
+        user = null
     ) {
-        return await this.checkSppd(
+        return assertTransactionOwner(await this.checkSppd(
             id_sppd
-        );
+        ), user);
     }
 
     async findPending(user) {
@@ -540,6 +544,7 @@ class SppdService {
         data,
         user = null
     ) {
+        data = scopeTransactionFilters(data, user);
         const tglBerangkat =
             this.normalizeDate(
                 data.tgl_berangkat
@@ -718,6 +723,8 @@ class SppdService {
             await this.checkSppd(
                 id_sppd
             );
+        assertTransactionOwner(currentSppd, user);
+        data = scopeTransactionFilters(data, user);
 
         this.validateEditableStatus(
             currentSppd.status,
@@ -942,6 +949,7 @@ class SppdService {
             await this.checkSppd(
                 id_sppd
             );
+        assertTransactionOwner(sppd, user);
 
         if (
             sppd.status.is_final ===

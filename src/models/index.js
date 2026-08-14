@@ -54,6 +54,7 @@ const Sppd = require("./Sppd");
 const LogSppd = require(
     "./LogSppd"
 );
+const ReportPermohonan = require("./ReportPermohonan");
 
 
 
@@ -150,6 +151,11 @@ Petugas.belongsTo(Umk, {
     foreignKey: "id_umk",
     as: "umk",
 });
+
+Unit.hasMany(ReportPermohonan, { foreignKey: "id_unit_gi", as: "reportPermohonan" });
+ReportPermohonan.belongsTo(Unit, { foreignKey: "id_unit_gi", as: "unitGi" });
+ReportPermohonan.belongsTo(User, { foreignKey: "id_checker", as: "checker" });
+ReportPermohonan.belongsTo(User, { foreignKey: "id_approval_1", as: "approval1" });
 
 Umk.belongsTo(Umk, {
     foreignKey: "id_umk_sebelumnya",
@@ -1095,4 +1101,5 @@ module.exports = {
     LogSakit,
     Sppd,
     LogSppd,
+    ReportPermohonan,
 };

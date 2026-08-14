@@ -114,12 +114,12 @@ const Lembur = sequelize.define(
 
         foto_kegiatan_1: {
             type: DataTypes.STRING(500),
-            allowNull: false,
+            allowNull: true,
         },
 
         foto_kegiatan_2: {
             type: DataTypes.STRING(500),
-            allowNull: false,
+            allowNull: true,
         },
 
         surat_perintah_lembur: {

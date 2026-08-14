@@ -6,6 +6,38 @@ const response = require(
 );
 
 class AuthController {
+    getRefreshToken(req) {
+        const cookieHeader = String(req.headers.cookie || "");
+        const cookie = cookieHeader
+            .split(";")
+            .map((item) => item.trim())
+            .find((item) => item.startsWith("epresensi_refresh_token="));
+        return cookie
+            ? decodeURIComponent(cookie.slice(cookie.indexOf("=") + 1))
+            : req.body?.refresh_token;
+    }
+
+    setRefreshCookie(res, data) {
+        res.cookie("epresensi_refresh_token", data.refresh_token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            expires: new Date(data.refresh_token_expires_at),
+            path: "/api/auth",
+        });
+        const { refresh_token, ...safeData } = data;
+        return safeData;
+    }
+
+    clearRefreshCookie(res) {
+        res.clearCookie("epresensi_refresh_token", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            path: "/api/auth",
+        });
+    }
+
     async login(req, res) {
         try {
             const data =
@@ -14,7 +46,7 @@ class AuthController {
                 );
             return response.success(
                 res,
-                data,
+                this.setRefreshCookie(res, data),
                 "Login berhasil"
             );
         } catch (error) {
@@ -32,12 +64,11 @@ class AuthController {
             const data =
                 await authService
                     .refresh(
-                        req.body
-                            .refresh_token
+                        this.getRefreshToken(req)
                     );
             return response.success(
                 res,
-                data,
+                this.setRefreshCookie(res, data),
                 "Token berhasil diperbarui"
             );
         } catch (error) {
@@ -55,6 +86,7 @@ class AuthController {
             await authService.logout(
                 req.user.id_user
             );
+            this.clearRefreshCookie(res);
             return response.success(
                 res,
                 null,
@@ -92,5 +124,10 @@ class AuthController {
     }
 }
 
-module.exports =
-    new AuthController();
+const authController = new AuthController();
+authController.login = authController.login.bind(authController);
+authController.refresh = authController.refresh.bind(authController);
+authController.logout = authController.logout.bind(authController);
+authController.me = authController.me.bind(authController);
+
+module.exports = authController;

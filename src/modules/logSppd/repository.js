@@ -37,8 +37,8 @@ class LogSppdRepository {
                 attributes: ["id_user", "id_role", "id_pegawai", "id_petugas", "username", "email"],
                 include: [
                     { model: Role, as: "role", required: false, attributes: ["kode_role", "nama_role"] },
-                    { model: Pegawai, as: "pegawai", required: false, attributes: ["nama"] },
-                    { model: Petugas, as: "petugas", required: false, attributes: ["nama"] },
+                    { model: Pegawai, as: "pegawai", required: false, attributes: ["nama", "nip"] },
+                    { model: Petugas, as: "petugas", required: false, attributes: ["nama", "nip"] },
                 ],
             },
         ];

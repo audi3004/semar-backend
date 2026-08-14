@@ -1,10 +1,6 @@
 {
   "m_project": [
     {
-      "id_project": 1,
-      "nama_project": "OPGI & LW"
-    },
-    {
       "id_project": 2,
       "nama_project": "OPGI"
     },
@@ -16,19 +12,19 @@
   "m_jabatan": [
     {
       "id_jabatan": 1,
-      "id_project": 1,
+      "id_project": 2,
       "nama_jabatan": "ASSISTANT MANAGER TRANSMISI DAN GARDU INDUK (PLN ES)",
       "mapping_dengan_role": 6
     },
     {
       "id_jabatan": 2,
-      "id_project": 1,
+      "id_project": 2,
       "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 1 (PLN ES)",
       "mapping_dengan_role": 5
     },
     {
       "id_jabatan": 3,
-      "id_project": 1,
+      "id_project": 2,
       "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 2 (PLN ES)",
       "mapping_dengan_role": 5
     },
@@ -3043,37 +3039,93 @@
     {
       "id_koef_tmk": 1,
       "masa_kerja": 0,
-      "keterangan": "TMK 1 (0-2 Tahun)",
+      "keterangan": "TMK 1 (0 Tahun)",
+      "koef": 0.1,
+      "tmk": 0
+    },
+    {
+      "id_koef_tmk": 2,
+      "masa_kerja": 2,
+      "keterangan": "TMK 2 (2 Tahun)",
       "koef": 0.1,
       "tmk": 0.01
     },
     {
-      "id_koef_tmk": 2,
+      "id_koef_tmk": 3,
       "masa_kerja": 3,
-      "keterangan": "TMK 2 (3-4 Tahun)",
+      "keterangan": "TMK 3 (3 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.015
+    },
+    {
+      "id_koef_tmk": 4,
+      "masa_kerja": 4,
+      "keterangan": "TMK 4 (4 Tahun)",
       "koef": 0.1,
       "tmk": 0.02
     },
     {
-      "id_koef_tmk": 3,
+      "id_koef_tmk": 5,
       "masa_kerja": 5,
-      "keterangan": "TMK 3 (5-6 Tahun)",
+      "keterangan": "TMK 5 (5 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.025
+    },
+    {
+      "id_koef_tmk": 6,
+      "masa_kerja": 6,
+      "keterangan": "TMK 6 (6 Tahun)",
       "koef": 0.1,
       "tmk": 0.03
     },
     {
-      "id_koef_tmk": 4,
+      "id_koef_tmk": 7,
       "masa_kerja": 7,
-      "keterangan": "TMK 4 (7-8 Tahun)",
+      "keterangan": "TMK 7 (7 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.035
+    },
+    {
+      "id_koef_tmk": 8,
+      "masa_kerja": 8,
+      "keterangan": "TMK 8 (8 Tahun)",
       "koef": 0.1,
       "tmk": 0.04
     },
     {
-      "id_koef_tmk": 5,
+      "id_koef_tmk": 9,
       "masa_kerja": 9,
-      "keterangan": "TMK 5 (9- >10 Tahun)",
+      "keterangan": "TMK 9 (9 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.045
+    },
+    {
+      "id_koef_tmk": 10,
+      "masa_kerja": 10,
+      "keterangan": "TMK 10 (10 Tahun)",
       "koef": 0.1,
       "tmk": 0.05
+    },
+    {
+      "id_koef_tmk": 11,
+      "masa_kerja": 11,
+      "keterangan": "TMK 11 (11 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.055
+    },
+    {
+      "id_koef_tmk": 12,
+      "masa_kerja": 12,
+      "keterangan": "TMK 12 (12 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.06
+    },
+    {
+      "id_koef_tmk": 13,
+      "masa_kerja": 13,
+      "keterangan": "TMK 13 (13 Tahun)",
+      "koef": 0.1,
+      "tmk": 0.065
     }
   ],
   "m_hari_libur": [

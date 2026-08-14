@@ -32,7 +32,8 @@ class LemburController {
             const data =
                 await lemburService
                     .findAll(
-                        req.query
+                        req.query,
+                        req.user
                     );
 
             return response.success(
@@ -58,7 +59,8 @@ class LemburController {
             const data =
                 await lemburService
                     .findById(
-                        req.params.id
+                        req.params.id,
+                        req.user
                     );
 
             return response.success(
@@ -108,7 +110,8 @@ class LemburController {
             const data =
                 await lemburService
                     .findByPetugas(
-                        req.params.id
+                        req.params.id,
+                        req.user
                     );
 
             return response.success(

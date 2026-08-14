@@ -21,21 +21,59 @@ const {
     AccessModule,
     Status,
     UnitRole,
+    PegawaiProject,
 } = require("../models");
 
 const data = require(
     "./data/initialMasterData.json"
 );
 
-// Approval 2 PLN ES menggunakan scope hierarchy agar assignment UPT otomatis
-// mencakup seluruh ULTG dan GI di bawahnya tanpa menyimpan puluhan baris duplikat.
-const unitRoleSeedRows = [
-    ...data.m_unit_role.filter((row) => ![3, 4].includes(Number(row.id_user))),
+const seedChildrenByParent = new Map();
+data.m_unit.forEach((unit) => {
+    const parentId = unit.id_induk_unit == null ? null : Number(unit.id_induk_unit);
+    if (!seedChildrenByParent.has(parentId)) seedChildrenByParent.set(parentId, []);
+    seedChildrenByParent.get(parentId).push(Number(unit.id_unit));
+});
+
+const seedSubtreeIds = (rootId) => {
+    const result = [];
+    const queue = [Number(rootId)];
+    while (queue.length) {
+        const current = queue.shift();
+        result.push(current);
+        queue.push(...(seedChildrenByParent.get(current) || []));
+    }
+    return result;
+};
+
+const expandSeedAssignments = (rows) => {
+    const expanded = new Map();
+    rows.forEach((row) => {
+        seedSubtreeIds(row.id_unit).forEach((unitId, index) => {
+            const key = `${row.id_user}:${unitId}:${row.id_role}`;
+            if (!expanded.has(key)) expanded.set(key, {
+                ...row,
+                id_unit: unitId,
+                scope_type: index === 0 ? "SELF_AND_DESCENDANTS" : "SELF",
+            });
+        });
+    });
+    return [...expanded.values()];
+};
+
+// Approval 2 khusus: kedua user juga melihat UP 2 Jawa Tengah, tetapi scope
+// root tersebut tidak boleh mewarisi seluruh UPT. Hanya subtree UPT yang
+// disebutkan yang dimaterialisasi menjadi baris assignment lengkap.
+const approval2SpecialRows = [
     { id_user: 3, id_unit: 1, id_role: 5, scope_type: "SELF" },
-    { id_user: 3, id_unit: 2, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
+    ...seedSubtreeIds(2).map((id_unit, index) => ({ id_user: 3, id_unit, id_role: 5, scope_type: index === 0 ? "SELF_AND_DESCENDANTS" : "SELF" })),
     { id_user: 4, id_unit: 1, id_role: 5, scope_type: "SELF" },
-    { id_user: 4, id_unit: 20, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
-    { id_user: 4, id_unit: 39, id_role: 5, scope_type: "SELF_AND_DESCENDANTS" },
+    ...[20, 39].flatMap((rootId) => seedSubtreeIds(rootId).map((id_unit, index) => ({ id_user: 4, id_unit, id_role: 5, scope_type: index === 0 ? "SELF_AND_DESCENDANTS" : "SELF" }))),
+];
+
+const unitRoleSeedRows = [
+    ...expandSeedAssignments(data.m_unit_role.filter((row) => ![3, 4].includes(Number(row.id_user)))),
+    ...approval2SpecialRows,
 ];
 
 const SUPER_ADMIN_USERNAME =
@@ -362,6 +400,18 @@ async function seedSystem(
                     );
             }
 
+            await Project.update(
+                { is_active: "N", updated_at: now },
+                {
+                    where: {
+                        id_project: {
+                            [Op.notIn]: Object.values(projectMap).map((project) => project.id_project),
+                        },
+                    },
+                    transaction,
+                }
+            );
+
             for (const row of data.m_jabatan) {
                 const project =
                     requireMapped(
@@ -372,13 +422,9 @@ async function seedSystem(
                 jabatanMap[row.id_jabatan] =
                     await upsertOne(
                         Jabatan,
+                        { nama_jabatan: row.nama_jabatan },
                         {
-                            id_project:
-                                project.id_project,
-                            nama_jabatan:
-                                row.nama_jabatan,
-                        },
-                        {
+                            id_project: project.id_project,
                             is_active: "Y",
                             updated_at: now,
                         },
@@ -633,6 +679,47 @@ async function seedSystem(
                         },
                         transaction
                     );
+            }
+
+            // Sementara id_project masih berada pada jabatan, jadikan nilai
+            // tersebut sebagai sumber utama assignment multi-project pegawai.
+            // Approval 1 dan Approval 2 wajib menangani OPGI sekaligus LW.
+            await PegawaiProject.update(
+                { is_active: "N", updated_at: now },
+                { where: {}, transaction }
+            );
+            const opgiProject = Object.values(projectMap).find(
+                (project) => project.nama_project === "OPGI"
+            );
+            const lwProject = Object.values(projectMap).find(
+                (project) => project.nama_project === "LW"
+            );
+            if (!opgiProject || !lwProject) {
+                throw new Error("Project OPGI dan LW wajib tersedia untuk mapping pegawai");
+            }
+            for (const row of data.m_pegawai) {
+                const pegawai = requireMapped(pegawaiMap, row.id_pegawai, "Pegawai project");
+                const jabatan = requireMapped(
+                    jabatanMap,
+                    mapSeedJabatanId(row.id_jabatan),
+                    "Jabatan project pegawai"
+                );
+                const userRow = data.m_user.find(
+                    (candidate) => Number(candidate.id_pegawai) === Number(row.id_pegawai)
+                );
+                const isDualProjectApprover = userRow && [4, 5].includes(Number(userRow.id_role));
+                const projectIds = isDualProjectApprover
+                    ? [opgiProject.id_project, lwProject.id_project]
+                    : [jabatan.id_project];
+
+                for (const idProject of new Set(projectIds)) {
+                    await upsertOne(
+                        PegawaiProject,
+                        { id_pegawai: pegawai.id_pegawai, id_project: idProject },
+                        { is_active: "Y", updated_at: now },
+                        transaction
+                    );
+                }
             }
 
             const [adminPassword,

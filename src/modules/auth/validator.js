@@ -36,7 +36,7 @@ const login = Joi.object({
 const refresh = Joi.object({
     refresh_token: Joi.string()
         .trim()
-        .required()
+        .optional()
         .messages({
             "string.empty":
                 "Refresh token wajib diisi",

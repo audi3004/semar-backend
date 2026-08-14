@@ -27,6 +27,15 @@ const ALLOWED_APPROVAL_ROLES = [
 ];
 
 class UnitRoleService {
+    resolveScopeType(role, unit) {
+        const roleCode = this.normalizeCode(role?.kode_role);
+        const unitName = this.normalizeCode(unit?.nama_unit);
+        if (roleCode === "APPROVAL_2" && unitName === "UP 2 JAWA TENGAH") {
+            return "SELF";
+        }
+        return "SELF_AND_DESCENDANTS";
+    }
+
     normalizeCode(value) {
         if (
             value === undefined ||
@@ -306,7 +315,7 @@ class UnitRoleService {
         data,
         user = null
     ) {
-        await Promise.all([
+        const [checkedUser, checkedUnit, checkedRole] = await Promise.all([
             this.checkUser(
                 data.id_user
             ),
@@ -338,8 +347,7 @@ class UnitRoleService {
                     id_role:
                         data.id_role,
 
-                    scope_type:
-                        this.normalizeCode(data.scope_type || "SELF"),
+                    scope_type: this.resolveScopeType(checkedRole, checkedUnit),
 
                     is_active:
                         this.normalizeCode(
@@ -400,7 +408,7 @@ class UnitRoleService {
             const assignment of
             assignments
         ) {
-            await Promise.all([
+            const [, checkedUnit, checkedRole] = await Promise.all([
                 this.checkUser(
                     assignment.id_user
                 ),
@@ -419,6 +427,7 @@ class UnitRoleService {
                 assignment.id_unit,
                 assignment.id_role
             );
+            assignment.resolved_scope_type = this.resolveScopeType(checkedRole, checkedUnit);
         }
 
         /*
@@ -443,8 +452,7 @@ class UnitRoleService {
                             assignment
                                 .id_role,
 
-                        scope_type:
-                            this.normalizeCode(assignment.scope_type || "SELF"),
+                        scope_type: assignment.resolved_scope_type,
 
                         is_active:
                             this.normalizeCode(
@@ -516,7 +524,7 @@ class UnitRoleService {
             data.id_role ??
             current.id_role;
 
-        await Promise.all([
+        const [, checkedUnit, checkedRole] = await Promise.all([
             this.checkUser(
                 idUser
             ),
@@ -551,10 +559,7 @@ class UnitRoleService {
                     id_role:
                         idRole,
 
-                    scope_type:
-                        data.scope_type !== undefined
-                            ? this.normalizeCode(data.scope_type)
-                            : current.scope_type,
+                    scope_type: this.resolveScopeType(checkedRole, checkedUnit),
 
                     is_active:
                         data.is_active !==

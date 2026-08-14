@@ -28,6 +28,7 @@ const AppError = require(
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
+const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class LemburService {
     async findReplacementCandidates(tanggal) {
@@ -528,8 +529,10 @@ class LemburService {
     }
 
     async findAll(
-        filters = {}
+        filters = {},
+        user = null
     ) {
+        filters = scopeTransactionFilters(filters, user);
         return await lemburRepository
             .findAll({
                 id_petugas:
@@ -585,11 +588,12 @@ class LemburService {
     }
 
     async findById(
-        id_lembur
+        id_lembur,
+        user = null
     ) {
-        return await this.checkLembur(
+        return assertTransactionOwner(await this.checkLembur(
             id_lembur
-        );
+        ), user);
     }
 
     async findPending(user) {
@@ -599,8 +603,11 @@ class LemburService {
     }
 
     async findByPetugas(
-        id_petugas
+        id_petugas,
+        user = null
     ) {
+        const scopedFilters = scopeTransactionFilters({ id_petugas }, user);
+        id_petugas = scopedFilters.id_petugas;
         await this.checkPetugas(
             id_petugas
         );
@@ -615,6 +622,7 @@ class LemburService {
         data,
         user = null
     ) {
+        data = scopeTransactionFilters(data, user);
         const tglLembur =
             this.normalizeDate(
                 data.tgl_lembur
@@ -815,6 +823,8 @@ class LemburService {
             await this.checkLembur(
                 id_lembur
             );
+        assertTransactionOwner(currentLembur, user);
+        data = scopeTransactionFilters(data, user);
 
         this.validateEditableStatus(
             currentLembur.status,
@@ -1072,6 +1082,7 @@ class LemburService {
             await this.checkLembur(
                 id_lembur
             );
+        assertTransactionOwner(lembur, user);
 
         if (
             lembur.status.is_final ===

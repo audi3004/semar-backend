@@ -24,6 +24,7 @@ const AppError = require(
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
+const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class IjinService {
     getSignatureField(user) {
@@ -415,8 +416,10 @@ class IjinService {
     }
 
     async findAll(
-        filters = {}
+        filters = {},
+        user = null
     ) {
+        filters = scopeTransactionFilters(filters, user);
         return await ijinRepository
             .findAll({
                 id_petugas:
@@ -477,11 +480,12 @@ class IjinService {
     }
 
     async findById(
-        id_ijin
+        id_ijin,
+        user = null
     ) {
-        return await this.checkIjin(
+        return assertTransactionOwner(await this.checkIjin(
             id_ijin
-        );
+        ), user);
     }
 
     async findPending(user) {
@@ -507,6 +511,7 @@ class IjinService {
         data,
         user = null
     ) {
+        data = scopeTransactionFilters(data, user);
         const tanggal =
             this.normalizeDate(
                 data.tanggal
@@ -641,6 +646,8 @@ class IjinService {
             await this.checkIjin(
                 id_ijin
             );
+        assertTransactionOwner(currentIjin, user);
+        data = scopeTransactionFilters(data, user);
 
         this.validateEditableStatus(
             currentIjin.status,
@@ -792,6 +799,7 @@ class IjinService {
             await this.checkIjin(
                 id_ijin
             );
+        assertTransactionOwner(ijin, user);
 
         if (
             ijin.status.is_final ===

@@ -24,6 +24,7 @@ const AppError = require(
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
+const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class CutiService {
     getSignatureField(user) {
@@ -522,8 +523,10 @@ class CutiService {
     }
 
     async findAll(
-        filters = {}
+        filters = {},
+        user = null
     ) {
+        filters = scopeTransactionFilters(filters, user);
         return await cutiRepository
             .findAll({
                 id_petugas:
@@ -600,11 +603,12 @@ class CutiService {
     }
 
     async findById(
-        id_cuti
+        id_cuti,
+        user = null
     ) {
-        return await this.checkCuti(
+        return assertTransactionOwner(await this.checkCuti(
             id_cuti
-        );
+        ), user);
     }
 
     async findPending(user) {
@@ -630,6 +634,7 @@ class CutiService {
         data,
         user = null
     ) {
+        data = scopeTransactionFilters(data, user);
         const tglPengajuan =
             this.normalizeDate(
                 data.tgl_pengajuan
@@ -794,6 +799,8 @@ class CutiService {
             await this.checkCuti(
                 id_cuti
             );
+        assertTransactionOwner(currentCuti, user);
+        data = scopeTransactionFilters(data, user);
 
         this.validateEditableStatus(
             currentCuti.status,
@@ -978,6 +985,7 @@ class CutiService {
             await this.checkCuti(
                 id_cuti
             );
+        assertTransactionOwner(cuti, user);
 
         if (
             cuti.status.is_final ===

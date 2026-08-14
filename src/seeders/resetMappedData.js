@@ -30,6 +30,8 @@ const {
     LogSppd,
     PetugasUmkHistory,
     UmkRolloverBatch,
+    ReportPermohonan,
+    PegawaiProject,
 } = require("../models");
 
 const initializeSystem = require(
@@ -82,6 +84,8 @@ async function clearData(
     const orderedModels = [
         PetugasUmkHistory,
         UmkRolloverBatch,
+        ReportPermohonan,
+        PegawaiProject,
         LogLembur,
         LogCuti,
         LogIjin,
@@ -161,6 +165,8 @@ async function clearData(
 const resetModels = [
     PetugasUmkHistory,
     UmkRolloverBatch,
+    ReportPermohonan,
+    PegawaiProject,
     LogLembur,
     LogCuti,
     LogIjin,

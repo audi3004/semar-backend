@@ -15,7 +15,8 @@ class CutiController {
             const data =
                 await cutiService
                     .findAll(
-                        req.query
+                        req.query,
+                        req.user
                     );
 
             return response.success(
@@ -41,7 +42,8 @@ class CutiController {
             const data =
                 await cutiService
                     .findById(
-                        req.params.id
+                        req.params.id,
+                        req.user
                     );
 
             return response.success(

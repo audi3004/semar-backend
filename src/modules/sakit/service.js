@@ -24,6 +24,7 @@ const AppError = require(
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateDocumentNumber } = require("../../utils/documentNumber");
 const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBypass } = require("../../utils/workflowAction");
+const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class SakitService {
     getSignatureField(user) {
@@ -415,8 +416,10 @@ class SakitService {
     }
 
     async findAll(
-        filters = {}
+        filters = {},
+        user = null
     ) {
+        filters = scopeTransactionFilters(filters, user);
         return await sakitRepository
             .findAll({
                 id_petugas:
@@ -477,11 +480,12 @@ class SakitService {
     }
 
     async findById(
-        id_sakit
+        id_sakit,
+        user = null
     ) {
-        return await this.checkSakit(
+        return assertTransactionOwner(await this.checkSakit(
             id_sakit
-        );
+        ), user);
     }
 
     async findPending(user) {
@@ -507,6 +511,7 @@ class SakitService {
         data,
         user = null
     ) {
+        data = scopeTransactionFilters(data, user);
         const tanggal =
             this.normalizeDate(
                 data.tanggal
@@ -641,6 +646,8 @@ class SakitService {
             await this.checkSakit(
                 id_sakit
             );
+        assertTransactionOwner(currentSakit, user);
+        data = scopeTransactionFilters(data, user);
 
         this.validateEditableStatus(
             currentSakit.status,
@@ -794,6 +801,7 @@ class SakitService {
             await this.checkSakit(
                 id_sakit
             );
+        assertTransactionOwner(sakit, user);
 
         if (
             sakit.status.is_final ===

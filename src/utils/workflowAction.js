@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const { Status, Role, UnitRole, User, PegawaiProject } = require("../models");
 const AppError = require("./appError");
+const { getSelfAndAncestorIds } = require("./unitHierarchy");
 
 const ROLE_ALIASES = {
     maker: "MAKER",
@@ -26,12 +27,19 @@ async function assertWorkflowAssignment(transaction, user) {
     const idUnit = transaction?.petugas?.id_unit;
     if (!idUnit) throw new AppError("Unit transaksi tidak ditemukan", 400);
 
+    const ancestorIds = await getSelfAndAncestorIds(idUnit);
     const assignment = await UnitRole.findOne({
         where: {
             id_user: user.id_user,
             id_role: user.id_role,
-            id_unit: idUnit,
             is_active: "Y",
+            [Op.or]: [
+                { id_unit: idUnit },
+                {
+                    id_unit: { [Op.in]: ancestorIds },
+                    scope_type: "SELF_AND_DESCENDANTS",
+                },
+            ],
         },
     });
     if (!assignment) {
@@ -70,11 +78,18 @@ async function resolveRevisionStatus(currentStatus, targetRole) {
 }
 
 async function hasActiveAssignee(idUnit, idRole, idProject = null) {
+    const ancestorIds = await getSelfAndAncestorIds(idUnit);
     const assignments = await UnitRole.findAll({
         where: {
-            id_unit: idUnit,
             id_role: idRole,
             is_active: "Y",
+            [Op.or]: [
+                { id_unit: idUnit },
+                {
+                    id_unit: { [Op.in]: ancestorIds },
+                    scope_type: "SELF_AND_DESCENDANTS",
+                },
+            ],
         },
         include: [{
             model: User,

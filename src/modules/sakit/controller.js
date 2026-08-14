@@ -15,7 +15,8 @@ class SakitController {
             const data =
                 await sakitService
                     .findAll(
-                        req.query
+                        req.query,
+                        req.user
                     );
 
             return response.success(
@@ -41,7 +42,8 @@ class SakitController {
             const data =
                 await sakitService
                     .findById(
-                        req.params.id
+                        req.params.id,
+                        req.user
                     );
 
             return response.success(

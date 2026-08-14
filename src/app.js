@@ -18,7 +18,12 @@ const app = express();
 app.disable("x-powered-by");
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN
+        ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+        : true,
+    credentials: true,
+}));
 
 app.use(helmet());
 

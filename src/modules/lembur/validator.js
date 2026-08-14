@@ -165,11 +165,11 @@ const create = Joi.object({
             5000
         ).optional(),
 
-    foto_kegiatan_1: filePathSchema.required(),
+    foto_kegiatan_1: filePathSchema.optional(),
 
-    foto_kegiatan_2: filePathSchema.required(),
+    foto_kegiatan_2: filePathSchema.optional(),
 
-    surat_perintah_lembur: filePathSchema.required(),
+    surat_perintah_lembur: filePathSchema.optional(),
 
     maker_signature: filePathSchema.optional(),
     checker_signature: filePathSchema.optional(),
@@ -192,6 +192,39 @@ const create = Joi.object({
             value,
             helpers
         ) => {
+            const normalizedCategory = String(value.kategori_lembur || "")
+                .trim()
+                .toLowerCase();
+            const normalizedJobType = String(value.jenis_pekerjaan || "")
+                .trim()
+                .toLowerCase();
+            const evidenceText = `${normalizedCategory} ${normalizedJobType}`;
+            const activityPhotosOptional = [
+                "pengganti cuti",
+                "cuti pengganti",
+                "cuti penganti",
+                "pengganti piket",
+                "libur nasional",
+                "tanggal merah",
+            ].some((keyword) => evidenceText.includes(keyword));
+
+            const requiredEvidence = [
+                ...(!activityPhotosOptional ? [
+                    ["foto_kegiatan_1", "Foto kegiatan 1"],
+                    ["foto_kegiatan_2", "Foto kegiatan 2"],
+                ] : []),
+                ["surat_perintah_lembur", "Surat perintah lembur"],
+            ];
+            const missingEvidence = requiredEvidence.find(
+                ([field]) => !value[field]
+            );
+
+            if (missingEvidence) {
+                return helpers.message({
+                    custom: `${missingEvidence[1]} wajib diisi`,
+                });
+            }
+
             const start =
                 value.jam_mulai
                     .split(":")

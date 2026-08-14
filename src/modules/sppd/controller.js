@@ -15,7 +15,8 @@ class SppdController {
             const data =
                 await sppdService
                     .findAll(
-                        req.query
+                        req.query,
+                        req.user
                     );
 
             return response.success(
@@ -41,7 +42,8 @@ class SppdController {
             const data =
                 await sppdService
                     .findById(
-                        req.params.id
+                        req.params.id,
+                        req.user
                     );
 
             return response.success(

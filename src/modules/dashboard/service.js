@@ -43,7 +43,8 @@ class DashboardService {
 
     async findTransactions(model, repository, scopeWhere, dateWhere, order) {
         if (!scopeWhere) return [];
-        const petugasInclude = repository.getPetugasInclude();
+        const includes = repository.getInclude();
+        const petugasInclude = includes.find((include) => include.as === "petugas");
         const unitInclude = petugasInclude.include?.find((include) => include.as === "unit");
         if (unitInclude) {
             unitInclude.include = [{
@@ -59,7 +60,7 @@ class DashboardService {
         }
         return model.findAll({
             where: { ...scopeWhere, ...dateWhere },
-            include: [petugasInclude, repository.getStatusInclude()],
+            include: includes,
             order,
             subQuery: false,
         });
@@ -75,6 +76,20 @@ class DashboardService {
             this.findTransactions(Sppd, sppdRepository, scopeWhere, this.buildDateWhere("tgl_berangkat", query), [["tgl_berangkat", "DESC"], ["id_sppd", "DESC"]]),
         ]);
         return { lembur, cuti, ijin, sakit, sppd };
+    }
+
+    async completedDocuments(user, query = {}) {
+        const grouped = await this.analytics(user, query);
+        return Object.entries(grouped)
+            .flatMap(([type, rows]) => rows
+                .filter((row) => {
+                    const status = row.status || {};
+                    const code = String(status.kode_status || "").toUpperCase();
+                    return status.is_final === "Y" &&
+                        !["REJECT", "TOLAK", "CANCEL", "BATAL"].some((word) => code.includes(word));
+                })
+                .map((row) => ({ ...row.toJSON(), report_type: type })))
+            .sort((a, b) => String(b.created_at || "").localeCompare(String(a.created_at || "")));
     }
 }
 
