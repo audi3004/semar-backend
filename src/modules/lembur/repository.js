@@ -18,6 +18,8 @@ const {
     Ijin,
     Sakit,
     HariLibur,
+    Spkl,
+    SpklPetugas,
 } = require("../../models");
 const resolveTransactionProject = require("../../utils/transactionProject");
 
@@ -100,6 +102,27 @@ class LemburRepository {
         return [...candidates.values()].sort((a, b) =>
             String(a.nama).localeCompare(String(b.nama), "id")
         );
+    }
+
+    async findAvailableBases(idPetugas, tanggal = null) {
+        const petugas = await Petugas.findByPk(idPetugas, { attributes: ["id_petugas", "id_unit"] });
+        if (!petugas) return [];
+        const spklRows = await SpklPetugas.findAll({
+            where: { id_petugas: idPetugas, status_penugasan: { [Op.in]: ["ASSIGNED", "DRAFTED"] } },
+            include: [{ model: Spkl, as: "spkl", required: true, where: { status_spkl: "ACTIVE", ...(tanggal ? { tgl_lembur: tanggal } : {}) } }, { model: Lembur, as: "lembur", required: false }],
+        });
+        const status = { model: Status, as: "status", required: true, where: { kode_status: { [Op.notIn]: ["DRAFT", "REVISION", "REJECTED", "CANCELLED"] } }, attributes: ["kode_status", "nama_status"] };
+        const owner = { model: Petugas, as: "petugas", required: true, where: { id_unit: petugas.id_unit, id_petugas: { [Op.ne]: idPetugas } }, attributes: ["id_petugas", "nip", "nama", "id_unit"] };
+        const unused = (alias) => ({ model: Lembur, as: alias, required: false, attributes: ["id_lembur"] });
+        const dateWhere = (start) => tanggal ? { [start]: { [Op.lte]: tanggal }, tgl_selesai: { [Op.gte]: tanggal } } : {};
+        const [cuti, ijin, sakit] = await Promise.all([
+            Cuti.findAll({ where: dateWhere("tgl_mulai"), include: [status, owner, unused("lemburPengganti")] }),
+            Ijin.findAll({ where: dateWhere("tanggal"), include: [status, owner, unused("lemburPengganti")] }),
+            Sakit.findAll({ where: dateWhere("tanggal"), include: [status, owner, unused("lemburPengganti")] }),
+        ]);
+        const spkl = spklRows.filter((row) => !row.lembur).map((row) => ({ type: "SPKL", reference_id: row.id_spkl_petugas, tanggal: row.spkl.tgl_lembur, nomor_dokumen: row.spkl.nomor_dokumen, kategori_lembur: row.spkl.kategori_lembur, jenis_pekerjaan: row.spkl.jenis_pekerjaan, kode_jenis_pekerjaan: row.spkl.kode_jenis_pekerjaan, area_group: row.spkl.area_group, detail_pekerjaan: row.spkl.detail_pekerjaan }));
+        const mapAbsence = (rows, type, idField, start) => rows.filter((row) => !(row.lemburPengganti || []).length).map((row) => ({ type, reference_id: row[idField], tanggal: tanggal || row[start], tanggal_mulai: row[start], tanggal_selesai: row.tgl_selesai, nomor_dokumen: row.nomor_dokumen, petugas: row.petugas, kategori_lembur: "005 - Piket Tanggal Merah / Cuti Pengganti", jenis_pekerjaan: `Pengganti ${type}` }));
+        return [...spkl, ...mapAbsence(cuti, "CUTI", "id_cuti", "tgl_mulai"), ...mapAbsence(ijin, "IJIN", "id_ijin", "tanggal"), ...mapAbsence(sakit, "SAKIT", "id_sakit", "tanggal")];
     }
 
     getStatusInclude() {
@@ -231,15 +254,8 @@ class LemburRepository {
                     model: Jabatan,
                     as: "jabatan",
                     required: false,
-
-                    include: [
-                        {
-                            model: Project,
-                            as: "project",
-                            required: false,
-                        },
-                    ],
                 },
+                { model: Project, as: "project", required: false },
 
                 {
                     model: Umk,
@@ -258,6 +274,8 @@ class LemburRepository {
                 as: "petugasCuti",
                 required: false,
             },
+            { model: SpklPetugas, as: "spklAssignment", required: false, include: [{ model: Spkl, as: "spkl", required: false }] },
+            { model: Cuti, as: "dasarCuti", required: false }, { model: Ijin, as: "dasarIjin", required: false }, { model: Sakit, as: "dasarSakit", required: false },
             this.getStatusInclude(),
             {
                 model: LogLembur,
@@ -304,6 +322,7 @@ class LemburRepository {
                     `%${filters.kategori_lembur}%`,
             };
         }
+        if (filters.id_spkl_petugas) where.id_spkl_petugas = filters.id_spkl_petugas;
 
         if (
             filters.tgl_awal &&

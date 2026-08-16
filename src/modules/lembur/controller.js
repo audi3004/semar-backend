@@ -7,6 +7,10 @@ const response = require(
 );
 
 class LemburController {
+    async findAvailableBases(req, res) {
+        try { const data = await lemburService.findAvailableBases(req.user, req.query.tanggal); return response.success(res, data, "Dasar lembur tersedia berhasil diambil"); }
+        catch (error) { return response.error(res, error.message, error.statusCode || 500); }
+    }
     async findReplacementCandidates(req, res) {
         try {
             const data = await lemburService.findReplacementCandidates(

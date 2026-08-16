@@ -99,6 +99,12 @@ const Petugas =
                 allowNull: false,
             },
 
+            id_project: {
+                type: DataTypes.INTEGER, allowNull: false,
+                references: { model: "m_project", key: "id_project" },
+                onUpdate: "CASCADE", onDelete: "RESTRICT",
+            },
+
             tgl_lahir: {
                 type:
                     DataTypes.DATEONLY,
@@ -171,6 +177,7 @@ const Petugas =
                         "id_unit",
                     ],
                 },
+                { name: "idx_petugas_project", fields: ["id_project"] },
 
                 {
                     name:

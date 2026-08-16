@@ -213,7 +213,8 @@ const query = Joi.object({
             "VERIFICATION",
             "APPROVAL_1",
             "APPROVAL_2",
-            "APPROVAL_3"
+            "APPROVAL_3",
+            "MONITORING"
         )
         .optional(),
 

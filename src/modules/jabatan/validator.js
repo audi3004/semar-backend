@@ -1,21 +1,6 @@
 const Joi = require("joi");
 
 const create = Joi.object({
-    id_project: Joi.number()
-        .integer()
-        .positive()
-        .required()
-        .messages({
-            "number.base":
-                "Project harus berupa angka",
-            "number.integer":
-                "Project harus berupa bilangan bulat",
-            "number.positive":
-                "Project tidak valid",
-            "any.required":
-                "Project wajib dipilih",
-        }),
-
     nama_jabatan: Joi.string()
         .trim()
         .max(100)
@@ -45,18 +30,6 @@ const create = Joi.object({
 });
 
 const update = Joi.object({
-    id_project: Joi.number()
-        .integer()
-        .positive()
-        .messages({
-            "number.base":
-                "Project harus berupa angka",
-            "number.integer":
-                "Project harus berupa bilangan bulat",
-            "number.positive":
-                "Project tidak valid",
-        }),
-
     nama_jabatan: Joi.string()
         .trim()
         .max(100)

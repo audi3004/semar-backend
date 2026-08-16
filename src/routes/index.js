@@ -6,6 +6,7 @@ const authRoute = require(
 const authenticate = require(
     "../middlewares/auth"
 );
+const monitoringReadOnly = require("../middlewares/monitoringReadOnly");
 
 const roleRoute = require(
     "../modules/role/route"
@@ -109,6 +110,8 @@ const logSppdRoute = require(
 );
 const dashboardRoute = require("../modules/dashboard/route");
 const reportRoute = require("../modules/report/route");
+const workflowRoute = require("../modules/workflow/route");
+const spklRoute = require("../modules/spkl/route");
 
 
 
@@ -119,9 +122,11 @@ const router = express.Router();
 router.use("/auth", authRoute);
 
 router.use(authenticate);
+router.use(monitoringReadOnly);
 
 router.use("/dashboard", dashboardRoute);
 router.use("/reports", reportRoute);
+router.use("/workflow", workflowRoute);
 
 router.use("/roles", roleRoute);
 router.use("/projects", projectRoute);
@@ -156,6 +161,7 @@ router.use(
 );
 router.use("/mutasi", mutasiRoute);
 router.use("/lembur", lemburRoute);
+router.use("/spkl", spklRoute);
 router.use(
     "/log-lembur",
     logLemburRoute

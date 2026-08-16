@@ -51,6 +51,8 @@ router.get(
     controller.findReplacementCandidates
 );
 
+router.get("/dasar-tersedia", controller.findAvailableBases);
+
 router.get(
     "/petugas/:id",
     validate(

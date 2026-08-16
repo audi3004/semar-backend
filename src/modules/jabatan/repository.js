@@ -1,4 +1,4 @@
-const { Jabatan, Project } = require("../../models");
+const { Jabatan } = require("../../models");
 
 class JabatanRepository {
     async findAll() {
@@ -6,16 +6,6 @@ class JabatanRepository {
             where: {
                 is_active: "Y",
             },
-            include: [
-                {
-                    model: Project,
-                    as: "project",
-                    attributes: [
-                        "id_project",
-                        "nama_project",
-                    ],
-                },
-            ],
             order: [
                 ["id_jabatan", "ASC"],
             ],
@@ -24,16 +14,6 @@ class JabatanRepository {
 
     async findAllWithInactive() {
         return await Jabatan.findAll({
-            include: [
-                {
-                    model: Project,
-                    as: "project",
-                    attributes: [
-                        "id_project",
-                        "nama_project",
-                    ],
-                },
-            ],
             order: [
                 ["id_jabatan", "ASC"],
             ],
@@ -41,25 +21,13 @@ class JabatanRepository {
     }
 
     async findById(id_jabatan) {
-        return await Jabatan.findByPk(id_jabatan, {
-            include: [
-                {
-                    model: Project,
-                    as: "project",
-                    attributes: [
-                        "id_project",
-                        "nama_project",
-                    ],
-                },
-            ],
-        });
+        return await Jabatan.findByPk(id_jabatan);
     }
 
-    async findByName(nama_jabatan, id_project) {
+    async findByName(nama_jabatan) {
         return await Jabatan.findOne({
             where: {
                 nama_jabatan,
-                id_project,
             },
         });
     }

@@ -41,6 +41,11 @@ const Lembur = sequelize.define(
             onUpdate: "CASCADE",
             onDelete: "SET NULL",
         },
+        dasar_lembur_type: { type: DataTypes.ENUM("SPKL", "CUTI", "IJIN", "SAKIT"), allowNull: true },
+        id_spkl_petugas: { type: DataTypes.INTEGER, allowNull: true, references: { model: "t_spkl_petugas", key: "id_spkl_petugas" } },
+        id_cuti: { type: DataTypes.INTEGER, allowNull: true, references: { model: "t_cuti", key: "id_cuti" } },
+        id_ijin: { type: DataTypes.INTEGER, allowNull: true, references: { model: "t_ijin", key: "id_ijin" } },
+        id_sakit: { type: DataTypes.INTEGER, allowNull: true, references: { model: "t_sakit", key: "id_sakit" } },
 
         id_status: {
             type: DataTypes.INTEGER,
@@ -124,7 +129,7 @@ const Lembur = sequelize.define(
 
         surat_perintah_lembur: {
             type: DataTypes.STRING(500),
-            allowNull: false,
+            allowNull: true,
         },
 
         maker_signature: { type: DataTypes.STRING(500), allowNull: true },

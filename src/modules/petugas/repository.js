@@ -33,25 +33,13 @@ class PetugasRepository {
                 as: "jabatan",
                 attributes: [
                     "id_jabatan",
-                    "id_project",
                     "nama_jabatan",
                     "is_active",
                 ],
                 required: false,
 
-                include: [
-                    {
-                        model: Project,
-                        as: "project",
-                        attributes: [
-                            "id_project",
-                            "nama_project",
-                            "is_active",
-                        ],
-                        required: false,
-                    },
-                ],
             },
+            { model: Project, as: "project", attributes: ["id_project", "nama_project", "is_active"], required: false },
 
             {
                 model: Umk,
@@ -78,6 +66,7 @@ class PetugasRepository {
             where.id_unit =
                 filters.id_unit;
         }
+        if (filters.id_project) where.id_project = filters.id_project;
 
         if (
             filters.id_jabatan

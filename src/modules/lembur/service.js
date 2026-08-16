@@ -20,6 +20,13 @@ const gajiService = require(
 
 const {
     sequelize,
+    SpklPetugas,
+    Spkl,
+    Cuti,
+    Ijin,
+    Sakit,
+    Status,
+    Lembur,
 } = require("../../models");
 
 const AppError = require(
@@ -31,6 +38,38 @@ const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBy
 const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class LemburService {
+    async findAvailableBases(user, tanggal = null) {
+        this.validateAuthenticatedUser(user);
+        if (!user.id_petugas) throw new AppError("Akun Maker tidak terhubung dengan data petugas", 422);
+        return lemburRepository.findAvailableBases(user.id_petugas, tanggal ? this.normalizeDate(tanggal) : null);
+    }
+
+    async resolveBasis(data, user, transaction = null) {
+        const type = String(data.dasar_lembur_type || "").toUpperCase();
+        const config = { SPKL: ["id_spkl_petugas", SpklPetugas], CUTI: ["id_cuti", Cuti], IJIN: ["id_ijin", Ijin], SAKIT: ["id_sakit", Sakit] }[type];
+        if (!config) throw new AppError("Dasar lembur wajib dipilih dari SPKL, Cuti, Ijin, atau Sakit", 422);
+        const [field, Model] = config; const referenceId = data[field];
+        if (!referenceId) throw new AppError(`Referensi ${type} wajib dipilih`, 422);
+        const referenceCount = [data.id_spkl_petugas, data.id_cuti, data.id_ijin, data.id_sakit].filter((value) => value != null).length;
+        if (referenceCount !== 1) throw new AppError("Tepat satu referensi dasar lembur wajib diisi", 422);
+        if (type === "SPKL") {
+            const assignment = await Model.findByPk(referenceId, { include: [{ model: Spkl, as: "spkl", required: true }], transaction, lock: transaction?.LOCK?.UPDATE });
+            if (!assignment || Number(assignment.id_petugas) !== Number(data.id_petugas) || Number(user?.id_petugas) !== Number(assignment.id_petugas)) throw new AppError("Assignment SPKL tidak ditujukan kepada petugas ini", 403);
+            if (assignment.spkl.status_spkl !== "ACTIVE" || !["ASSIGNED", "DRAFTED"].includes(assignment.status_penugasan)) throw new AppError("Assignment SPKL sudah tidak dapat digunakan", 409);
+            if (await Lembur.findOne({ where: { id_spkl_petugas: referenceId }, transaction })) throw new AppError("Assignment SPKL sudah digunakan", 409);
+            if (assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR") await this.validateHoliday(assignment.spkl.tgl_lembur);
+            return { type, assignment, source: assignment.spkl, tgl_lembur: assignment.spkl.tgl_lembur, kategori_lembur: assignment.spkl.kategori_lembur, jenis_pekerjaan: assignment.spkl.jenis_pekerjaan, area_group: assignment.spkl.area_group, detail_pekerjaan_lembur: assignment.spkl.detail_pekerjaan, id_petugas_cuti: null, is_hari_libur: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" ? "Y" : "N", evidenceOptional: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" };
+        }
+        const source = await Model.findByPk(referenceId, { include: [{ model: Status, as: "status", required: true }], transaction });
+        if (!source || ["DRAFT", "REVISION", "REJECTED", "CANCELLED"].includes(source.status.kode_status)) throw new AppError(`Transaksi ${type} tidak valid sebagai dasar lembur`, 422);
+        if (Number(source.id_petugas) === Number(data.id_petugas)) throw new AppError("Petugas tidak dapat menggantikan dirinya sendiri", 422);
+        if (await Lembur.findOne({ where: { [field]: referenceId }, transaction })) throw new AppError(`Transaksi ${type} sudah digunakan sebagai dasar lembur`, 409);
+        const maker = await this.checkPetugas(data.id_petugas); const replaced = await this.checkPetugas(source.id_petugas);
+        if (Number(maker.id_unit) !== Number(replaced.id_unit)) throw new AppError("Petugas pengganti harus berada pada unit yang sama", 422);
+        const date = this.normalizeDate(data.tgl_lembur); const start = this.normalizeDate(type === "CUTI" ? source.tgl_mulai : source.tanggal); const end = this.normalizeDate(source.tgl_selesai);
+        if (!date || date < start || date > end) throw new AppError(`Tanggal lembur harus berada dalam periode ${type}`, 422);
+        return { type, source, tgl_lembur: date, kategori_lembur: "005 - Piket Tanggal Merah / Cuti Pengganti", jenis_pekerjaan: `Pengganti ${type}`, area_group: data.area_group, detail_pekerjaan_lembur: data.detail_pekerjaan_lembur, id_petugas_cuti: source.id_petugas, is_hari_libur: "N", evidenceOptional: true };
+    }
     async findReplacementCandidates(tanggal) {
         return await lemburRepository.findReplacementCandidates(
             this.normalizeDate(tanggal)
@@ -623,10 +662,8 @@ class LemburService {
         user = null
     ) {
         data = scopeTransactionFilters(data, user);
-        const tglLembur =
-            this.normalizeDate(
-                data.tgl_lembur
-            );
+        const basis = await this.resolveBasis(data, user);
+        const tglLembur = this.normalizeDate(basis.tgl_lembur);
 
         const jamMulai =
             this.normalizeTime(
@@ -646,6 +683,8 @@ class LemburService {
         await this.checkPetugas(
             data.id_petugas
         );
+        if (!/^\d{2}:00:00$/.test(jamMulai) || !/^\d{2}:00:00$/.test(jamSelesai)) throw new AppError("Jam lembur harus bulat tanpa menit", 422);
+        if (!basis.evidenceOptional && (!data.surat_perintah_lembur || !data.foto_kegiatan_1 || !data.foto_kegiatan_2)) throw new AppError("Surat perintah lembur dan dua foto kegiatan wajib untuk pekerjaan lembur reguler", 422);
 
         const totalJam = this.calculateTotalHours(
             jamMulai,
@@ -660,29 +699,7 @@ class LemburService {
             data.jumlah_jam_koreksi ?? totalJam
         );
 
-        if (this.isLeaveReplacement(data.jenis_pekerjaan) && !data.id_petugas_cuti) {
-            throw new AppError(
-                "Petugas yang digantikan wajib dipilih untuk lembur pengganti piket",
-                422
-            );
-        }
-
-        if (data.id_petugas_cuti) {
-            await this.checkPetugas(
-                data.id_petugas_cuti
-            );
-            await this.validateReplacementCandidate(
-                data.id_petugas_cuti,
-                tglLembur
-            );
-        }
-
-        const isHariLibur = this.isHolidayOvertime(data.jenis_pekerjaan)
-            ? "Y"
-            : (data.is_hari_libur === "Y" ? "Y" : "N");
-        if (isHariLibur === "Y") {
-            await this.validateHoliday(tglLembur);
-        }
+        const isHariLibur = basis.is_hari_libur;
 
         await this.ensureNoOverlap(
             data.id_petugas,
@@ -711,6 +728,7 @@ class LemburService {
                 async (
                     transaction
                 ) => {
+                    const lockedBasis = await this.resolveBasis(data, user, transaction);
                     const lembur =
                         await lemburRepository
                             .create(
@@ -718,9 +736,9 @@ class LemburService {
                     id_petugas:
                         data.id_petugas,
 
-                    id_petugas_cuti:
-                        data.id_petugas_cuti ??
-                        null,
+                    id_petugas_cuti: lockedBasis.id_petugas_cuti,
+                    dasar_lembur_type: lockedBasis.type,
+                    id_spkl_petugas: data.id_spkl_petugas ?? null, id_cuti: data.id_cuti ?? null, id_ijin: data.id_ijin ?? null, id_sakit: data.id_sakit ?? null,
 
                     id_status:
                         initialStatus
@@ -743,16 +761,16 @@ class LemburService {
 
                     kategori_lembur:
                         this.normalizeText(
-                            data.kategori_lembur
+                            lockedBasis.kategori_lembur
                         ),
 
-                    jenis_pekerjaan: this.normalizeNullableText(data.jenis_pekerjaan),
-                    area_group: this.normalizeNullableText(data.area_group),
+                    jenis_pekerjaan: this.normalizeNullableText(lockedBasis.jenis_pekerjaan),
+                    area_group: this.normalizeNullableText(lockedBasis.area_group),
                     is_hari_libur: isHariLibur,
 
                     detail_pekerjaan_lembur:
                         this.normalizeNullableText(
-                            data.detail_pekerjaan_lembur
+                            lockedBasis.detail_pekerjaan_lembur
                         ),
 
                     foto_kegiatan_1:
@@ -784,6 +802,7 @@ class LemburService {
                 null,
                 transaction
             );
+                    if (lockedBasis.type === "SPKL") await lockedBasis.assignment.update({ status_penugasan: "DRAFTED" }, { transaction });
 
                     await this.createLog(
                         {
@@ -823,6 +842,11 @@ class LemburService {
             await this.checkLembur(
                 id_lembur
             );
+        if (currentLembur.dasar_lembur_type) {
+            const immutable = ["dasar_lembur_type", "id_spkl_petugas", "id_cuti", "id_ijin", "id_sakit", "id_petugas", "tgl_lembur", "kategori_lembur", "jenis_pekerjaan", "area_group"];
+            const changed = immutable.find((field) => data[field] !== undefined && String(data[field] ?? "") !== String(currentLembur[field] ?? ""));
+            if (changed) throw new AppError("Dasar dan data perintah lembur tidak dapat diubah setelah transaksi dibuat", 409);
+        }
         assertTransactionOwner(currentLembur, user);
         data = scopeTransactionFilters(data, user);
 
@@ -1149,6 +1173,9 @@ class LemburService {
                 : "Status lembur diproses ke tahap berikutnya",
             user
         );
+        if (lembur.id_spkl_petugas && String(user?.kode_role || "").toUpperCase() === "MAKER") {
+            await SpklPetugas.update({ status_penugasan: "SUBMITTED" }, { where: { id_spkl_petugas: lembur.id_spkl_petugas } });
+        }
 
         return await lemburRepository
             .findById(id_lembur);
@@ -1345,6 +1372,7 @@ class LemburService {
                         id_lembur,
                         transaction
                     );
+                if (lembur.id_spkl_petugas) await SpklPetugas.update({ status_penugasan: "ASSIGNED" }, { where: { id_spkl_petugas: lembur.id_spkl_petugas }, transaction });
             }
         );
 

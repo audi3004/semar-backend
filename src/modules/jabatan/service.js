@@ -1,5 +1,4 @@
 const jabatanRepository = require("./repository");
-const projectRepository = require("../project/repository");
 const AppError = require("../../utils/appError");
 
 class JabatanService {
@@ -19,31 +18,13 @@ class JabatanService {
         return jabatan;
     }
 
-    async checkProject(id_project) {
-        const project =
-            await projectRepository.findById(
-                id_project
-            );
-
-        if (!project) {
-            throw new AppError(
-                "Project tidak ditemukan",
-                404
-            );
-        }
-
-        return project;
-    }
-
     async ensureJabatanAvailable(
         nama_jabatan,
-        id_project,
         excludeId = null
     ) {
         const exist =
             await jabatanRepository.findByName(
                 nama_jabatan,
-                id_project
             );
 
         if (
@@ -51,7 +32,7 @@ class JabatanService {
             exist.id_jabatan !== Number(excludeId)
         ) {
             throw new AppError(
-                "Nama jabatan sudah digunakan pada project tersebut",
+                "Nama jabatan sudah digunakan",
                 409
             );
         }
@@ -71,11 +52,8 @@ class JabatanService {
 
 
     async create(data, created_by) {
-        await this.checkProject(data.id_project);
-
         await this.ensureJabatanAvailable(
-            data.nama_jabatan,
-            data.id_project
+            data.nama_jabatan
         );
 
         return await jabatanRepository.create(
@@ -92,23 +70,12 @@ class JabatanService {
         const currentJabatan =
             await this.checkJabatan(id_jabatan);
 
-        const idProject =
-            data.id_project ||
-            currentJabatan.id_project;
-
         const namaJabatan =
             data.nama_jabatan ||
             currentJabatan.nama_jabatan;
 
-        if (data.id_project) {
-            await this.checkProject(
-                data.id_project
-            );
-        }
-
         await this.ensureJabatanAvailable(
             namaJabatan,
-            idProject,
             id_jabatan
         );
 

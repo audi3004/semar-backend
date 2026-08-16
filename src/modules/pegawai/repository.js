@@ -28,17 +28,6 @@ class PegawaiRepository {
                     attributes: [
                         "id_jabatan",
                         "nama_jabatan",
-                        "id_project",
-                    ],
-                    include: [
-                        {
-                            model: Project,
-                            as: "project",
-                            attributes: [
-                                "id_project",
-                                "nama_project",
-                            ],
-                        },
                     ],
                 },
                 {
@@ -67,17 +56,6 @@ class PegawaiRepository {
                     attributes: [
                         "id_jabatan",
                         "nama_jabatan",
-                        "id_project",
-                    ],
-                    include: [
-                        {
-                            model: Project,
-                            as: "project",
-                            attributes: [
-                                "id_project",
-                                "nama_project",
-                            ],
-                        },
                     ],
                 },
                 {
@@ -106,17 +84,6 @@ class PegawaiRepository {
                     attributes: [
                         "id_jabatan",
                         "nama_jabatan",
-                        "id_project",
-                    ],
-                    include: [
-                        {
-                            model: Project,
-                            as: "project",
-                            attributes: [
-                                "id_project",
-                                "nama_project",
-                            ],
-                        },
                     ],
                 },
                 {

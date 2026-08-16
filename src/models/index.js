@@ -55,6 +55,8 @@ const LogSppd = require(
     "./LogSppd"
 );
 const ReportPermohonan = require("./ReportPermohonan");
+const Spkl = require("./Spkl");
+const SpklPetugas = require("./SpklPetugas");
 
 
 
@@ -78,16 +80,6 @@ User.belongsTo(Role, {
 | Satu jabatan berada pada satu project.
 |
 */
-
-Project.hasMany(Jabatan, {
-    foreignKey: "id_project",
-    as: "jabatans",
-});
-
-Jabatan.belongsTo(Project, {
-    foreignKey: "id_project",
-    as: "project",
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -278,6 +270,26 @@ Petugas.belongsTo(Unit, {
     foreignKey: "id_unit",
     as: "unit",
 });
+
+Project.hasMany(Petugas, { foreignKey: "id_project", as: "petugas" });
+Petugas.belongsTo(Project, { foreignKey: "id_project", as: "project" });
+
+Unit.hasMany(Spkl, { foreignKey: "id_unit", as: "spkls" });
+Spkl.belongsTo(Unit, { foreignKey: "id_unit", as: "unit" });
+User.hasMany(Spkl, { foreignKey: "created_by", as: "createdSpkls" });
+Spkl.belongsTo(User, { foreignKey: "created_by", as: "createdBy" });
+Spkl.hasMany(SpklPetugas, { foreignKey: "id_spkl", as: "assignments" });
+SpklPetugas.belongsTo(Spkl, { foreignKey: "id_spkl", as: "spkl" });
+Petugas.hasMany(SpklPetugas, { foreignKey: "id_petugas", as: "spklAssignments" });
+SpklPetugas.belongsTo(Petugas, { foreignKey: "id_petugas", as: "petugas" });
+SpklPetugas.hasOne(Lembur, { foreignKey: "id_spkl_petugas", as: "lembur" });
+Lembur.belongsTo(SpklPetugas, { foreignKey: "id_spkl_petugas", as: "spklAssignment" });
+Cuti.hasMany(Lembur, { foreignKey: "id_cuti", as: "lemburPengganti" });
+Lembur.belongsTo(Cuti, { foreignKey: "id_cuti", as: "dasarCuti" });
+Ijin.hasMany(Lembur, { foreignKey: "id_ijin", as: "lemburPengganti" });
+Lembur.belongsTo(Ijin, { foreignKey: "id_ijin", as: "dasarIjin" });
+Sakit.hasMany(Lembur, { foreignKey: "id_sakit", as: "lemburPengganti" });
+Lembur.belongsTo(Sakit, { foreignKey: "id_sakit", as: "dasarSakit" });
 
 
 /*
@@ -1102,4 +1114,6 @@ module.exports = {
     Sppd,
     LogSppd,
     ReportPermohonan,
+    Spkl,
+    SpklPetugas,
 };

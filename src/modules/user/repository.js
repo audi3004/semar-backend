@@ -5,6 +5,7 @@ const {
     Petugas,
     Jabatan,
     Unit,
+    Project,
 } = require("../../models");
 
 const userInclude = [
@@ -58,6 +59,7 @@ const userInclude = [
             "nama",
             "id_jabatan",
             "id_unit",
+            "id_project",
             "tgl_lahir",
         ],
         required: false,
@@ -80,6 +82,7 @@ const userInclude = [
                 ],
                 required: false,
             },
+            { model: Project, as: "project", attributes: ["id_project", "nama_project"], required: false },
         ],
     },
 ];

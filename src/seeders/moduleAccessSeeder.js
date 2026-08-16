@@ -11,6 +11,7 @@ const {
 const modules = [
     ["dashboard", "Dashboard", "Dashboard aplikasi"],
     ["lembur", "Lembur", "Pengajuan lembur"],
+    ["perintah-kerja-lembur", "Surat Perintah Kerja Lembur", "Inisiasi dan penugasan SPKL"],
     ["cuti", "Cuti", "Pengajuan cuti"],
     ["ijin", "Ijin", "Pengajuan izin"],
     ["sakit", "Sakit", "Pengajuan sakit"],
@@ -106,6 +107,17 @@ async function run() {
                         },
                         { transaction }
                     );
+                }
+
+                const spklModule = await AppModule.findOne({ where: { kode_module: "perintah-kerja-lembur" }, transaction });
+                for (const code of ["CHECKER", "APPROVAL_1"]) {
+                    const role = await Role.findOne({ where: { kode_role: code }, transaction });
+                    if (!role || !spklModule) continue;
+                    const values = code === "CHECKER"
+                        ? { can_create: "Y", can_read: "Y", can_update: "Y", can_delete: "Y", can_approve: "N" }
+                        : { can_create: "N", can_read: "Y", can_update: "N", can_delete: "N", can_approve: "N" };
+                    const [access] = await AccessModule.findOrCreate({ where: { id_role: role.id_role, id_module: spklModule.id_module }, defaults: values, transaction });
+                    await access.update(values, { transaction });
                 }
 
                 await AppModule.update(

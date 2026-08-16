@@ -56,4 +56,25 @@ async function generateDocumentNumber(documentType, dateValue, idPetugas) {
     });
 }
 
-module.exports = { generateDocumentNumber };
+async function generateUnitDocumentNumber(documentType, dateValue, idUnit) {
+    const type = String(documentType || "DOC").trim().toUpperCase();
+    const { year, month } = parsePeriod(dateValue);
+    return sequelize.transaction(async (transaction) => {
+        const units = await sequelize.query("SELECT id_unit, nama_unit FROM m_unit WHERE id_unit = :idUnit AND is_active = 'Y' LIMIT 1", {
+            replacements: { idUnit }, type: QueryTypes.SELECT, transaction,
+        });
+        const unit = units[0];
+        if (!unit) throw new Error("Unit tidak ditemukan untuk penomoran dokumen");
+        await sequelize.query(`INSERT INTO sys_document_sequence
+            (document_type, id_unit, period_year, period_month, current_number, created_at, updated_at)
+            VALUES (:type, :idUnit, :year, :month, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            ON DUPLICATE KEY UPDATE current_number = current_number + 1, updated_at = CURRENT_TIMESTAMP`,
+        { replacements: { type, idUnit, year, month }, transaction });
+        const rows = await sequelize.query(`SELECT current_number FROM sys_document_sequence
+            WHERE document_type = :type AND id_unit = :idUnit AND period_year = :year AND period_month = :month FOR UPDATE`,
+        { replacements: { type, idUnit, year, month }, type: QueryTypes.SELECT, transaction });
+        return `${String(rows[0].current_number).padStart(3, "0")}/${type}/${toUnitCode(unit.nama_unit, unit.id_unit)}/PLN-ES/${ROMAN_MONTHS[month - 1]}/${year}`;
+    });
+}
+
+module.exports = { generateDocumentNumber, generateUnitDocumentNumber };

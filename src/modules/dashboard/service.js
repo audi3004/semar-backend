@@ -7,14 +7,14 @@ const ijinRepository = require("../ijin/repository");
 const sakitRepository = require("../sakit/repository");
 const sppdRepository = require("../sppd/repository");
 
-const APPROVAL_ROLES = new Set(["CHECKER", "VERIFICATION", "APPROVAL_1", "APPROVAL_2", "APPROVAL_3"]);
+const UNIT_SCOPED_READ_ROLES = new Set(["CHECKER", "VERIFICATION", "APPROVAL_1", "APPROVAL_2", "APPROVAL_3", "MONITORING"]);
 
 class DashboardService {
     async getIdentityScope(user) {
         const roleCode = String(user?.kode_role || "").toUpperCase();
         if (user?.is_super_admin === "Y" || roleCode === "ADMIN" || roleCode === "SUPER_ADMIN") return {};
 
-        if (APPROVAL_ROLES.has(roleCode)) {
+        if (UNIT_SCOPED_READ_ROLES.has(roleCode)) {
             const scope = await getWorkflowScope(user);
             if (!scope?.unitIds?.length) return null;
             return { "$petugas.id_unit$": { [Op.in]: scope.unitIds } };

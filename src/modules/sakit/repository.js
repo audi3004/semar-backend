@@ -147,15 +147,8 @@ class SakitRepository {
                     model: Jabatan,
                     as: "jabatan",
                     required: false,
-
-                    include: [
-                        {
-                            model: Project,
-                            as: "project",
-                            required: false,
-                        },
-                    ],
                 },
+                { model: Project, as: "project", required: false },
 
                 {
                     model: Umk,

@@ -5,6 +5,7 @@ const {
     Petugas,
     Unit,
     Jabatan,
+    Project,
 } = require("../../models");
 
 class AuthRepository {
@@ -39,6 +40,7 @@ class AuthRepository {
                 include: [
                     { model: Unit, as: "unit", required: false },
                     { model: Jabatan, as: "jabatan", required: false },
+                    { model: Project, as: "project", required: false },
                 ],
             },
         ];

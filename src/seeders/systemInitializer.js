@@ -413,18 +413,11 @@ async function seedSystem(
             );
 
             for (const row of data.m_jabatan) {
-                const project =
-                    requireMapped(
-                        projectMap,
-                        row.id_project,
-                        "Project"
-                    );
                 jabatanMap[row.id_jabatan] =
                     await upsertOne(
                         Jabatan,
                         { nama_jabatan: row.nama_jabatan },
                         {
-                            id_project: project.id_project,
                             is_active: "Y",
                             updated_at: now,
                         },
@@ -559,6 +552,7 @@ async function seedSystem(
             }
 
             for (const row of data.m_petugas) {
+                const project = requireMapped(projectMap, row.id_project ?? data.default_petugas_project_id, "Project petugas");
                 const unit = requireMapped(
                     unitMap,
                     row.id_unit,
@@ -589,6 +583,7 @@ async function seedSystem(
                         {
                             id_unit:
                                 unit.id_unit,
+                            id_project: project.id_project,
                             id_jabatan:
                                 jabatan
                                     ?.id_jabatan ??
@@ -681,9 +676,8 @@ async function seedSystem(
                     );
             }
 
-            // Sementara id_project masih berada pada jabatan, jadikan nilai
-            // tersebut sebagai sumber utama assignment multi-project pegawai.
-            // Approval 1 dan Approval 2 wajib menangani OPGI sekaligus LW.
+            // Project pegawai bersifat many-to-many. Approval 1/2, Monitoring,
+            // dan NIP khusus 8812632ZY menangani OPGI sekaligus LW.
             await PegawaiProject.update(
                 { is_active: "N", updated_at: now },
                 { where: {}, transaction }
@@ -699,18 +693,13 @@ async function seedSystem(
             }
             for (const row of data.m_pegawai) {
                 const pegawai = requireMapped(pegawaiMap, row.id_pegawai, "Pegawai project");
-                const jabatan = requireMapped(
-                    jabatanMap,
-                    mapSeedJabatanId(row.id_jabatan),
-                    "Jabatan project pegawai"
-                );
                 const userRow = data.m_user.find(
                     (candidate) => Number(candidate.id_pegawai) === Number(row.id_pegawai)
                 );
-                const isDualProjectApprover = userRow && [4, 5].includes(Number(userRow.id_role));
-                const projectIds = isDualProjectApprover
+                const isDualProject = String(row.nip || "").toUpperCase() === "8812632ZY" || (userRow && [4, 5, 9].includes(Number(userRow.id_role)));
+                const projectIds = isDualProject
                     ? [opgiProject.id_project, lwProject.id_project]
-                    : [jabatan.id_project];
+                    : [opgiProject.id_project];
 
                 for (const idProject of new Set(projectIds)) {
                     await upsertOne(

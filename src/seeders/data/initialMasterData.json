@@ -12,45 +12,43 @@
   "m_jabatan": [
     {
       "id_jabatan": 1,
-      "id_project": 2,
       "nama_jabatan": "ASSISTANT MANAGER TRANSMISI DAN GARDU INDUK (PLN ES)",
       "mapping_dengan_role": 6
     },
     {
       "id_jabatan": 2,
-      "id_project": 2,
       "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 1 (PLN ES)",
       "mapping_dengan_role": 5
     },
     {
       "id_jabatan": 3,
-      "id_project": 2,
       "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK 2 (PLN ES)",
       "mapping_dengan_role": 5
     },
     {
       "id_jabatan": 4,
-      "id_project": 2,
       "nama_jabatan": "MANAGER UNIT LAYANAN TRANSMISI DAN GARDU INDUK (PLN)",
       "mapping_dengan_role": 4
     },
     {
       "id_jabatan": 5,
-      "id_project": 2,
       "nama_jabatan": "ASSISTANT MANAGER TRANSMISI DAN GARDU INDUK (PLN)",
       "mapping_dengan_role": 3
     },
     {
       "id_jabatan": 6,
-      "id_project": 2,
       "nama_jabatan": "TEAM LEADER TRANSMISI DAN GARDU INDUK (PLN)",
       "mapping_dengan_role": 2
     },
     {
       "id_jabatan": 7,
-      "id_project": 2,
       "nama_jabatan": "PETUGAS OPGI",
       "mapping_dengan_role": 1
+    },
+    {
+      "id_jabatan": 8,
+      "nama_jabatan": "MANAGER UNIT PELAKSANA TEKNIS (PLN)",
+      "mapping_dengan_role": 9
     }
   ],
   "m_role": [
@@ -109,6 +107,13 @@
       "nama_role": "Super Administrator",
       "level_role": 100,
       "is_super_admin": "Y"
+    },
+    {
+      "id_role": 9,
+      "kode_role": "MONITORING",
+      "nama_role": "Monitoring",
+      "level_role": 15,
+      "is_super_admin": "N"
     }
   ],
   "m_unit": [
@@ -2849,6 +2854,24 @@
       "id_user": 212,
       "id_unit": 54,
       "id_role": 1
+    },
+    {
+      "id_unit_role": 412,
+      "id_user": 213,
+      "id_unit": 2,
+      "id_role": 9
+    },
+    {
+      "id_unit_role": 413,
+      "id_user": 214,
+      "id_unit": 20,
+      "id_role": 9
+    },
+    {
+      "id_unit_role": 414,
+      "id_user": 215,
+      "id_unit": 39,
+      "id_role": 9
     }
   ],
   "m_umk": [
@@ -3526,8 +3549,30 @@
       "id_unit": 54,
       "nip": null,
       "nama": "FAIZ"
+    },
+    {
+      "id_pegawai": 54,
+      "id_jabatan": 8,
+      "id_unit": 2,
+      "nip": "MONUPT0001",
+      "nama": "MANAGER UPT PURWOKERTO (DEFAULT)"
+    },
+    {
+      "id_pegawai": 55,
+      "id_jabatan": 8,
+      "id_unit": 20,
+      "nip": "MONUPT0002",
+      "nama": "MANAGER UPT SALATIGA (DEFAULT)"
+    },
+    {
+      "id_pegawai": 56,
+      "id_jabatan": 8,
+      "id_unit": 39,
+      "nip": "MONUPT0003",
+      "nama": "MANAGER UPT SEMARANG (DEFAULT)"
     }
   ],
+  "default_petugas_project_id": 2,
   "m_petugas": [
     {
       "id_petugas": 1,
@@ -7167,6 +7212,33 @@
       "username": "9820062TJBT",
       "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
       "email": null
+    },
+    {
+      "id_user": 213,
+      "id_pegawai": 54,
+      "id_petugas": null,
+      "id_role": 9,
+      "username": "MONUPT0001",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 214,
+      "id_pegawai": 55,
+      "id_petugas": null,
+      "id_role": 9,
+      "username": "MONUPT0002",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
+    },
+    {
+      "id_user": 215,
+      "id_pegawai": 56,
+      "id_petugas": null,
+      "id_role": 9,
+      "username": "MONUPT0003",
+      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
+      "email": null
     }
   ],
   "m_module": [
@@ -7176,6 +7248,13 @@
       "nama_module": "Dashboard",
       "deskripsi": "Ringkasan analitik, grafik, status pengajuan, serta filter periode dan unit kerja.",
       "penjelasan_mapping_role": "untuk semua role"
+    },
+    {
+      "id_module": 22,
+      "kode_module": "perintah-kerja-lembur",
+      "nama_module": "Surat Perintah Kerja Lembur",
+      "deskripsi": "Menginisiasi, menugaskan, melihat, memperbarui, dan membatalkan Surat Perintah Kerja Lembur.",
+      "penjelasan_mapping_role": "checker CRUD penuh dan approval 1 hanya baca"
     },
     {
       "id_module": 2,
@@ -7898,6 +7977,46 @@
       "can_update": "Y",
       "can_delete": "Y",
       "can_approve": "Y"
+    },
+    {
+      "id_access": 59,
+      "id_role": 9,
+      "id_module": 1,
+      "can_create": "N",
+      "can_read": "Y",
+      "can_update": "N",
+      "can_delete": "N",
+      "can_approve": "N"
+    },
+    {
+      "id_access": 60,
+      "id_role": 9,
+      "id_module": 8,
+      "can_create": "N",
+      "can_read": "Y",
+      "can_update": "N",
+      "can_delete": "N",
+      "can_approve": "N"
+    },
+    {
+      "id_access": 61,
+      "id_role": 2,
+      "id_module": 22,
+      "can_create": "Y",
+      "can_read": "Y",
+      "can_update": "Y",
+      "can_delete": "Y",
+      "can_approve": "N"
+    },
+    {
+      "id_access": 62,
+      "id_role": 4,
+      "id_module": 22,
+      "can_create": "N",
+      "can_read": "Y",
+      "can_update": "N",
+      "can_delete": "N",
+      "can_approve": "N"
     }
   ]
 }

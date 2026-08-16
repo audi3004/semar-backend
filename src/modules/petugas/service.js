@@ -13,6 +13,7 @@ const jabatanRepository = require(
 const umkRepository = require(
     "../umk/repository"
 );
+const projectRepository = require("../project/repository");
 
 const AppError = require(
     "../../utils/appError"
@@ -217,6 +218,7 @@ class PetugasService {
         await this.checkUnit(
             data.id_unit
         );
+        if (!await projectRepository.findById(data.id_project)) throw new AppError("Project petugas tidak ditemukan", 404);
 
         await this.checkJabatan(
             data.id_jabatan
@@ -238,6 +240,7 @@ class PetugasService {
                 {
                     id_unit:
                         data.id_unit,
+                    id_project: data.id_project,
 
                     id_jabatan:
                         data.id_jabatan ??
@@ -286,6 +289,7 @@ class PetugasService {
                 ? data.id_jabatan
                 : currentPetugas
                     .id_jabatan;
+        const idProject = data.id_project ?? currentPetugas.id_project;
 
         const idUmk =
             data.id_umk ??
@@ -321,6 +325,7 @@ class PetugasService {
                 idUnit
             );
         }
+        if (data.id_project !== undefined && !await projectRepository.findById(idProject)) throw new AppError("Project petugas tidak ditemukan", 404);
 
         if (
             data.id_jabatan !==
@@ -355,6 +360,7 @@ class PetugasService {
 
                     id_unit:
                         idUnit,
+                    id_project: idProject,
 
                     id_jabatan:
                         idJabatan,

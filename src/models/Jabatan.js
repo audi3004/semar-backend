@@ -11,11 +11,6 @@ const Jabatan = sequelize.define(
             allowNull: false,
         },
 
-        id_project: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-
         nama_jabatan: {
             type: DataTypes.STRING(100),
             allowNull: false,
@@ -55,10 +50,6 @@ const Jabatan = sequelize.define(
         timestamps: false,
 
         indexes: [
-            {
-                fields: ["id_project"],
-                name: "idx_jabatan_project",
-            },
             {
                 fields: ["is_active"],
                 name: "idx_jabatan_active",

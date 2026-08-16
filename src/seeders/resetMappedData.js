@@ -32,6 +32,8 @@ const {
     UmkRolloverBatch,
     ReportPermohonan,
     PegawaiProject,
+    Spkl,
+    SpklPetugas,
 } = require("../models");
 
 const initializeSystem = require(
@@ -92,6 +94,8 @@ async function clearData(
         LogSakit,
         LogSppd,
         Lembur,
+        SpklPetugas,
+        Spkl,
         Cuti,
         Ijin,
         Sakit,
@@ -173,6 +177,8 @@ const resetModels = [
     LogSakit,
     LogSppd,
     Lembur,
+    SpklPetugas,
+    Spkl,
     Cuti,
     Ijin,
     Sakit,

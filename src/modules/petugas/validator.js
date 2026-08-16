@@ -23,6 +23,7 @@ const params = Joi.object({
 });
 
 const create = Joi.object({
+    id_project: Joi.number().integer().positive().required().messages({ "any.required": "Project petugas wajib dipilih" }),
     id_unit: Joi.number()
         .integer()
         .positive()
@@ -150,6 +151,7 @@ const create = Joi.object({
 });
 
 const update = Joi.object({
+    id_project: Joi.number().integer().positive().optional(),
     id_unit: Joi.number()
         .integer()
         .positive()
@@ -269,6 +271,7 @@ const update = Joi.object({
     });
 
 const query = Joi.object({
+    id_project: Joi.number().integer().positive().optional(),
     id_unit: Joi.number()
         .integer()
         .positive()

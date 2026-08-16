@@ -15,7 +15,8 @@
       "seed:hari-libur": "node src/seeders/hariLiburSeeder.js",
       "seed:fix-team-leader": "node src/seeders/fixTeamLeaderJabatan.js",
       "seed:reset-petugas-passwords": "node src/seeders/resetPetugasPasswordsFromBirthDate.js",
-      "seed:reset-mapped": "node src/seeders/resetMappedData.js"
+      "seed:reset-mapped": "node src/seeders/resetMappedData.js",
+      "seed:dummy-transactions": "node src/seeders/dummyTransactionsSeeder.js"
    },
    "keywords": [],
    "author": "",

@@ -74,6 +74,17 @@ const seedRoles = async () => {
 
         {
             kode_role:
+                "MONITORING",
+            nama_role:
+                "Monitoring",
+            level_role: 15,
+            is_super_admin:
+                "N",
+            is_active: "Y",
+        },
+
+        {
+            kode_role:
                 "ADMIN",
             nama_role:
                 "Administrator",

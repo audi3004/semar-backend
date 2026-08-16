@@ -66,7 +66,7 @@ const nullableTextSchema = (
         });
 
 const filePathSchema = Joi.string().trim().max(500);
-const correctionHoursSchema = Joi.number().positive().precision(2).max(9999.99);
+const correctionHoursSchema = Joi.number().integer().positive().max(9999);
 
 const params = Joi.object({
     id: idSchema(
@@ -92,6 +92,11 @@ const petugasParams =
     });
 
 const create = Joi.object({
+    dasar_lembur_type: Joi.string().uppercase().valid("SPKL", "CUTI", "IJIN", "SAKIT").required(),
+    id_spkl_petugas: idSchema("ID assignment SPKL").allow(null).optional(),
+    id_cuti: idSchema("ID cuti").allow(null).optional(),
+    id_ijin: idSchema("ID ijin").allow(null).optional(),
+    id_sakit: idSchema("ID sakit").allow(null).optional(),
     id_petugas: idSchema(
         "ID petugas"
     )
@@ -208,13 +213,9 @@ const create = Joi.object({
                 "tanggal merah",
             ].some((keyword) => evidenceText.includes(keyword));
 
-            const requiredEvidence = [
-                ...(!activityPhotosOptional ? [
-                    ["foto_kegiatan_1", "Foto kegiatan 1"],
-                    ["foto_kegiatan_2", "Foto kegiatan 2"],
-                ] : []),
-                ["surat_perintah_lembur", "Surat perintah lembur"],
-            ];
+            // Mandatory lampiran ditentukan service dari sumber SPKL/transaksi,
+            // bukan dari label teks yang dapat berubah.
+            const requiredEvidence = [];
             const missingEvidence = requiredEvidence.find(
                 ([field]) => !value[field]
             );
@@ -224,6 +225,11 @@ const create = Joi.object({
                     custom: `${missingEvidence[1]} wajib diisi`,
                 });
             }
+
+            const referenceByType = { SPKL: "id_spkl_petugas", CUTI: "id_cuti", IJIN: "id_ijin", SAKIT: "id_sakit" };
+            const references = Object.values(referenceByType).filter((field) => value[field] != null);
+            if (references.length !== 1 || !value[referenceByType[value.dasar_lembur_type]]) return helpers.message({ custom: "Dasar lembur harus memiliki tepat satu referensi yang sesuai" });
+            if ([value.jam_mulai, value.jam_selesai].some((time) => !/^\d{2}:00(?::00)?$/.test(time))) return helpers.message({ custom: "Jam lembur harus bulat tanpa menit" });
 
             const start =
                 value.jam_mulai
@@ -263,6 +269,8 @@ const create = Joi.object({
     });
 
 const update = Joi.object({
+    dasar_lembur_type: Joi.string().uppercase().valid("SPKL", "CUTI", "IJIN", "SAKIT").optional(),
+    id_spkl_petugas: idSchema("ID assignment SPKL").allow(null).optional(), id_cuti: idSchema("ID cuti").allow(null).optional(), id_ijin: idSchema("ID ijin").allow(null).optional(), id_sakit: idSchema("ID sakit").allow(null).optional(),
     id_petugas: idSchema(
         "ID petugas"
     ).optional(),
@@ -380,6 +388,8 @@ const update = Joi.object({
                     );
                 }
             }
+            if (value.jam_mulai && !/^\d{2}:00(?::00)?$/.test(value.jam_mulai)) return helpers.message({ custom: "Jam mulai harus bulat tanpa menit" });
+            if (value.jam_selesai && !/^\d{2}:00(?::00)?$/.test(value.jam_selesai)) return helpers.message({ custom: "Jam selesai harus bulat tanpa menit" });
 
             return value;
         }

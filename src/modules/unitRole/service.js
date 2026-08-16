@@ -24,6 +24,7 @@ const ALLOWED_APPROVAL_ROLES = [
     "APPROVAL_1",
     "APPROVAL_2",
     "APPROVAL_3",
+    "MONITORING",
 ];
 
 class UnitRoleService {

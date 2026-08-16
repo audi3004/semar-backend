@@ -7,6 +7,7 @@ const APPROVAL_ROLES = new Set([
     "APPROVAL_1",
     "APPROVAL_2",
     "APPROVAL_3",
+    "MONITORING",
 ]);
 
 async function getWorkflowScope(user) {
