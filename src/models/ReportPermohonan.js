@@ -8,6 +8,7 @@ const ReportPermohonan = sequelize.define("ReportPermohonan", {
     tahun_nomor: { type: DataTypes.SMALLINT.UNSIGNED, allowNull: false },
     tahun_periode: { type: DataTypes.SMALLINT.UNSIGNED, allowNull: false },
     bulan_periode: { type: DataTypes.TINYINT.UNSIGNED, allowNull: false },
+    id_project: { type: DataTypes.INTEGER, allowNull: false },
     id_unit_gi: { type: DataTypes.INTEGER, allowNull: false },
     id_checker: { type: DataTypes.INTEGER, allowNull: false },
     id_approval_1: { type: DataTypes.INTEGER, allowNull: false },
@@ -29,7 +30,7 @@ const ReportPermohonan = sequelize.define("ReportPermohonan", {
     createdAt: "created_at",
     updatedAt: "updated_at",
     indexes: [
-        { unique: true, name: "uk_report_permohonan_unit_period", fields: ["id_unit_gi", "tahun_periode", "bulan_periode"] },
+        { unique: true, name: "uk_report_permohonan_project_unit_period", fields: ["id_project", "id_unit_gi", "tahun_periode", "bulan_periode"] },
         { unique: true, name: "uk_report_permohonan_year_sequence", fields: ["tahun_nomor", "nomor_urut"] },
         { name: "idx_report_permohonan_signers", fields: ["id_checker", "id_approval_1"] },
     ],

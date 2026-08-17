@@ -6,16 +6,23 @@ const evidenceFields = ["foto_kegiatan_1", "foto_kegiatan_2", "surat_perintah_le
 const signatureFields = ["maker_signature", "checker_signature", "verification_signature", "approval_1_signature", "approval_2_signature", "approval_3_signature"];
 
 const areActivityPhotosOptional = (body = {}) => {
+    const basisType = String(body.dasar_lembur_type || "").trim().toUpperCase();
     const category = String(body.kategori_lembur || "").trim().toLowerCase();
     const jobType = String(body.jenis_pekerjaan || "").trim().toLowerCase();
     const evidenceText = `${category} ${jobType}`;
 
-    return category === "piket tanggal merah / cuti pengganti" || [
+    return ["CUTI", "IJIN", "SAKIT"].includes(basisType)
+        || String(body.is_hari_libur || "").trim().toUpperCase() === "Y"
+        || category === "piket tanggal merah / cuti pengganti" || [
         "pengganti cuti",
         "cuti pengganti",
         "cuti penganti",
         "pengganti piket",
+        "pengganti ijin",
+        "pengganti izin",
+        "pengganti sakit",
         "libur nasional",
+        "siaga hari libur",
         "tanggal merah",
     ].some((keyword) => evidenceText.includes(keyword));
 };
@@ -25,7 +32,7 @@ module.exports = (requiredEvidence = false) => (req, res, next) => {
         ? requiredEvidence
         : requiredEvidence
             ? areActivityPhotosOptional(req.body)
-                ? ["surat_perintah_lembur"]
+                ? []
                 : evidenceFields
             : [];
     const missing = requiredFields.filter((field) => !req.files?.[field]?.[0]);

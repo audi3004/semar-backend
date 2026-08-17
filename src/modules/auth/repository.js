@@ -31,6 +31,13 @@ class AuthRepository {
                 include: [
                     { model: Unit, as: "unit", required: false },
                     { model: Jabatan, as: "jabatan", required: false },
+                    {
+                        model: Project,
+                        as: "projects",
+                        required: false,
+                        attributes: ["id_project", "nama_project", "is_active"],
+                        through: { attributes: ["is_active"], where: { is_active: "Y" } },
+                    },
                 ],
             },
             {

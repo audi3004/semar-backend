@@ -142,7 +142,10 @@ class DashboardService {
     }
 
     async analytics(user, query = {}) {
-        const scopeWhere = await this.getIdentityScope(user);
+        const identityScope = await this.getIdentityScope(user);
+        const scopeWhere = identityScope && query.id_project
+            ? { ...identityScope, id_project: Number(query.id_project) }
+            : identityScope;
         const [lembur, cuti, ijin, sakit, sppd] = await Promise.all([
             this.findTransactions(Lembur, lemburRepository, scopeWhere, this.buildDateWhere("tgl_lembur", query), [["tgl_lembur", "DESC"], ["id_lembur", "DESC"]]),
             this.findTransactions(Cuti, cutiRepository, scopeWhere, this.buildDateWhere("tgl_mulai", query), [["tgl_mulai", "DESC"], ["id_cuti", "DESC"]]),

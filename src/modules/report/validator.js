@@ -10,9 +10,11 @@ module.exports = {
         ...period,
         type: Joi.string().valid("all", "lembur", "cuti", "ijin", "sakit", "sppd").default("all"),
         id_unit: Joi.number().integer().positive().optional(),
+        id_project: Joi.number().integer().positive().optional(),
+        view: Joi.string().valid("PLN", "PLN_ES").default("PLN"),
         search: Joi.string().trim().max(150).allow("").optional(),
     }),
-    create: Joi.object({ ...period, id_unit: Joi.number().integer().positive().required() }),
+    create: Joi.object({ ...period, id_unit: Joi.number().integer().positive().required(), id_project: Joi.number().integer().positive().required() }),
     params: Joi.object({ id: Joi.number().integer().positive().required() }),
     sign: Joi.object({ signature: Joi.string().dataUri().max(500000).required() }),
 };

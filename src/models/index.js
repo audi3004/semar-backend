@@ -146,6 +146,8 @@ Petugas.belongsTo(Umk, {
 
 Unit.hasMany(ReportPermohonan, { foreignKey: "id_unit_gi", as: "reportPermohonan" });
 ReportPermohonan.belongsTo(Unit, { foreignKey: "id_unit_gi", as: "unitGi" });
+ReportPermohonan.belongsTo(Project, { foreignKey: "id_project", as: "project" });
+Project.hasMany(ReportPermohonan, { foreignKey: "id_project", as: "reportPermohonan" });
 ReportPermohonan.belongsTo(User, { foreignKey: "id_checker", as: "checker" });
 ReportPermohonan.belongsTo(User, { foreignKey: "id_approval_1", as: "approval1" });
 

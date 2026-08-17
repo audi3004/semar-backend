@@ -274,7 +274,26 @@ class LemburRepository {
                 as: "petugasCuti",
                 required: false,
             },
-            { model: SpklPetugas, as: "spklAssignment", required: false, include: [{ model: Spkl, as: "spkl", required: false }] },
+            {
+                model: SpklPetugas,
+                as: "spklAssignment",
+                required: false,
+                include: [{
+                    model: Spkl,
+                    as: "spkl",
+                    required: false,
+                    include: [{
+                        model: User,
+                        as: "createdBy",
+                        required: false,
+                        attributes: ["id_user", "id_pegawai", "id_petugas", "username"],
+                        include: [
+                            { model: Pegawai, as: "pegawai", required: false, attributes: ["nama", "nip"] },
+                            { model: Petugas, as: "petugas", required: false, attributes: ["nama", "nip"] },
+                        ],
+                    }],
+                }],
+            },
             { model: Cuti, as: "dasarCuti", required: false }, { model: Ijin, as: "dasarIjin", required: false }, { model: Sakit, as: "dasarSakit", required: false },
             this.getStatusInclude(),
             {
@@ -424,7 +443,9 @@ class LemburRepository {
             this.getStatusInclude();
         const petugasInclude =
             this.getPetugasInclude();
-        const logInclude = this.getInclude().find((include) => include.as === "logs");
+        const completeIncludes = this.getInclude();
+        const logInclude = completeIncludes.find((include) => include.as === "logs");
+        const spklAssignmentInclude = completeIncludes.find((include) => include.as === "spklAssignment");
 
         statusInclude.where = {
             is_final: "N",
@@ -447,6 +468,7 @@ class LemburRepository {
             include: [
                 petugasInclude,
                 statusInclude,
+                spklAssignmentInclude,
                 logInclude,
             ],
 

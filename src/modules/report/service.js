@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 const {
-    sequelize, ReportPermohonan, Unit, UnitRole, Role, User, Pegawai, Petugas, Jabatan,
+    sequelize, ReportPermohonan, Unit, UnitRole, Role, User, Pegawai, Petugas, Jabatan, Project,
 } = require("../../models");
 const dashboardService = require("../dashboard/service");
 const getWorkflowScope = require("../../utils/workflowScope");
@@ -28,6 +28,16 @@ const isApproved = (row) => {
     return status.is_final === "Y" && !["REJECT", "TOLAK", "CANCEL", "BATAL"].some((value) => code.includes(value));
 };
 
+const isReplacementOvertime = (row) => {
+    if (!row) return false;
+    const text = [row.kategori_lembur, row.jenis_pekerjaan, row.dasar_lembur_type, row.keterangan]
+        .filter(Boolean).join(" ").toUpperCase();
+    return ["CUTI", "IJIN", "IZIN", "SAKIT"].some((keyword) => text.includes(keyword))
+        && (text.includes("PENGGANTI") || ["CUTI", "IJIN", "IZIN", "SAKIT"].includes(String(row.dasar_lembur_type || "").toUpperCase()));
+};
+
+const plnTransactions = (rows = []) => rows.filter((row) => row.report_type !== "lembur" || !isReplacementOvertime(row));
+
 const signerInclude = (as) => ({
     model: User,
     as,
@@ -39,6 +49,18 @@ const signerInclude = (as) => ({
 });
 
 class ReportService {
+    async isPlnEsEmployee(user) {
+        const account = await User.findByPk(user.id_user, {
+            attributes: ["id_user"],
+            include: [
+                { model: Pegawai, as: "pegawai", required: false, attributes: ["id_pegawai"], include: [{ model: Jabatan, as: "jabatan", required: false, attributes: ["nama_jabatan"] }] },
+                { model: Petugas, as: "petugas", required: false, attributes: ["id_petugas"], include: [{ model: Jabatan, as: "jabatan", required: false, attributes: ["nama_jabatan"] }] },
+            ],
+        });
+        const jabatan = account?.pegawai?.jabatan?.nama_jabatan || account?.petugas?.jabatan?.nama_jabatan || "";
+        return /(PLN\s*ES|ELECTRICITY\s+SERVICES)/i.test(jabatan);
+    }
+
     assertMonth(query) {
         const year = Number(query.year);
         const month = Number(query.month);
@@ -68,7 +90,19 @@ class ReportService {
 
     async transactions(user, query, forcedUnitId = null) {
         const period = this.assertMonth(query);
-        const grouped = await dashboardService.analytics(user, period);
+        const view = String(query.view || "PLN").toUpperCase();
+        if (view === "PLN_ES" && !(await this.isPlnEsEmployee(user))) {
+            throw fail("Tampilan PLN ES hanya tersedia untuk pegawai dengan Jabatan PLN ES.", 403);
+        }
+        const projectId = query.id_project ? Number(query.id_project) : null;
+        if (projectId) {
+            const role = roleCode(user);
+            if (!(user?.is_super_admin === "Y" || ["ADMIN", "SUPER_ADMIN"].includes(role))) {
+                const scope = await getWorkflowScope(user);
+                if (!scope?.projectIds?.map(Number).includes(projectId)) throw fail("Project tidak berada dalam lingkup role Anda.", 403);
+            }
+        }
+        const grouped = await dashboardService.analytics(user, { ...period, id_project: projectId || undefined });
         const requestedTypes = query.type && query.type !== "all" ? [query.type] : Object.keys(CONFIG);
         const search = String(query.search || "").trim().toLowerCase();
         const unitId = forcedUnitId || (query.id_unit ? Number(query.id_unit) : null);
@@ -76,7 +110,8 @@ class ReportService {
         if (unitId && !allowedUnits.some((unit) => Number(unit.id_unit) === unitId)) throw fail("Unit GI tidak berada dalam lingkup role Anda.", 403);
 
         const transactions = requestedTypes.flatMap((type) => (grouped[type] || [])
-            .filter(isApproved)
+            .filter((row) => view === "PLN_ES" || isApproved(row))
+            .filter((row) => view !== "PLN" || type !== "lembur" || !isReplacementOvertime(row))
             .filter((row) => !unitId || Number(row.petugas?.id_unit) === unitId)
             .filter((row) => {
                 if (!search) return true;
@@ -96,7 +131,7 @@ class ReportService {
             } else if (row.report_type === "sppd") summary.total_sppd_cost += config.amount(row);
             else summary[`total_${row.report_type}_days`] += config.days(row);
         });
-        return { transactions, summary, period, units: allowedUnits };
+        return { transactions, summary, period, units: allowedUnits, projectId, view };
     }
 
     serialize(report) {
@@ -126,15 +161,15 @@ class ReportService {
     }
 
     async findReport(where) {
-        return ReportPermohonan.findOne({ where, include: [{ model: Unit, as: "unitGi", attributes: ["id_unit", "nama_unit"] }, signerInclude("checker"), signerInclude("approval1")] });
+        return ReportPermohonan.findOne({ where, include: [{ model: Project, as: "project", attributes: ["id_project", "nama_project"] }, { model: Unit, as: "unitGi", attributes: ["id_unit", "nama_unit"] }, signerInclude("checker"), signerInclude("approval1")] });
     }
 
     async permohonan(user, query = {}) {
         const data = await this.transactions(user, query);
-        let report = query.id_unit ? await this.findReport({ id_unit_gi: Number(query.id_unit), tahun_periode: data.period.year, bulan_periode: data.period.month }) : null;
+        let report = data.view === "PLN" && query.id_unit && data.projectId ? await this.findReport({ id_project: data.projectId, id_unit_gi: Number(query.id_unit), tahun_periode: data.period.year, bulan_periode: data.period.month }) : null;
         if (roleCode(user) === "APPROVAL_2" && report && (!report.checker_signature || !report.approval_1_signature)) report = null;
-        const visibleTransactions = roleCode(user) === "APPROVAL_2"
-            ? (report ? (JSON.parse(report.snapshot_json || "{}").transactions || []) : [])
+        const visibleTransactions = report && roleCode(user) === "APPROVAL_2"
+            ? plnTransactions(JSON.parse(report.snapshot_json || "{}").transactions || [])
             : data.transactions;
         return { transactions: visibleTransactions, summary: data.summary, units: data.units, report: this.serialize(report), generated_at: new Date().toISOString() };
     }
@@ -144,7 +179,8 @@ class ReportService {
         const period = this.assertMonth(payload);
         this.assertCompleted(period.year, period.month);
         const idUnit = Number(payload.id_unit);
-        const data = await this.transactions(user, { ...payload, type: "all", search: "" }, idUnit);
+        const idProject = Number(payload.id_project);
+        const data = await this.transactions(user, { ...payload, view: "PLN", type: "all", search: "" }, idUnit);
         if (!data.transactions.length) throw fail("Tidak ada transaksi approved pada periode dan GI tersebut.");
 
         const approvalRole = await Role.findOne({ where: { kode_role: "APPROVAL_1", is_active: "Y" }, attributes: ["id_role"], raw: true });
@@ -154,15 +190,18 @@ class ReportService {
 
         const unit = data.units.find((item) => Number(item.id_unit) === idUnit);
         const reportId = await sequelize.transaction(async (transaction) => {
-            const existing = await ReportPermohonan.findOne({ where: { id_unit_gi: idUnit, tahun_periode: period.year, bulan_periode: period.month }, transaction, lock: transaction.LOCK.UPDATE });
+            const existing = await ReportPermohonan.findOne({ where: { id_project: idProject, id_unit_gi: idUnit, tahun_periode: period.year, bulan_periode: period.month }, transaction, lock: transaction.LOCK.UPDATE });
             if (existing) return existing.id_report_permohonan;
             const last = await ReportPermohonan.findOne({ where: { tahun_nomor: new Date().getFullYear() }, order: [["nomor_urut", "DESC"]], transaction, lock: transaction.LOCK.UPDATE });
             const sequence = Number(last?.nomor_urut || 0) + 1;
             const unitCode = String(unit.nama_unit).replace(/^GI\s*/i, "GI-").replace(/[^A-Z0-9-]/gi, "").toUpperCase();
-            const nomorDokumen = `${String(sequence).padStart(3, "0")}/RPT-PERMOHONAN/${unitCode}/${new Date().getFullYear()}`;
+            const project = await Project.findByPk(idProject, { attributes: ["nama_project"], transaction });
+            if (!project) throw fail("Project tidak ditemukan.", 422);
+            const projectCode = String(project.nama_project).replace(/[^A-Z0-9]/gi, "").toUpperCase();
+            const nomorDokumen = `${String(sequence).padStart(3, "0")}/RPT-PERMOHONAN/${projectCode}/${unitCode}/${new Date().getFullYear()}`;
             const created = await ReportPermohonan.create({
                 nomor_dokumen: nomorDokumen, nomor_urut: sequence, tahun_nomor: new Date().getFullYear(),
-                tahun_periode: period.year, bulan_periode: period.month, id_unit_gi: idUnit,
+                tahun_periode: period.year, bulan_periode: period.month, id_project: idProject, id_unit_gi: idUnit,
                 id_checker: user.id_user, id_approval_1: approvalAssignment.id_user,
                 snapshot_json: JSON.stringify({ transactions: data.transactions, summary: data.summary }),
                 transaction_count: data.transactions.length, created_by: user.id_user,
@@ -213,7 +252,11 @@ class ReportService {
             if (!scope?.unitIds?.includes(Number(report.id_unit_gi))) throw fail("Report berada di luar lingkup unit Anda.", 403);
         }
         if (!isAdmin && !["CHECKER", "APPROVAL_1", "APPROVAL_2"].includes(role)) throw fail("Role Anda tidak memiliki akses export report.", 403);
-        return this.serialize(report);
+        const serialized = this.serialize(report);
+        if (serialized?.snapshot) {
+            serialized.snapshot = { ...serialized.snapshot, transactions: plnTransactions(serialized.snapshot.transactions || []) };
+        }
+        return serialized;
     }
 }
 

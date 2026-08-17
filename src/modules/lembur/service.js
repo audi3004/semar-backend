@@ -684,7 +684,12 @@ class LemburService {
             data.id_petugas
         );
         if (!/^\d{2}:00:00$/.test(jamMulai) || !/^\d{2}:00:00$/.test(jamSelesai)) throw new AppError("Jam lembur harus bulat tanpa menit", 422);
-        if (!basis.evidenceOptional && (!data.surat_perintah_lembur || !data.foto_kegiatan_1 || !data.foto_kegiatan_2)) throw new AppError("Surat perintah lembur dan dua foto kegiatan wajib untuk pekerjaan lembur reguler", 422);
+        const isEvidenceOptional = basis.evidenceOptional === true
+            || ["CUTI", "IJIN", "SAKIT"].includes(basis.type)
+            || basis.source?.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR";
+        if (!isEvidenceOptional && (!data.surat_perintah_lembur || !data.foto_kegiatan_1 || !data.foto_kegiatan_2)) {
+            throw new AppError("Surat perintah lembur dan dua foto kegiatan wajib untuk pekerjaan lembur reguler", 422);
+        }
 
         const totalJam = this.calculateTotalHours(
             jamMulai,
