@@ -34,6 +34,7 @@ const {
     PegawaiProject,
     Spkl,
     SpklPetugas,
+    ParameterUpahTahunan,
 } = require("../models");
 
 const initializeSystem = require(
@@ -103,6 +104,7 @@ async function clearData(
         Mutasi,
         UnitRole,
         AccessModule,
+        ParameterUpahTahunan,
         User,
         Pegawai,
         Petugas,
@@ -190,6 +192,7 @@ const resetModels = [
     Pegawai,
     Petugas,
     Gaji,
+    ParameterUpahTahunan,
     HariLibur,
     KoefTmk,
     Umk,

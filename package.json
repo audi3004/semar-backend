@@ -16,7 +16,8 @@
       "seed:fix-team-leader": "node src/seeders/fixTeamLeaderJabatan.js",
       "seed:reset-petugas-passwords": "node src/seeders/resetPetugasPasswordsFromBirthDate.js",
       "seed:reset-mapped": "node src/seeders/resetMappedData.js",
-      "seed:dummy-transactions": "node src/seeders/dummyTransactionsSeeder.js"
+      "seed:dummy-transactions": "node src/seeders/dummyTransactionsSeeder.js",
+      "seed:unit-coordinates": "node src/seeders/unitCoordinateSeeder.js"
    },
    "keywords": [],
    "author": "",

@@ -1,10 +1,10 @@
 const { Op } = require("sequelize");
-const { sequelize, Spkl, SpklPetugas, Petugas, Unit, User, HariLibur, Lembur } = require("../../models");
+const { sequelize, Spkl, SpklPetugas, Petugas, Unit, User, HariLibur, Lembur, Status } = require("../../models");
 const getWorkflowScope = require("../../utils/workflowScope");
 const { generateUnitDocumentNumber } = require("../../utils/documentNumber");
 const AppError = require("../../utils/appError");
 
-const include = [{ model: Unit, as: "unit" }, { model: User, as: "createdBy", attributes: ["id_user", "username"] }, { model: SpklPetugas, as: "assignments", include: [{ model: Petugas, as: "petugas", include: [{ model: Unit, as: "unit" }] }, { model: Lembur, as: "lembur", required: false }] }];
+const include = [{ model: Unit, as: "unit" }, { model: User, as: "createdBy", attributes: ["id_user", "username"] }, { model: SpklPetugas, as: "assignments", include: [{ model: Petugas, as: "petugas", include: [{ model: Unit, as: "unit" }] }, { model: Lembur, as: "lembur", required: false, include: [{ model: Status, as: "status", required: false }] }] }];
 const roleCode = (user) => String(user?.kode_role || "").toUpperCase();
 const privileged = (user) => user?.is_super_admin === "Y" || ["SUPER_ADMIN", "ADMIN"].includes(roleCode(user));
 

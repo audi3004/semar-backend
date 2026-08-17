@@ -21,6 +21,16 @@ const Unit = sequelize.define(
             allowNull: false,
         },
 
+        lat: {
+            type: DataTypes.DECIMAL(10, 7),
+            allowNull: true,
+        },
+
+        lon: {
+            type: DataTypes.DECIMAL(10, 7),
+            allowNull: true,
+        },
+
         is_active: {
             type: DataTypes.ENUM("Y", "N"),
             allowNull: false,

@@ -145,72 +145,100 @@
     {
       "id_unit": 6,
       "id_induk_unit": 3,
-      "nama_unit": "GI MAJENANG"
+      "nama_unit": "GI MAJENANG",
+      "lat": -7.311604,
+      "lon": 108.786608
     },
     {
       "id_unit": 7,
       "id_induk_unit": 3,
-      "nama_unit": "GI PURBALINGGA"
+      "nama_unit": "GI PURBALINGGA",
+      "lat": -7.442865,
+      "lon": 109.388332
     },
     {
       "id_unit": 8,
       "id_induk_unit": 3,
-      "nama_unit": "GI SEMEN NUSANTARA"
+      "nama_unit": "GI SEMEN NUSANTARA",
+      "lat": -7.688746,
+      "lon": 109.025778
     },
     {
       "id_unit": 9,
       "id_induk_unit": 3,
-      "nama_unit": "GI SINAR TAMBANG ARTHA LESTARI"
+      "nama_unit": "GI SINAR TAMBANG ARTHA LESTARI",
+      "lat": -7.4368571,
+      "lon": 109.0692991
     },
     {
       "id_unit": 10,
       "id_induk_unit": 4,
-      "nama_unit": "GI BALAPULANG"
+      "nama_unit": "GI BALAPULANG",
+      "lat": -7.091646,
+      "lon": 109.088831
     },
     {
       "id_unit": 11,
       "id_induk_unit": 4,
-      "nama_unit": "GI BUMIAYU"
+      "nama_unit": "GI BUMIAYU",
+      "lat": -7.282599,
+      "lon": 109.026069
     },
     {
       "id_unit": 12,
       "id_induk_unit": 4,
-      "nama_unit": "GI COMAL"
+      "nama_unit": "GI COMAL",
+      "lat": -6.921294,
+      "lon": 109.554148
     },
     {
       "id_unit": 13,
       "id_induk_unit": 4,
-      "nama_unit": "GI PEMALANG"
+      "nama_unit": "GI PEMALANG",
+      "lat": -6.914303,
+      "lon": 109.38506
     },
     {
       "id_unit": 14,
       "id_induk_unit": 4,
-      "nama_unit": "GI TARUB"
+      "nama_unit": "GI TARUB",
+      "lat": -6.9138867,
+      "lon": 109.1878306
     },
     {
       "id_unit": 15,
       "id_induk_unit": 5,
-      "nama_unit": "GI DIENG"
+      "nama_unit": "GI DIENG",
+      "lat": -7.226098,
+      "lon": 109.905508
     },
     {
       "id_unit": 16,
       "id_induk_unit": 5,
-      "nama_unit": "GI GOMBONG"
+      "nama_unit": "GI GOMBONG",
+      "lat": -7.631134,
+      "lon": 109.509923
     },
     {
       "id_unit": 17,
       "id_induk_unit": 5,
-      "nama_unit": "GI KEBUMEN"
+      "nama_unit": "GI KEBUMEN",
+      "lat": -7.734485,
+      "lon": 109.727102
     },
     {
       "id_unit": 18,
       "id_induk_unit": 5,
-      "nama_unit": "GI TEMANGGUNG"
+      "nama_unit": "GI TEMANGGUNG",
+      "lat": -7.278496,
+      "lon": 110.134056
     },
     {
       "id_unit": 19,
       "id_induk_unit": 5,
-      "nama_unit": "GI WADASLINTANG"
+      "nama_unit": "GI WADASLINTANG",
+      "lat": -7.611387,
+      "lon": 109.779474
     },
     {
       "id_unit": 20,
@@ -235,77 +263,107 @@
     {
       "id_unit": 24,
       "id_induk_unit": 21,
-      "nama_unit": "GI AMPEL"
+      "nama_unit": "GI AMPEL",
+      "lat": -7.481445,
+      "lon": 110.558709
     },
     {
       "id_unit": 25,
       "id_induk_unit": 21,
-      "nama_unit": "GI BERINGIN"
+      "nama_unit": "GI BERINGIN",
+      "lat": -7.312257,
+      "lon": 110.506173
     },
     {
       "id_unit": 26,
       "id_induk_unit": 21,
-      "nama_unit": "GI JELOK"
+      "nama_unit": "GI JELOK",
+      "lat": -7.245432,
+      "lon": 110.48206
     },
     {
       "id_unit": 27,
       "id_induk_unit": 21,
-      "nama_unit": "GI MOJOSONGO"
+      "nama_unit": "GI MOJOSONGO",
+      "lat": -7.538082,
+      "lon": 110.618506
     },
     {
       "id_unit": 28,
       "id_induk_unit": 21,
-      "nama_unit": "GI SECANG"
+      "nama_unit": "GI SECANG",
+      "lat": -7.416236,
+      "lon": 110.234023
     },
     {
       "id_unit": 29,
       "id_induk_unit": 22,
-      "nama_unit": "GI GONDANGREJO"
+      "nama_unit": "GI GONDANGREJO",
+      "lat": -7.496595,
+      "lon": 110.815742
     },
     {
       "id_unit": 30,
       "id_induk_unit": 22,
-      "nama_unit": "GI MANGKUNEGARAN"
+      "nama_unit": "GI MANGKUNEGARAN",
+      "lat": -7.5659968,
+      "lon": 110.820515
     },
     {
       "id_unit": 31,
       "id_induk_unit": 22,
-      "nama_unit": "GI MASARAN"
+      "nama_unit": "GI MASARAN",
+      "lat": -7.461433,
+      "lon": 110.929866
     },
     {
       "id_unit": 32,
       "id_induk_unit": 22,
-      "nama_unit": "GI WONOGIRI"
+      "nama_unit": "GI WONOGIRI",
+      "lat": -7.804258,
+      "lon": 110.948475
     },
     {
       "id_unit": 33,
       "id_induk_unit": 23,
-      "nama_unit": "GI GEJAYAN"
+      "nama_unit": "GI GEJAYAN",
+      "lat": -7.779926,
+      "lon": 110.388006
     },
     {
       "id_unit": 34,
       "id_induk_unit": 23,
-      "nama_unit": "GI GODEAN"
+      "nama_unit": "GI GODEAN",
+      "lat": -7.756318,
+      "lon": 110.318193
     },
     {
       "id_unit": 35,
       "id_induk_unit": 23,
-      "nama_unit": "GI KALASAN"
+      "nama_unit": "GI KALASAN",
+      "lat": -7.7956085,
+      "lon": 110.4735197
     },
     {
       "id_unit": 36,
       "id_induk_unit": 23,
-      "nama_unit": "GI MEDARI"
+      "nama_unit": "GI MEDARI",
+      "lat": -7.682246,
+      "lon": 110.329917
     },
     {
       "id_unit": 37,
       "id_induk_unit": 23,
-      "nama_unit": "GI SEMANU"
+      "nama_unit": "GI SEMANU",
+      "lat": -7.986068,
+      "lon": 110.62735
     },
     {
       "id_unit": 38,
       "id_induk_unit": 23,
-      "nama_unit": "GI WIROBRAJAN"
+      "nama_unit": "GI WIROBRAJAN",
+      "lat": -7.801374,
+      "lon": 110.3540155
     },
     {
       "id_unit": 39,
@@ -330,62 +388,86 @@
     {
       "id_unit": 43,
       "id_induk_unit": 40,
-      "nama_unit": "GI JEKULO"
+      "nama_unit": "GI JEKULO",
+      "lat": -6.806214,
+      "lon": 110.900136
     },
     {
       "id_unit": 44,
       "id_induk_unit": 40,
-      "nama_unit": "GI KEDUNGOMBO"
+      "nama_unit": "GI KEDUNGOMBO",
+      "lat": -7.256985,
+      "lon": 110.840209
     },
     {
       "id_unit": 45,
       "id_induk_unit": 40,
-      "nama_unit": "GI SEMEN GROBOGAN"
+      "nama_unit": "GI SEMEN GROBOGAN",
+      "lat": -7.088108,
+      "lon": 110.626979
     },
     {
       "id_unit": 46,
       "id_induk_unit": 41,
-      "nama_unit": "GI BLORA"
+      "nama_unit": "GI BLORA",
+      "lat": -6.968633,
+      "lon": 111.397844
     },
     {
       "id_unit": 47,
       "id_induk_unit": 41,
-      "nama_unit": "GI CEPU"
+      "nama_unit": "GI CEPU",
+      "lat": -7.149274,
+      "lon": 111.576678
     },
     {
       "id_unit": 48,
       "id_induk_unit": 41,
-      "nama_unit": "GI SEMEN INDONESIA"
+      "nama_unit": "GI SEMEN INDONESIA",
+      "lat": -6.86213,
+      "lon": 111.461089
     },
     {
       "id_unit": 49,
       "id_induk_unit": 42,
-      "nama_unit": "GI BUMI SEMARANG BARU"
+      "nama_unit": "GI BUMI SEMARANG BARU",
+      "lat": -7.0313904,
+      "lon": 110.3383065
     },
     {
       "id_unit": 50,
       "id_induk_unit": 42,
-      "nama_unit": "GI KALISARI"
+      "nama_unit": "GI KALISARI",
+      "lat": -6.991855,
+      "lon": 110.405253
     },
     {
       "id_unit": 51,
       "id_induk_unit": 42,
-      "nama_unit": "GI MRANGGEN"
+      "nama_unit": "GI MRANGGEN",
+      "lat": -7.03692,
+      "lon": 110.512521
     },
     {
       "id_unit": 52,
       "id_induk_unit": 42,
-      "nama_unit": "GI PUDAKPAYUNG"
+      "nama_unit": "GI PUDAKPAYUNG",
+      "lat": -7.09691,
+      "lon": 110.4103
     },
     {
       "id_unit": 53,
       "id_induk_unit": 42,
-      "nama_unit": "GI RANDUGARUT"
+      "nama_unit": "GI RANDUGARUT",
+      "lat": -6.986339,
+      "lon": 110.344783
     },
     {
       "id_unit": 54,
       "id_induk_unit": 42,
-      "nama_unit": "GI SRONDOL"
+      "nama_unit": "GI SRONDOL",
+      "lat": -7.049816,
+      "lon": 110.427122
     }
   ],
   "m_unit_role": [
@@ -1759,13 +1841,13 @@
     },
     {
       "id_unit_role": 229,
-      "id_user": 30,
+      "id_user": 29,
       "id_unit": 26,
       "id_role": 2
     },
     {
       "id_unit_role": 230,
-      "id_user": 31,
+      "id_user": 28,
       "id_unit": 27,
       "id_role": 2
     },
@@ -1819,7 +1901,7 @@
     },
     {
       "id_unit_role": 239,
-      "id_user": 40,
+      "id_user": 38,
       "id_unit": 36,
       "id_role": 2
     },
@@ -1867,7 +1949,7 @@
     },
     {
       "id_unit_role": 247,
-      "id_user": 48,
+      "id_user": 46,
       "id_unit": 48,
       "id_role": 2
     },
@@ -1903,7 +1985,7 @@
     },
     {
       "id_unit_role": 253,
-      "id_user": 54,
+      "id_user": 52,
       "id_unit": 54,
       "id_role": 2
     },
@@ -3152,31 +3234,131 @@
     }
   ],
   "m_hari_libur": [
-    { "tanggal": "2026-01-01", "nama_hari_libur": "Tahun Baru 2026 Masehi", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-01-16", "nama_hari_libur": "Isra Mikraj Nabi Muhammad SAW", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-02-16", "nama_hari_libur": "Cuti Bersama Tahun Baru Imlek 2577 Kongzili", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-02-17", "nama_hari_libur": "Tahun Baru Imlek 2577 Kongzili", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-03-18", "nama_hari_libur": "Cuti Bersama Hari Suci Nyepi", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-03-19", "nama_hari_libur": "Hari Suci Nyepi Tahun Baru Saka 1948", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-03-20", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-03-21", "nama_hari_libur": "Hari Raya Idulfitri 1447 H", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-03-22", "nama_hari_libur": "Hari Raya Idulfitri 1447 H", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-03-23", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-03-24", "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-04-03", "nama_hari_libur": "Wafat Yesus Kristus", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-04-05", "nama_hari_libur": "Kebangkitan Yesus Kristus (Paskah)", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-05-01", "nama_hari_libur": "Hari Buruh Internasional", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-05-14", "nama_hari_libur": "Kenaikan Yesus Kristus", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-05-15", "nama_hari_libur": "Cuti Bersama Kenaikan Yesus Kristus", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-05-27", "nama_hari_libur": "Hari Raya Iduladha 1447 H", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-05-28", "nama_hari_libur": "Cuti Bersama Hari Raya Iduladha 1447 H", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-05-31", "nama_hari_libur": "Hari Raya Waisak 2570 BE", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-06-01", "nama_hari_libur": "Hari Lahir Pancasila", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-06-16", "nama_hari_libur": "1 Muharam Tahun Baru Islam 1448 H", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-08-17", "nama_hari_libur": "Proklamasi Kemerdekaan Republik Indonesia", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-08-25", "nama_hari_libur": "Maulid Nabi Muhammad SAW", "keterangan": "LIBUR_NASIONAL" },
-    { "tanggal": "2026-12-24", "nama_hari_libur": "Cuti Bersama Kelahiran Yesus Kristus", "keterangan": "CUTI_BERSAMA" },
-    { "tanggal": "2026-12-25", "nama_hari_libur": "Kelahiran Yesus Kristus", "keterangan": "LIBUR_NASIONAL" }
+    {
+      "tanggal": "2026-01-01",
+      "nama_hari_libur": "Tahun Baru 2026 Masehi",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-01-16",
+      "nama_hari_libur": "Isra Mikraj Nabi Muhammad SAW",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-02-16",
+      "nama_hari_libur": "Cuti Bersama Tahun Baru Imlek 2577 Kongzili",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-02-17",
+      "nama_hari_libur": "Tahun Baru Imlek 2577 Kongzili",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-03-18",
+      "nama_hari_libur": "Cuti Bersama Hari Suci Nyepi",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-03-19",
+      "nama_hari_libur": "Hari Suci Nyepi Tahun Baru Saka 1948",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-03-20",
+      "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-03-21",
+      "nama_hari_libur": "Hari Raya Idulfitri 1447 H",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-03-22",
+      "nama_hari_libur": "Hari Raya Idulfitri 1447 H",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-03-23",
+      "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-03-24",
+      "nama_hari_libur": "Cuti Bersama Hari Raya Idulfitri 1447 H",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-04-03",
+      "nama_hari_libur": "Wafat Yesus Kristus",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-04-05",
+      "nama_hari_libur": "Kebangkitan Yesus Kristus (Paskah)",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-05-01",
+      "nama_hari_libur": "Hari Buruh Internasional",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-05-14",
+      "nama_hari_libur": "Kenaikan Yesus Kristus",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-05-15",
+      "nama_hari_libur": "Cuti Bersama Kenaikan Yesus Kristus",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-05-27",
+      "nama_hari_libur": "Hari Raya Iduladha 1447 H",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-05-28",
+      "nama_hari_libur": "Cuti Bersama Hari Raya Iduladha 1447 H",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-05-31",
+      "nama_hari_libur": "Hari Raya Waisak 2570 BE",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-06-01",
+      "nama_hari_libur": "Hari Lahir Pancasila",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-06-16",
+      "nama_hari_libur": "1 Muharam Tahun Baru Islam 1448 H",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-08-17",
+      "nama_hari_libur": "Proklamasi Kemerdekaan Republik Indonesia",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-08-25",
+      "nama_hari_libur": "Maulid Nabi Muhammad SAW",
+      "keterangan": "LIBUR_NASIONAL"
+    },
+    {
+      "tanggal": "2026-12-24",
+      "nama_hari_libur": "Cuti Bersama Kelahiran Yesus Kristus",
+      "keterangan": "CUTI_BERSAMA"
+    },
+    {
+      "tanggal": "2026-12-25",
+      "nama_hari_libur": "Kelahiran Yesus Kristus",
+      "keterangan": "LIBUR_NASIONAL"
+    }
   ],
   "m_pegawai": [
     {
@@ -3376,20 +3558,6 @@
       "nama": "TURAH PUJI HARTONO"
     },
     {
-      "id_pegawai": 29,
-      "id_jabatan": 5,
-      "id_unit": 26,
-      "nip": null,
-      "nama": "TURAH PUJI HARTONO"
-    },
-    {
-      "id_pegawai": 30,
-      "id_jabatan": 5,
-      "id_unit": 27,
-      "nip": null,
-      "nama": "KAFABY"
-    },
-    {
       "id_pegawai": 31,
       "id_jabatan": 5,
       "id_unit": 28,
@@ -3446,13 +3614,6 @@
       "nama": "ARGA BINTORO"
     },
     {
-      "id_pegawai": 39,
-      "id_jabatan": 5,
-      "id_unit": 36,
-      "nip": null,
-      "nama": "DANI GUNAWAN"
-    },
-    {
       "id_pegawai": 40,
       "id_jabatan": 5,
       "id_unit": 37,
@@ -3502,13 +3663,6 @@
       "nama": "RAGIL ADHIWIBOWO"
     },
     {
-      "id_pegawai": 47,
-      "id_jabatan": 5,
-      "id_unit": 48,
-      "nip": null,
-      "nama": "A.F AZIZ"
-    },
-    {
       "id_pegawai": 48,
       "id_jabatan": 5,
       "id_unit": 49,
@@ -3542,13 +3696,6 @@
       "id_unit": 53,
       "nip": null,
       "nama": "GIGIH"
-    },
-    {
-      "id_pegawai": 53,
-      "id_jabatan": 5,
-      "id_unit": 54,
-      "nip": null,
-      "nama": "FAIZ"
     },
     {
       "id_pegawai": 54,
@@ -5311,6 +5458,17 @@
       "tgl_masuk": "2020-01-22",
       "tgl_lahir": "1998-02-07",
       "id_umk": 24
+    },
+    {
+      "id_petugas": 159,
+      "id_unit": 46,
+      "id_project": 2,
+      "id_jabatan": 7,
+      "nip": "INJ-ABIM-0159",
+      "nama": "ABIM ADITTYA",
+      "tgl_masuk": "2026-07-01",
+      "tgl_lahir": null,
+      "id_umk": 2
     }
   ],
   "m_user": [
@@ -5567,24 +5725,6 @@
       "email": null
     },
     {
-      "id_user": 30,
-      "id_pegawai": 29,
-      "id_petugas": null,
-      "id_role": 2,
-      "username": "TPH2",
-      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
-      "email": null
-    },
-    {
-      "id_user": 31,
-      "id_pegawai": 30,
-      "id_petugas": null,
-      "id_role": 2,
-      "username": "KAF2",
-      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
-      "email": null
-    },
-    {
       "id_user": 32,
       "id_pegawai": 31,
       "id_petugas": null,
@@ -5657,15 +5797,6 @@
       "email": null
     },
     {
-      "id_user": 40,
-      "id_pegawai": 39,
-      "id_petugas": null,
-      "id_role": 2,
-      "username": "DG2",
-      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
-      "email": null
-    },
-    {
       "id_user": 41,
       "id_pegawai": 40,
       "id_petugas": null,
@@ -5729,15 +5860,6 @@
       "email": null
     },
     {
-      "id_user": 48,
-      "id_pegawai": 47,
-      "id_petugas": null,
-      "id_role": 2,
-      "username": "AFA2",
-      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
-      "email": null
-    },
-    {
       "id_user": 49,
       "id_pegawai": 48,
       "id_petugas": null,
@@ -5779,15 +5901,6 @@
       "id_petugas": null,
       "id_role": 2,
       "username": "GIG",
-      "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
-      "email": null
-    },
-    {
-      "id_user": 54,
-      "id_pegawai": 53,
-      "id_petugas": null,
-      "id_role": 2,
-      "username": "FAI2",
       "password": "$2b$10$pmcSrZtxqje/Qu.Ri6vMDOKWEXcKWEsZC4TxiA2pWaVvs.9MfnURy",
       "email": null
     },
@@ -8017,6 +8130,13 @@
       "can_update": "N",
       "can_delete": "N",
       "can_approve": "N"
+    }
+  ],
+  "m_parameter_upah_tahunan": [
+    {
+      "tahun": 2025,
+      "nilai_rata_rata": 3315728,
+      "status": "PUBLISHED"
     }
   ]
 }

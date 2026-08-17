@@ -2,6 +2,15 @@ const service = require("./service");
 const response = require("../../utils/response");
 
 class DashboardController {
+    async mapUnits(req, res) {
+        try {
+            const data = await service.mapUnits(req.user);
+            return response.success(res, data, "Data lokasi GI berhasil diambil");
+        } catch (error) {
+            return response.error(res, error.message, error.statusCode || 500);
+        }
+    }
+
     async documents(req, res) {
         try {
             const data = await service.completedDocuments(req.user, req.query);

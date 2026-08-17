@@ -12,6 +12,7 @@ const {
     Jabatan,
     Umk,
     KoefTmk,
+    ParameterUpahTahunan,
     HariLibur,
     Unit,
     Pegawai,
@@ -22,11 +23,13 @@ const {
     Status,
     UnitRole,
     PegawaiProject,
+    Lembur,
 } = require("../models");
 
 const data = require(
     "./data/initialMasterData.json"
 );
+const july2026Overtime = require("./data/july2026Overtime.json");
 
 const seedChildrenByParent = new Map();
 data.m_unit.forEach((unit) => {
@@ -447,6 +450,8 @@ async function seedSystem(
                                 parent
                                     ?.id_unit ??
                                 null,
+                            lat: row.lat ?? null,
+                            lon: row.lon ?? null,
                             is_active: "Y",
                             updated_at: now,
                         },
@@ -493,6 +498,19 @@ async function seedSystem(
                         koef: row.koef,
                         tmk: row.tmk,
                         is_active: "Y",
+                        updated_at: now,
+                    },
+                    transaction
+                );
+            }
+
+            for (const row of data.m_parameter_upah_tahunan || []) {
+                await upsertOne(
+                    ParameterUpahTahunan,
+                    { tahun: row.tahun },
+                    {
+                        nilai_rata_rata: row.nilai_rata_rata,
+                        status: row.status,
                         updated_at: now,
                     },
                     transaction
@@ -966,6 +984,66 @@ async function seedSystem(
                     );
             }
 
+            for (const row of july2026Overtime) {
+                const petugas = requireMapped(
+                    petugasMap,
+                    row.source_id_petugas,
+                    "Petugas lembur historis"
+                );
+                const sourcePetugas = petugasDataMap.get(row.source_id_petugas);
+                const project = requireMapped(
+                    projectMap,
+                    sourcePetugas?.id_project ?? data.default_petugas_project_id,
+                    "Project lembur historis"
+                );
+                const makerRow = data.m_user.find(
+                    (candidate) => Number(candidate.id_petugas) === Number(row.source_id_petugas)
+                );
+                const maker = makerRow ? userMap[makerRow.id_user] : null;
+
+                await upsertOne(
+                    Lembur,
+                    { nomor_dokumen: row.nomor_dokumen },
+                    {
+                        id_petugas: petugas.id_petugas,
+                        id_project: project.id_project,
+                        id_petugas_cuti: null,
+                        dasar_lembur_type: null,
+                        id_spkl_petugas: null,
+                        id_cuti: null,
+                        id_ijin: null,
+                        id_sakit: null,
+                        id_status: statusMap.APPROVED.id_status,
+                        tgl_lembur: row.tgl_lembur,
+                        jam_mulai: row.jam_mulai,
+                        jam_selesai: row.jam_selesai,
+                        total_jam: row.total_jam,
+                        biaya_lembur: row.biaya_lembur,
+                        kategori_lembur: row.kategori_lembur,
+                        jenis_pekerjaan: row.jenis_pekerjaan,
+                        area_group: row.area_group,
+                        is_hari_libur: row.is_hari_libur,
+                        detail_pekerjaan_lembur: row.detail_pekerjaan_lembur,
+                        keterangan: row.keterangan,
+                        jumlah_jam_koreksi: row.total_jam,
+                        catatan_koreksi: "DATA INJEKSI HISTORIS - DURASI MENGIKUTI DATA REALISASI",
+                        foto_kegiatan_1: null,
+                        foto_kegiatan_2: null,
+                        surat_perintah_lembur: null,
+                        maker_signature: null,
+                        checker_signature: null,
+                        verification_signature: null,
+                        approval_1_signature: null,
+                        approval_2_signature: null,
+                        approval_3_signature: null,
+                        created_by: maker?.id_user ?? null,
+                        created_at: new Date(`${row.tgl_lembur}T08:00:00+07:00`),
+                        updated_at: new Date(`${row.tgl_lembur}T08:00:00+07:00`),
+                    },
+                    transaction
+                );
+            }
+
             for (const status of statuses) {
                 await statusMap[
                     status.code
@@ -1006,6 +1084,8 @@ async function seedSystem(
                 umk: data.m_umk.length,
                 koef_tmk:
                     data.m_koef_tmk.length,
+                parameter_upah_tahunan:
+                    (data.m_parameter_upah_tahunan || []).length,
                 hari_libur:
                     data.m_hari_libur.length,
                 pegawai:
@@ -1022,6 +1102,8 @@ async function seedSystem(
                     unitRoleSeedRows.length,
                 statuses:
                     statuses.length,
+                lembur_historis_juli_2026:
+                    july2026Overtime.length,
                 admin: admin.username,
                 super_admin:
                     superAdmin.username,
