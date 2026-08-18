@@ -7,7 +7,7 @@ const getRelativeDirectory = () => {
     return path.join(
         `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`,
         "signatures",
-        "approval-1"
+        "bulk-approval"
     );
 };
 
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         const extension = path.extname(file.originalname).toLowerCase();
-        callback(null, `bulk-approval-1-${Date.now()}-${Math.round(Math.random() * 1e9)}${extension}`);
+        callback(null, `bulk-approval-${Date.now()}-${Math.round(Math.random() * 1e9)}${extension}`);
     },
 });
 
@@ -32,6 +32,10 @@ module.exports = multer({
         callback(null, true);
     },
     limits: { fileSize: 1 * 1024 * 1024, files: 1 },
-}).single("approval_1_signature");
+}).fields([
+    { name: "approval_1_signature", maxCount: 1 },
+    { name: "approval_2_signature", maxCount: 1 },
+    { name: "approval_3_signature", maxCount: 1 },
+]);
 
 module.exports.getRelativeDirectory = getRelativeDirectory;

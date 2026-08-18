@@ -8,7 +8,7 @@ const router = express.Router();
 router.post(
     "/bulk-approve",
     handleUploadError(uploadWorkflowSignature),
-    controller.bulkApproveApproval1
+    controller.bulkApprove
 );
 
 module.exports = router;

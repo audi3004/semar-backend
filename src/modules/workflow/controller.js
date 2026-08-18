@@ -4,12 +4,13 @@ const workflowService = require("./service");
 const { getRelativeDirectory } = require("../../middlewares/uploadWorkflowSignature");
 
 class WorkflowController {
-    async bulkApproveApproval1(req, res) {
+    async bulkApprove(req, res) {
         try {
-            const signaturePath = req.file
-                ? `/uploads/workflow/${path.join(getRelativeDirectory(), req.file.filename).replace(/\\/g, "/")}`
+            const signatureFile = Object.values(req.files || {}).flat()[0];
+            const signaturePath = signatureFile
+                ? `/uploads/workflow/${path.join(getRelativeDirectory(), signatureFile.filename).replace(/\\/g, "/")}`
                 : null;
-            const data = await workflowService.bulkApproveApproval1(
+            const data = await workflowService.bulkApprove(
                 req.body.transactions,
                 signaturePath,
                 req.user

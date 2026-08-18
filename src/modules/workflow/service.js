@@ -52,15 +52,25 @@ class WorkflowService {
         return [...unique.values()];
     }
 
-    async bulkApproveApproval1(rawTransactions, signaturePath, user) {
-        if (String(user?.kode_role || "").trim().toUpperCase() !== "APPROVAL_1") {
-            throw new AppError("Fitur approval massal hanya tersedia untuk Role Approval 1", 403);
+    async bulkApprove(rawTransactions, signaturePath, user) {
+        const role = String(user?.kode_role || "").trim().toUpperCase();
+        const signatureFields = {
+            APPROVAL_1: "approval_1_signature",
+            APPROVAL_2: "approval_2_signature",
+            APPROVAL_3: "approval_3_signature",
+        };
+        const signatureField = signatureFields[role];
+        if (!signatureField) {
+            throw new AppError("Fitur approval massal hanya tersedia untuk Role Approval 1, 2, dan 3", 403);
         }
         if (!signaturePath) {
-            throw new AppError("Tanda tangan Approval 1 wajib dibubuhkan", 422);
+            throw new AppError("Tanda tangan approver wajib dibubuhkan", 422);
         }
 
         const transactions = this.parseTransactions(rawTransactions);
+        if (role === "APPROVAL_2" && transactions.some((item) => item.type === "sppd")) {
+            throw new AppError("Approval 2 tidak dapat menyetujui massal transaksi SPPD karena biaya harus disesuaikan terlebih dahulu", 422);
+        }
 
         // Validate the complete batch before changing any status.
         for (const item of transactions) {
@@ -78,7 +88,7 @@ class WorkflowService {
             const result = await services[item.type].moveToNextStatus(
                 item.id,
                 user,
-                { approval_1_signature: signaturePath }
+                { [signatureField]: signaturePath }
             );
             results.push({ type: item.type, id: result[idFields[item.type]] || item.id });
         }
