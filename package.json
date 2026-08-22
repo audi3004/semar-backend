@@ -9,6 +9,7 @@
       "db:migrate": "sequelize-cli db:migrate",
       "db:migrate:status": "sequelize-cli db:migrate:status",
       "db:clear": "node scripts/clear-database.js",
+      "uploads:clear": "node scripts/clear-uploads.js",
       "seed:super-admin": "node src/seeders/userSeeder.js",
       "seed:modules-superadmin": "node src/seeders/moduleAccessSeeder.js",
       "seed:initialize": "node src/seeders/systemInitializer.js",
