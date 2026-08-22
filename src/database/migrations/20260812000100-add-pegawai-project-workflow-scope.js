@@ -26,13 +26,25 @@ module.exports = {
             await queryInterface.addIndex("m_pegawai_project", ["id_project", "is_active"], { name: "idx_pegawai_project_project_active" });
         }
 
-        await queryInterface.sequelize.query(`
-            INSERT INTO m_pegawai_project (id_pegawai, id_project, is_active, created_at)
-            SELECT p.id_pegawai, j.id_project, 'Y', NOW()
-            FROM m_pegawai p JOIN m_jabatan j ON j.id_jabatan = p.id_jabatan
-            WHERE j.id_project IS NOT NULL
-            ON DUPLICATE KEY UPDATE is_active = VALUES(is_active)
-        `);
+        const jabatanColumns = await queryInterface.describeTable("m_jabatan");
+        const petugasColumns = await queryInterface.describeTable("m_petugas");
+        if (jabatanColumns.id_project) {
+            await queryInterface.sequelize.query(`
+                INSERT INTO m_pegawai_project (id_pegawai, id_project, is_active, created_at)
+                SELECT p.id_pegawai, j.id_project, 'Y', NOW()
+                FROM m_pegawai p JOIN m_jabatan j ON j.id_jabatan = p.id_jabatan
+                WHERE j.id_project IS NOT NULL
+                ON DUPLICATE KEY UPDATE is_active = VALUES(is_active)
+            `);
+        } else if (petugasColumns.id_project) {
+            await queryInterface.sequelize.query(`
+                INSERT INTO m_pegawai_project (id_pegawai, id_project, is_active, created_at)
+                SELECT p.id_pegawai, pt.id_project, 'Y', NOW()
+                FROM m_pegawai p JOIN m_petugas pt ON pt.nip = p.nip
+                WHERE pt.id_project IS NOT NULL
+                ON DUPLICATE KEY UPDATE is_active = VALUES(is_active)
+            `);
+        }
 
         for (const table of TRANSACTION_TABLES) {
             const columns = await queryInterface.describeTable(table);
@@ -50,13 +62,22 @@ module.exports = {
             if (!indexes.some((index) => index.name === indexName)) {
                 await queryInterface.addIndex(table, ["id_project", "id_status"], { name: indexName });
             }
-            await queryInterface.sequelize.query(`
-                UPDATE ${table} t
-                JOIN m_petugas p ON p.id_petugas = t.id_petugas
-                JOIN m_jabatan j ON j.id_jabatan = p.id_jabatan
-                SET t.id_project = j.id_project
-                WHERE t.id_project IS NULL AND j.id_project IS NOT NULL
-            `);
+            if (petugasColumns.id_project) {
+                await queryInterface.sequelize.query(`
+                    UPDATE ${table} t
+                    JOIN m_petugas p ON p.id_petugas = t.id_petugas
+                    SET t.id_project = p.id_project
+                    WHERE t.id_project IS NULL AND p.id_project IS NOT NULL
+                `);
+            } else if (jabatanColumns.id_project) {
+                await queryInterface.sequelize.query(`
+                    UPDATE ${table} t
+                    JOIN m_petugas p ON p.id_petugas = t.id_petugas
+                    JOIN m_jabatan j ON j.id_jabatan = p.id_jabatan
+                    SET t.id_project = j.id_project
+                    WHERE t.id_project IS NULL AND j.id_project IS NOT NULL
+                `);
+            }
         }
     },
 

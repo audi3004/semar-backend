@@ -251,10 +251,7 @@ const create = Joi.object({
                 end[1] * 60 +
                 (end[2] || 0);
 
-            if (
-                startSeconds >=
-                endSeconds
-            ) {
+            if (startSeconds === endSeconds) {
                 return helpers.error(
                     "time.invalidRange"
                 );
@@ -379,10 +376,7 @@ const update = Joi.object({
                     end[1] * 60 +
                     (end[2] || 0);
 
-                if (
-                    startSeconds >=
-                    endSeconds
-                ) {
+                if (startSeconds === endSeconds) {
                     return helpers.error(
                         "time.invalidRange"
                     );

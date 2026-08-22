@@ -2,12 +2,13 @@
 
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.addColumn("m_unit", "lat", {
+        const columns = await queryInterface.describeTable("m_unit");
+        if (!columns.lat) await queryInterface.addColumn("m_unit", "lat", {
             type: Sequelize.DECIMAL(10, 7),
             allowNull: true,
             after: "nama_unit",
         });
-        await queryInterface.addColumn("m_unit", "lon", {
+        if (!columns.lon) await queryInterface.addColumn("m_unit", "lon", {
             type: Sequelize.DECIMAL(10, 7),
             allowNull: true,
             after: "lat",

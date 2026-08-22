@@ -112,6 +112,7 @@ const dashboardRoute = require("../modules/dashboard/route");
 const reportRoute = require("../modules/report/route");
 const workflowRoute = require("../modules/workflow/route");
 const spklRoute = require("../modules/spkl/route");
+const masterLemburRoute = require("../modules/masterLembur/route");
 
 
 
@@ -162,6 +163,7 @@ router.use(
 router.use("/mutasi", mutasiRoute);
 router.use("/lembur", lemburRoute);
 router.use("/spkl", spklRoute);
+router.use("/master-lembur", masterLemburRoute);
 router.use(
     "/log-lembur",
     logLemburRoute

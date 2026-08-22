@@ -29,7 +29,7 @@ module.exports = {
     refreshTokenExpiresIn:
         process.env
             .JWT_REFRESH_EXPIRES_IN ||
-        "7d",
+        "30d",
     issuer:
         process.env.JWT_ISSUER ||
         process.env.APP_NAME ||

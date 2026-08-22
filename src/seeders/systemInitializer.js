@@ -24,6 +24,8 @@ const {
     UnitRole,
     PegawaiProject,
     Lembur,
+    KategoriLembur,
+    JenisPekerjaanLembur,
 } = require("../models");
 
 const data = require(
@@ -326,6 +328,8 @@ async function seedSystem(
             const petugasMap = {};
             const userMap = {};
             const moduleMap = {};
+            const kategoriLemburMap = {};
+            const jenisLemburMap = {};
             const accessKeys =
                 new Set();
             const pegawaiDataMap =
@@ -814,6 +818,45 @@ async function seedSystem(
                     );
             }
 
+            for (const row of data.m_kategori_lembur || []) {
+                kategoriLemburMap[row.kode_kategori] = await upsertOne(
+                    KategoriLembur,
+                    { kode_kategori: row.kode_kategori },
+                    {
+                        nama_kategori: row.nama_kategori,
+                        jenis_mode: row.jenis_mode,
+                        urutan: row.urutan,
+                        is_active: row.is_active ?? "Y",
+                        updated_at: now,
+                    },
+                    transaction
+                );
+            }
+
+            for (const row of data.m_jenis_pekerjaan_lembur || []) {
+                const kategori = requireMapped(
+                    kategoriLemburMap,
+                    row.kode_kategori,
+                    "Kategori jenis lembur"
+                );
+                jenisLemburMap[row.kode_jenis] = await upsertOne(
+                    JenisPekerjaanLembur,
+                    { kode_jenis: row.kode_jenis },
+                    {
+                        id_kategori_lembur: kategori.id_kategori_lembur,
+                        nama_jenis: row.nama_jenis,
+                        kode_perilaku: row.kode_perilaku,
+                        requires_replacement_officer: row.requires_replacement_officer,
+                        evidence_optional: row.evidence_optional,
+                        max_daily_hours: row.max_daily_hours,
+                        urutan: row.urutan,
+                        is_active: row.is_active ?? "Y",
+                        updated_at: now,
+                    },
+                    transaction
+                );
+            }
+
             const seededModuleIds =
                 Object.values(moduleMap)
                     .map(
@@ -1000,6 +1043,27 @@ async function seedSystem(
                     (candidate) => Number(candidate.id_petugas) === Number(row.source_id_petugas)
                 );
                 const maker = makerRow ? userMap[makerRow.id_user] : null;
+                const normalizedCategory = row.jenis_pekerjaan === "Siaga / Libur Nasional"
+                    ? "SIAGA_HARI_LIBUR"
+                    : row.kategori_lembur === "Piket Tanggal Merah / Cuti Pengganti"
+                        ? "PENGGANTI_KETIDAKHADIRAN"
+                        : Object.values(kategoriLemburMap).find(
+                            (item) => item.nama_kategori === row.kategori_lembur
+                        )?.kode_kategori;
+                const jenisAlias = {
+                    "Pengganti Piket (Operator sedang cuti)": "PENGGANTI_CUTI",
+                    "Siaga / Libur Nasional": "SIAGA_LIBUR",
+                };
+                const normalizedType = jenisAlias[row.jenis_pekerjaan]
+                    || Object.values(jenisLemburMap).find(
+                        (item) => item.nama_jenis === row.jenis_pekerjaan
+                    )?.kode_jenis;
+                const kategoriMaster = normalizedCategory
+                    ? kategoriLemburMap[normalizedCategory]
+                    : null;
+                const jenisMaster = normalizedType
+                    ? jenisLemburMap[normalizedType]
+                    : null;
 
                 await upsertOne(
                     Lembur,
@@ -1014,13 +1078,15 @@ async function seedSystem(
                         id_ijin: null,
                         id_sakit: null,
                         id_status: statusMap.APPROVED.id_status,
+                        id_kategori_lembur: kategoriMaster?.id_kategori_lembur ?? null,
+                        id_jenis_pekerjaan_lembur: jenisMaster?.id_jenis_pekerjaan_lembur ?? null,
                         tgl_lembur: row.tgl_lembur,
                         jam_mulai: row.jam_mulai,
                         jam_selesai: row.jam_selesai,
                         total_jam: row.total_jam,
                         biaya_lembur: row.biaya_lembur,
-                        kategori_lembur: row.kategori_lembur,
-                        jenis_pekerjaan: row.jenis_pekerjaan,
+                        kategori_lembur: kategoriMaster?.nama_kategori ?? row.kategori_lembur,
+                        jenis_pekerjaan: jenisMaster?.nama_jenis ?? row.jenis_pekerjaan,
                         area_group: row.area_group,
                         is_hari_libur: row.is_hari_libur,
                         detail_pekerjaan_lembur: row.detail_pekerjaan_lembur,
@@ -1096,6 +1162,10 @@ async function seedSystem(
                     data.m_user.length + 2,
                 modules:
                     data.m_module.length,
+                kategori_lembur:
+                    (data.m_kategori_lembur || []).length,
+                jenis_pekerjaan_lembur:
+                    (data.m_jenis_pekerjaan_lembur || []).length,
                 access_modules:
                     accessKeys.size,
                 unit_roles:

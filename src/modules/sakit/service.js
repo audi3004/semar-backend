@@ -344,6 +344,17 @@ class SakitService {
         status,
         user
     ) {
+        const roleCode = String(
+            user?.kode_role || user?.role?.kode_role || ""
+        ).toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+        if (!this.isSuperAdmin(user) && roleCode !== "MAKER") {
+            throw new AppError(
+                "Data sakit hanya dapat dikoreksi oleh Maker. Gunakan aksi revisi untuk mengembalikan transaksi.",
+                403
+            );
+        }
+
         if (
             status.is_final ===
             "Y"

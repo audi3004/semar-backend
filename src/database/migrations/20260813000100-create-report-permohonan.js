@@ -5,7 +5,8 @@ const { DataTypes } = require("sequelize");
 module.exports = {
     async up(queryInterface) {
         const tables = await queryInterface.showAllTables();
-        if (tables.map(String).some((name) => name.toLowerCase() === "t_report_permohonan")) return;
+        const tableNames = tables.map((table) => String(table?.tableName || table));
+        if (tableNames.some((name) => name.toLowerCase() === "t_report_permohonan")) return;
         await queryInterface.createTable("t_report_permohonan", {
             id_report_permohonan: { type: DataTypes.BIGINT.UNSIGNED, primaryKey: true, autoIncrement: true, allowNull: false },
             nomor_dokumen: { type: DataTypes.STRING(150), allowNull: false },

@@ -27,6 +27,13 @@ const { assertWorkflowAssignment, resolveRevisionStatus, resolveNextStatusWithBy
 const { scopeTransactionFilters, assertTransactionOwner } = require("../../utils/transactionAccess");
 
 class CutiService {
+    async calculateLeaveBalance(idPetugas, date, duration, excludeId = null, transaction = null) {
+        const year = Number(String(date).slice(0, 4));
+        const usedDays = await cutiRepository.sumApprovedDaysByYear(idPetugas, year, excludeId, transaction);
+        const before = Math.max(0, 12 - usedDays);
+        return { before, after: Math.max(0, before - Number(duration || 0)) };
+    }
+
     getSignatureField(user) {
         const code = String(user?.kode_role || user?.role?.kode_role || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
         return {
@@ -428,6 +435,17 @@ class CutiService {
         status,
         user
     ) {
+        const roleCode = String(
+            user?.kode_role || user?.role?.kode_role || ""
+        ).toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+        if (!this.isSuperAdmin(user) && roleCode !== "MAKER") {
+            throw new AppError(
+                "Data cuti hanya dapat dikoreksi oleh Maker. Gunakan aksi revisi untuk mengembalikan transaksi.",
+                403
+            );
+        }
+
         if (
             status.is_final ===
             "Y"
@@ -685,6 +703,7 @@ class CutiService {
         }
 
         const noCuti = await this.generateCutiNumber(tglPengajuan, data.id_petugas);
+        const lamaHari = this.calculateDuration(tglMulai, tglSelesai);
 
         await this
             .ensureNumberAvailable(
@@ -697,6 +716,13 @@ class CutiService {
                     async (
                         transaction
                     ) => {
+                        const leaveBalance = await this.calculateLeaveBalance(
+                            data.id_petugas,
+                            tglMulai,
+                            lamaHari,
+                            null,
+                            transaction
+                        );
                         const cuti =
                             await cutiRepository
                                 .create(
@@ -731,10 +757,11 @@ class CutiService {
                         tglSelesai,
 
                     lama_hari:
-                        this.calculateDuration(
-                            tglMulai,
-                            tglSelesai
-                        ),
+                        lamaHari,
+
+                    sisa_cuti_sebelum: leaveBalance.before,
+
+                    sisa_cuti_setelah: leaveBalance.after,
 
                     contact_alamat:
                         this.normalizeNullableText(
@@ -871,6 +898,13 @@ class CutiService {
             async (
                 transaction
             ) => {
+                const lamaHari = this.calculateDuration(tglMulai, tglSelesai);
+                const leaveBalance = currentCuti.sisa_cuti_sebelum == null
+                    ? await this.calculateLeaveBalance(idPetugas, tglMulai, lamaHari, id_cuti, transaction)
+                    : {
+                        before: Number(currentCuti.sisa_cuti_sebelum),
+                        after: Math.max(0, Number(currentCuti.sisa_cuti_sebelum) - lamaHari),
+                    };
                 const updatedCuti =
                     await cutiRepository
                         .update(
@@ -911,10 +945,11 @@ class CutiService {
                         tglSelesai,
 
                     lama_hari:
-                        this.calculateDuration(
-                            tglMulai,
-                            tglSelesai
-                        ),
+                        lamaHari,
+
+                    sisa_cuti_sebelum: leaveBalance.before,
+
+                    sisa_cuti_setelah: leaveBalance.after,
 
                     contact_alamat:
                         data.contact_alamat !==

@@ -120,7 +120,7 @@ class LemburRepository {
             Ijin.findAll({ where: dateWhere("tanggal"), include: [status, owner, unused("lemburPengganti")] }),
             Sakit.findAll({ where: dateWhere("tanggal"), include: [status, owner, unused("lemburPengganti")] }),
         ]);
-        const spkl = spklRows.filter((row) => !row.lembur).map((row) => ({ type: "SPKL", reference_id: row.id_spkl_petugas, tanggal: row.spkl.tgl_lembur, nomor_dokumen: row.spkl.nomor_dokumen, kategori_lembur: row.spkl.kategori_lembur, jenis_pekerjaan: row.spkl.jenis_pekerjaan, kode_jenis_pekerjaan: row.spkl.kode_jenis_pekerjaan, area_group: row.spkl.area_group, detail_pekerjaan: row.spkl.detail_pekerjaan }));
+        const spkl = spklRows.filter((row) => !row.lembur).map((row) => ({ type: "SPKL", reference_id: row.id_spkl_petugas, tanggal: row.spkl.tgl_lembur, nomor_dokumen: row.spkl.nomor_dokumen, id_kategori_lembur: row.spkl.id_kategori_lembur, id_jenis_pekerjaan_lembur: row.spkl.id_jenis_pekerjaan_lembur, kategori_lembur: row.spkl.kategori_lembur, jenis_pekerjaan: row.spkl.jenis_pekerjaan, kode_jenis_pekerjaan: row.spkl.kode_jenis_pekerjaan, area_group: row.spkl.area_group, detail_pekerjaan: row.spkl.detail_pekerjaan }));
         const mapAbsence = (rows, type, idField, start) => rows.filter((row) => !(row.lemburPengganti || []).length).map((row) => ({ type, reference_id: row[idField], tanggal: tanggal || row[start], tanggal_mulai: row[start], tanggal_selesai: row.tgl_selesai, nomor_dokumen: row.nomor_dokumen, petugas: row.petugas, kategori_lembur: "005 - Piket Tanggal Merah / Cuti Pengganti", jenis_pekerjaan: `Pengganti ${type}` }));
         return [...spkl, ...mapAbsence(cuti, "CUTI", "id_cuti", "tgl_mulai"), ...mapAbsence(ijin, "IJIN", "id_ijin", "tanggal"), ...mapAbsence(sakit, "SAKIT", "id_sakit", "tanggal")];
     }
@@ -535,20 +535,7 @@ class LemburRepository {
             },
         };
 
-        const where = {
-            id_petugas,
-            tgl_lembur,
-
-            jam_mulai: {
-                [Op.lt]:
-                    jam_selesai,
-            },
-
-            jam_selesai: {
-                [Op.gt]:
-                    jam_mulai,
-            },
-        };
+        const where = { id_petugas, tgl_lembur };
 
         if (excludeId) {
             where.id_lembur = {
@@ -557,13 +544,27 @@ class LemburRepository {
             };
         }
 
-        return await Lembur.findOne({
+        const rows = await Lembur.findAll({
             where,
 
             include: [
                 statusInclude,
             ],
         });
+        const minutes = (value) => {
+            const [hour, minute] = String(value).split(":").map(Number);
+            return hour * 60 + minute;
+        };
+        const segments = (start, end) => end > start
+            ? [[start, end]]
+            : [[start, 24 * 60], [0, end]];
+        const requested = segments(minutes(jam_mulai), minutes(jam_selesai));
+        return rows.find((row) => {
+            const existing = segments(minutes(row.jam_mulai), minutes(row.jam_selesai));
+            return requested.some(([requestStart, requestEnd]) =>
+                existing.some(([existingStart, existingEnd]) => requestStart < existingEnd && requestEnd > existingStart)
+            );
+        }) || null;
     }
 
     async create(

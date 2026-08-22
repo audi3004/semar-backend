@@ -57,6 +57,8 @@ const LogSppd = require(
 const ReportPermohonan = require("./ReportPermohonan");
 const Spkl = require("./Spkl");
 const SpklPetugas = require("./SpklPetugas");
+const KategoriLembur = require("./KategoriLembur");
+const JenisPekerjaanLembur = require("./JenisPekerjaanLembur");
 
 
 
@@ -280,6 +282,12 @@ Unit.hasMany(Spkl, { foreignKey: "id_unit", as: "spkls" });
 Spkl.belongsTo(Unit, { foreignKey: "id_unit", as: "unit" });
 User.hasMany(Spkl, { foreignKey: "created_by", as: "createdSpkls" });
 Spkl.belongsTo(User, { foreignKey: "created_by", as: "createdBy" });
+KategoriLembur.hasMany(JenisPekerjaanLembur, { foreignKey: "id_kategori_lembur", as: "jenisPekerjaan" });
+JenisPekerjaanLembur.belongsTo(KategoriLembur, { foreignKey: "id_kategori_lembur", as: "kategori" });
+Spkl.belongsTo(KategoriLembur, { foreignKey: "id_kategori_lembur", as: "kategoriMaster" });
+Spkl.belongsTo(JenisPekerjaanLembur, { foreignKey: "id_jenis_pekerjaan_lembur", as: "jenisMaster" });
+Lembur.belongsTo(KategoriLembur, { foreignKey: "id_kategori_lembur", as: "kategoriMaster" });
+Lembur.belongsTo(JenisPekerjaanLembur, { foreignKey: "id_jenis_pekerjaan_lembur", as: "jenisMaster" });
 Spkl.hasMany(SpklPetugas, { foreignKey: "id_spkl", as: "assignments" });
 SpklPetugas.belongsTo(Spkl, { foreignKey: "id_spkl", as: "spkl" });
 Petugas.hasMany(SpklPetugas, { foreignKey: "id_petugas", as: "spklAssignments" });
@@ -1118,4 +1126,6 @@ module.exports = {
     ReportPermohonan,
     Spkl,
     SpklPetugas,
+    KategoriLembur,
+    JenisPekerjaanLembur,
 };

@@ -17,6 +17,7 @@ const logLemburService = require(
 const gajiService = require(
     "../gaji/service"
 );
+const { Op } = require("sequelize");
 
 const {
     sequelize,
@@ -58,7 +59,7 @@ class LemburService {
             if (assignment.spkl.status_spkl !== "ACTIVE" || !["ASSIGNED", "DRAFTED"].includes(assignment.status_penugasan)) throw new AppError("Assignment SPKL sudah tidak dapat digunakan", 409);
             if (await Lembur.findOne({ where: { id_spkl_petugas: referenceId }, transaction })) throw new AppError("Assignment SPKL sudah digunakan", 409);
             if (assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR") await this.validateHoliday(assignment.spkl.tgl_lembur);
-            return { type, assignment, source: assignment.spkl, tgl_lembur: assignment.spkl.tgl_lembur, kategori_lembur: assignment.spkl.kategori_lembur, jenis_pekerjaan: assignment.spkl.jenis_pekerjaan, area_group: assignment.spkl.area_group, detail_pekerjaan_lembur: assignment.spkl.detail_pekerjaan, id_petugas_cuti: null, is_hari_libur: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" ? "Y" : "N", evidenceOptional: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" };
+            return { type, assignment, source: assignment.spkl, tgl_lembur: assignment.spkl.tgl_lembur, id_kategori_lembur: assignment.spkl.id_kategori_lembur, id_jenis_pekerjaan_lembur: assignment.spkl.id_jenis_pekerjaan_lembur, kategori_lembur: assignment.spkl.kategori_lembur, jenis_pekerjaan: assignment.spkl.jenis_pekerjaan, area_group: assignment.spkl.area_group, detail_pekerjaan_lembur: assignment.spkl.detail_pekerjaan, id_petugas_cuti: null, is_hari_libur: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" ? "Y" : "N", evidenceOptional: assignment.spkl.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" };
         }
         const source = await Model.findByPk(referenceId, { include: [{ model: Status, as: "status", required: true }], transaction });
         if (!source || ["DRAFT", "REVISION", "REJECTED", "CANCELLED"].includes(source.status.kode_status)) throw new AppError(`Transaksi ${type} tidak valid sebagai dasar lembur`, 422);
@@ -105,16 +106,25 @@ class LemburService {
         return this.normalizeText(jenisPekerjaan) === "Pengganti Piket (Operator sedang cuti)";
     }
 
-    calculateOvertimeCost(hourlyRate, hours) {
-        return Number((Number(hourlyRate) * Number(hours)).toFixed(2));
+    calculateOvertimeFactor(hours, isHoliday) {
+        const duration = Number(hours);
+        if (!Number.isInteger(duration) || duration <= 0) {
+            throw new AppError("Jumlah jam lembur harus berupa bilangan bulat positif", 422);
+        }
+        if (isHoliday === "Y") {
+            return (Math.min(duration, 8) * 2)
+                + (duration > 8 ? 3 : 0)
+                + (Math.max(duration - 9, 0) * 4);
+        }
+        return 1.5 + (Math.max(duration - 1, 0) * 2);
     }
 
-    getStoredHourlyRate(lembur) {
-        const effectiveHours = Number(
-            lembur.jumlah_jam_koreksi ?? lembur.total_jam
-        );
-        if (effectiveHours <= 0) return 0;
-        return Number(lembur.biaya_lembur || 0) / effectiveHours;
+    calculateOvertimeCost(tarifLembur, hours, isHoliday) {
+        return Math.ceil(Number(tarifLembur) * this.calculateOvertimeFactor(hours, isHoliday));
+    }
+
+    getStoredOvertimeRate(lembur) {
+        return Number(lembur.tarif_lembur || 0);
     }
 
     getSignatureField(user) {
@@ -297,10 +307,7 @@ class LemburService {
                 jam_selesai
             );
 
-        if (
-            startMinutes >=
-            endMinutes
-        ) {
+        if (startMinutes === endMinutes) {
             throw new AppError(
                 "Jam mulai harus lebih kecil dari jam selesai",
                 400
@@ -322,9 +329,9 @@ class LemburService {
                 jam_selesai
             );
 
-        const totalMinutes =
-            endMinutes -
-            startMinutes;
+        const totalMinutes = endMinutes > startMinutes
+            ? endMinutes - startMinutes
+            : endMinutes + (24 * 60) - startMinutes;
 
         return Number(
             (
@@ -699,12 +706,13 @@ class LemburService {
             data.id_petugas,
             tglLembur
         );
-        const biayaLembur = this.calculateOvertimeCost(
-            salary.tarif_lembur_per_jam,
-            data.jumlah_jam_koreksi ?? totalJam
-        );
-
         const isHariLibur = basis.is_hari_libur;
+        const effectiveHours = data.jumlah_jam_koreksi ?? totalJam;
+        const maxDailyHours = basis.type !== "SPKL" || basis.source?.kode_jenis_pekerjaan === "SIAGA_HARI_LIBUR" ? 8 : 4;
+        await this.validateOvertimeLimits(data.id_petugas, tglLembur, effectiveHours, null, maxDailyHours);
+        const tarifLembur = salary.tarif_lembur ?? salary.tarif_lembur_per_jam;
+        const totalFaktor = this.calculateOvertimeFactor(effectiveHours, isHariLibur);
+        const biayaLembur = this.calculateOvertimeCost(tarifLembur, effectiveHours, isHariLibur);
 
         await this.ensureNoOverlap(
             data.id_petugas,
@@ -764,10 +772,17 @@ class LemburService {
                     biaya_lembur:
                         biayaLembur,
 
+                    tarif_lembur: tarifLembur,
+
+                    total_faktor: totalFaktor,
+
                     kategori_lembur:
                         this.normalizeText(
                             lockedBasis.kategori_lembur
                         ),
+
+                    id_kategori_lembur: lockedBasis.id_kategori_lembur ?? null,
+                    id_jenis_pekerjaan_lembur: lockedBasis.id_jenis_pekerjaan_lembur ?? null,
 
                     jenis_pekerjaan: this.normalizeNullableText(lockedBasis.jenis_pekerjaan),
                     area_group: this.normalizeNullableText(lockedBasis.area_group),
@@ -793,7 +808,9 @@ class LemburService {
                     approval_1_signature: data.approval_1_signature ?? null,
                     approval_2_signature: data.approval_2_signature ?? null,
                     approval_3_signature: data.approval_3_signature ?? null,
-                    jumlah_jam_koreksi: data.jumlah_jam_koreksi ?? null,
+                    // Jam koreksi hanya diisi melalui proses review Checker.
+                    // Selama belum dikoreksi, perhitungan memakai total_jam Maker.
+                    jumlah_jam_koreksi: null,
                     catatan_koreksi: this.normalizeNullableText(data.catatan_koreksi),
                     nomor_dokumen: nomorDokumen,
 
@@ -956,22 +973,30 @@ class LemburService {
             jamMulai,
             jamSelesai
         );
-        const jumlahJamKoreksi = data.jumlah_jam_koreksi !== undefined
-            ? data.jumlah_jam_koreksi
-            : currentLembur.jumlah_jam_koreksi;
-        let hourlyRate = data.jumlah_jam_koreksi !== undefined
-            ? this.getStoredHourlyRate(currentLembur)
-            : 0;
-        if (hourlyRate <= 0) {
+        const makerOwnedStatus = ["DRAFT", "REVISION"].includes(
+            String(currentLembur.status?.kode_status || "").toUpperCase()
+        );
+        const jumlahJamKoreksi = makerOwnedStatus
+            ? null
+            : data.jumlah_jam_koreksi !== undefined
+                ? data.jumlah_jam_koreksi
+                : currentLembur.jumlah_jam_koreksi;
+        let tarifLembur = this.getStoredOvertimeRate(currentLembur);
+        if (tarifLembur <= 0) {
             const salary = await gajiService.calculateEmployeeSalary(
                 idPetugas,
                 tglLembur
             );
-            hourlyRate = salary.tarif_lembur_per_jam;
+            tarifLembur = salary.tarif_lembur ?? salary.tarif_lembur_per_jam;
         }
+        const effectiveHours = jumlahJamKoreksi ?? totalJam;
+        const maxDailyHours = /pengganti (cuti|ijin|izin|sakit|piket)|siaga|libur nasional/i.test(jenisPekerjaan || "") ? 8 : 4;
+        await this.validateOvertimeLimits(idPetugas, tglLembur, effectiveHours, id_lembur, maxDailyHours);
+        const totalFaktor = this.calculateOvertimeFactor(effectiveHours, isHariLibur);
         const biayaLembur = this.calculateOvertimeCost(
-            hourlyRate,
-            jumlahJamKoreksi ?? totalJam
+            tarifLembur,
+            effectiveHours,
+            isHariLibur
         );
 
         await sequelize.transaction(
@@ -1004,6 +1029,10 @@ class LemburService {
 
                     biaya_lembur:
                         biayaLembur,
+
+                    tarif_lembur: tarifLembur,
+
+                    total_faktor: totalFaktor,
 
                     kategori_lembur:
                         data.kategori_lembur !==
@@ -1150,18 +1179,21 @@ class LemburService {
         const workflowUpdate = {};
         if (signatureField && workflowData[signatureField]) workflowUpdate[signatureField] = workflowData[signatureField];
         if (workflowData.jumlah_jam_koreksi !== undefined) {
-            let hourlyRate = this.getStoredHourlyRate(lembur);
-            if (hourlyRate <= 0) {
+            let tarifLembur = this.getStoredOvertimeRate(lembur);
+            if (tarifLembur <= 0) {
                 const salary = await gajiService.calculateEmployeeSalary(
                     lembur.id_petugas,
                     lembur.tgl_lembur
                 );
-                hourlyRate = salary.tarif_lembur_per_jam;
+                tarifLembur = salary.tarif_lembur ?? salary.tarif_lembur_per_jam;
             }
             workflowUpdate.jumlah_jam_koreksi = workflowData.jumlah_jam_koreksi;
+            workflowUpdate.tarif_lembur = tarifLembur;
+            workflowUpdate.total_faktor = this.calculateOvertimeFactor(workflowData.jumlah_jam_koreksi, lembur.is_hari_libur);
             workflowUpdate.biaya_lembur = this.calculateOvertimeCost(
-                hourlyRate,
-                workflowData.jumlah_jam_koreksi
+                tarifLembur,
+                workflowData.jumlah_jam_koreksi,
+                lembur.is_hari_libur
             );
         }
         if (workflowData.catatan_koreksi !== undefined) workflowUpdate.catatan_koreksi = this.normalizeNullableText(workflowData.catatan_koreksi);
@@ -1333,6 +1365,29 @@ class LemburService {
                 );
             }
         );
+    }
+
+    getLimitedWeekRange(dateValue) {
+        const date = new Date(`${dateValue}T00:00:00Z`);
+        const day = date.getUTCDay() || 7;
+        const monday = new Date(date); monday.setUTCDate(date.getUTCDate() - day + 1);
+        const sunday = new Date(date); sunday.setUTCDate(date.getUTCDate() + 7 - day);
+        const monthStart = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1));
+        const monthEnd = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0));
+        const format = (value) => value.toISOString().slice(0, 10);
+        return [format(monday < monthStart ? monthStart : monday), format(sunday > monthEnd ? monthEnd : sunday)];
+    }
+
+    async validateOvertimeLimits(idPetugas, dateValue, hours, excludeId = null, maxDailyHours = 4) {
+        const [weekStart, weekEnd] = this.getLimitedWeekRange(dateValue);
+        const where = { id_petugas: idPetugas, tgl_lembur: { [Op.between]: [weekStart, weekEnd] } };
+        if (excludeId) where.id_lembur = { [Op.ne]: excludeId };
+        const records = await Lembur.findAll({ where, attributes: ["tgl_lembur", "total_jam", "jumlah_jam_koreksi"] });
+        const effective = (row) => Number(row.jumlah_jam_koreksi ?? row.total_jam ?? 0);
+        const daily = records.filter((row) => row.tgl_lembur === dateValue).reduce((sum, row) => sum + effective(row), 0);
+        const weekly = records.reduce((sum, row) => sum + effective(row), 0);
+        if (daily + Number(hours) > maxDailyHours) throw new AppError(`Batas lembur harian maksimal ${maxDailyHours} jam. Total pada ${dateValue} menjadi ${daily + Number(hours)} jam`, 422);
+        if (weekly + Number(hours) > 18) throw new AppError(`Batas lembur mingguan maksimal 18 jam. Total periode ${weekStart} s/d ${weekEnd} menjadi ${weekly + Number(hours)} jam`, 422);
     }
 
     async delete(

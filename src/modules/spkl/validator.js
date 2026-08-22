@@ -2,8 +2,9 @@ const Joi = require("joi");
 const id = Joi.number().integer().positive();
 const payload = Joi.object({
     id_unit: id.required(), tgl_lembur: Joi.date().iso().raw().required(),
-    kategori_lembur: Joi.string().trim().max(1000).required(),
-    jenis_pekerjaan: Joi.string().trim().max(1000).required(),
+    id_kategori_lembur: id.required(), id_jenis_pekerjaan_lembur: id.allow(null).optional(),
+    kategori_lembur: Joi.string().trim().max(1000).optional(),
+    jenis_pekerjaan: Joi.string().trim().max(1000).allow("", null).optional(),
     kode_jenis_pekerjaan: Joi.string().uppercase().valid("REGULAR", "SIAGA_HARI_LIBUR").default("REGULAR"),
     area_group: Joi.string().trim().max(255).allow("", null), detail_pekerjaan: Joi.string().trim().max(5000).allow("", null),
     status_spkl: Joi.string().uppercase().valid("DRAFT", "ACTIVE").default("ACTIVE"),

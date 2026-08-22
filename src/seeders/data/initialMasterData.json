@@ -7508,6 +7508,13 @@
       "nama_module": "Pengaturan",
       "deskripsi": "Mengelola konfigurasi aplikasi dan parameter sistem.",
       "penjelasan_mapping_role": "untuk super admin dan admin"
+    },
+    {
+      "id_module": 23,
+      "kode_module": "master-lembur",
+      "nama_module": "Master Kategori & Jenis Lembur",
+      "deskripsi": "Mengelola kategori lembur, jenis pekerjaan, perilaku, batas jam, dan kebutuhan petugas pengganti.",
+      "penjelasan_mapping_role": "untuk super admin dan admin dengan akses CRUD penuh"
     }
   ],
   "m_access_module": [
@@ -8138,5 +8145,25 @@
       "nilai_rata_rata": 3315728,
       "status": "PUBLISHED"
     }
+  ],
+  "m_kategori_lembur": [
+    { "kode_kategori": "TOWER", "nama_kategori": "Pekerjaan Tower", "jenis_mode": "REQUIRED", "urutan": 10, "is_active": "Y" },
+    { "kode_kategori": "VALIDASI_ROW", "nama_kategori": "Perbantuan Validasi ROW", "jenis_mode": "NONE", "urutan": 20, "is_active": "Y" },
+    { "kode_kategori": "EMERGENCY", "nama_kategori": "Emergency / Pelacakan Gangguan", "jenis_mode": "NONE", "urutan": 30, "is_active": "Y" },
+    { "kode_kategori": "MANUVER", "nama_kategori": "Manuver", "jenis_mode": "REQUIRED", "urutan": 40, "is_active": "Y" },
+    { "kode_kategori": "SIAGA_HARI_LIBUR", "nama_kategori": "Siaga Hari Libur", "jenis_mode": "REQUIRED", "urutan": 50, "is_active": "Y" },
+    { "kode_kategori": "PENGGANTI_KETIDAKHADIRAN", "nama_kategori": "005 - Piket Tanggal Merah / Cuti Pengganti", "jenis_mode": "REQUIRED", "urutan": 60, "is_active": "Y" }
+  ],
+  "m_jenis_pekerjaan_lembur": [
+    { "kode_jenis": "TOWER_PENTANAHAN", "nama_jenis": "Perbaikan Anomali Pentanahan", "kode_kategori": "TOWER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 10, "is_active": "Y" },
+    { "kode_jenis": "TOWER_ASSESSMENT", "nama_jenis": "Assesment Kondisi Tower", "kode_kategori": "TOWER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 20, "is_active": "Y" },
+    { "kode_jenis": "TOWER_PENGUKURAN", "nama_jenis": "Pengukuran Pentanahan", "kode_kategori": "TOWER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 30, "is_active": "Y" },
+    { "kode_jenis": "MANUVER_KONFIGURASI", "nama_jenis": "Manuver Konfigurasi", "kode_kategori": "MANUVER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 10, "is_active": "Y" },
+    { "kode_jenis": "MANUVER_PEMELIHARAAN", "nama_jenis": "Manuver Pemeliharaan", "kode_kategori": "MANUVER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 20, "is_active": "Y" },
+    { "kode_jenis": "MANUVER_EMERGENCY", "nama_jenis": "Manuver Emergency", "kode_kategori": "MANUVER", "kode_perilaku": "REGULAR", "requires_replacement_officer": "N", "evidence_optional": "N", "max_daily_hours": 4, "urutan": 30, "is_active": "Y" },
+    { "kode_jenis": "SIAGA_LIBUR", "nama_jenis": "Siaga / Libur Nasional", "kode_kategori": "SIAGA_HARI_LIBUR", "kode_perilaku": "SIAGA_HARI_LIBUR", "requires_replacement_officer": "N", "evidence_optional": "Y", "max_daily_hours": 8, "urutan": 10, "is_active": "Y" },
+    { "kode_jenis": "PENGGANTI_CUTI", "nama_jenis": "Pengganti CUTI", "kode_kategori": "PENGGANTI_KETIDAKHADIRAN", "kode_perilaku": "PENGGANTI_KETIDAKHADIRAN", "requires_replacement_officer": "Y", "evidence_optional": "Y", "max_daily_hours": 8, "urutan": 10, "is_active": "Y" },
+    { "kode_jenis": "PENGGANTI_IJIN", "nama_jenis": "Pengganti IJIN", "kode_kategori": "PENGGANTI_KETIDAKHADIRAN", "kode_perilaku": "PENGGANTI_KETIDAKHADIRAN", "requires_replacement_officer": "Y", "evidence_optional": "Y", "max_daily_hours": 8, "urutan": 20, "is_active": "Y" },
+    { "kode_jenis": "PENGGANTI_SAKIT", "nama_jenis": "Pengganti SAKIT", "kode_kategori": "PENGGANTI_KETIDAKHADIRAN", "kode_perilaku": "PENGGANTI_KETIDAKHADIRAN", "requires_replacement_officer": "Y", "evidence_optional": "Y", "max_daily_hours": 8, "urutan": 30, "is_active": "Y" }
   ]
 }

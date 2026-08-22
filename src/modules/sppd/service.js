@@ -1032,6 +1032,17 @@ class SppdService {
             user
         );
         await assertWorkflowAssignment(sppd, user);
+        const roleCode = String(
+            user?.kode_role ||
+            user?.role?.kode_role ||
+            ""
+        ).toUpperCase().replace(/[^A-Z0-9]/g, "");
+        if (["APPROVAL1", "APPROVED1"].includes(roleCode)) {
+            throw new AppError(
+                "Approval 1 tidak dapat meminta revisi SPPD",
+                403
+            );
+        }
         const revisionStatus = await resolveRevisionStatus(sppd.status, workflowData.target_role);
 
         await this.updateStatusWithLog(

@@ -106,6 +106,7 @@ class GajiService {
                 nilai_koef: Number(nilaiKoef.toFixed(2)),
                 nilai_tmk: Number(nilaiTmk.toFixed(2)),
                 total_gaji: Number(totalGaji.toFixed(2)),
+                tarif_lembur: Number((totalGaji / 173).toFixed(6)),
                 tarif_lembur_per_jam: Number((totalGaji / 173).toFixed(6)),
                 status_perhitungan: "OK",
             };
@@ -145,6 +146,7 @@ class GajiService {
             tahun_parameter_upah: Number(annualParameter.tahun),
             nilai_rata_rata: nilaiRataRata,
             total_gaji: Number(totalGaji.toFixed(2)),
+            tarif_lembur: Number((totalGaji / 173).toFixed(6)),
             tarif_lembur_per_jam: Number((totalGaji / 173).toFixed(6)),
         };
     }

@@ -2,6 +2,12 @@
 
 module.exports = {
     async up(queryInterface, Sequelize) {
+        const tables = (await queryInterface.showAllTables()).map((table) => String(table?.tableName || table).toLowerCase());
+        const lemburColumns = await queryInterface.describeTable("t_lembur");
+        const basisColumnsExist = ["dasar_lembur_type", "id_spkl_petugas", "id_cuti", "id_ijin", "id_sakit"]
+            .every((column) => lemburColumns[column]);
+        if (tables.includes("t_spkl") && tables.includes("t_spkl_petugas") && basisColumnsExist) return;
+
         await queryInterface.createTable("t_spkl", {
             id_spkl: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
             nomor_dokumen: { type: Sequelize.STRING(150), allowNull: false, unique: true },

@@ -26,6 +26,7 @@ const modules = [
     ["umk", "UMK", "Master UMK"],
     ["faktor-upah", "Faktor Upah", "Pengaturan faktor upah"],
     ["hari-libur", "Hari Libur", "Master hari libur"],
+    ["master-lembur", "Master Kategori & Jenis Lembur", "Master kategori dan jenis pekerjaan lembur"],
     ["mutasi-pegawai", "Mutasi Pegawai", "Transaksi mutasi pegawai"],
     ["users", "Users", "Master pengguna"],
     ["roles", "Roles", "Master role"],
@@ -37,12 +38,7 @@ async function run() {
     try {
         const result = await sequelize.transaction(
             async (transaction) => {
-                const superAdminRole = await Role.findOne({
-                    where: {
-                        kode_role: "SUPER_ADMIN",
-                    },
-                    transaction,
-                });
+                const superAdminRole = await Role.findOne({ where: { kode_role: "SUPER_ADMIN" }, transaction });
 
                 if (!superAdminRole) {
                     throw new Error(
@@ -107,6 +103,16 @@ async function run() {
                         },
                         { transaction }
                     );
+                }
+
+                const adminRole = await Role.findOne({ where: { kode_role: "ADMIN" }, transaction });
+                if (adminRole) {
+                    const masterLemburModule = await AppModule.findOne({ where: { kode_module: "master-lembur" }, transaction });
+                    if (masterLemburModule) {
+                        const values = { can_create: "Y", can_read: "Y", can_update: "Y", can_delete: "Y", can_approve: "Y" };
+                        const [access] = await AccessModule.findOrCreate({ where: { id_role: adminRole.id_role, id_module: masterLemburModule.id_module }, defaults: values, transaction });
+                        await access.update({ ...values, updated_at: new Date() }, { transaction });
+                    }
                 }
 
                 const spklModule = await AppModule.findOne({ where: { kode_module: "perintah-kerja-lembur" }, transaction });

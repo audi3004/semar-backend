@@ -418,6 +418,33 @@ class CutiRepository {
         });
     }
 
+    async sumApprovedDaysByYear(idPetugas, year, excludeId = null, transaction = null) {
+        const rows = await Cuti.findAll({
+            where: {
+                id_petugas: idPetugas,
+                tgl_mulai: {
+                    [Op.between]: [`${year}-01-01`, `${year}-12-31`],
+                },
+                ...(excludeId ? { id_cuti: { [Op.ne]: excludeId } } : {}),
+            },
+            attributes: ["lama_hari"],
+            include: [{
+                model: Status,
+                as: "status",
+                required: true,
+                attributes: [],
+                where: {
+                    is_final: "Y",
+                    [Op.and]: ["REJECT", "TOLAK", "CANCEL", "BATAL"].map((code) => ({
+                        kode_status: { [Op.notLike]: `%${code}%` },
+                    })),
+                },
+            }],
+            transaction,
+        });
+        return rows.reduce((total, row) => total + Number(row.lama_hari || 0), 0);
+    }
+
     async findByNumber(
         no_cuti,
         excludeId = null

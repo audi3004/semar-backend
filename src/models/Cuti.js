@@ -82,6 +82,18 @@ const Cuti = sequelize.define(
             type: DataTypes.STRING(500),
             allowNull: true,
         },
+
+        sisa_cuti_sebelum: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            comment: "Snapshot sisa hak cuti sebelum pengajuan",
+        },
+
+        sisa_cuti_setelah: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            comment: "Snapshot sisa hak cuti pasca pengajuan",
+        },
         id_project: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_project", key: "id_project" }, onUpdate: "CASCADE", onDelete: "RESTRICT" },
 
         nomor_telepon_darurat: {

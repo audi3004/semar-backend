@@ -91,10 +91,25 @@ const Lembur = sequelize.define(
             comment: "Biaya lembur berdasarkan jam efektif dan tarif upah saat transaksi",
         },
 
+        tarif_lembur: {
+            type: DataTypes.DECIMAL(15, 6),
+            allowNull: true,
+            comment: "Tarif dasar lembur yang disimpan saat transaksi dibuat",
+        },
+
+        total_faktor: {
+            type: DataTypes.DECIMAL(8, 2),
+            allowNull: true,
+            comment: "Total faktor pengali berdasarkan durasi dan jenis hari lembur",
+        },
+
         kategori_lembur: {
             type: DataTypes.STRING(1000),
             allowNull: false,
         },
+
+        id_kategori_lembur: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_kategori_lembur", key: "id_kategori_lembur" }, onUpdate: "CASCADE", onDelete: "SET NULL" },
+        id_jenis_pekerjaan_lembur: { type: DataTypes.INTEGER, allowNull: true, references: { model: "m_jenis_pekerjaan_lembur", key: "id_jenis_pekerjaan_lembur" }, onUpdate: "CASCADE", onDelete: "SET NULL" },
 
         jenis_pekerjaan: {
             type: DataTypes.STRING(1000),
@@ -142,6 +157,7 @@ const Lembur = sequelize.define(
         jumlah_jam_koreksi: {
             type: DataTypes.DECIMAL(6, 2),
             allowNull: true,
+            comment: "Jam hasil koreksi Checker; null selama belum dilakukan koreksi",
         },
 
         catatan_koreksi: {
